@@ -1,0 +1,149 @@
+{
+ "description": "Layer 2 parameters: allied feedback on lagged US and China real growth, HAC(3), annual 1951 to 2025",
+ "feedback": {
+  "Indo-Pacific allies": {
+   "b0": 2.381,
+   "b_us": 0.072,
+   "b_cn": -0.038,
+   "se_us": 0.07,
+   "se_cn": 0.061,
+   "ci95_us": [
+    -0.065,
+    0.21
+   ],
+   "ci95_cn": [
+    -0.158,
+    0.082
+   ],
+   "abs_gap": 0.034,
+   "p_us_stronger_one_sided": 0.2917,
+   "nobs": 35,
+   "r2": 0.035
+  },
+  "NATO Europe": {
+   "b0": 2.551,
+   "b_us": 0.266,
+   "b_cn": -0.162,
+   "se_us": 0.146,
+   "se_cn": 0.135,
+   "ci95_us": [
+    -0.02,
+    0.552
+   ],
+   "ci95_cn": [
+    -0.427,
+    0.103
+   ],
+   "abs_gap": 0.104,
+   "p_us_stronger_one_sided": 0.2201,
+   "nobs": 35,
+   "r2": 0.119
+  },
+  "Hedging middle powers": {
+   "b0": 1.882,
+   "b_us": 0.263,
+   "b_cn": 0.144,
+   "se_us": 0.227,
+   "se_cn": 0.126,
+   "ci95_us": [
+    -0.182,
+    0.707
+   ],
+   "ci95_cn": [
+    -0.103,
+    0.39
+   ],
+   "abs_gap": 0.119,
+   "p_us_stronger_one_sided": 0.3514,
+   "nobs": 35,
+   "r2": 0.089
+  }
+ },
+ "principal_blocks": {
+  "United States": {
+   "mean_full": 2.152,
+   "mean_2016_2025": 1.022,
+   "sd_full": 11.252,
+   "n": 76
+  },
+  "China": {
+   "mean_full": 7.842,
+   "mean_2016_2025": 5.356,
+   "sd_full": 5.607,
+   "n": 36
+  },
+  "Rest of world": {
+   "mean_full": 2.187,
+   "mean_2016_2025": 5.733,
+   "sd_full": 7.066,
+   "n": 35
+  }
+ },
+ "demonstration_mobilization_2022": {
+  "Indo-Pacific allies": {
+   "pre_2022_mean": 3.6,
+   "post_2022_mean": 3.67,
+   "delta_pp": 0.07
+  },
+  "NATO Europe": {
+   "pre_2022_mean": 3.42,
+   "post_2022_mean": 9.97,
+   "delta_pp": 6.55
+  },
+  "Hedging middle powers": {
+   "pre_2022_mean": -2.21,
+   "post_2022_mean": 4.71,
+   "delta_pp": 6.91
+  }
+ },
+ "event_windows": {
+  "post_vietnam_1969_1975": {
+   "us_mean": -4.98,
+   "Indo-Pacific allies": 3.41,
+   "NATO Europe": 3.56,
+   "Hedging middle powers": 6.49
+  },
+  "peace_dividend_1989_1998": {
+   "us_mean": -3.83,
+   "Indo-Pacific allies": 1.84,
+   "NATO Europe": -1.35,
+   "Hedging middle powers": 2.94
+  },
+  "sequester_2011_2015": {
+   "us_mean": -4.71,
+   "Indo-Pacific allies": 1.68,
+   "NATO Europe": -1.55,
+   "Hedging middle powers": 2.86
+  },
+  "observed_2025": {
+   "us_mean": -7.84,
+   "Indo-Pacific allies": 6.09,
+   "NATO Europe": 14.49,
+   "Hedging middle powers": 7.86
+  },
+  "accretion_only_2015_2021": {
+   "us_mean": 1.2,
+   "cn_mean": 5.25,
+   "Indo-Pacific allies": 3.6,
+   "NATO Europe": 3.42,
+   "Hedging middle powers": -2.21
+  }
+ },
+ "h2_historical": {
+  "Indo-Pacific allies": {
+   "verdict": "us_stronger",
+   "abs_gap": 0.034,
+   "p_one_sided": 0.2917
+  },
+  "NATO Europe": {
+   "verdict": "us_stronger",
+   "abs_gap": 0.104,
+   "p_one_sided": 0.2201
+  },
+  "Hedging middle powers": {
+   "verdict": "us_stronger",
+   "abs_gap": 0.119,
+   "p_one_sided": 0.3514
+  }
+ }
+}

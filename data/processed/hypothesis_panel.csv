@@ -1,0 +1,978 @@
+hypothesis,role,series,scope,freq,period,value,unit,source
+H1,test,pathway_separation,Indo-Pacific allies,endpoint,2035,0.36,sd units,"simulate_layer2.py, 10000 draws per pathway, seed 20260724"
+H1,test,pathway_separation,NATO Europe,endpoint,2035,1.45,sd units,"simulate_layer2.py, 10000 draws per pathway, seed 20260724"
+H1,test,pathway_separation,Hedging middle powers,endpoint,2035,1.09,sd units,"simulate_layer2.py, 10000 draws per pathway, seed 20260724"
+H1,test,pathway_separation,Allied share of world,endpoint,2035,0.6,sd units,"simulate_layer2.py, 10000 draws per pathway, seed 20260724"
+H1,test,pathway_separation_driver,United States,endpoint,2035,1.1,sd units,"simulate_layer2.py (context, not scored)"
+H1,test,pathway_separation_driver,China,endpoint,2035,0.02,sd units,"simulate_layer2.py (context, not scored)"
+H1,test,reserve_channel_separation,USD share,endpoint,2035,0.36,sd units,simulate.py layer 1
+H1,test,median_over_reserve_ratio,scored outcomes,endpoint,2035,2.3,ratio,simulate_layer2.py
+H1,input,simulated_endpoint,Indo-Pacific allies | accretion,endpoint,2035,218558.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,NATO Europe | accretion,endpoint,2035,658634.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,Hedging middle powers | accretion,endpoint,2035,323255.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,United States | accretion,endpoint,2035,939960.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,China | accretion,endpoint,2035,567784.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,Indo-Pacific allies | retrenchment,endpoint,2035,212839.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,NATO Europe | retrenchment,endpoint,2035,593000.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,Hedging middle powers | retrenchment,endpoint,2035,291269.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,United States | retrenchment,endpoint,2035,572304.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,China | retrenchment,endpoint,2035,566236.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,Indo-Pacific allies | demonstration,endpoint,2035,219114.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,NATO Europe | demonstration,endpoint,2035,772133.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,Hedging middle powers | demonstration,endpoint,2035,381152.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,United States | demonstration,endpoint,2035,941391.0,"USD m, constant 2024",layer2_summary.json
+H1,input,simulated_endpoint,China | demonstration,endpoint,2035,567817.0,"USD m, constant 2024",layer2_summary.json
+H1,input,allied_share_2035,accretion,endpoint,2035,25.81,% of world,layer2_summary.json
+H1,input,allied_share_2035,retrenchment,endpoint,2035,27.52,% of world,layer2_summary.json
+H1,input,allied_share_2035,demonstration,endpoint,2035,27.72,% of world,layer2_summary.json
+H2,test,feedback_b_us,Indo-Pacific allies,annual,1951-2025,0.072,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,feedback_b_cn,Indo-Pacific allies,annual,1951-2025,-0.038,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,p_us_stronger,Indo-Pacific allies,annual,1951-2025,0.2917,one-sided p,delta method on |b_us| - |b_cn|
+H2,test,feedback_b_us,NATO Europe,annual,1951-2025,0.266,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,feedback_b_cn,NATO Europe,annual,1951-2025,-0.162,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,p_us_stronger,NATO Europe,annual,1951-2025,0.2201,one-sided p,delta method on |b_us| - |b_cn|
+H2,test,feedback_b_us,Hedging middle powers,annual,1951-2025,0.263,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,feedback_b_cn,Hedging middle powers,annual,1951-2025,0.144,"pp per pp, lag 1","calibrate_layer2.py, HAC(3)"
+H2,test,p_us_stronger,Hedging middle powers,annual,1951-2025,0.3514,one-sided p,delta method on |b_us| - |b_cn|
+H2,evidence,event_window_growth,United States | post vietnam,annual mean,1969-1975,-4.98,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Indo-Pacific allies | post vietnam,annual mean,1969-1975,3.41,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,NATO Europe | post vietnam,annual mean,1969-1975,3.56,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Hedging middle powers | post vietnam,annual mean,1969-1975,6.49,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,United States | peace dividend,annual mean,1989-1998,-3.83,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Indo-Pacific allies | peace dividend,annual mean,1989-1998,1.84,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,NATO Europe | peace dividend,annual mean,1989-1998,-1.35,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Hedging middle powers | peace dividend,annual mean,1989-1998,2.94,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,United States | sequester,annual mean,2011-2015,-4.71,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Indo-Pacific allies | sequester,annual mean,2011-2015,1.68,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,NATO Europe | sequester,annual mean,2011-2015,-1.55,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Hedging middle powers | sequester,annual mean,2011-2015,2.86,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,United States | observed,annual mean,2025,-7.84,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Indo-Pacific allies | observed,annual mean,2025,6.09,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,NATO Europe | observed,annual mean,2025,14.49,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Hedging middle powers | observed,annual mean,2025,7.86,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,United States | accretion only,annual mean,2015-2021,1.2,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,China | accretion only,annual mean,2015-2021,5.25,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Indo-Pacific allies | accretion only,annual mean,2015-2021,3.6,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,NATO Europe | accretion only,annual mean,2015-2021,3.42,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,event_window_growth,Hedging middle powers | accretion only,annual mean,2015-2021,-2.21,"% real, mean over window",SIPRI milex via calibrate_layer2.py
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1945,window,1945,11.34,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1950,window,1950,74.52,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1955,window,1955,86.4,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1960,window,1960,87.28,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1965,window,1965,78.42,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1970,window,1970,93.05,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1975,window,1975,90.52,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1980,window,1980,84.58,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1985,window,1985,67.67999999999999,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1990,window,1990,74.86,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 1995,window,1995,67.28,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2000,window,2000,74.07000000000001,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2005,window,2005,68.03,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2010,window,2010,81.73,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2015,window,2015,75.7,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2020,window,2020,80.0,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,Indo-Pacific allies | 2025,window,2025,30.65,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1945,window,1945,14.729999999999999,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1950,window,1950,50.57000000000001,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1955,window,1955,64.63,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1960,window,1960,48.54,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1965,window,1965,48.35,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1970,window,1970,42.66,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1975,window,1975,51.73,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1980,window,1980,57.25,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1985,window,1985,44.79,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1990,window,1990,58.56,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 1995,window,1995,46.77,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2000,window,2000,32.300000000000004,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2005,window,2005,71.83,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2010,window,2010,37.19,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2015,window,2015,64.02,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2020,window,2020,54.48,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,us_supplier_share,NATO Europe | 2025,window,2025,26.27,"% of tier imports, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1945,window,1945,0.7967,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1950,window,1950,0.6138,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1955,window,1955,0.7621,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1960,window,1960,0.769,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1965,window,1965,0.6402,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1970,window,1970,0.867,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1975,window,1975,0.8211,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1980,window,1980,0.7207,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1985,window,1985,0.4873,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1990,window,1990,0.5837,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 1995,window,1995,0.4692,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2000,window,2000,0.5647,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2005,window,2005,0.4914,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2010,window,2010,0.6714,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2015,window,2015,0.5801,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2020,window,2020,0.6463,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,Indo-Pacific allies | 2025,window,2025,0.1879,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1945,window,1945,0.4203,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1950,window,1950,0.3704,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1955,window,1955,0.4455,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1960,window,1960,0.3416,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1965,window,1965,0.3259,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1970,window,1970,0.253,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1975,window,1975,0.3447,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1980,window,1980,0.3827,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1985,window,1985,0.2567,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1990,window,1990,0.3838,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 1995,window,1995,0.2654,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2000,window,2000,0.1648,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2005,window,2005,0.526,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2010,window,2010,0.2087,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2015,window,2015,0.4263,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2020,window,2020,0.327,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,supplier_hhi,NATO Europe | 2025,window,2025,0.1854,"Herfindahl, 5-year order window",SIPRI trade register
+H2,evidence,nato_median_burden,,annual,2014,1.16,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2015,1.16,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2016,1.24,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2017,1.24,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2018,1.34,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2019,1.37,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2020,1.59,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2021,1.52,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2022,1.5,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2023,1.67,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2024,2.02,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2025,2.13,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,nato_median_burden,,annual,2026,2.22,"% of GDP, median ally","NATO defence expenditure 2026, Table 3"
+H2,evidence,mobilization_2022_delta,Indo-Pacific allies,annual mean,2022-2025 vs 2015-2021,0.07,pp step-up in real growth,calibrate_layer2.py; n = 1 episode
+H2,evidence,mobilization_2022_delta,NATO Europe,annual mean,2022-2025 vs 2015-2021,6.55,pp step-up in real growth,calibrate_layer2.py; n = 1 episode
+H2,evidence,mobilization_2022_delta,Hedging middle powers,annual mean,2022-2025 vs 2015-2021,6.91,pp step-up in real growth,calibrate_layer2.py; n = 1 episode
+H3,evidence,cofer_share,USD,quarterly,1999-Q1,71.1888689871011,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,1999-Q2,72.1259318040904,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,1999-Q3,70.6847562342032,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,1999-Q4,71.0139314733965,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2000-Q1,70.7965528604486,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2000-Q2,70.6756743292132,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2000-Q3,70.643182802407,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2000-Q4,69.7403271390709,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2001-Q1,70.6500810298208,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2001-Q2,71.4003108062864,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2001-Q3,70.7633611218991,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2001-Q4,70.7836648539658,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2002-Q1,70.5138003119722,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2002-Q2,67.8056192218856,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2002-Q3,66.6936532882457,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2002-Q4,64.9391869591015,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2003-Q1,64.6161570687263,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2003-Q2,64.6518884544982,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2003-Q3,64.9081937339743,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2003-Q4,63.534917057239,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2004-Q1,64.6672276348416,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2004-Q2,64.8549468240236,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2004-Q3,64.4403466010848,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2004-Q4,63.3229146034879,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2005-Q1,64.2052408299401,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2005-Q2,64.682879009746,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2005-Q3,65.0115199088046,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2005-Q4,64.888024245941,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2006-Q1,64.8836357935906,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2006-Q2,64.1111257285317,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2006-Q3,64.5901865327659,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2006-Q4,63.6672618202723,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2007-Q1,63.6562290349214,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2007-Q2,63.3986338150179,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2007-Q3,62.7131094022578,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2007-Q4,62.6016321357911,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2008-Q1,63.0560597839148,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2008-Q2,62.6959727212127,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2008-Q3,63.9349439057916,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2008-Q4,62.8681207370047,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2009-Q1,63.8024997331739,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2009-Q2,62.3523481014793,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2009-Q3,61.3197557142948,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2009-Q4,62.1878198896172,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2010-Q1,61.7866178456704,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2010-Q2,62.5629426546716,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2010-Q3,61.8216648528552,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2010-Q4,61.9359313840198,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2011-Q1,61.8158329080448,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2011-Q2,61.5510637552286,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2011-Q3,62.2451136915126,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2011-Q4,62.5146439280514,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2012-Q1,61.8726400110631,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2012-Q2,62.1502827709439,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2012-Q3,61.8049764580097,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2012-Q4,61.8442420601233,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2013-Q1,62.0793927374482,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2013-Q2,62.037540522709,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2013-Q3,61.7421368672357,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2013-Q4,61.7163815633297,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2014-Q1,61.3171286741676,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2014-Q2,61.3452564149478,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2014-Q3,62.3857244032257,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2014-Q4,62.681866750902,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2015-Q1,63.5494095855134,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2015-Q2,63.4720294,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2015-Q3,64.2370836,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2015-Q4,64.154037,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2016-Q1,63.9291976,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2016-Q2,64.0052962,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2016-Q3,63.7928791,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2016-Q4,64.6799707,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2017-Q1,64.2195096,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2017-Q2,63.514328,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2017-Q3,63.3104705,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2017-Q4,62.7072968,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2018-Q1,62.8976097,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2018-Q2,62.6152141,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2018-Q3,62.3490399685773,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2018-Q4,62.0650228830416,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2019-Q1,62.2066180312068,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2019-Q2,61.7316705128468,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2019-Q3,62.0500700119326,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2019-Q4,61.3202550682034,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2020-Q1,62.3212021900011,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2020-Q2,61.875305997393,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2020-Q3,61.0066337569416,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2020-Q4,59.5282761516248,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2021-Q1,60.0628702628749,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2021-Q2,59.8460288957343,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2021-Q3,59.8714605550738,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2021-Q4,59.4025304338252,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2022-Q1,59.4175033569336,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2022-Q2,59.9951705932617,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2022-Q3,60.4334411621094,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2022-Q4,58.9517669677734,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2023-Q1,60.1231002807617,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2023-Q2,59.8180694580078,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2023-Q3,59.6898078918457,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2023-Q4,58.9796180725098,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2024-Q1,59.5113754272461,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2024-Q2,58.8639640808106,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2024-Q3,57.8441505432129,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2024-Q4,58.4082374572754,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2025-Q1,58.3839225769043,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2025-Q2,56.9427337646484,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2025-Q3,56.6023254394531,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2025-Q4,56.4172706604004,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,USD,quarterly,2026-Q1,57.130786895752,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2016-Q4,0.9972309,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2017-Q1,1.031083,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2017-Q2,1.0400895,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2017-Q3,1.0974784,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2017-Q4,1.229718,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2018-Q1,1.460129,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2018-Q2,1.9115272,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2018-Q3,1.87205809668787,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2018-Q4,1.95951157951522,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2019-Q1,1.98283390379703,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2019-Q2,1.97848021324259,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2019-Q3,2.00322568415245,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2019-Q4,2.0257803934342,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2020-Q1,2.04107031907819,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2020-Q2,2.09935522363852,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2020-Q3,2.1946008104725,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2020-Q4,2.32256473532254,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2021-Q1,2.52408322261994,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2021-Q2,2.64980314646918,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2021-Q3,2.71344940265246,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2021-Q4,2.85163846002599,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2022-Q1,2.84937262535095,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2022-Q2,2.78056025505066,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2022-Q3,2.61338138580322,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2022-Q4,2.5504949092865,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2023-Q1,2.60709095001221,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2023-Q2,2.47479271888733,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2023-Q3,2.43515157699585,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2023-Q4,2.33853340148926,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2024-Q1,2.1372013092041,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2024-Q2,2.07641768455505,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2024-Q3,2.11684799194336,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2024-Q4,2.06520581245422,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2025-Q1,1.96417593955994,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2025-Q2,1.97738122940064,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2025-Q3,1.94664740562439,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2025-Q4,1.95483195781708,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,CNY,quarterly,2026-Q1,1.98504495620728,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,1999-Q1,18.1221470370837,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,1999-Q2,17.5747412726491,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,1999-Q3,18.3276090601898,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,1999-Q4,17.8987905769332,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2000-Q1,16.534852958916,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2000-Q2,16.7730469443933,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2000-Q3,16.4219625327352,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2000-Q4,17.5370606971042,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2001-Q1,17.225731705536,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2001-Q2,17.1533756874137,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2001-Q3,17.9664971397453,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2001-Q4,18.405093873867,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2002-Q1,19.0441646615479,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2002-Q2,20.086257041822,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2002-Q3,21.152324713009,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2002-Q4,22.923391556076,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2003-Q1,22.6563577577068,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2003-Q2,23.1257328345919,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2003-Q3,22.6868451713132,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2003-Q4,23.1322623759487,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2004-Q1,21.7868685999698,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2004-Q2,21.7693514192742,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2004-Q3,22.1939086191011,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2004-Q4,23.1446722069437,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2005-Q1,23.0980113753154,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2005-Q2,22.6995876338169,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2005-Q3,22.3372917750411,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2005-Q4,21.8892330637684,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2006-Q1,22.1315791481771,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2006-Q2,22.4579581568719,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2006-Q3,22.0875462774912,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2006-Q4,22.6226235338528,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2007-Q1,23.2886674545895,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2007-Q2,22.9164056076231,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2007-Q3,23.7708386675709,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2007-Q4,23.3228428580763,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2008-Q1,23.2662209563831,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2008-Q2,23.3095974440975,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2008-Q3,22.2211500814526,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2008-Q4,23.4170576773844,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2009-Q1,23.2522906293496,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2009-Q2,24.0779346111192,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2009-Q3,24.1837460112942,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2009-Q4,24.0467322850019,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2010-Q1,23.8081398220863,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2010-Q2,22.9718835513829,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2010-Q3,23.3324560606541,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2010-Q4,22.9132199065987,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2011-Q1,22.7520484927065,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2011-Q2,22.8893945938661,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2011-Q3,22.2135432766033,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2011-Q4,21.7251103652476,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2012-Q1,21.7478295866898,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2012-Q2,21.8502522846078,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2012-Q3,21.3475146862172,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2012-Q4,21.449406087907,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2013-Q1,21.0205598346248,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2013-Q2,21.1393598580545,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2013-Q3,21.3126286694233,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2013-Q4,21.4739711166451,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2014-Q1,21.7754783250581,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2014-Q2,21.591284412809,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2014-Q3,20.6983968360408,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2014-Q4,20.4570063397365,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2015-Q1,19.707371209207,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2015-Q2,19.7346303,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2015-Q3,19.5726043,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2015-Q4,19.4005537,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2016-Q1,19.7778506,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2016-Q2,19.4721547,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2016-Q3,19.5422885,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2016-Q4,18.9277091,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2017-Q1,19.0098815,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2017-Q2,19.6875589,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2017-Q3,19.771857,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2017-Q4,19.7977191,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2018-Q1,19.9123199,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2018-Q2,19.5985523,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2018-Q3,19.7211876381046,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2018-Q4,20.0305283316089,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2019-Q1,19.5438203804079,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2019-Q2,19.8298730822905,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2019-Q3,19.5359605666266,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2019-Q4,19.8245887786098,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2020-Q1,19.3291387242754,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2020-Q2,19.4792482131464,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2020-Q3,19.8693542865485,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2020-Q4,20.5583939113306,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2021-Q1,19.7606440508144,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2021-Q2,19.8386658306809,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2021-Q3,19.7752459126348,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2021-Q4,19.8153821960483,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2022-Q1,19.1770801544189,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2022-Q2,19.0010204315186,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2022-Q3,18.8501777648926,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2022-Q4,19.7297306060791,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2023-Q1,18.7499256134033,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2023-Q2,18.9197483062744,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2023-Q3,18.9005165100098,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2023-Q4,19.2091884613037,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2024-Q1,18.8723106384277,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2024-Q2,18.8239688873291,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2024-Q3,19.15159034729,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2024-Q4,18.9102840423584,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2025-Q1,19.109001159668,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2025-Q2,20.2646656036377,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2025-Q3,20.4868774414063,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2025-Q4,20.3811206817627,% of allocated reserves,IMF COFER
+H3,evidence,cofer_share,EUR,quarterly,2026-Q1,20.030689239502,% of allocated reserves,IMF COFER
+H3,evidence,swift_payments_share,CNY,monthly,2024-04,4.52,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-05,4.47,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-06,4.61,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-07,4.74,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-08,4.69,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-09,3.61,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-10,2.93,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-11,3.89,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2024-12,3.75,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-01,3.79,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-02,4.33,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-03,4.13,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-04,3.5,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-05,2.89,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-06,2.88,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-07,2.88,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-08,2.93,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-09,3.17,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-10,2.47,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-11,2.94,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2025-12,2.73,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-01,3.13,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-02,2.74,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-03,3.1,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-04,2.85,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-05,2.75,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-06,3.1,% of global payments value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-04,4.71,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-05,5.08,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-06,5.99,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-07,6.0,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-08,5.95,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-09,5.66,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-10,5.77,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-11,6.41,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2024-12,5.98,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-01,6.14,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-02,6.34,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-03,7.38,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-04,6.15,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-05,5.84,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-06,5.94,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-07,7.02,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-08,7.59,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-09,7.28,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-10,8.48,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-11,8.36,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2025-12,8.3,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-01,8.46,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-02,5.9,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-03,8.04,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-04,5.99,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-05,7.0,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-06,8.0,% of trade finance value,Swift RMB / Global Currency Tracker
+H3,test,settlement_reserve_gap,CNY,monthly,2024-04,2.44,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-05,2.39,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-06,2.53,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-07,2.62,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-08,2.57,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-09,1.49,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-10,0.86,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-11,1.82,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2024-12,1.68,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-01,1.83,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-02,2.37,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-03,2.17,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-04,1.52,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-05,0.91,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-06,0.9,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-07,0.93,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-08,0.98,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-09,1.22,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-10,0.52,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-11,0.99,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2025-12,0.78,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-01,1.14,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-02,0.75,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-03,1.11,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-04,0.86,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-05,0.76,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-06,1.11,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,robustness,cofer_flow_share,USD,quarterly,1999-Q2,52.98852128333712,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,1999-Q3,17.17499162086623,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,1999-Q4,39.436871025752524,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2000-Q1,35.04307695393173,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2000-Q2,32.8464990366483,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2000-Q3,34.03971718582551,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2000-Q4,21.602312424005422,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2001-Q1,522.0172321629574,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2001-Q2,111.90774928427302,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2001-Q3,28.983374722594434,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2001-Q4,36.42127714025472,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2002-Q1,26.85326643791035,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2002-Q2,15.722784975645537,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2002-Q3,16.201990614401083,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2002-Q4,11.924875732993328,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2003-Q1,28.280446970922686,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2003-Q2,32.596943231598296,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2003-Q3,34.55595704852282,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2003-Q4,21.577349296939573,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2004-Q1,38.563831812000906,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2004-Q2,39.26885510903425,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2004-Q3,25.42820857660103,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2004-Q4,25.387625561081613,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2005-Q1,40.84450922653321,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2005-Q2,41.24687818164009,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2005-Q3,37.787773828673004,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2005-Q4,30.85374515010374,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2006-Q1,32.39546637420319,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2006-Q2,24.564081111483564,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2006-Q3,38.295776168192276,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2006-Q4,24.176812379350302,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2007-Q1,31.741527629485034,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2007-Q2,29.507649430977057,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2007-Q3,25.342701786937695,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2007-Q4,30.437842353534684,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2008-Q1,34.363481352862145,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2008-Q2,25.376487405346502,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2008-Q3,153.05494187254462,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2009-Q2,18.172863769642326,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2009-Q3,18.21814676303363,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2009-Q4,42.945734131058245,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2010-Q1,18.515883960164572,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2010-Q2,55.6472440532644,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2010-Q3,25.38673694226795,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2010-Q4,32.8477876516711,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2011-Q1,29.602610051588535,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2011-Q2,27.459875483698177,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2011-Q3,67.8341730855378,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2011-Q4,70.47071536180715,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2012-Q1,16.475021776331012,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2012-Q2,46.461749520865496,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2012-Q3,23.865730454695566,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2012-Q4,32.271119556823,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2013-Q1,40.29756427672585,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2013-Q2,26.076689721692066,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2013-Q3,25.54447140215491,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2013-Q4,30.24956845578896,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2014-Q1,15.167003022205353,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2014-Q2,31.77051684344584,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2015-Q2,10.596744585118255,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2016-Q1,-4005.477094395043,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2016-Q2,42.55571372132092,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2016-Q3,-11.064305306991958,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2017-Q1,18.577547796401415,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2017-Q2,14.081358918735443,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2017-Q3,25.180774101309307,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2017-Q4,8.73340046233496,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2018-Q1,38.20847334054674,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2018-Q4,-36.02229981082433,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2019-Q1,35.60019253127544,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2019-Q2,9.31451421397865,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2019-Q4,5.808688643595657,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2020-Q2,23.037853915020538,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2020-Q3,7.45110931896048,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2020-Q4,9.652029969398376,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2021-Q2,23.925210744328588,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2021-Q3,36.20216849581796,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2021-Q4,-3.243932311814763,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2022-Q4,6.449133443369242,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2023-Q1,89.8161554228855,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2023-Q2,-36.81669250963345,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2023-Q4,21.013088862976208,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2024-Q1,124.28262906616634,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2024-Q3,13.681186472167692,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2025-Q1,28.311326533019265,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2025-Q2,8.029735358618048,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2025-Q3,4.594651934716975,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,USD,quarterly,2025-Q4,17.508205322735293,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,1999-Q2,-1.1000631770715423,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,1999-Q3,18.65441786174322,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,1999-Q4,3.8298849950309686,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2000-Q1,6.0387347004187975,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2000-Q2,13.295763779839568,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2000-Q3,-5.640200840634348,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2000-Q4,25.155376062992417,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2001-Q1,-157.93919923929695,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2001-Q2,1.2268355492571337,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2001-Q3,17.15124027042853,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2001-Q4,31.44038418381838,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2002-Q1,29.422869518005562,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2002-Q2,17.038696585021583,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2002-Q3,27.01331646900741,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2002-Q4,32.20080475760009,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2003-Q1,7.998723039431678,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2003-Q2,15.122766929231126,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2003-Q3,7.744275094433367,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2003-Q4,14.87125538166317,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2004-Q1,3.4907864057581164,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2004-Q2,10.246266179333599,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2004-Q3,18.052033841535255,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2004-Q4,16.91040659733709,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2005-Q1,11.08670071505193,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2005-Q2,3.9212875808195697,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2005-Q3,5.345719531953262,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2005-Q4,5.174916172206826,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2006-Q1,13.62548695932616,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2006-Q2,14.394067144882241,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2006-Q3,6.404019246168473,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2006-Q4,15.750448997136745,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2007-Q1,16.871542316770917,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2007-Q2,8.290930588684287,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2007-Q3,19.381045531632687,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2007-Q4,8.193372561398887,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2008-Q1,11.279811873808908,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2008-Q2,12.374132121935876,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2008-Q3,-95.26585963654303,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2009-Q2,19.442403361500425,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2009-Q3,13.366797171279387,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2009-Q4,10.152695008634904,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2010-Q1,4.5432891000955555,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2010-Q2,-14.760843070468619,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2010-Q3,14.353259754865514,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2010-Q4,4.559670660184077,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2011-Q1,9.624311106492915,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2011-Q2,13.164657774374422,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2011-Q3,-24.642232716263308,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2011-Q4,-60.19853298093453,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2012-Q1,11.385670918375006,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2012-Q2,16.60126161117586,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2012-Q3,0.4288166298856988,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2012-Q4,14.225256795072639,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2013-Q1,-6.373371071479098,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2013-Q2,24.598072155478405,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2013-Q3,13.780626167628299,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2013-Q4,14.549661030859781,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2014-Q1,22.586633604620207,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2014-Q2,3.606141824807121,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2015-Q2,17.314155418284535,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2016-Q1,6785.009430901738,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2016-Q2,-32.65669047894389,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2016-Q3,23.955499264818787,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2017-Q1,11.919854564529405,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2017-Q2,26.830174491691583,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2017-Q3,12.563215100714006,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2017-Q4,10.868740515710233,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2018-Q1,14.0266333940034,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2018-Q4,83.04883458109482,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2019-Q1,-5.685321156101426,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2019-Q2,22.89492564524578,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2019-Q4,19.740575426583668,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2020-Q2,12.399065524311533,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2020-Q3,20.287035323406712,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2020-Q4,19.65313961566836,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2021-Q2,12.077405087685696,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2021-Q3,-5.739237758404489,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2021-Q4,12.727509499975783,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2022-Q4,23.534016888212225,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2023-Q1,-40.60902157709832,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2023-Q2,46.60851112920291,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2023-Q4,13.288847058912886,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2024-Q1,-50.448298232317136,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2024-Q3,14.472011974629426,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2025-Q1,16.751832735429325,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2025-Q2,26.524093912790935,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2025-Q3,25.7186728364341,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,EUR,quarterly,2025-Q4,4.075284821147198,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2017-Q1,1.5104004685899186,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2017-Q2,0.7457969594936303,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2017-Q3,2.3713954731241755,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2017-Q4,5.574116678747888,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2018-Q1,8.913963252773005,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2018-Q4,21.627023447229373,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2019-Q1,1.7321045882274098,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2019-Q2,0.7916861049028625,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2019-Q4,1.7809163713314262,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2020-Q2,2.0822924743608464,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2020-Q3,3.624860208095013,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2020-Q4,2.902149584800859,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2021-Q2,4.802298136514086,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2021-Q3,17.039355821527927,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2021-Q4,11.13444229597736,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2022-Q4,0.2979244497479851,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2023-Q1,4.1907521912689525,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2023-Q2,-27.702969308438718,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2023-Q4,0.0160486585600547,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2024-Q1,-34.720843572580165,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2024-Q3,1.662644983386723,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2025-Q1,-2.677108674380434,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2025-Q2,1.1759927651624726,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2025-Q3,-1.16702302889485,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,CNY,quarterly,2025-Q4,1.4506802779040375,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,1999-Q2,-4.517360150840883,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,1999-Q3,10.938364811325517,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,1999-Q4,4.699444471540068,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2000-Q1,2.3955293563212585,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2000-Q2,20.28736100762138,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2000-Q3,12.660808020211073,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2000-Q4,-3.9422175657892327,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2001-Q1,-328.86027370488506,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2001-Q2,-11.804046433074635,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2001-Q3,2.123985896438607,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2001-Q4,-13.93714901629961,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2002-Q1,-19.587006475169712,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2002-Q2,13.318712786140226,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2002-Q3,-3.788639142406066,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2002-Q4,0.7459150052768564,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2003-Q1,9.100302124979512,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2003-Q2,-1.635146273621178,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2003-Q3,3.9841174572303357,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2003-Q4,6.620000543957774,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2004-Q1,4.481397366210953,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2004-Q2,-7.317958676236165,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2004-Q3,-1.7219445342809114,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2004-Q4,1.993088990193433,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2005-Q1,-5.668440625386725,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2005-Q2,0.2933341973785657,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2005-Q3,0.21530052609865977,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2005-Q4,5.022255844545362,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2006-Q1,-2.4677577982594934,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2006-Q2,2.954135948452383,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2006-Q3,1.054359153686731,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2006-Q4,3.534334812148634,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2007-Q1,-3.0241542553996315,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2007-Q2,3.1146012758754615,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2007-Q3,0.49108062327817387,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2007-Q4,4.676412836753229,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2008-Q1,2.845730811335458,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2008-Q2,4.230510965222876,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2008-Q3,-1.2748012842459673,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2009-Q2,0.3574215099959049,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2009-Q3,2.0864287782316087,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2009-Q4,-0.47274453368759156,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2010-Q1,9.954175051488711,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2010-Q2,8.058566638865226,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2010-Q3,3.3810234093142273,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2010-Q4,3.579340324762243,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2011-Q1,1.9906654221190816,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2011-Q2,2.3907439081903723,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2011-Q3,2.5579428032020166,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2011-Q4,-1.609292074448812,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2012-Q1,5.765760870089169,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2012-Q2,-1.3318217776307963,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2012-Q3,8.094485013002503,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2012-Q4,-3.620003350459234,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2013-Q1,-1.2555064752067875,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2013-Q2,9.41892480720012,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2013-Q3,1.8447583348284249,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2013-Q4,-2.2902621781773504,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2014-Q1,5.526252166406711,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2014-Q2,3.337367512105717,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2015-Q2,-79.27908347457367,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2016-Q1,-1285.732714628649,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2016-Q2,58.94073823835056,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2016-Q3,17.724323460579743,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2017-Q1,16.207149138432722,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2017-Q2,4.293510843736898,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2017-Q3,-0.9611935569347686,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2017-Q4,15.11823441871773,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2018-Q1,-5.754381970724267,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2018-Q4,11.0417889430521,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2019-Q1,13.1202466561814,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2019-Q2,12.801225346929995,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2019-Q4,6.44915539004667,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2020-Q2,-3.1343482379116763,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2020-Q3,5.322498523196413,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2020-Q4,5.926102914609284,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2021-Q2,-4.962296081484906,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2021-Q3,24.091051758955423,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2021-Q4,-6.884005577889394,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2022-Q4,7.667740958897682,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2023-Q1,-0.6380815991236963,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2023-Q2,25.30215702299649,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2023-Q4,5.407836351537636,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2024-Q1,6.627626557629715,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2024-Q3,4.828646544401156,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2025-Q1,7.257565270629436,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2025-Q2,1.5314436239814808,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2025-Q3,12.838431821920505,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,JPY,quarterly,2025-Q4,4.750608364918187,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,1999-Q2,2.2720352367380072,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,1999-Q3,1.4405680820540592,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,1999-Q4,2.5225706945453186,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2000-Q1,3.4044861692619373,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2000-Q2,-9.21354624667328,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2000-Q3,2.875174557187574,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2000-Q4,3.2191333659418064,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2001-Q1,-11.77073066099496,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2001-Q2,-24.981109418617457,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2001-Q3,0.9603858654969047,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2001-Q4,3.4785934859876515,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2002-Q1,7.391163005905767,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2002-Q2,1.3824511504435564,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2002-Q3,6.915422566301046,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2002-Q4,2.835969808930693,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2003-Q1,-0.5233725279846936,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2003-Q2,1.8528506312643638,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2003-Q3,1.6134474666588807,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2003-Q4,4.769470508193275,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2004-Q1,2.749780330936231,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2004-Q2,4.383334551454704,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2004-Q3,6.447717509725158,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2004-Q4,3.7212548093990363,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2005-Q1,3.2825845432410494,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2005-Q2,1.7941243038581083,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2005-Q3,2.2938789383513174,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2005-Q4,3.612043071657367,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2006-Q1,5.59018141358088,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2006-Q2,4.240757470821433,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2006-Q3,2.883086991615812,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2006-Q4,3.2872138792878514,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2007-Q1,1.0117612493166148,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2007-Q2,5.8650139846731415,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2007-Q3,1.4707430305432663,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2007-Q4,5.349732076130451,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2008-Q1,-0.09744679811890675,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2008-Q2,4.351635899546626,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2008-Q3,-7.0996903447158175,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2009-Q2,5.769960045006509,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2009-Q3,3.1072109492198052,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2009-Q4,0.41573523348842056,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2010-Q1,4.704600644585631,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2010-Q2,-2.9674319930351856,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2010-Q3,1.8094130454698227,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2010-Q4,1.7808458198291497,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2011-Q1,2.3869072115486625,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2011-Q2,2.1612913480141094,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2011-Q3,-3.0617843097747497,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2011-Q4,-3.2949429571643623,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2012-Q1,4.837969472189514,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2012-Q2,-3.5225548965109708,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2012-Q3,5.988522936159408,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2012-Q4,-0.27400681298811935,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2013-Q1,-1.1067332979706181,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2013-Q2,-0.9952086856778197,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2013-Q3,3.9558085901126105,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2013-Q4,4.308353448746878,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2014-Q1,0.00910705155734633,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2014-Q2,2.321193886676774,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2015-Q2,101.72295059732825,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2016-Q1,-2871.904440660673,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2016-Q2,-16.936545822732025,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2016-Q3,-35.1215797903554,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2017-Q1,-0.5470127736343199,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2017-Q2,5.287728463143216,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2017-Q3,3.8926512559202417,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2017-Q4,2.515470706435403,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2018-Q1,3.2400525647117764,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2018-Q4,-2.857843241681599,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2019-Q1,4.7461389469146065,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2019-Q2,-0.3272328033818331,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2019-Q4,7.602941004491827,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2020-Q2,3.68833356776197,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2020-Q3,4.254302186618748,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2020-Q4,4.584480728175112,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2021-Q2,2.704399765053963,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2021-Q3,-1.8521090387077217,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2021-Q4,12.227064078710201,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2022-Q4,7.072211836852434,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2023-Q1,-18.5375182018265,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2023-Q2,15.94323258096393,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2023-Q4,1.8708228111995209,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2024-Q1,8.63841871836102,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2024-Q3,3.6013721720352656,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2025-Q1,2.7755790643902953,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2025-Q2,3.8458143930493676,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2025-Q3,-12.091199969750598,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,robustness,cofer_flow_share,GBP,quarterly,2025-Q4,-3.6094125744793093,% of quarterly change in allocated claims,derived from IMF COFER claims
+H3,test,drift_regime,USD | pre,quarterly mean,pre/post 2022-Q1,-0.1295202038821528,pp per quarter,calibrate.py
+H3,test,drift_regime,USD | post,quarterly mean,pre/post 2022-Q1,-0.13363197282783504,pp per quarter,calibrate.py
+H3,test,drift_regime,CNY | pre,quarterly mean,pre/post 2022-Q1,0.09272037800129951,pp per quarter,calibrate.py
+H3,test,drift_regime,CNY | post,quarterly mean,pre/post 2022-Q1,-0.05097608845992412,pp per quarter,calibrate.py
+H3,test,reserve_pathway_separation,USD share,endpoint,2035,0.3627481046853774,sd units,simulate.py layer 1
+context,input,nuclear_stockpile,China,annual,2025,600.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,nuclear_stockpile,China,annual,2026,620.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,nuclear_stockpile,China,annual,2030,1000.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,nuclear_stockpile,China,annual,2035,1500.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,nuclear_stockpile,United States,annual,2026,3700.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,nuclear_stockpile,Russia,annual,2026,4400.0,warheads,FAS Nuclear Notebook 2025/2026; DOD projections
+context,input,chokepoint_flow,Strait of Malacca,annual,2024,22.5,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Strait of Hormuz,annual,2024,20.7,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Suez Canal and SUMED Pipeline,annual,2024,4.8,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Bab el-Mandeb,annual,2024,4.1,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Danish Straits,annual,2024,4.9,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Turkish Straits,annual,2024,3.6,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Panama Canal,annual,2024,2.0,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,chokepoint_flow,Cape of Good Hope,annual,2024,9.3,million barrels per day,EIA World Oil Transit Chokepoints
+context,input,tsmc_revenue,,quarterly,2024-Q1,18873.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2024-Q2,20822.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2024-Q3,23504.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2024-Q4,26884.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2025-Q1,25526.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2025-Q2,30070.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2025-Q3,33097.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2025-Q4,33731.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2026-Q1,35898.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2026-Q2,40201.0,USD m,TSMC consolidated statements
+context,input,ships_built_gt,China (derived),annual,2014,22851302.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2015,25275424.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2016,22365449.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2017,23682160.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2018,23259789.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2019,23074209.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2020,23257200.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2021,26863204.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2022,25893611.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2023,32859862.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2024,39118358.0,gross tons,UNCTADstat
+context,input,ships_built_gt,China (derived),annual,2025,41595055.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2014,63662235.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2015,67876902.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2016,66782739.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2017,65712437.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2018,58045134.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2019,65910572.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2020,57764893.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2021,60779648.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2022,55579678.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2023,64774769.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2024,71690983.0,gross tons,UNCTADstat
+context,input,ships_built_gt,World,annual,2025,77283947.0,gross tons,UNCTADstat
+context,input,lsci,China,annual,2006,737.66,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2007,794.33,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2008,828.95,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2009,791.02,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2010,845.4,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2011,909.36,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2012,892.03,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2013,890.84,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2014,883.35,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2015,915.54,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2016,914.01,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2017,929.13,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2018,985.73,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2019,999.72,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2020,1007.07,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2021,1088.79,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2022,1144.56,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2023,1175.35,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2024,1214.85,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2025,1294.34,"index, annual mean",UNCTADstat
+context,input,lsci,China,annual,2026,1321.05,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2006,352.99,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2007,335.34,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2008,338.49,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2009,327.93,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2010,333.64,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2011,334.64,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2012,324.33,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2013,323.54,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2014,325.35,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2015,347.96,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2016,342.96,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2017,338.77,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2018,346.72,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2019,365.04,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2020,352.03,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2021,355.08,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2022,344.62,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2023,344.28,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2024,338.74,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2025,331.97,"index, annual mean",UNCTADstat
+context,input,lsci,Taiwan,annual,2026,323.7,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2006,513.44,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2007,493.41,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2008,466.27,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2009,462.05,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2010,466.14,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2011,484.32,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2012,475.31,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2013,489.93,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2014,488.15,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2015,484.07,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2016,475.36,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2017,470.0,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2018,475.34,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2019,480.91,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2020,487.26,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2021,517.33,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2022,532.42,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2023,510.18,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2024,510.07,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2025,521.21,"index, annual mean",UNCTADstat
+context,input,lsci,United States,annual,2026,507.32,"index, annual mean",UNCTADstat
+context,input,brent_annual_mean,,annual,2022,100.8,USD per barrel,EIA STEO July 2026
+context,input,brent_annual_mean,,annual,2023,82.5,USD per barrel,EIA STEO July 2026
+context,input,brent_annual_mean,,annual,2024,80.5,USD per barrel,EIA STEO July 2026
+context,input,brent_annual_mean,,annual,2025,69.1,USD per barrel,EIA STEO July 2026
+context,input,brent_annual_mean,,annual,2026,81.9,USD per barrel,EIA STEO July 2026
+context,input,brent_annual_mean,,annual,2027,64.8,USD per barrel,EIA STEO July 2026
+context,input,war_risk_multiple,Mideast Gulf 2026,event,2026-06,5.7,"x, AWRP during over before","Argus Media, June 2026"

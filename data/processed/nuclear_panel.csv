@@ -1,0 +1,7 @@
+country,year,stockpile,kind,deployed_strategic,source
+China,2025,600,estimate,,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"
+China,2026,620,estimate,,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"
+China,2030,1000,DOD projection,,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"
+China,2035,1500,DOD projection,,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"
+United States,2026,3700,estimate,1770.0,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"
+Russia,2026,4400,estimate,,"FAS Nuclear Notebook, Bulletin of the Atomic Scientists, 2025 and 2026 issues; DOD China Military Power Report projections"

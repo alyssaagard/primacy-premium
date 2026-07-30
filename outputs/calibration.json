@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "built": "2026-07-24",
+    "cofer_span": [
+      "1999-Q1",
+      "2026-Q1"
+    ],
+    "milex_span": [
+      1949,
+      2025
+    ],
+    "note": "All parameters estimated from IMF COFER and SIPRI data prepared by the stage 1 parsers."
+  },
+  "latest_state": {
+    "quarter": "2026-Q1",
+    "usd_share": 57.130786895752,
+    "cny_share": 1.98504495620728,
+    "eur_share": 20.030689239502,
+    "other_share": 6.17981958389282,
+    "cn_us_ratio_2025": 0.3605585404398616
+  },
+  "usd_regression": {
+    "params": {
+      "const": -0.20858305736336033,
+      "x_ratio": 1.043542726577119,
+      "dum_2022": 0.4597149390847714
+    },
+    "bse": {
+      "const": 0.08122605167534311,
+      "x_ratio": 0.9384591742478007,
+      "dum_2022": 0.11001531805216172
+    },
+    "conf_int_95": {
+      "const": [
+        -0.3677831932534221,
+        -0.04938292147329851
+      ],
+      "x_ratio": [
+        -0.7958034559097691,
+        2.8828889090640075
+      ],
+      "dum_2022": [
+        0.24408887795481518,
+        0.6753410002147276
+      ]
+    },
+    "r2": 0.013133277663012644,
+    "nobs": 105
+  },
+  "cny_regression": {
+    "params": {
+      "const": 0.03847197851761553,
+      "x_ratio": -0.2074718107119241,
+      "dum_2022": -0.06502699533016448
+    },
+    "bse": {
+      "const": 0.03340206880837946,
+      "x_ratio": 0.3913688287785682,
+      "dum_2022": 0.030040867815314357
+    },
+    "conf_int_95": {
+      "const": [
+        -0.02699487335593693,
+        0.103938830391168
+      ],
+      "x_ratio": [
+        -0.9745406197895409,
+        0.5595969983656927
+      ],
+      "dum_2022": [
+        -0.12390601431250908,
+        -0.00614797634781989
+      ]
+    },
+    "r2": 0.0201709843211475,
+    "nobs": 37
+  },
+  "cases": {
+    "peace_dividend": {
+      "description": "US real military expenditure, 1988 to 1998",
+      "total_real_change_pct": -31.825485409889755,
+      "annual_rate_pct": -3.758539394108218
+    },
+    "sanctions_2022": {
+      "description": "Observed quarterly share changes around the 2022 freezing of Russian reserves, pp",
+      "d_usd": [
+        0.015,
+        0.578
+      ],
+      "d_cny": [
+        -0.002,
+        -0.069
+      ],
+      "d_other": [
+        0.237,
+        -0.113
+      ]
+    },
+    "accretion_decade": {
+      "description": "Real growth anchors, 2015 to 2025, pct per year",
+      "china": 5.502259609375426,
+      "usa": 1.0275858575068186
+    },
+    "us_2025_decline": {
+      "description": "Observed 2025 change in US real expenditure, pct",
+      "value": -7.536872265295102
+    },
+    "drift_regimes": {
+      "description": "Mean quarterly share change, pp, before and after 2022-Q1; the difference is the regime shift replayed after a demonstration event",
+      "usd_pre": -0.1295202038821528,
+      "usd_post": -0.13363197282783504,
+      "cny_pre": 0.09272037800129951,
+      "cny_post": -0.05097608845992412
+    },
+    "diversification_drift": {
+      "description": "Mean quarterly change in the 'other currencies' share, pp, before and after 2022-Q1",
+      "pre_2022": 0.014528530022685383,
+      "post_2022": 0.19025108907372998
+    }
+  }
+}

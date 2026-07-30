@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Primacy Premium</title>
+<meta name="description" content="A conditional forecasting model, calibrated on seven decades of defense and financial data, of how markets would reallocate if China became the world's leading military power by 2035.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#FFEFFE">
+<style>
+  :root{
+    --blush:#fff8fd; --petal:#fce8f4; --thistle:#f6f0f4;
+    --ink:#141414; --ivory:#fffefb; --soft:#fdfaf7; --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .sheet{animation:none;} }
+  body{
+    background:var(--blush);
+    color:var(--ink);
+    font-family:"Times New Roman", Times, "Liberation Serif", serif;
+    font-size:17.5px; line-height:1.65;
+    padding:clamp(14px, 4vw, 56px) clamp(10px, 4vw, 40px);
+  }
+  a{color:var(--ink); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
+  .sheet{
+    max-width:880px; margin:0 auto;
+    background:var(--ivory);
+    border:1px solid var(--ink);
+    box-shadow:0 0 0 6px var(--ivory), 0 0 0 7px var(--ink);
+    padding:clamp(26px, 6vw, 72px) clamp(18px, 6vw, 76px);
+    animation:settle .7s ease-out both;
+  }
+  @keyframes settle{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+  .eyebrow{
+    font-variant:small-caps; letter-spacing:.28em; font-size:13px;
+    text-align:center; text-transform:lowercase;
+  }
+  h1{
+    font-size:clamp(46px, 8vw, 84px); line-height:1.02; font-weight:400;
+    text-align:center; letter-spacing:-.012em; margin:.35em 0 .18em;
+  }
+  .subtitle{ font-style:italic; text-align:center; font-size:clamp(17px,2.6vw,21px); max-width:40em; margin:0 auto;}
+  .byline{ text-align:center; font-variant:small-caps; letter-spacing:.18em; font-size:14px; margin-top:1.5em; text-transform:lowercase;}
+  .fleuron{ text-align:center; font-size:20px; margin:1.6em 0; letter-spacing:.6em;}
+
+  .band{
+    background:var(--petal); border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+    margin:2.2em calc(-1 * clamp(18px, 6vw, 76px));
+    padding:1.35em clamp(18px, 6vw, 76px);
+    font-size:clamp(18px, 2.7vw, 21.5px); font-style:italic; text-align:center;
+  }
+
+  h2{
+    font-variant:small-caps; text-transform:lowercase; font-weight:400;
+    letter-spacing:.22em; font-size:15.5px; margin:2.6em 0 .9em;
+    display:flex; align-items:center; gap:.9em;
+  }
+  h2::after{content:""; flex:1; border-top:1px solid var(--ink);}
+  h2 .no{ background:var(--petal); border:1px solid var(--ink); border-radius:999px;
+          padding:.05em .7em; font-size:12.5px; letter-spacing:.14em;}
+  p + p{margin-top:.85em;}
+  .thesis{
+    border-left:3px solid var(--ink); background:var(--white);
+    padding:.9em 1.2em; margin:1.2em 0; font-size:18.5px;
+  }
+  .thesis b{font-variant:small-caps; text-transform:lowercase; letter-spacing:.12em; font-weight:400;}
+
+  .triptych{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:1.4em 0;}
+  @media (max-width:640px){ .triptych{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white); border:1px solid var(--ink); padding:1em 1em 1.1em; position:relative;
+  }
+  .card .rn{ font-size:30px; line-height:1;}
+  .card h3{ font-weight:400; font-style:italic; font-size:20px; margin:.15em 0 .35em;}
+  .card p{ font-size:15px; line-height:1.5;}
+  .card .anchor{ font-size:13.5px; margin-top:.6em; padding-top:.55em; border-top:1px dotted var(--ink);}
+  .card svg{ position:absolute; top:12px; right:12px; }
+
+  .ledger{ width:100%; border-collapse:collapse; margin:1.1em 0; background:var(--white);}
+  .ledger th, .ledger td{ border:1px solid var(--ink); padding:.5em .8em; text-align:left; font-size:15.5px;}
+  .ledger th{ font-variant:small-caps; text-transform:lowercase; letter-spacing:.12em; font-weight:400; background:var(--thistle);}
+  .ledger td.num{ font-variant-numeric:tabular-nums; text-align:right;}
+  .chip{
+    display:inline-block; border:1px solid var(--ink); border-radius:999px;
+    padding:.02em .7em .08em; font-size:12.5px; font-variant:small-caps; letter-spacing:.12em;
+    text-transform:lowercase; background:var(--thistle); white-space:nowrap;
+  }
+  .chip.live{ background:var(--petal);}
+
+  ol.stages{ counter-reset:st; list-style:none; margin:1em 0;}
+  ol.stages li{
+    counter-increment:st; padding:.85em 0 .85em 3.2em; position:relative;
+    border-top:1px solid var(--thistle);
+  }
+  ol.stages li:last-child{border-bottom:1px solid var(--thistle);}
+  ol.stages li::before{
+    content:counter(st); position:absolute; left:.15em; top:.72em;
+    width:1.7em; height:1.7em; border:1px solid var(--ink); border-radius:999px;
+    background:var(--petal); display:grid; place-items:center; font-size:15px;
+  }
+  ol.stages b{font-style:italic; font-weight:400;}
+  .script{font-style:italic;}
+
+  figure{ margin:1.6em 0 2em;}
+  .mat{ background:var(--white); border:1px solid var(--ink); padding:14px;}
+  figure img{ width:100%; height:auto; display:block;}
+  figcaption{
+    border:1px solid var(--ink); border-top:none; background:var(--thistle);
+    padding:.6em .9em; font-size:14px; line-height:1.5;
+  }
+  figcaption b{ font-variant:small-caps; text-transform:lowercase; letter-spacing:.16em; font-weight:400;}
+
+  .results{
+    background:var(--petal); border:1px solid var(--ink); padding:1.1em 1.3em; margin:1.4em 0;
+  }
+  .results ul{ margin:.5em 0 0 1.2em;}
+  .results li{ margin:.35em 0; font-size:16.5px;}
+  .caveat{ font-size:14.5px; font-style:italic; margin-top:.8em;}
+
+  ul.trip{ list-style:none; margin:.8em 0;}
+  ul.trip li{ padding:.5em 0 .5em 1.6em; border-top:1px dotted var(--ink); position:relative; font-size:16px;}
+  ul.trip li:last-child{ border-bottom:1px dotted var(--ink);}
+  ul.trip li::before{ content:"♡"; position:absolute; left:.1em; font-size:13px; top:.72em;}
+
+  .twocol{ display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:640px){ .twocol{grid-template-columns:1fr;} }
+  .status h4{ font-weight:400; font-style:italic; font-size:18px; margin-bottom:.35em;}
+  .status ul{ margin-left:1.15em; font-size:15.5px;}
+
+  footer{
+    margin-top:3em; padding-top:1.4em; border-top:1px solid var(--ink);
+    font-size:14px; line-height:1.7;
+  }
+  .cc{
+    display:inline-block; border:1px solid var(--ink); background:var(--white);
+    padding:.15em .8em; font-variant:small-caps; letter-spacing:.14em; text-transform:lowercase;
+    margin-bottom:.6em;
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <p class="eyebrow">preview</p>
+  <h1>The Primacy Premium</h1>
+  <p class="subtitle">Conditional forecasts of defense and commercial markets under Chinese military primacy, 2026 to 2035</p>
+  <p class="byline">alyssa agard</p>
+  <p class="fleuron" aria-hidden="true">❦</p>
+
+  <div class="band">A conditional forecasting model, calibrated on seven decades of real defense and financial data, of how global military spending, arms transfers, and commercial risk pricing would reallocate if China became the world's leading military power by 2035.</div>
+
+  <h2><span class="no">§1</span> the question, and the argument</h2>
+  <p>If China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and does the <em>pathway</em> to primacy condition those outcomes more strongly than the fact of primacy itself?</p>
+  <p>The argument in one line: <em>markets do not price whether China overtakes the United States; they price how.</em> The project therefore refuses a single scenario. It builds three, runs each through parameters measured from history, and reports full distributions. It is deliberately not called prediction. There is no training data for an event that has never occurred, so the model estimates responses from the historical record and imposes the scenario exogenously. That framing, conditional forecasting with Monte Carlo uncertainty propagation, is the stronger epistemic position and the project states it plainly.</p>
+  <div class="thesis"><b>thesis.</b>&nbsp; The pathway to Chinese military primacy, gradual accretion, American retrenchment, or violent demonstration, conditions defense and commercial market outcomes more strongly than the endpoint itself. Identical 2035 force balances, reached by different roads, produce different markets.</div>
+
+  <h2><span class="no">§2</span> three pathways to one endpoint</h2>
+  <div class="triptych">
+    <div class="card">
+      <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 22 C 16 20, 30 12, 44 4" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
+      <div class="rn">I</div>
+      <h3>Accretion</h3>
+      <p>China grows, the United States grows more slowly. The balance closes without an event. Hedging is gradual and markets reprice at the margin.</p>
+      <p class="anchor">Anchored on measured 2015 to 2025 real growth: China {{CN_CAGR}}% and the USA {{US_CAGR}}% per year.</p>
+    </div>
+    <div class="card">
+      <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 6 C 12 6, 16 6, 22 10 C 30 16, 38 21, 44 22" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
+      <div class="rn">II</div>
+      <h3>Retrenchment</h3>
+      <p>Primacy arrives because Washington withdraws. Allied budgets and supplier choices move first, before any Chinese gain.</p>
+      <p class="anchor">Anchored on the peace dividend, the only measured decade of sustained US real contraction: {{PEACE_RATE}}% per year, 1988 to 1998.</p>
+    </div>
+    <div class="card">
+      <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 20 H 18 L 23 4 L 28 22 L 33 14 H 44" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
+      <div class="rn">III</div>
+      <h3>Demonstration</h3>
+      <p>A contingency resolves in Beijing's favor. Repricing is discontinuous: the shock quarter matters as much as the decade.</p>
+      <p class="anchor">Anchored on the one modern observation of this class: the 2022 freezing of Russian reserves, replayed at a random quarter, 2028 to 2031.</p>
+    </div>
+  </div>
+  <p>If the model produced similar outputs across those three roads, the model would be wrong. Pathway divergence is the test, not the assumption.</p>
+
+  <h2><span class="no">§3</span> the hypothesis ledger</h2>
+  <table class="ledger">
+    <tr><th style="width:3.4em">no.</th><th>claim</th><th style="width:11.5em">status in this build</th></tr>
+    <tr><td>H1</td><td>Identical 2035 endpoints, reached by different pathways, produce statistically distinguishable outcomes in defense expenditure and arms transfer flows.</td><td><span class="chip">supported, exception mapped</span></td></tr>
+    <tr><td>H2</td><td>American retrenchment moves allied budgets and supplier market shares faster than Chinese growth alone: the hegemon's exit is the stronger signal.</td><td><span class="chip">directionally supported</span></td></tr>
+    <tr><td>H3</td><td>Reserve currency composition is the slowest and least pathway-sensitive of the four commercial channels; the dollar's share erodes toward diversification, not toward the renminbi.</td><td><span class="chip live">supported in current build</span></td></tr>
+  </table>
+
+  <h2><span class="no">§4</span> method, in five stages</h2>
+  <ol class="stages">
+    <li><b>Data engineering.</b> Three parsers turn published sources into tidy, validated tables: IMF COFER quarterly reserve composition, 1999 to 2026 (<span class="script">parse_cofer.py</span>, with an independent share reconciliation that must pass to 0.05 pp); the SIPRI Military Expenditure Database, 1949 to 2025, in constant 2024 dollars (<span class="script">parse_milex.py</span>); and the SIPRI Arms Transfers Database, both the global delivery series from 1950 and a thirty-thousand-row deal register aggregated into supplier concentration (<span class="script">parse_arms_transfers.py</span>).</li>
+    <li><b>Historical calibration.</b> Every parameter the simulation consumes is estimated, none assumed (<span class="script">calibrate.py</span>). The reserve channel response is a Newey-West regression of quarterly dollar-share changes on the year-over-year change in the log China to US expenditure ratio; named calibration cases (the peace dividend, the 2022 sanctions shock, the accretion decade) are computed from the panel and written to a single JSON artifact with confidence intervals attached.</li>
+    <li><b>Conditional simulation.</b> A Monte Carlo engine (<span class="script">simulate.py</span>) propagates three uncertainties jointly, parameter, innovation, and scenario timing, through 10,000 draws per pathway per currency to 2035-Q4. Innovations are bootstrapped from measured residuals, so simulated quarters keep the true fat tails. Everything is seeded and reproducible.</li>
+    <li><b>Visualization.</b> Four plates (<span class="script">make_figures.py</span>) and this page (<span class="script">build_preview.py</span>), which injects the computed numbers so that no figure in the text can drift from the model that produced it.</li>
+    <li><b>Analytic handoff.</b> Tidy exports (<span class="script">simulation_fan.csv</span> and the processed tables) load directly into Power BI or Tableau for interactive exploration; the repository is the model of record.</li>
+  </ol>
+
+  <h2><span class="no">§5</span> the plates</h2>
+
+  <figure>
+    <div class="mat"><img src="data:image/png;base64,{{FIG1}}" alt="Two-panel chart of the currency composition of allocated global reserves, 1999 to 2026. The US dollar share falls from about 71 percent to about 57 percent; after 2022 the nontraditional currency share rises steeply while the renminbi share peaks and then declines."></div>
+    <figcaption><b>plate i · the reserve ledger, 1999 to 2026.</b> The dollar's share of allocated reserves falls from 71.2% at the euro's birth to {{USD}}% in {{Q_LATEST}}. The lower panel is the project's founding observation: after the 2022 freezing of Russian assets, diversification accelerated thirteenfold into nontraditional currencies (mean drift {{OTHER_PRE}} to {{OTHER_POST}} pp per quarter), while renminbi accumulation reversed. The renminbi is used for settlement and shunned as a store of value; that settlement-reserve gap is what H3 formalizes. Source: IMF COFER, retrieved 24 July 2026.</figcaption>
+  </figure>
+
+  <table class="ledger">
+    <tr><th>the ledger at {{Q_LATEST}}</th><th class="num">usd</th><th class="num">eur</th><th class="num">jpy</th><th class="num">gbp</th><th class="num">cny</th><th class="num">other</th></tr>
+    <tr><td>share of allocated reserves, %</td><td class="num">{{USD}}</td><td class="num">{{EUR}}</td><td class="num">{{JPY}}</td><td class="num">{{GBP}}</td><td class="num">{{CNY}}</td><td class="num">{{OTHER}}</td></tr>
+  </table>
+
+  <figure>
+    <div class="mat"><img src="data:image/png;base64,{{FIG2}}" alt="Military expenditure of the United States, China, and Russia from 1988 to 2025 in constant 2024 dollars. A shaded span marks the 1988 to 1998 peace dividend; a pink area under the China line rises steadily; an annotation marks the 7.5 percent US real decline in 2025."></div>
+    <figcaption><b>plate ii · the defense ledger, 1988 to 2025.</b> The two calibration cases that anchor pathways II and I are visible to the naked eye: the peace dividend ({{PEACE_TOTAL}}% total US real contraction over the decade) and the accretion decade (China at {{CN_CAGR}}% per year since 2015, a China to US ratio of {{RATIO}} in 2025). The 2025 US real decline of {{US2025}}% is the first live retrenchment signal in the data. Source: SIPRI Military Expenditure Database, constant 2024 USD; Chinese figures are SIPRI estimates.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="mat"><img src="data:image/png;base64,{{FIG3}}" alt="Global deliveries of major conventional arms from 1950 to 2025 as a filled area, with a dashed overlay of supplier concentration measured by a Herfindahl index in five-year windows, which declines from Cold War levels to the 2020s."></div>
+    <figcaption><b>plate iii · the arms trade, 1950 to 2025.</b> Volume in SIPRI trend indicator values, a capability measure, deliberately never mixed with dollar series. The dashed line is supplier concentration (Herfindahl, order-year windows) computed from the full deal register: in the {{HHI_WINDOW}} window the index stands at {{HHI_2020}}, with {{TOPSUP_2020}} the leading supplier at {{TOPSHARE_2020}}% of delivered value (an order-year measure, deliberately more conservative than SIPRI’s delivery-year export shares). Supplier diversification is one of the project's falsification tripwires for pathway II. Source: SIPRI Arms Transfers Database.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="mat"><img src="data:image/png;base64,{{FIG4}}" alt="Conditional forecast fan of the dollar share of reserves to 2035 under three pathways, with medians nearly overlapping inside a wide pink 10th to 90th percentile band, and a lower panel showing renminbi share paths, including a demonstration pathway that collapses toward zero."></div>
+    <figcaption><b>plate iv · the conditional forecast, 2026 to 2035.</b> Ten thousand draws per pathway. The three medians sit almost on top of one another inside a band that is an order of magnitude wider than their separation: the reserve channel barely notices which road is taken, exactly as H3 requires. The lower panel is the sharper finding: under a demonstration replayed from 2022, the renminbi's reserve share collapses rather than rises. Coercion is, on the one measured precedent, self-defeating for the challenger's currency.</figcaption>
+  </figure>
+
+  <h2><span class="no">§6</span> what the current build finds</h2>
+  <div class="results">
+    <ul>
+      <li>The defense coefficient is a precisely estimated near-null: a one-log-point year-over-year change in the China to US expenditure ratio moves the quarterly dollar share by {{BETA}} pp, 95% CI [{{BETA_LO}}, {{BETA_HI}}], n = {{NOBS}} quarters. The interval spans zero; the model cannot even resolve the <em>sign</em> of the pathway effect on reserves.</li>
+      <li>Median 2035-Q4 dollar share: {{ACC_MED}}% under accretion, {{RET_MED}}% under retrenchment, {{DEM_MED}}% under demonstration, against an 80% band of roughly {{ACC_P10}} to {{ACC_P90}}%. Pathway separation is {{SEP}} standard deviations of endpoint spread: small, as H3 predicts.</li>
+      <li>The probability the dollar falls below half of allocated reserves by 2035 ranges from {{RET_PLT50}} to {{ACC_PLT50}} across pathways: material under every road, decisive under none.</li>
+      <li>The renminbi diverges where the dollar does not: a median 2035 share of {{CNY_ACC_MED}}% under accretion against {{CNY_DEM_MED}}% under a 2022-style demonstration. The reserve channel punishes the challenger for coercion.</li>
+    </ul>
+    <p class="caveat">Read honestly: the demonstration replay rests on a single modern precedent (n = 1, the 2022 sanctions episode) sustained for the remaining horizon, which makes the renminbi collapse an upper bound on reversal, not a point forecast. The valuation robustness for reserves is flow attribution, each currency's share of the quarterly change in allocated claims, which bounds rather than removes the valuation caveat. H1 is supported on the median criterion, 2.3 times the reserve channel's separation with the Indo-Pacific tier the mapped exception; H2 is directionally supported in all three allied tiers and unresolved at annual frequency.</p>
+  </div>
+
+  <h2><span class="no">§7</span> falsification tripwires</h2>
+  <p>A model someone can use is a model that names, in advance, the observables that would break it:</p>
+  <ul class="trip">
+    <li>Allied defense expenditure as a share of GDP, against the pathway II elasticities.</li>
+    <li>Arms import supplier diversification (the Herfindahl of Plate III) among US treaty allies.</li>
+    <li>Renminbi share in trade settlement versus its COFER reserve share: the settlement-reserve gap should widen under accretion and snap shut only with convertibility, not coercion.</li>
+    <li>The nontraditional-currency share of reserves, which should keep absorbing the dollar's decline under every pathway.</li>
+    <li>War-risk premia around Taiwan Strait exercise events, against the measured 2026 Gulf multiple of 5.7x hull value attached to demonstration events in the full build.</li>
+  </ul>
+
+  <h2><span class="no">§8</span> status of the work</h2>
+  <div class="twocol">
+    <div class="status">
+      <h4>Complete in this preview</h4>
+      <ul>
+        <li>Full data pipeline over three primary sources, with validation gates</li>
+        <li>Calibration of the reserve channel and three named historical cases</li>
+        <li>Monte Carlo engine: 10,000 seeded draws, three uncertainty sources</li>
+        <li>H3 tested end to end; four plates; BI-ready exports</li>
+      </ul>
+    </div>
+    <div class="status">
+      <h4>Also standing in the full build</h4>
+      <ul>
+        <li>Layer 2 system dynamics: alliance feedback estimated 1951 to 2025</li>
+        <li>Layer 4 events: the exercise register and the 2026 Gulf repricing multiple</li>
+        <li>The settlement-reserve gap, measured monthly from 27 Swift trackers</li>
+        <li>H1 and H2 tested, with verdicts and caveats in the interactive page</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2><span class="no">§9</span> data and reproduction</h2>
+  <p>Sources: IMF, Currency Composition of Official Foreign Exchange Reserves (COFER), quarterly through 2026-Q1, retrieved 24 July 2026; SIPRI Military Expenditure Database, 1949 to 2025 (v1.2, April 2026); SIPRI Arms Transfers Database, trend indicator values and trade register, retrieved 24 July 2026. Raw files are not redistributed here; the README explains where to obtain them and where to place them. The pipeline then reproduces every number on this page in order: <span class="script">parse_cofer.py</span>, <span class="script">parse_milex.py</span>, <span class="script">parse_arms_transfers.py</span>, <span class="script">parse_swift.py</span>, <span class="script">parse_maritime.py</span>, <span class="script">parse_energy_semis.py</span>, <span class="script">parse_security.py</span>, <span class="script">calibrate.py</span>, <span class="script">calibrate_layer2.py</span>, <span class="script">simulate.py</span>, <span class="script">simulate_layer2.py</span>, <span class="script">build_hypothesis_panel.py</span>, <span class="script">make_figures.py</span>, <span class="script">build_preview.py</span>. The simulation fan and processed tables import directly into Power BI or Tableau.</p>
+
+  <footer>
+    <span class="cc">cc by-nc 4.0</span><br>
+    © 2026 Alyssa Agard. This preview, its text, and its figures are licensed under a
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    You may share and adapt with attribution, for noncommercial purposes.
+    Underlying data remain © the IMF and © SIPRI respectively, are quoted here under their own terms with citation, and are not covered by this license.
+    A typeset preview of the full interactive build; figures and estimates move with data vintages.
+  </footer>
+</main>
+</body>
+</html>

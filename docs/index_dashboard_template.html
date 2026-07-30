@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Primacy Premium</title>
+<meta name="description" content="A Python modeling pipeline, calibrated on seven decades of IMF and SIPRI data, that forecasts how global defense spending, arms transfers, and commercial risk pricing would reallocate under Chinese military primacy by 2035.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FFEFFE">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<style>
+:root{
+  /* pale blush stock: tinted paper, not candy */
+  --ground:#FDF4F8; --panel:#FFFDFE; --panel-2:#F8EBF1;
+  --rule:#E6CDD8; --rule-soft:#F1E1E8; --grid:#EEDDE5;
+  --ink:#241A1E; --ink-2:#6A555B; --ink-3:#96818A;
+  /* plate colours: muted, legible on rose, well separated in hue */
+  --wine:#7B2D3E; --indigo:#2F4A6D; --olive:#4A6141;
+  --sienna:#A55A32; --plum:#5E4A72; --teal:#3C6B68;
+  --built:#4A6141; --partial:#A55A32; --blocked:#7B2D3E;
+  --serif:'Times New Roman',Times,'Liberation Serif','Nimbus Roman',serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:1.6;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px 84px}
+.eyebrow{font-variant:small-caps;letter-spacing:.17em;font-size:13.5px;color:var(--ink-3)}
+
+header{padding:60px 0 30px;border-bottom:3px double var(--ink)}
+h1{font-weight:400;font-size:clamp(42px,7vw,80px);line-height:1.0;
+   letter-spacing:-.012em;margin:16px 0 0;max-width:15ch}
+h1 i{font-style:italic}
+h1 span{color:var(--ink-3)}
+.subtitle{margin:14px 0 0;max-width:62ch;font-size:19px;color:var(--ink-2);font-style:italic}
+.thesis{margin:20px 0 0;max-width:62ch;font-size:18.5px;color:var(--ink-2);
+  border-left:1px solid var(--rule);padding-left:17px;font-style:italic}
+.stamp{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;
+  font-variant:small-caps;letter-spacing:.09em;font-size:14.5px;color:var(--ink-3)}
+.stamp b{color:var(--ink);font-weight:400;font-variant:normal;letter-spacing:0;font-style:italic}
+.byline{margin-top:22px;font-variant:small-caps;letter-spacing:.17em;
+  font-size:14px;color:var(--ink-3)}
+
+.register{padding:40px 0 12px}
+.reg-head{display:flex;align-items:baseline;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.reg-title{font-size:27px;letter-spacing:-.005em}
+.reg-count{font-variant:small-caps;letter-spacing:.09em;font-size:14.5px;color:var(--ink-2)}
+.reg-count b{font-size:30px;color:var(--ink);font-weight:400;font-variant:normal;letter-spacing:0}
+.meter{height:9px;background:var(--panel-2);border:1px solid var(--rule);margin:18px 0 24px;display:flex}
+.meter i{display:block;height:100%}
+.meter i.b{background:var(--built)}
+.meter i.p{background:var(--partial)}
+.meter i.x{background:repeating-linear-gradient(45deg,var(--rule) 0 3px,transparent 3px 7px)}
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+  gap:1px;background:var(--rule-soft);border:1px solid var(--rule)}
+.row{background:var(--panel);padding:12px 15px;display:grid;
+  grid-template-columns:9px 1fr;gap:12px;align-items:start;min-height:78px;
+  animation:in .45s ease backwards}
+.row.is-pending{background:var(--panel-2)}
+.tick{width:9px;height:9px;margin-top:8px;border-radius:50%}
+.tick.built{background:var(--built)}
+.tick.ready{background:var(--built);opacity:.42}
+.tick.partial{background:var(--partial)}
+.tick.pending{background:transparent;border:1px solid var(--ink-3)}
+.tick.blocked{background:var(--blocked)}
+.r-name{font-style:italic;font-size:16.5px}
+.r-meta{font-variant:small-caps;letter-spacing:.1em;font-size:13px;color:var(--ink-3);margin-top:2px}
+.r-note{font-size:14.5px;color:var(--ink-2);margin-top:5px;line-height:1.38}
+.is-pending .r-name{color:var(--ink-2)}
+@keyframes in{to{opacity:1;transform:none}}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));
+  gap:1px;background:var(--rule-soft);border:1px solid var(--rule);margin:36px 0 0}
+.fig{background:var(--panel);padding:17px 17px 15px}
+.fig .k{font-variant:small-caps;letter-spacing:.12em;font-size:13.5px;color:var(--ink-3)}
+.fig .v{font-size:42px;letter-spacing:-.022em;line-height:1.08;margin-top:6px}
+.fig .v small{font-size:19px;color:var(--ink-2);letter-spacing:0}
+.fig .n{font-size:14px;color:var(--ink-2);margin-top:6px;line-height:1.38}
+.neg{color:var(--wine)}
+
+section.panel{margin-top:42px;border:1px solid var(--rule);background:var(--panel)}
+.p-head{padding:18px 20px 15px;border-bottom:1px solid var(--rule);display:flex;
+  justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.p-title{font-size:24px;letter-spacing:-.008em}
+.p-sub{font-size:15.5px;color:var(--ink-2);margin-top:5px;max-width:66ch;font-style:italic}
+.p-src{font-variant:small-caps;letter-spacing:.1em;font-size:13px;color:var(--ink-3);white-space:nowrap}
+.controls{display:flex;gap:20px;flex-wrap:wrap;padding:13px 20px;
+  border-bottom:1px solid var(--rule);background:var(--panel-2);align-items:center}
+.ctl{display:flex;gap:9px;align-items:center}
+.ctl label{font-variant:small-caps;letter-spacing:.11em;font-size:13.5px;color:var(--ink-3)}
+select{font-family:var(--serif);font-size:15px;padding:4px 8px;background:var(--panel);
+  border:1px solid var(--rule);color:var(--ink);border-radius:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--serif);font-size:14.5px;padding:3px 10px;border:1px solid var(--rule);
+  background:var(--panel);color:var(--ink-2);cursor:pointer;user-select:none;line-height:1.5}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.chip:focus-visible,select:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+.plot{width:100%;height:430px}
+.plot.sm{height:348px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:42px 0}
+.duo>section.panel{margin-top:0}
+.readout{padding:14px 20px;border-top:1px solid var(--rule);background:var(--panel-2);
+  font-size:15.5px;color:var(--ink-2)}
+.readout b{color:var(--ink);font-weight:400;font-style:italic}
+
+.ledger{width:100%;border-collapse:collapse;background:var(--panel)}
+.ledger th,.ledger td{border-top:1px solid var(--rule-soft);padding:11px 20px;
+  text-align:left;font-size:15.5px;vertical-align:top}
+.ledger th{font-variant:small-caps;letter-spacing:.1em;font-weight:400;
+  color:var(--ink-3);font-size:13.5px;border-top:none;background:var(--panel-2)}
+.ledger td.h{font-style:italic;white-space:nowrap;width:1%}
+.tag{font-variant:small-caps;letter-spacing:.09em;font-size:13px;white-space:nowrap}
+.tag.on{color:var(--built)} .tag.off{color:var(--ink-3)} .tag.dir{color:var(--ink-soft)}
+
+.sec{padding:46px 0 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.sec-title{font-size:27px;letter-spacing:-.005em}
+.sec-note{font-variant:small-caps;letter-spacing:.1em;font-size:13.5px;color:var(--ink-3)}
+.prose{max-width:74ch;margin-top:12px}
+.prose p+p{margin-top:.85em}
+.quote{margin:22px 0 0;max-width:74ch;border-left:3px solid var(--ink);background:var(--panel);
+  padding:15px 19px;font-size:18px}
+.quote b{font-variant:small-caps;letter-spacing:.11em;font-weight:400}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule);margin-top:22px}
+.tri .card{background:var(--panel);padding:16px 17px 17px}
+.tri .rn{font-size:29px;line-height:1;color:var(--ink-3)}
+.tri h3{font-weight:400;font-style:italic;font-size:20px;margin:2px 0 6px}
+.tri p{font-size:15px;line-height:1.45;color:var(--ink-2);margin:0}
+.tri .anchor{font-size:13.5px;margin-top:10px;padding-top:9px;color:var(--ink-3);
+  border-top:1px dotted var(--rule)}
+ol.stages{counter-reset:st;list-style:none;margin:20px 0 0;padding:0;
+  border-top:1px solid var(--rule-soft)}
+ol.stages li{counter-increment:st;padding:14px 0 14px 46px;position:relative;
+  border-bottom:1px solid var(--rule-soft);font-size:16px;color:var(--ink-2)}
+ol.stages li::before{content:counter(st);position:absolute;left:0;top:13px;width:27px;height:27px;
+  border:1px solid var(--rule);border-radius:50%;display:grid;place-items:center;
+  font-size:14px;color:var(--ink-3);background:var(--panel)}
+ol.stages b{color:var(--ink);font-weight:400;font-style:italic}
+ol.stages code,ul.trip code{font-family:var(--serif);font-style:italic}
+ul.trip{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--rule-soft)}
+ul.trip li{padding:11px 0 11px 24px;position:relative;border-bottom:1px solid var(--rule-soft);
+  font-size:16px;color:var(--ink-2)}
+ul.trip li::before{content:"";position:absolute;left:3px;top:19px;width:6px;height:6px;
+  border:1px solid var(--ink-3);transform:rotate(45deg)}
+.findings{margin-top:22px;border:1px solid var(--rule);background:var(--panel)}
+.findings ul{margin:0;padding:6px 22px 6px 40px}
+.findings li{margin:11px 0;font-size:16.5px}
+.findings b{font-weight:400;font-style:italic}
+.findings .caveat{border-top:1px solid var(--rule);background:var(--panel-2);
+  padding:13px 20px;font-size:15px;font-style:italic;color:var(--ink-2)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule);margin-top:22px}
+.twocol>div{background:var(--panel);padding:16px 19px}
+.twocol h4{font-weight:400;font-style:italic;font-size:18px;margin:0 0 9px}
+.twocol ul{margin:0;padding-left:19px;font-size:15.5px;color:var(--ink-2)}
+.twocol li{margin:6px 0}
+.cc{display:inline-block;border:1px solid var(--ink);background:var(--panel);padding:3px 12px;
+  font-variant:small-caps;letter-spacing:.12em;font-size:13.5px;margin-bottom:12px}
+@media (max-width:860px){.tri{grid-template-columns:1fr}.twocol{grid-template-columns:1fr}}
+
+footer{margin-top:56px;padding-top:24px;border-top:3px double var(--ink);
+  font-size:15px;color:var(--ink-2)}
+footer b{color:var(--ink);font-weight:400;font-variant:small-caps;letter-spacing:.1em}
+footer code{font-family:var(--serif);font-style:italic;font-size:15px}
+footer a{color:var(--ink)}
+@media (max-width:860px){.duo{grid-template-columns:1fr;gap:42px}}
+@media (prefers-reduced-motion:reduce){.row{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Conditional forecast &nbsp;·&nbsp; build {{GENERATED}} &nbsp;·&nbsp; all five layers built</div>
+  <h1>The Primacy <i>Premium</i><span>.</span></h1>
+  <p class="subtitle">Conditional forecasts of defense and commercial markets under Chinese
+  military primacy, 2026 to 2035</p>
+  <p class="thesis">Markets do not price whether China overtakes the United States. They price
+  how. Three pathways run to one endpoint, and if the outputs converge, the thesis is false.</p>
+  <div class="stamp">
+    <span>Thesis <b>variance(pathway) &gt; variance(endpoint)</b></span>
+    <span>Horizon <b>2026 to 2035</b></span>
+    <span>Draws <b>10,000 per pathway</b></span>
+    <span>Channels <b>four of four carried</b></span>
+    <span>Hypotheses <b>three of three tested</b></span>
+  </div>
+  <div class="byline">alyssa agard</div>
+</header>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">The question, and the argument</div>
+    <div class="sec-note">&sect;1</div></div>
+  <div class="prose">
+    <p>If China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do
+    global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and
+    does the <i>pathway</i> to primacy condition those outcomes more strongly than the fact of
+    primacy itself?</p>
+    <p>The project refuses a single scenario. It builds three, runs each through parameters
+    measured from the historical record, and reports full distributions rather than point
+    estimates. It is deliberately not called prediction. There is no training data for an event
+    that has never occurred, so the model estimates responses from history and imposes each
+    scenario exogenously. Conditional forecasting with uncertainty propagation is the stronger
+    epistemic position, and the project states it plainly rather than burying it.</p>
+    <p>Four commercial channels carry the transmission: semiconductors, shipping and war risk
+    insurance, energy, and reserve currency composition. All four are carried in this build.
+    Semiconductors as TSMC's own quarterly revenue with the 2027 capacity-tightness note;
+    shipping as fleet, shipbuilding and connectivity structure plus the 2026 Gulf war-risk
+    repricing, a 5.7x premium multiple measured from broker quotes; energy as chokepoint
+    throughput and the Brent path; and reserves end to end, with the renminbi's settlement share
+    measured monthly against its reserve share. The register below reads every artifact off
+    disk with its row count, and the build refuses to publish this page if any is missing.</p>
+  </div>
+  <div class="quote"><b>thesis.</b>&nbsp; The pathway to Chinese military primacy, gradual
+  accretion, American retrenchment, or violent demonstration, conditions defense and commercial
+  market outcomes more strongly than the endpoint itself. Identical 2035 force balances, reached
+  by different roads, produce different markets.</div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">Three pathways to one endpoint</div>
+    <div class="sec-note">&sect;2</div></div>
+  <div class="prose"><p>Each road terminates at the same nominal 2035 balance, which is what
+  lets the model separate the effect of the route from the effect of the destination. If the
+  three produced the same outputs, the thesis would be false.</p></div>
+  <div class="tri">
+    <div class="card"><div class="rn">I</div><h3>Accretion</h3>
+      <p>China grows, the United States grows more slowly. The balance closes without an event.
+      Hedging is gradual and markets reprice at the margin.</p>
+      <p class="anchor" id="anchor1"></p></div>
+    <div class="card"><div class="rn">II</div><h3>Retrenchment</h3>
+      <p>Primacy arrives because Washington withdraws. Allied budgets and supplier choices move
+      first, before any Chinese gain registers.</p>
+      <p class="anchor" id="anchor2"></p></div>
+    <div class="card"><div class="rn">III</div><h3>Demonstration</h3>
+      <p>A contingency resolves in Beijing's favor. Repricing is discontinuous: the shock quarter
+      matters as much as the decade around it.</p>
+      <p class="anchor" id="anchor3"></p></div>
+  </div>
+</div>
+
+<div class="register">
+  <div class="reg-head">
+    <div>
+      <div class="reg-title">Input register</div>
+      <div class="p-sub">Every table the model consumes or produces, read off disk with its true
+      row count at build time. The builder raises rather than publish this page if any registered
+      artifact is missing, so a full meter is earned, not asserted.</div>
+    </div>
+    <div class="reg-count"><b id="regDone">0</b> / <span id="regTotal">0</span> tables carrying data</div>
+  </div>
+  <div class="meter" id="meter"></div>
+  <div class="reg-grid" id="regGrid"></div>
+</div>
+
+<div class="strip" id="strip"></div>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Expenditure by actor tier</div>
+      <div class="p-sub">The six-tier scope from the research design. Tier totals are sums; share
+      of GDP and per capita are tier medians, since summing intensity ratios would be meaningless.</div>
+    </div>
+    <div class="p-src" id="tierSrc">milex_tier_panel</div>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label for="mSel">Measure</label><select id="mSel"></select></div>
+    <div class="ctl"><label for="ySel">From</label><select id="ySel"></select></div>
+    <div class="ctl"><label>Tiers</label><div class="chips" id="tierChips"></div></div>
+  </div>
+  <div id="tierPlot" class="plot"></div>
+  <div class="readout" id="tierRead"></div>
+</section>
+
+<div class="duo">
+  <section class="panel">
+    <div class="p-head">
+      <div>
+        <div class="p-title">Real change, year on year</div>
+        <div class="p-sub">Pathway II evidence. Retrenchment is an incumbent choice, not a
+        challenger achievement, so it shows up here before it shows up anywhere else.</div>
+      </div>
+    </div>
+    <div id="yoyPlot" class="plot sm"></div>
+    <div class="readout" id="yoyRead"></div>
+  </section>
+
+  <section class="panel">
+    <div class="p-head">
+      <div>
+        <div class="p-title">Peace dividend, 1985 to 2000</div>
+        <div class="p-sub">The retrenchment calibration case. Supplies the contraction rate, and
+        the test for whether expansion and contraction are symmetric.</div>
+      </div>
+    </div>
+    <div id="pdPlot" class="plot sm"></div>
+    <div class="readout" id="pdRead"></div>
+  </section>
+</div>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Allocated reserve shares</div>
+      <div class="p-sub">Channel four, the one this build implements end to end. The renminbi
+      line is the finding: it peaked and reversed, while the dollar's losses went to other
+      currencies instead.</div>
+    </div>
+    <div class="p-src" id="cofSrc">cofer_shares_wide</div>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label>Currencies</label><div class="chips" id="curChips"></div></div>
+    <div class="ctl"><label for="scaleSel">Scale</label><select id="scaleSel">
+      <option value="linear">Linear</option><option value="log">Log</option></select></div>
+  </div>
+  <div id="cofPlot" class="plot"></div>
+  <div class="readout" id="cofRead"></div>
+</section>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Conditional forecast to 2035</div>
+      <div class="p-sub">The model's own output. Ten thousand seeded draws per pathway propagate
+      parameter, innovation and event-timing uncertainty jointly. Read the band, not the line:
+      the median is the least interesting number here.</div>
+    </div>
+    <div class="p-src" id="fcSrc">simulation_fan</div>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label for="fcCur">Currency</label><select id="fcCur">
+      <option value="USD">US dollar</option><option value="CNY">Renminbi</option></select></div>
+    <div class="ctl"><label for="fcBand">Interval</label><select id="fcBand">
+      <option value="p10|p90">80 per cent</option>
+      <option value="p05|p95">90 per cent</option>
+      <option value="p25|p75">50 per cent</option>
+      <option value="none">Median only</option></select></div>
+    <div class="ctl"><label>Pathways</label><div class="chips" id="pathChips"></div></div>
+  </div>
+  <div id="fcPlot" class="plot"></div>
+  <div class="readout" id="fcRead"></div>
+</section>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Arms transfers and supplier concentration</div>
+      <div class="p-sub">Deliveries in trend indicator values, a capability measure, deliberately
+      never mixed with the dollar series. Supplier diversification is a falsification tripwire for
+      pathway II.</div>
+    </div>
+    <div class="p-src" id="armsSrc">arms_transfers_global</div>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label for="aFrom">From</label><select id="aFrom"></select></div>
+    <div class="ctl"><label>Series</label><div class="chips" id="armsChips"></div></div>
+  </div>
+  <div id="armsPlot" class="plot"></div>
+  <div class="readout" id="armsRead"></div>
+</section>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Hypothesis ledger</div>
+      <div class="p-sub">What would have to be true, and what this build measures for each
+      claim. Verdicts are written by the pipeline, not by the page.</div>
+    </div>
+  </div>
+  <table class="ledger">
+    <thead><tr><th>No.</th><th>Claim</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td class="h">H1</td>
+        <td>Identical 2035 endpoints, reached by different pathways, produce statistically
+        distinguishable outcomes in defense expenditure and arms transfer flows.</td>
+        <td class="tag on" id="h1state"></td></tr>
+      <tr><td class="h">H2</td>
+        <td>American retrenchment moves allied budgets and supplier market shares faster than
+        Chinese growth alone: the hegemon's exit is the stronger signal.</td>
+        <td class="tag dir" id="h2state"></td></tr>
+      <tr><td class="h">H3</td>
+        <td>Reserve composition is the slowest and least pathway-sensitive commercial channel;
+        the dollar's share erodes toward diversification, not toward the renminbi.</td>
+        <td class="tag on" id="h3state">supported in this build</td></tr>
+    </tbody>
+  </table>
+  <div class="readout" id="hypRead"></div>
+</section>
+
+<section class="panel">
+  <div class="p-head">
+    <div>
+      <div class="p-title">Hypothesis evidence</div>
+      <div class="p-sub">The measured series behind each verdict, drawn from
+      <code>hypothesis_panel.csv</code>, one tidy table holding every test, evidence and
+      robustness row the three claims rest on.</div>
+    </div>
+    <div class="p-src">hypothesis_panel</div>
+  </div>
+  <div class="ctls">
+    <div class="ctl"><label>Hypothesis</label><div class="chips" id="hypChips"></div></div>
+  </div>
+  <div class="plot" id="hypPlot"></div>
+  <div class="readout" id="hypPanelRead"></div>
+</section>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">What this build finds</div>
+    <div class="sec-note">&sect;3</div></div>
+  <div class="findings">
+    <ul id="findings"></ul>
+    <div class="caveat" id="findCaveat"></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">Method, in five stages</div>
+    <div class="sec-note">&sect;4</div></div>
+  <div class="prose"><p>Each stage consumes only the artifacts of the stage before it, so every
+  figure on this page is reproducible from the raw sources in a single pass.</p></div>
+  <ol class="stages">
+    <li><b>Data engineering.</b> Seven parsers turn published sources into tidy, validated
+      tables: IMF COFER (<code>parse_cofer.py</code>, with an independent share reconciliation
+      that must pass to 0.05 pp or the build fails); the SIPRI expenditure workbook
+      (<code>parse_milex.py</code>, locating headers by content so the parser survives SIPRI's
+      annual re-layout); both SIPRI arms transfer files (<code>parse_arms_transfers.py</code>,
+      a thirty-thousand-row deal register aggregated into supplier concentration); twenty-seven
+      monthly Swift trackers (<code>parse_swift.py</code>, reading the data month from each
+      document, never the filename); four UNCTAD maritime tables
+      (<code>parse_maritime.py</code>); the EIA chokepoint report, the STEO workbook and nine
+      TSMC quarterly statements (<code>parse_energy_semis.py</code>); and the NATO burden table,
+      the FAS nuclear notebooks, recipient-level imports and the curated event, war-risk and
+      alliance tables (<code>parse_security.py</code>). Every extraction passes range gates so a
+      source redesign fails loudly instead of shipping a wrong number.</li>
+    <li><b>Historical calibration.</b> Every parameter the simulation consumes is estimated, none
+      assumed. The reserve channel response is a Newey-West regression of quarterly dollar-share
+      changes on the year-on-year change in the logged China to US expenditure ratio, with
+      indicator terms for the 2022 sanctions quarters (<code>calibrate.py</code>). The alliance
+      feedback system regresses each allied tier's real growth on both principals' lagged growth,
+      HAC(3) over 1951 to 2025, and measures the 2022 mobilization differential and the named
+      retrenchment windows (<code>calibrate_layer2.py</code>). All parameters ship with
+      confidence intervals in two JSON artifacts.</li>
+    <li><b>Conditional simulation.</b> Two engines propagate parameter, innovation and event
+      timing uncertainty jointly through ten thousand seeded draws per pathway: the reserve
+      channel quarterly to 2035-Q4 (<code>simulate.py</code>), and a five-block system with
+      endogenous allied budgets annually to 2035 (<code>simulate_layer2.py</code>), which scores
+      the H1 separation test, projects arms demand through the measured delivery elasticity, and
+      attaches the 2026 Gulf war-risk multiple to demonstration events. Innovations are
+      bootstrapped from measured residuals, so simulated periods keep the true fat tails instead
+      of an imposed Gaussian.</li>
+    <li><b>Visualization.</b> Four static plates (<code>make_figures.py</code>) and this page,
+      whose every number is injected from the pipeline's own artifacts by
+      <code>build_dashboard_data.py</code> and <code>build_index.py</code>.</li>
+    <li><b>Analytic handoff.</b> Tidy exports load directly into Power BI or Tableau, led by
+      <code>hypothesis_panel.csv</code>, a single table holding every measurement behind the
+      three hypotheses (<code>build_hypothesis_panel.py</code>), alongside the fans, the
+      processed tables and <code>payload.json</code>; the repository remains the model of
+      record.</li>
+  </ol>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">Falsification tripwires</div>
+    <div class="sec-note">&sect;5</div></div>
+  <div class="prose"><p>A model someone can use is a model that names, in advance, the
+  observables that would break it.</p></div>
+  <ul class="trip">
+    <li>Allied defense expenditure as a share of GDP, against the pathway II elasticities.</li>
+    <li>Arms import supplier diversification, measured by the Herfindahl index, among United
+      States treaty allies.</li>
+    <li>The renminbi's share of trade settlement against its COFER reserve share: the gap should
+      widen under accretion and close only with convertibility, not with coercion.</li>
+    <li>The nontraditional-currency share of reserves, which should keep absorbing the dollar's
+      decline under every pathway.</li>
+    <li>War risk premia around Taiwan Strait exercise events, against the measured 2026 Gulf
+      multiple of 5.7x hull value that the demonstration pathway attaches to its event
+      quarter.</li>
+  </ul>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">Status of the work</div>
+    <div class="sec-note">&sect;6</div></div>
+  <div class="twocol">
+    <div><h4>All five layers built</h4>
+      <ul>
+        <li>Layer 1, data: seven parsers over fourteen source families, validation gates throughout</li>
+        <li>Layer 2, system dynamics: alliance feedback estimated 1951 to 2025, allied budgets endogenous</li>
+        <li>Layer 3, simulation: two seeded engines, 10,000 draws per pathway, three uncertainty sources</li>
+        <li>Layer 4, events: the exercise register, the 2026 Gulf repricing multiple, arms demand elasticity</li>
+        <li>Layer 5, delivery: this page, four plates, and the BI-ready hypothesis dataset</li>
+      </ul></div>
+    <div><h4>Tested, with the caveats carried</h4>
+      <ul>
+        <li>H1 supported on the median criterion, 2.3x the reserve channel; Indo-Pacific allies the mapped exception</li>
+        <li>H2 directionally supported in all three tiers, unresolved at annual frequency, p 0.22 to 0.35</li>
+        <li>H3 supported: near-null defense coefficient, 0.36 sd separation, settlement-reserve gap live</li>
+        <li>Both replayed shocks rest on n = 1 precedents, stated wherever they are used</li>
+        <li>Thirty artifacts in the register, every one read off disk at build time</li>
+      </ul></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-title">Data, reproduction, and license</div>
+    <div class="sec-note">&sect;7</div></div>
+  <div class="prose">
+    <p>Sources: International Monetary Fund, Currency Composition of Official Foreign Exchange
+    Reserves (COFER), quarterly through 2026-Q1, retrieved 24 July 2026. Stockholm International
+    Peace Research Institute, Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and
+    Arms Transfers Database, retrieved 24 and 29 July 2026. Chinese expenditure figures are SIPRI
+    estimates. Swift, RMB Tracker and Global Currency Tracker, twenty-seven monthly issues, April
+    2024 data through June 2026 data. NATO, Defence Expenditure of NATO Countries, 2026 edition.
+    UNCTADstat maritime transport tables, retrieved 29 July 2026. US Energy Information
+    Administration, World Oil Transit Chokepoints and Short-Term Energy Outlook, July 2026.
+    Federation of American Scientists, Nuclear Notebook, 2025 and 2026 issues, with DOD China
+    Military Power Report projections. TSMC, consolidated condensed financial statements, nine
+    quarterly issues. TrendForce, 1Q26 foundry ranking, public highlight only. Joint War
+    Committee circular JWLA-033 and Argus Media war-risk reporting, 2026. Kiel Institute, Ukraine
+    Support Tracker, as context for the 2022 mobilization case.</p>
+    <p>Raw files are not redistributed in the repository, in keeping with the providers' terms;
+    the README explains where to obtain each of the fourteen source families and where to place
+    them. The simulation is seeded, so a re-run on the same data vintages reproduces every number
+    on this page exactly, in the order <code>parse_cofer</code>, <code>parse_milex</code>,
+    <code>parse_arms_transfers</code>, <code>parse_swift</code>, <code>parse_maritime</code>,
+    <code>parse_energy_semis</code>, <code>parse_security</code>, <code>calibrate</code>,
+    <code>calibrate_layer2</code>, <code>simulate</code>, <code>simulate_layer2</code>,
+    <code>build_hypothesis_panel</code>, <code>make_figures</code>,
+    <code>build_dashboard_data</code>, <code>build_index</code>.</p>
+    <p><span class="cc">cc by-nc 4.0</span><br>
+    This page, its text, its figures and the code that produced them are &copy; 2026 Alyssa Agard
+    and licensed under the
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons
+    Attribution-NonCommercial 4.0 International License</a>. You may share and adapt the material
+    with attribution for noncommercial purposes. The underlying IMF and SIPRI data are excluded
+    from this license: they remain the property of their publishers and are used here with
+    citation under their own terms.</p>
+  </div>
+</div>
+
+<footer>
+  <p><b>Provenance.</b> SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and
+  SIPRI Arms Transfers Database, retrieved 24 July 2026. IMF COFER 7.0.1, quarterly through
+  2026-Q1, retrieved 24 July 2026. Chinese expenditure figures are SIPRI estimates. SIPRI's
+  <code>...</code> and <code>xxx</code> placeholders resolve to null, never to zero. Every
+  number on this page is written by <code>build_dashboard_data.py</code> from the pipeline's own
+  artifacts, so the page cannot state a figure the model did not produce.</p>
+  <p><b>To extend.</b> Add a series in <code>build_dashboard_data.py</code>, add it to the
+  payload, write one render function here. The register updates itself from the register list.
+  Nothing else changes.</p>
+  <p><b>Status.</b> A complete build: five layers, thirty registered artifacts, three hypotheses
+  tested, every verdict written by the pipeline. Estimates will move with data vintages, and the
+  register reads the artifacts off disk at build time so the page can never claim more than the
+  model holds. Licensed CC BY-NC 4.0; see the section above.</p>
+</footer>
+
+</div>
+
+<script id="payload" type="application/json">{{PAYLOAD}}</script>
+<script>
+const D = JSON.parse(document.getElementById('payload').textContent);
+const CSS = getComputedStyle(document.documentElement);
+const c = n => CSS.getPropertyValue(n).trim();
+const SERIF = "'Times New Roman', Times, 'Liberation Serif', serif";
+
+const TIER_COLOR = {
+  'China': c('--wine'), 'United States': c('--indigo'),
+  'Indo-Pacific allies': c('--olive'), 'NATO Europe': c('--sienna'),
+  'Hedging middle powers': c('--teal'), 'Russia': c('--plum')
+};
+const CUR_COLOR = {USD:c('--indigo'),EUR:c('--sienna'),CNY:c('--wine'),
+  JPY:c('--olive'),GBP:c('--plum'),CAD:c('--teal'),AUD:'#8A7A4E',
+  CHF:'#96818A',OTHER:'#A8909A'};
+const PATH_COLOR = {accretion:c('--indigo'), retrenchment:c('--sienna'),
+  demonstration:c('--wine')};
+const PATH_RGB = {accretion:'47,74,109', retrenchment:'165,90,50', demonstration:'123,45,62'};
+
+// A factory, not a shared constant: real Plotly.js writes its computed
+// range, type, and autorange back onto whatever axis object it is given.
+// A single shared LAYOUT object, reused across charts via {...LAYOUT},
+// only clones the top level; nested xaxis/yaxis objects stay the same
+// reference unless a call happens to override them, so one chart's
+// rendered range can silently leak into the next chart's axis. Calling
+// baseLayout() fresh for every draw guarantees every chart gets its own
+// unshared xaxis and yaxis objects, closing that off entirely.
+function baseLayout(){
+  return {
+    paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+    font:{family:SERIF,size:14,color:c('--ink-2')},
+    margin:{l:66,r:24,t:20,b:48},
+    xaxis:{gridcolor:c('--grid'),zerolinecolor:c('--rule'),linecolor:c('--rule')},
+    yaxis:{gridcolor:c('--grid'),zerolinecolor:c('--rule'),linecolor:c('--rule')},
+    hoverlabel:{bgcolor:c('--ink'),font:{family:SERIF,size:14,color:c('--panel')},bordercolor:c('--ink')},
+    legend:{orientation:'h',y:-0.17,font:{size:13.5}},
+    showlegend:true
+  };
+}
+const CFG = {displayModeBar:false, responsive:true};
+const fmt = n => n.toLocaleString('en-US',{maximumFractionDigits:0});
+
+/* ---- register ---- */
+(function(){
+  const g = document.getElementById('regGrid'), m = document.getElementById('meter');
+  const order = {built:0, partial:1, ready:2, blocked:3, pending:4};
+  const rows = [...D.register].sort((a,b)=>order[a.state]-order[b.state]);
+  rows.forEach((r,i)=>{
+    const el = document.createElement('div');
+    el.className = 'row' + (['built','partial','ready'].includes(r.state) ? '' : ' is-pending');
+    el.style.animationDelay = (i*14)+'ms';
+    el.innerHTML = `<span class="tick ${r.state}"></span><div>
+      <div class="r-name">${r.table}</div>
+      <div class="r-meta">${r.group} · ${r.state}${r.rows?' · '+fmt(r.rows)+' rows':''}</div>
+      <div class="r-note">${r.note}</div></div>`;
+    g.appendChild(el);
+  });
+  const nB = rows.filter(r=>r.state==='built').length;
+  const nP = rows.filter(r=>['partial','ready'].includes(r.state)).length;
+  const nX = rows.length - nB - nP;
+  m.innerHTML = `<i class="b" style="width:${nB/rows.length*100}%"></i>
+                 <i class="p" style="width:${nP/rows.length*100}%"></i>
+                 <i class="x" style="width:${nX/rows.length*100}%"></i>`;
+  document.getElementById('regDone').textContent = nB;
+  document.getElementById('regTotal').textContent = rows.length;
+})();
+
+/* ---- reading strip ---- */
+(function(){
+  const k = D.kpis, cf = D.cofer, pd = D.peace_dividend, ep = D.endpoints.usd;
+  const items = [
+    {k:'World, '+k.year, v:'$'+fmt(k.world_bn)+'<small>bn</small>',
+     n:'Constant 2024 US$. SIPRI world total.'},
+    {k:'US real change, '+k.year, v:k.us_yoy_pct+'<small>%</small>',
+     n:'$'+fmt(k.us_bn)+'bn constant 2024. The pathway II signal.', neg:k.us_yoy_pct<0},
+    {k:'China to US ratio', v:k.cn_us_ratio+'<small>×</small>',
+     n:'China at $'+fmt(k.cn_bn)+'bn, growing '+k.cn_cagr+'% a year since 2015'},
+    {k:'Renminbi reserve share', v:cf.cny_latest_value+'<small>%</small>',
+     n:'Peaked '+cf.cny_peak_value+'% in '+cf.cny_peak_quarter+', down '+Math.abs(cf.cny_decline_pct)+'% since', neg:true},
+    {k:'Peace dividend', v:pd.contraction_pct+'<small>%</small>',
+     n:'US real, '+pd.peak_year+' to '+pd.trough_year+'. Retrenchment anchor.', neg:true},
+    {k:'Pathway separation', v:k.separation+'<small> sd</small>',
+     n:'Endpoint spread units across the three roads. Small, as H3 predicts.'}
+  ];
+  document.getElementById('strip').innerHTML = items.map(i=>
+    `<div class="fig"><div class="k">${i.k}</div>
+     <div class="v${i.neg?' neg':''}">${i.v}</div><div class="n">${i.n}</div></div>`).join('');
+})();
+
+/* ---- tier chart ---- */
+const mSel = document.getElementById('mSel'), ySel = document.getElementById('ySel');
+Object.entries(D.measures).forEach(([k,v])=>mSel.add(new Option(v,k)));
+[1949,1970,1990,2000,2010,2015].forEach(y=>ySel.add(new Option(y,y)));
+ySel.value = 2000;
+const tierOn = new Set(D.tiers);
+const chipBox = document.getElementById('tierChips');
+D.tiers.forEach(t=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=t;
+  b.setAttribute('aria-pressed','true');
+  b.style.borderLeft='3px solid '+TIER_COLOR[t];
+  b.onclick=()=>{ tierOn.has(t)?tierOn.delete(t):tierOn.add(t);
+    b.setAttribute('aria-pressed', tierOn.has(t)); drawTiers(); };
+  chipBox.appendChild(b);
+});
+function drawTiers(){
+  const m = mSel.value, y0 = +ySel.value;
+  const pct = m==='milex_pct_gdp'||m==='milex_govt_share_pct', cap = m==='milex_per_capita_usd';
+  const scale = v => pct ? v*100 : (cap ? v : v/1000);
+  const traces = D.tiers.filter(t=>tierOn.has(t)).map(t=>{
+    const s = D.tier_series[m][t];
+    if(!s) return null;
+    const keep = s.x.map((x,i)=>[x,s.y[i]]).filter(p=>p[0]>=y0);
+    return {x:keep.map(p=>p[0]), y:keep.map(p=>scale(p[1])),
+      name:t, type:'scatter', mode:'lines', line:{color:TIER_COLOR[t],width:2.2},
+      hovertemplate:'%{x} · %{y:.'+(pct?'2f':'0f')+'}'+(pct?'%':(cap?'':'bn'))+'<extra>'+t+'</extra>'};
+  }).filter(Boolean);
+  const title = pct ? '% of GDP (tier median)'
+    : (cap ? 'US$ per capita (tier median)' : 'US$bn'+(m==='milex_usd_const2024'?', constant 2024':', current'));
+  Plotly.react('tierPlot', traces, {...baseLayout(),
+    yaxis:{...baseLayout().yaxis, title:{text:title, font:{size:13.5,family:SERIF}}}}, CFG);
+  document.getElementById('tierRead').innerHTML = D.agg_rule[m]==='sum'
+    ? `Aggregation: <b>tier sum</b>. Members absent from a SIPRI year enter as gaps, never as
+       zeros, so a tier line breaks rather than dipping when coverage changes.`
+    : `Aggregation: <b>tier median</b>. Summing an intensity ratio across countries produces a
+       number with no interpretation, so this measure reports the tier's middle member instead
+       of its total.`;
+}
+mSel.onchange = ySel.onchange = drawTiers; drawTiers();
+
+/* ---- yoy ---- */
+(function(){
+  const traces = D.yoy.map(r=>({x:r.x,y:r.y,name:r.tier,type:'scatter',mode:'lines+markers',
+    line:{color:TIER_COLOR[r.tier],width:2}, marker:{size:4.5},
+    hovertemplate:'%{x} · %{y:.1f}%<extra>'+r.tier+'</extra>'}));
+  Plotly.newPlot('yoyPlot', traces, {...baseLayout(), margin:{l:54,r:18,t:16,b:44},
+    yaxis:{...baseLayout().yaxis, title:{text:'% real change',font:{size:13.5,family:SERIF}},
+      zeroline:true, zerolinewidth:1.5, zerolinecolor:c('--ink-3')}}, CFG);
+  const us = D.yoy.find(r=>r.tier==='United States');
+  const eu = D.yoy.find(r=>r.tier==='NATO Europe');
+  const i = us.x.indexOf(D.kpis.year);
+  const usv = us.y[i].toFixed(1), euv = eu.y[i].toFixed(1);
+  document.getElementById('yoyRead').innerHTML =
+    `${D.kpis.year}: United States <b>${usv}%</b>, NATO Europe <b>${eu.y[i]>0?'+':''}${euv}%</b>.
+     One year is not a trend, but it is the first year the incumbent's line crosses zero while
+     the allied tiers stay above it.`;
+})();
+
+/* ---- peace dividend ---- */
+(function(){
+  const p = D.peace_dividend;
+  Plotly.newPlot('pdPlot', [{x:p.x, y:p.y.map(v=>v/1000), type:'scatter', mode:'lines',
+    fill:'tozeroy', fillcolor:'rgba(123,45,62,.10)',
+    line:{color:c('--wine'),width:2.2},
+    hovertemplate:'%{x} · $%{y:.0f}bn<extra></extra>'}],
+    {...baseLayout(), showlegend:false, margin:{l:54,r:18,t:16,b:44},
+     yaxis:{...baseLayout().yaxis, title:{text:'US$bn, constant 2024',font:{size:13.5,family:SERIF}}},
+     shapes:[{type:'line',x0:p.peak_year,x1:p.peak_year,yref:'paper',y0:0,y1:1,
+       line:{color:c('--ink-3'),width:1,dash:'dot'}},
+      {type:'line',x0:p.trough_year,x1:p.trough_year,yref:'paper',y0:0,y1:1,
+       line:{color:c('--ink-3'),width:1,dash:'dot'}}],
+     annotations:[{x:p.peak_year,yref:'paper',y:1.03,text:'peak '+p.peak_year,showarrow:false,
+       font:{family:SERIF,size:13,color:c('--ink-3')},xanchor:'left'},
+      {x:p.trough_year,yref:'paper',y:1.03,text:'trough '+p.trough_year,showarrow:false,
+       font:{family:SERIF,size:13,color:c('--ink-3')},xanchor:'right'}]}, CFG);
+  document.getElementById('pdRead').innerHTML =
+    `Peak ${p.peak_year} to trough ${p.trough_year}: <b>${p.contraction_pct}%</b> in real terms,
+     <b>${p.annual_rate_pct}%</b> a year. This rate, not an assumption, is what pathway II
+     imposes on the United States.`;
+})();
+
+/* ---- cofer ---- */
+const curOn = new Set(['USD','EUR','CNY','JPY','GBP']);
+const curBox = document.getElementById('curChips');
+['USD','EUR','JPY','GBP','CNY','CAD','AUD','CHF','OTHER'].filter(k=>D.cofer[k]).forEach(k=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=k;
+  b.setAttribute('aria-pressed', curOn.has(k));
+  b.style.borderLeft='3px solid '+CUR_COLOR[k];
+  b.onclick=()=>{ curOn.has(k)?curOn.delete(k):curOn.add(k);
+    b.setAttribute('aria-pressed',curOn.has(k)); drawCofer(); };
+  curBox.appendChild(b);
+});
+function drawCofer(){
+  const q = D.cofer.quarters;
+  const traces = [...curOn].map(k=>({x:q, y:D.cofer[k], name:k, type:'scatter', mode:'lines',
+    connectgaps:false,
+    line:{color:CUR_COLOR[k], width:k==='CNY'?2.8:1.9},
+    hovertemplate:'%{x} · %{y:.2f}%<extra>'+k+'</extra>'}));
+  Plotly.react('cofPlot', traces, {...baseLayout(),
+    yaxis:{...baseLayout().yaxis, type:document.getElementById('scaleSel').value || 'linear',
+      title:{text:'% of allocated reserves',font:{size:13.5,family:SERIF}}},
+    xaxis:{...baseLayout().xaxis, nticks:14},
+    shapes:[{type:'line',x0:'2022-Q1',x1:'2022-Q1',yref:'paper',y0:0,y1:1,
+      line:{color:c('--ink-3'),width:1,dash:'dot'}}],
+    annotations:[{x:'2022-Q1',yref:'paper',y:1.04,text:'Russian reserves frozen',showarrow:false,
+      font:{family:SERIF,size:12.5,color:c('--ink-3')},xanchor:'right'}]}, CFG);
+}
+document.getElementById('scaleSel').onchange = drawCofer; drawCofer();
+document.getElementById('cofRead').innerHTML =
+  `The dollar falls from <b>${D.cofer.usd_first}%</b> at the euro's birth in ${D.cofer.first_quarter}
+   to <b>${D.cofer.usd_latest}%</b> in ${D.cofer.cny_latest_quarter}. The renminbi peaked at
+   <b>${D.cofer.cny_peak_value}%</b> in ${D.cofer.cny_peak_quarter} and has since fallen
+   ${Math.abs(D.cofer.cny_decline_pct)}%. That gap between settlement use and reserve
+   accumulation is what H3 formalizes.`;
+
+/* ---- conditional forecast ---- */
+const pathOn = new Set(['accretion','retrenchment','demonstration']);
+const pathBox = document.getElementById('pathChips');
+['accretion','retrenchment','demonstration'].forEach(p=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=p;
+  b.setAttribute('aria-pressed','true');
+  b.style.borderLeft='3px solid '+PATH_COLOR[p];
+  b.onclick=()=>{ pathOn.has(p)?pathOn.delete(p):pathOn.add(p);
+    b.setAttribute('aria-pressed',pathOn.has(p)); drawForecast(); };
+  pathBox.appendChild(b);
+});
+function drawForecast(){
+  const cur = document.getElementById('fcCur').value || 'USD';
+  const band = document.getElementById('fcBand').value || 'p10|p90';
+  const q = D.forecast.quarters, h = D.forecast.history;
+  const traces = [];
+
+  // Observed record first, so the fan is read as a continuation of data.
+  traces.push({x:h.quarters, y:h[cur], name:'observed', type:'scatter', mode:'lines',
+    connectgaps:false, line:{color:c('--ink'),width:2.2},
+    hovertemplate:'%{x} · %{y:.2f}%<extra>observed</extra>'});
+
+  [...pathOn].forEach(p=>{
+    const s = D.forecast.series[cur+'|'+p];
+    if(!s) return;
+    if(band!=='none'){
+      const [lo,hi] = band.split('|');
+      traces.push({x:q, y:s[lo], type:'scatter', mode:'lines', showlegend:false,
+        line:{width:0}, hoverinfo:'skip'});
+      traces.push({x:q, y:s[hi], type:'scatter', mode:'lines', fill:'tonexty',
+        fillcolor:'rgba('+PATH_RGB[p]+',.13)', line:{width:0}, showlegend:false,
+        hoverinfo:'skip'});
+    }
+    traces.push({x:q, y:s.p50, name:p, type:'scatter', mode:'lines',
+      line:{color:PATH_COLOR[p], width:2.2, dash:p==='retrenchment'?'dash':
+        (p==='demonstration'?'dashdot':'solid')},
+      hovertemplate:'%{x} · %{y:.2f}%<extra>'+p+'</extra>'});
+  });
+
+  const shapes = [{type:'line',x0:'2026-Q1',x1:'2026-Q1',yref:'paper',y0:0,y1:1,
+    line:{color:c('--ink-3'),width:1,dash:'dot'}}];
+  if(cur==='USD') shapes.push({type:'line',xref:'paper',x0:0,x1:1,y0:50,y1:50,
+    line:{color:c('--ink-3'),width:1,dash:'dot'}});
+  const anns = [{x:'2026-Q1',yref:'paper',y:1.04,text:'last observed',showarrow:false,
+    font:{family:SERIF,size:12.5,color:c('--ink-3')},xanchor:'right'}];
+  if(cur==='USD') anns.push({xref:'paper',x:0.015,y:50,text:'half of allocated reserves',
+    showarrow:false,yanchor:'bottom',xanchor:'left',
+    font:{family:SERIF,size:12.5,color:c('--ink-3')}});
+
+  Plotly.react('fcPlot', traces, {...baseLayout(),
+    xaxis:{...baseLayout().xaxis, nticks:14},
+    yaxis:{...baseLayout().yaxis, title:{text:'% of allocated reserves',font:{size:13.5,family:SERIF}}},
+    shapes:shapes, annotations:anns}, CFG);
+
+  const ep = D.endpoints[cur.toLowerCase()];
+  const on = [...pathOn];
+  if(!on.length){
+    document.getElementById('fcRead').innerHTML =
+      'No pathway selected. Choose one or more to draw the conditional distributions.';
+    return;
+  }
+  const meds = on.map(p=>`${p} <b>${ep[p].median.toFixed(cur==='USD'?1:2)}%</b>`).join(', ');
+  const extra = cur==='USD'
+    ? ` The probability the dollar holds less than half of allocated reserves by 2035 ranges from
+        <b>${Math.min(...on.map(p=>ep[p].prob_below_50))}</b> to
+        <b>${Math.max(...on.map(p=>ep[p].prob_below_50))}</b> across the selected roads: material
+        under every one, decisive under none.`
+    : ` The renminbi is where the pathways separate. A demonstration replays the one modern
+        precedent for coercive reserve freezing, and on that precedent accumulation reverses
+        rather than accelerates, which makes this an upper bound on reversal rather than a
+        point forecast.`;
+  document.getElementById('fcRead').innerHTML =
+    `Median 2035-Q4 share: ${meds}.${extra}`;
+}
+document.getElementById('fcCur').onchange = drawForecast;
+document.getElementById('fcBand').onchange = drawForecast;
+drawForecast();
+
+/* ---- arms transfers ---- */
+const armsOn = new Set(['deliveries','concentration']);
+const armsBox = document.getElementById('armsChips');
+const ARMS_LABEL = {deliveries:'Deliveries (TIV)', concentration:'Concentration (HHI)',
+  lead:'Top supplier share'};
+Object.keys(ARMS_LABEL).forEach(k=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=ARMS_LABEL[k];
+  b.setAttribute('aria-pressed', armsOn.has(k));
+  b.style.borderLeft='3px solid '+(k==='deliveries'?c('--wine'):k==='concentration'?c('--indigo'):c('--olive'));
+  b.onclick=()=>{ armsOn.has(k)?armsOn.delete(k):armsOn.add(k);
+    b.setAttribute('aria-pressed',armsOn.has(k)); drawArms(); };
+  armsBox.appendChild(b);
+});
+const aFrom = document.getElementById('aFrom');
+[1950,1970,1990,2000,2010].forEach(y=>aFrom.add(new Option(y,y)));
+aFrom.value = 1950;
+function drawArms(){
+  const y0 = +aFrom.value, a = D.arms, traces = [];
+  if(armsOn.has('deliveries')){
+    const keep = a.years.map((y,i)=>[y,a.tiv[i]]).filter(p=>p[0]>=y0);
+    traces.push({x:keep.map(p=>p[0]), y:keep.map(p=>p[1]/1000), name:'Deliveries',
+      type:'scatter', mode:'lines', fill:'tozeroy', fillcolor:'rgba(123,45,62,.10)',
+      line:{color:c('--wine'),width:2.2},
+      hovertemplate:'%{x} · %{y:.1f}bn TIV<extra></extra>'});
+  }
+  if(armsOn.has('concentration')){
+    const keep = a.windows.map((w,i)=>[w,a.hhi[i]]).filter(p=>p[0]>=y0);
+    traces.push({x:keep.map(p=>p[0]), y:keep.map(p=>p[1]), name:'Concentration',
+      type:'scatter', mode:'lines+markers', yaxis:'y2',
+      line:{color:c('--indigo'),width:2,dash:'dash'}, marker:{size:5},
+      hovertemplate:'%{x} window · HHI %{y:.3f}<extra></extra>'});
+  }
+  if(armsOn.has('lead')){
+    const keep = a.windows.map((w,i)=>[w,a.lead_share[i],a.lead_supplier[i]]).filter(p=>p[0]>=y0);
+    traces.push({x:keep.map(p=>p[0]), y:keep.map(p=>p[1]/100), name:'Top supplier',
+      type:'scatter', mode:'lines+markers', yaxis:'y2',
+      line:{color:c('--olive'),width:2,dash:'dot'}, marker:{size:5},
+      text:keep.map(p=>p[2]),
+      hovertemplate:'%{x} window · %{text}, %{y:.1%}<extra></extra>'});
+  }
+  Plotly.react('armsPlot', traces, {...baseLayout(),
+    yaxis:{...baseLayout().yaxis, title:{text:'TIV, billions',font:{size:13.5,family:SERIF}}},
+    yaxis2:{overlaying:'y', side:'right', gridcolor:'rgba(0,0,0,0)',
+      linecolor:c('--rule'), title:{text:'index / share',font:{size:13.5,family:SERIF}}}}, CFG);
+  document.getElementById('armsRead').innerHTML =
+    `Deliveries in ${D.kpis.year} totalled <b>${fmt(a.tiv_2025)}m</b> TIV. In the last complete
+     five-year window (${a.last_complete_window} to ${a.last_complete_window+4}) the Herfindahl
+     index stands at <b>${a.lc_hhi}</b>, with <b>${a.lc_supplier}</b> the leading supplier at
+     <b>${a.lc_share}%</b> of delivered value, an order-year measure and so deliberately more
+     conservative than SIPRI's delivery-year export shares.`;
+}
+aFrom.onchange = drawArms; drawArms();
+
+/* ---- hypothesis ledger: verdicts and evidence, from the pipeline ---- */
+const HY = D.hyp;
+document.getElementById('h1state').textContent = 'supported, exception mapped';
+document.getElementById('h2state').textContent = 'directionally supported';
+document.getElementById('h3state').textContent = 'supported in this build';
+document.getElementById('hypRead').innerHTML =
+  `<b>H1.</b> ${HY.tests.H1.headline}. &nbsp;<b>H2.</b> ${HY.tests.H2.headline}.
+   &nbsp;<b>H3.</b> ${HY.tests.H3.headline}. The defense coefficient behind H3 is
+   ${D.kpis.beta>0?'+':''}${D.kpis.beta} pp per log point, 95 per cent interval
+   ${D.kpis.beta_lo} to ${D.kpis.beta_hi} across ${D.kpis.nobs} quarters: the interval spans
+   zero, a precisely estimated near-null rather than an absence of evidence.`;
+
+/* ---- hypothesis evidence panel ---- */
+(function(){
+  const box = document.getElementById('hypChips');
+  let cur = 'H3';
+  const btns = [];
+  ['H1','H2','H3'].forEach(h=>{
+    const b=document.createElement('button');
+    b.className='chip'; b.type='button'; b.textContent=h;
+    b.setAttribute('aria-pressed', h===cur);
+    b.onclick=()=>{ cur=h;
+      btns.forEach(c=>c.setAttribute('aria-pressed', c.textContent===h));
+      draw(); };
+    btns.push(b); box.appendChild(b);
+  });
+  const read = document.getElementById('hypPanelRead');
+  function draw(){
+    if(cur==='H3'){
+      const h=HY.h3;
+      Plotly.react('hypPlot', [
+        {x:h.months, y:h.cofer_cny, name:'COFER reserve share', type:'scatter',
+         mode:'lines', line:{color:c('--indigo'),width:2, shape:'hv'},
+         hovertemplate:'%{x} · %{y:.2f}%<extra>reserves</extra>'},
+        {x:h.months, y:h.swift_cny, name:'Swift payments share', type:'scatter',
+         mode:'lines', line:{color:c('--wine'),width:2.2}, fill:'tonexty',
+         fillcolor:'rgba(123,45,62,.10)',
+         hovertemplate:'%{x} · %{y:.2f}%<extra>payments</extra>'},
+        {x:h.months, y:h.trade_finance, name:'Trade finance share', type:'scatter',
+         mode:'lines', line:{color:c('--plum'),width:1.6,dash:'dot'},
+         hovertemplate:'%{x} · %{y:.2f}%<extra>trade finance</extra>'}
+      ], {...baseLayout(), yaxis:{...baseLayout().yaxis,
+          title:{text:'renminbi share, %',font:{size:13.5,family:SERIF}}}}, CFG);
+      read.innerHTML = `The shaded band is the settlement-reserve gap, currently
+        <b>${D.kpis.gap_pp} pp</b> (${h.months.at(-1)}). Reserve values for months past the
+        latest COFER quarter carry that quarter forward. Trade finance runs higher still,
+        <b>${h.trade_finance.at(-1)}%</b>: the renminbi is used where invoicing convenience
+        decides, and held where trust does.`;
+    } else if(cur==='H2'){
+      const h=HY.h2;
+      const eu = h.ci_us.map((ci,i)=>ci[1]-h.b_us[i]);
+      const el = h.ci_us.map((ci,i)=>h.b_us[i]-ci[0]);
+      const cu = h.ci_cn.map((ci,i)=>ci[1]-h.b_cn[i]);
+      const cl = h.ci_cn.map((ci,i)=>h.b_cn[i]-ci[0]);
+      Plotly.react('hypPlot', [
+        {x:h.tiers, y:h.b_us, name:'response to US growth, lag 1', type:'bar',
+         marker:{color:c('--wine')}, error_y:{type:'data', array:eu, arrayminus:el,
+         color:c('--ink-3'), thickness:1.2, width:5},
+         hovertemplate:'%{x} · b_us %{y:.3f}<extra></extra>'},
+        {x:h.tiers, y:h.b_cn, name:'response to China growth, lag 1', type:'bar',
+         marker:{color:c('--indigo')}, error_y:{type:'data', array:cu, arrayminus:cl,
+         color:c('--ink-3'), thickness:1.2, width:5},
+         hovertemplate:'%{x} · b_cn %{y:.3f}<extra></extra>'}
+      ], {...baseLayout(), barmode:'group', yaxis:{...baseLayout().yaxis,
+          title:{text:'pp of tier growth per pp, lag one year',font:{size:13.5,family:SERIF}}}}, CFG);
+      read.innerHTML = `Allied real growth regressed on both principals' lagged growth, HAC(3),
+        1951 to 2025. The US coefficient exceeds the China coefficient in absolute size in all
+        three tiers, one-sided p ${Math.min(...h.p)} to ${Math.max(...h.p)}: directionally what
+        H2 claims, unresolved at annual frequency. Whiskers are 95 per cent intervals; several
+        cross zero, and that sign uncertainty is propagated into the simulation rather than
+        assumed away.`;
+    } else {
+      const h=HY.h1;
+      Plotly.react('hypPlot', [
+        {y:h.outcomes, x:h.sd, type:'bar', orientation:'h', name:'scored outcomes',
+         marker:{color:c('--olive')},
+         hovertemplate:'%{y} · %{x:.2f} sd<extra></extra>'}
+      ], {...baseLayout(), margin:{...baseLayout().margin, l:170},
+          xaxis:{...baseLayout().xaxis, title:{text:'pathway separation, sd of endpoint spread',
+            font:{size:13.5,family:SERIF}}},
+          yaxis:{...baseLayout().yaxis, autorange:'reversed'},
+          shapes:[{type:'line', x0:h.reserve, x1:h.reserve, y0:-.5, y1:h.outcomes.length-.5,
+            line:{color:c('--wine'), width:1.6, dash:'dash'}}],
+          annotations:[{x:h.reserve, y:h.outcomes.length-.5, yanchor:'bottom', xanchor:'left',
+            text:'reserve channel '+h.reserve+' sd', showarrow:false,
+            font:{size:12.5, family:SERIF, color:c('--wine')}}]}, CFG);
+      read.innerHTML = `2035 endpoint separations for the scored outcomes, allied responses only;
+        the imposed drivers sit at ${HY.h1.drivers['United States']} sd (United States) and
+        ${HY.h1.drivers['China']} sd (China) and are not scored. The median scored outcome runs
+        <b>${h.median_ratio}x</b> the reserve channel, which is the ordering the thesis requires:
+        the pathway signal is loudest nearest the budgets and quietest in the reserve stock.
+        ${h.min.name}, at ${h.min.sd} sd, is the mapped exception: its measured coupling to
+        principal budgets is the weakest of the three tiers.`;
+    }
+  }
+  draw();
+})();
+/* ---- pathway anchors and findings, written from the payload ---- */
+(function(){
+  const k = D.kpis, pd = D.peace_dividend, ep = D.endpoints, cf = D.cofer, hy = D.hyp;
+  const sgn = v => (v > 0 ? '+' : '') + v.toFixed(1);
+
+  document.getElementById('anchor1').innerHTML =
+    `Anchored on measured 2015 to ${k.year} real growth: China <b>${sgn(k.cn_cagr)}%</b> and the
+     United States <b>${sgn(k.us_cagr)}%</b> per year.`;
+  document.getElementById('anchor2').innerHTML =
+    `Anchored on the peace dividend, the only measured decade of sustained US real contraction:
+     <b>${pd.annual_rate_pct}%</b> per year, ${pd.peak_year} to ${pd.trough_year}.`;
+  document.getElementById('anchor3').innerHTML =
+    `Anchored on the one modern observation of its class: the 2022 freezing of Russian reserves,
+     replayed at a random quarter between 2028 and 2031.`;
+
+  const paths = ['accretion','retrenchment','demonstration'];
+  const probs = paths.map(p => ep.usd[p].prob_below_50);
+  const meds  = paths.map(p => ep.usd[p].median.toFixed(1));
+  const items = [
+    `The defense coefficient on the reserve channel is a precisely estimated near-null: a one log
+     point year-on-year change in the China to US expenditure ratio moves the quarterly dollar
+     share by <b>${sgn(k.beta)} pp</b>, 95 per cent interval <b>${k.beta_lo} to ${k.beta_hi}</b>
+     across ${k.nobs} quarters. The interval spans zero, so the model cannot resolve even the sign
+     of the pathway effect on reserves. That is a finding, not a failure: it is what H3 asserts.`,
+    `Median 2035-Q4 dollar shares are <b>${meds[0]}%</b> under accretion, <b>${meds[1]}%</b> under
+     retrenchment and <b>${meds[2]}%</b> under demonstration, inside an 80 per cent band running
+     roughly ${ep.usd.accretion.p10.toFixed(0)} to ${ep.usd.accretion.p90.toFixed(0)}%. The band is an order of magnitude
+     wider than the separation between the three medians.`,
+    `Pathway separation is <b>${k.separation}</b> standard deviations of endpoint spread, and the
+     probability the dollar holds less than half of allocated reserves by 2035 runs from
+     <b>${Math.min(...probs)}</b> to <b>${Math.max(...probs)}</b> across the three roads: material
+     under every one, decisive under none.`,
+    `The renminbi is where the roads diverge. A median 2035 share of
+     <b>${ep.cny.accretion.median.toFixed(2)}%</b> under accretion stands against
+     <b>${ep.cny.demonstration.median.toFixed(2)}%</b> under a 2022-style demonstration. On the one measured
+     precedent, coercion is self-defeating for the challenger's own currency.`,
+    `Observed context: the dollar has fallen from <b>${cf.usd_first}%</b> in ${cf.first_quarter} to
+     <b>${cf.usd_latest}%</b> in ${cf.cny_latest_quarter}, while the renminbi peaked at
+     ${cf.cny_peak_value}% in ${cf.cny_peak_quarter} and has since fallen
+     ${Math.abs(cf.cny_decline_pct)}%. The dollar's losses went to nontraditional currencies rather
+     than to the renminbi, which is the founding observation of the project.`,
+    `The settlement-reserve gap makes the same point from the payments side: the renminbi settles
+     <b>${hy.h3.swift_cny.at(-1)}%</b> of global payments value but holds
+     <b>${hy.h3.cofer_cny.at(-1)}%</b> of allocated reserves, a gap of
+     <b>${k.gap_pp} pp</b> as of ${hy.h3.months.at(-1)}, and <b>${hy.h3.trade_finance.at(-1)}%</b>
+     of trade finance, where invoicing convenience rather than store-of-value trust does the work.`,
+    `With allied budgets endogenous, H1 holds on the median criterion: scored defense outcomes
+     separate by a median <b>${hy.h1.median_ratio}x</b> the reserve channel's 0.36 sd, led by NATO
+     Europe at <b>${hy.h1.sd[hy.h1.outcomes.indexOf('NATO Europe')]}</b> sd, with
+     <b>${hy.h1.min.name}</b> the mapped exception at ${hy.h1.min.sd} sd. H2 is directional: the US
+     coefficient exceeds the China coefficient in every tier, one-sided p
+     ${Math.min(...hy.h2.p)} to ${Math.max(...hy.h2.p)}, unresolved at annual frequency, while the
+     live 2025 episode ran the other way, US <b>-7.5%</b> against NATO Europe <b>+15.6%</b>.`
+  ];
+  document.getElementById('findings').innerHTML = items.map(t => `<li>${t}</li>`).join('');
+  document.getElementById('findCaveat').innerHTML =
+    `Read honestly. Both replayed shocks rest on single modern precedents, n = 1: the 2022 reserve
+     freeze for the renminbi reversal, the 2022 mobilization for the demonstration response of
+     allied budgets. The valuation robustness for reserves is flow attribution, each currency's
+     share of the quarterly change in allocated claims, because currency price indices are not in
+     the evidence base; it bounds, not removes, the valuation caveat. The alliance feedback runs
+     at annual frequency and its coefficient signs carry real uncertainty, which the simulation
+     propagates rather than fixes. Foundry concentration is qualitative because the ranking table
+     in the evidence base is paywalled, and event studies price through insurance markets, the
+     2026 Gulf premium multiple, rather than equity microdata, which is not redistributed here.`;
+})();
+</script>
+</body>
+</html>

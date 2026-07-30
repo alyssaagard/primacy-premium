@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this model, its code, or its datasets, please cite it as below. Underlying publisher data carry their own citation requirements; see REFERENCES.md."
+title: "The Primacy Premium: conditional forecasts of defense and commercial markets under Chinese military primacy, 2026 to 2035"
+type: software
+authors:
+  - family-names: Agard
+    given-names: Alyssa
+version: 1.0.0
+date-released: "2026-07-29"
+license: CC-BY-NC-4.0
+keywords:
+  - defense economics
+  - defense policy
+  - conditional forecasting
+  - uncertainty propagation
+  - reserve currencies
+  - arms transfers
+  - military expenditure
+  - reproducible research
+abstract: >-
+  A seeded, fully reproducible Python pipeline that models three pathways to
+  Chinese military primacy by 2035 (accretion, retrenchment, demonstration)
+  and tests whether the pathway conditions defense and commercial market
+  outcomes more strongly than the endpoint itself. Sixteen scripts over
+  fourteen source families produce thirty registered artifacts, three tested
+  hypotheses with verdicts written by the pipeline, a unified hypothesis
+  dataset, and an interactive results page.

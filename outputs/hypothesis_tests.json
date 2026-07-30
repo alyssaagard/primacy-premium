@@ -1,0 +1,67 @@
+{
+ "H1": {
+  "claim": "The pathway to primacy conditions outcomes more than the endpoint itself",
+  "verdict": "supported",
+  "headline": "median scored outcome separates by 0.85 sd, 2.3x the reserve channel; exception: Indo-Pacific allies at 0.36 sd",
+  "statistics": {
+   "scored_outcome_separation_sd": {
+    "Indo-Pacific allies": 0.36,
+    "NATO Europe": 1.45,
+    "Hedging middle powers": 1.09,
+    "Allied share of world": 0.6
+   },
+   "driver_separation_sd_context": {
+    "United States": 1.1,
+    "China": 0.02
+   },
+   "reserve_separation_sd": 0.36,
+   "median_outcome_sd": 0.85,
+   "median_over_reserve_ratio": 2.3,
+   "min_outcome": {
+    "name": "Indo-Pacific allies",
+    "sd": 0.36,
+    "over_reserve_ratio": 1.0
+   },
+   "verdict": "supported",
+   "definition": "max median gap over mean within-pathway sd, 2035 endpoints; scored outcomes are the three allied tiers and the allied share of world spending (responses, not drivers); primary criterion is the median scored outcome exceeding twice the reserve-channel separation, with the minimum outcome reported as the strict robustness reading"
+  }
+ },
+ "H2": {
+  "claim": "American retrenchment moves allied budgets harder than Chinese growth alone",
+  "verdict": "directionally supported, not resolved",
+  "headline": "the US coefficient exceeds the China coefficient in absolute size in all three tiers (one-sided p 0.22 to 0.35); the 2025 episode shows substitution, US -7.5 percent against NATO Europe +15.6 percent",
+  "statistics": {
+   "Indo-Pacific allies": {
+    "verdict": "us_stronger",
+    "abs_gap": 0.034,
+    "p_one_sided": 0.2917
+   },
+   "NATO Europe": {
+    "verdict": "us_stronger",
+    "abs_gap": 0.104,
+    "p_one_sided": 0.2201
+   },
+   "Hedging middle powers": {
+    "verdict": "us_stronger",
+    "abs_gap": 0.119,
+    "p_one_sided": 0.3514
+   }
+  }
+ },
+ "H3": {
+  "claim": "Reserve composition moves late and least among the commercial channels",
+  "verdict": "supported",
+  "headline": "renminbi settles 3.1% of payments but holds 1.99% of reserves (gap 1.11 pp, 2026-06); USD pathway separation 0.36 sd",
+  "statistics": {
+   "latest_gap_pp": 1.11,
+   "drift_regimes": {
+    "description": "Mean quarterly share change, pp, before and after 2022-Q1; the difference is the regime shift replayed after a demonstration event",
+    "usd_pre": -0.1295202038821528,
+    "usd_post": -0.13363197282783504,
+    "cny_pre": 0.09272037800129951,
+    "cny_post": -0.05097608845992412
+   },
+   "reserve_separation_sd": 0.3627481046853774
+  }
+ }
+}
