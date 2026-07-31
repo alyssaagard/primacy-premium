@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Primacy Premium</title>
+<meta name="description" content="Conditional forecasts of defense and commercial markets under Chinese military primacy, 2026 to 2035">
+<meta name="author" content="Alyssa I. Agard">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FFEFFE">
+<style>
+:root{
+  --ground:#FDF4F8; --panel:#FFFDFE; --panel-2:#F8EBF1;
+  --ink:#000000;
+  --toc-1:#241A1E; --toc-2:#6A555B; --toc-h:#7B2D3E;
+  --rule:#D9C7CE; --grid:#EFE0E8;
+  --serif:"Times New Roman",Times,serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--serif); font-size:18px; line-height:1.6;
+  font-weight:400;
+  font-kerning:normal; text-rendering:optimizeLegibility;
+}
+/* Nothing in this document is bold. Hierarchy is carried by size,
+   spacing, and rules instead of weight. */
+h1,h2,h3,h4,h5,h6,th,strong,b{font-weight:400}
+.wrap{max-width:46rem; margin:0 auto; padding:3.5rem 1.5rem 6rem}
+
+/* ---- title block ---- */
+.doc-head{text-align:center; padding-bottom:2.2rem; margin-bottom:2.6rem;
+  border-bottom:3px double var(--rule)}
+.doc-title{
+  font-size:2.3rem; line-height:1.15; margin:0 0 .6rem;
+  letter-spacing:.06em; color:var(--ink);
+}
+.doc-sub{
+  margin:0 auto 1.4rem; max-width:34rem; font-style:italic;
+  color:var(--ink); font-size:1.05rem; line-height:1.45;
+}
+.doc-meta{display:flex; flex-wrap:wrap; justify-content:center; gap:.35rem 1.2rem;
+  font-size:.84rem; color:var(--ink); letter-spacing:.07em;
+  text-transform:uppercase}
+
+/* ---- contents (the one place colour is kept, for navigation) ---- */
+.toc{background:var(--panel); border:1px solid var(--rule);
+  padding:1.5rem 1.7rem; margin:0 0 3.4rem; border-radius:2px}
+.toc-h{font-size:.82rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--toc-h); margin:0 0 .9rem}
+.toc-list{list-style:none; margin:0; padding:0}
+.toc-list li{margin:.16rem 0; font-size:.95rem; color:var(--toc-1)}
+.toc-list li.lvl1{margin-top:.62rem}
+.toc-list li.lvl1:first-child{margin-top:0}
+.toc-list li.lvl2{padding-left:1.4rem; font-size:.9rem; color:var(--toc-2)}
+.toc-list a{color:inherit; text-decoration:none;
+  border-bottom:1px solid transparent; transition:border-color .15s,color .15s}
+.toc-list a:hover{color:var(--toc-h); border-bottom-color:var(--rule)}
+
+/* ---- headings ---- */
+h1{font-size:1.6rem; line-height:1.25; color:var(--ink);
+  margin:3.4rem 0 1.05rem; padding-bottom:.45rem;
+  border-bottom:1px solid var(--rule);
+  scroll-margin-top:1.5rem}
+h1:first-of-type{margin-top:0}
+h2{font-size:1.14rem; line-height:1.3; margin:2.2rem 0 .6rem;
+  color:var(--ink); font-style:italic;
+  scroll-margin-top:1.5rem}
+
+/* ---- text ---- */
+p{margin:0 0 1.05rem; text-align:justify; hyphens:auto; color:var(--ink)}
+em{font-style:italic}
+ul{margin:0 0 1.2rem; padding-left:1.3rem}
+li{margin:0 0 .55rem; text-align:justify; hyphens:auto; color:var(--ink)}
+li::marker{color:var(--ink)}
+blockquote{margin:0 0 1.05rem 1.4rem; color:var(--ink)}
+a{color:var(--ink)}
+
+/* ---- table ---- */
+table{width:100%; border-collapse:collapse; margin:1.5rem 0 1.9rem;
+  font-size:.95rem}
+caption{caption-side:bottom; padding-top:.6rem; font-size:.85rem;
+  color:var(--ink); text-align:left; font-style:italic}
+th,td{padding:.5rem .7rem; text-align:left; color:var(--ink);
+  border-bottom:1px solid var(--grid)}
+thead th{background:var(--panel-2); border-bottom:1.5px solid var(--rule);
+  font-size:.84rem; letter-spacing:.07em; text-transform:uppercase}
+tbody tr:last-child td{border-bottom:1.5px solid var(--rule)}
+
+/* ---- responsive ---- */
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:2.2rem 1.15rem 4rem}
+  .doc-title{font-size:1.7rem; letter-spacing:.04em}
+  h1{font-size:1.34rem}
+  p,li{text-align:left; hyphens:none}
+  .toc{padding:1.2rem 1.2rem}
+}
+
+/* ---- print ---- */
+@media print{
+  body{background:#fff; font-size:11pt; color:#000}
+  .wrap{max-width:none; padding:0}
+  .toc{break-after:page; border-color:#bbb}
+  h1,h2{break-after:avoid; page-break-after:avoid}
+  p,li{orphans:3; widows:3}
+  table,tr{break-inside:avoid}
+  a{color:#000; text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc-head">
+  <h1 class="doc-title">THE PRIMACY PREMIUM</h1>
+  <p class="doc-sub">Conditional forecasts of defense and commercial markets under Chinese military primacy, 2026 to 2035</p>
+  <div class="doc-meta">
+    <span>Alyssa I. Agard</span><span>Build of 29 July 2026</span><span>simulation seed 20260724</span>
+  </div>
+</header>
+<nav class="toc" aria-label="Table of contents">
+<h2 class="toc-h">Contents</h2>
+<ol class="toc-list">
+<li class="lvl1"><a href="#1-what-this-project-is">1. What This Project Is</a></li>
+<li class="lvl1"><a href="#2-how-the-research-question-came-about">2. How the Research Question Came About</a></li>
+<li class="lvl2"><a href="#21-the-starting-point">2.1 The intellectual starting point</a></li>
+<li class="lvl2"><a href="#22-from-scenario-to-research-question">2.2 From scenario to research question</a></li>
+<li class="lvl2"><a href="#23-the-observation-that-shaped-the-currency-channel">2.3 The observation that shaped the currency channel</a></li>
+<li class="lvl1"><a href="#3-the-research-question-thesis-and-design">3. The Research Question, Thesis, and Design</a></li>
+<li class="lvl2"><a href="#31-the-question">3.1 The question</a></li>
+<li class="lvl2"><a href="#32-the-thesis">3.2 The thesis</a></li>
+<li class="lvl2"><a href="#33-why-this-is-conditional-forecasting-and-not-prediction">3.3 Why this is conditional forecasting and not prediction</a></li>
+<li class="lvl2"><a href="#34-the-three-pathways">3.4 The three pathways</a></li>
+<li class="lvl2"><a href="#35-the-six-actor-tiers">3.5 The six actor tiers</a></li>
+<li class="lvl2"><a href="#36-the-four-commercial-channels">3.6 The four commercial channels</a></li>
+<li class="lvl1"><a href="#4-how-each-hypothesis-was-formed-and-tested">4. How Each Hypothesis Was Formed and Tested</a></li>
+<li class="lvl2"><a href="#41-hypothesis-1-pathway-dominates-endpoint">4.1 Hypothesis 1: pathway dominates endpoint</a></li>
+<li class="lvl2"><a href="#42-hypothesis-2-the-hegemons-exit-is-the-stronger-signal">4.2 Hypothesis 2: the hegemon&#x27;s exit is the stronger signal</a></li>
+<li class="lvl2"><a href="#43-hypothesis-3-reserves-move-last-and-least">4.3 Hypothesis 3: reserves move last and least</a></li>
+<li class="lvl1"><a href="#5-the-evidence-base-every-source-and-why-it-was-used">5. The Evidence Base: Every Source and Why It Was Used</a></li>
+<li class="lvl2"><a href="#51-core-quantitative-sources">5.1 Core quantitative sources</a></li>
+<li class="lvl2"><a href="#52-event-and-pricing-sources">5.2 Event and pricing sources</a></li>
+<li class="lvl2"><a href="#53-contextual-and-interpretive-sources">5.3 Contextual and interpretive sources</a></li>
+<li class="lvl2"><a href="#54-a-source-that-was-deliberately-not-used-quantitatively">5.4 A source that was deliberately not used quantitatively</a></li>
+<li class="lvl1"><a href="#6-how-the-datasets-were-built">6. How the Datasets Were Built</a></li>
+<li class="lvl2"><a href="#61-reserve-composition">6.1 Reserve composition</a></li>
+<li class="lvl2"><a href="#62-defense-expenditure">6.2 Defense expenditure</a></li>
+<li class="lvl2"><a href="#63-arms-transfers">6.3 Arms transfers</a></li>
+<li class="lvl2"><a href="#64-settlement-shares">6.4 Settlement shares</a></li>
+<li class="lvl2"><a href="#65-maritime-structure">6.5 Maritime structure</a></li>
+<li class="lvl2"><a href="#66-energy-and-semiconductors">6.6 Energy and semiconductors</a></li>
+<li class="lvl2"><a href="#67-security-tables">6.7 Security tables</a></li>
+<li class="lvl2"><a href="#68-the-unified-hypothesis-dataset">6.8 The unified hypothesis dataset</a></li>
+<li class="lvl1"><a href="#7-calibration-and-simulation">7. Calibration and Simulation</a></li>
+<li class="lvl2"><a href="#71-calibration-layer-one">7.1 Calibration, layer one</a></li>
+<li class="lvl2"><a href="#72-calibration-layer-two">7.2 Calibration, layer two</a></li>
+<li class="lvl2"><a href="#73-the-simulation-engines">7.3 The simulation engines</a></li>
+<li class="lvl2"><a href="#74-a-reproducibility-bug-worth-documenting">7.4 A reproducibility bug worth documenting</a></li>
+<li class="lvl1"><a href="#8-a-breakdown-of-each-graph">8. A Breakdown of Each Graph</a></li>
+<li class="lvl2"><a href="#81-expenditure-by-actor-tier">8.1 Expenditure by actor tier</a></li>
+<li class="lvl2"><a href="#82-real-change-year-on-year">8.2 Real change, year on year</a></li>
+<li class="lvl2"><a href="#83-peace-dividend-1985-to-2000">8.3 Peace dividend, 1985 to 2000</a></li>
+<li class="lvl2"><a href="#84-allocated-reserve-shares">8.4 Allocated reserve shares</a></li>
+<li class="lvl2"><a href="#85-conditional-forecast-to-2035">8.5 Conditional forecast to 2035</a></li>
+<li class="lvl2"><a href="#86-arms-transfers-and-supplier-concentration">8.6 Arms transfers and supplier concentration</a></li>
+<li class="lvl2"><a href="#87-hypothesis-ledger">8.7 Hypothesis ledger</a></li>
+<li class="lvl2"><a href="#88-hypothesis-evidence">8.8 Hypothesis evidence</a></li>
+<li class="lvl2"><a href="#89-the-input-register">8.9 The input register</a></li>
+<li class="lvl1"><a href="#9-limitations-carried-openly">9. Limitations Carried Openly</a></li>
+<li class="lvl1"><a href="#10-falsification-tripwires">10. Falsification Tripwires</a></li>
+<li class="lvl1"><a href="#11-why-this-matters">11. Why This Matters for United States Defense and International Affairs</a></li>
+<li class="lvl2"><a href="#111-the-planning-implication">11.1 The planning implication</a></li>
+<li class="lvl2"><a href="#112-the-alliance-implication">11.2 The alliance implication</a></li>
+<li class="lvl2"><a href="#113-the-financial-statecraft-implication">11.3 The financial statecraft implication</a></li>
+<li class="lvl2"><a href="#114-the-methodological-implication">11.4 The methodological implication</a></li>
+<li class="lvl1"><a href="#12-technical-architecture-and-reproduction">12. Technical Architecture and Reproduction</a></li>
+<li class="lvl1"><a href="#13-what-remains">13. What Remains</a></li>
+</ol>
+</nav>
+<main>
+<h1 id="1-what-this-project-is"><strong>1. What This Project Is</strong></h1>
+<p>The Primacy Premium is a quantitative research project that produces conditional forecasts of defense and commercial markets under Chinese military primacy between 2026 and 2035. It asks a single question of the historical record: if China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and does the pathway to primacy condition those outcomes more strongly than the endpoint itself?</p>
+<p>The project is built as a reproducible Python pipeline of seventeen scripts drawing on fourteen published source families, producing thirty registered data artifacts, three formally tested hypotheses, a single unified dataset holding every measurement behind those hypotheses, and an interactive results page. The simulation is seeded, which means that a re-run on the same data vintages reproduces every published number exactly. This has been verified by wiping all generated artifacts, rebuilding the entire pipeline from raw inputs, and confirming that the resulting data payload is byte-identical across independent runs.</p>
+<p>The distinguishing feature of the project is not the scenario. Scenario work on Chinese military rise is abundant. The distinguishing feature is the insistence that the question be falsifiable: that every parameter be estimated from data rather than assumed, that the hypotheses be stated in advance with the observables that would break them, and that the verdicts be written by the pipeline rather than by the author. Where the model cannot resolve a question, it says so, and that admission is treated as a finding rather than a failure.</p>
+<h1 id="2-how-the-research-question-came-about"><strong>2. How the Research Question Came About</strong></h1>
+<h2 id="21-the-starting-point"><strong>2.1 The starting point</strong></h2>
+<p>The project originates in a historian's question rather than an economist's. My training and continuing interest is in military history: the Mongol Empire and the statecraft of Inner Asia, Norse and Viking martial traditions, and American military history from the Revolution through the Cold War. What draws me to those periods is not the campaign maps but the human question underneath them, which is what compels people to fight, to endure, and to accept enormous risk for causes larger than themselves.</p>
+<p>That question leads naturally into contemporary defense policy, because the modern version of it is institutional rather than personal. States, alliances, and markets also make commitments under uncertainty, and they also behave differently depending on how a threat arrives rather than merely whether it arrives. A historian reading about the Anglo-German naval race or the Soviet attainment of strategic parity is reading about exactly that: not a single moment of arrival, but a process whose shape determined how everyone else responded. My applied and independent work in policy gave me the framework for treating those responses as measurable institutional behavior rather than narrative.</p>
+<p><strong><br />
+</strong></p>
+<h2 id="22-from-scenario-to-research-question"><strong>2.2 From scenario to research question</strong></h2>
+<p>The project began as a scenario description. The original formulation was to build a predictive model and simulation of what the global defense and commercial market would look like if China became the top military and nuclear superpower in the world. That formulation is intuitive and it is what most people want to know, but it is not yet a research question. It has no dependent variable that can be measured, no threshold that defines when the antecedent has occurred, and, most importantly, no claim that could turn out to be wrong.</p>
+<p>Three corrections were applied. The first was operationalizing the antecedent: primacy had to be defined by specific thresholds, and the nuclear and conventional thresholds had to be treated as separable variables rather than a single vague condition.</p>
+<p>The second was specifying measurable dependent variables: defense expenditure by actor tier, arms transfer volumes and supplier concentration, and commercial risk pricing across identified channels.</p>
+<p>The third correction is the one that gives the project its identity. Rather than modeling a single path to a single endpoint, the design models three distinct pathways that arrive at the same 2035 endpoint and asks whether the pathway itself explains more variance in outcomes than the endpoint does. That clause converts a scenario into a falsifiable thesis: mechanism dominates endpoint. If the model produces similar outputs across all three pathways, the thesis is wrong and the model has told us so.</p>
+<h2 id="23-the-observation-that-shaped-the-currency-channel"><strong>2.3 The observation that shaped the currency channel</strong></h2>
+<p>One empirical observation did a great deal to shape the project's expectations. Examining the International Monetary Fund's COFER data on the currency composition of official foreign exchange reserves shows that the renminbi's share of allocated reserves peaked around 2021 at roughly 2.85 percent and has since declined, standing at 1.99 percent in the first quarter of 2026. Over the same long period the dollar has fallen substantially, from 71.19 percent at the euro's introduction in 1999 to 57.13 percent in 2026.</p>
+<p>The dollar has therefore been losing share, but not to the renminbi. Its losses have gone to nontraditional reserve currencies. That observation cuts directly against the most common popular narrative about rapid yuan internationalization, and it became the founding empirical anchor for the project's third hypothesis. It also demonstrates why the project insists on measurement over intuition: the intuitive story and the data point in opposite directions.</p>
+<h1 id="3-the-research-question-thesis-and-design"><strong>3. The Research Question, Thesis, and Design</strong></h1>
+<h2 id="31-the-question"><strong>3.1 The question</strong></h2>
+<p>If China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and does the pathway to primacy condition those outcomes more strongly than the fact of primacy itself?</p>
+<h2 id="32-the-thesis"><strong>3.2 The thesis</strong></h2>
+<p>Markets do not price whether the balance of power shifts. They price how it shifts. Identical endpoints reached by different roads produce materially different reallocations, because the institutional responses that matter, which are alliance mobilization, procurement decisions, supplier diversification, and risk repricing, are triggered by the character of the transition rather than by its arrival.</p>
+<h2 id="33-why-this-is-conditional-forecasting-and-not-prediction"><strong>3.3 Why this is conditional forecasting and not prediction</strong></h2>
+<p>There is no training data for an event that has never occurred. No state has attained the specific combination of nuclear parity and regional conventional primacy against the United States that this project models, so no supervised model can learn the mapping from antecedent to outcome. Any project claiming to predict this outcome is either fitting to analogies it has not disclosed or asserting confidence it cannot possess.</p>
+<p>The alternative, which this project adopts, is conditional forecasting with uncertainty propagation. Response parameters are estimated from seven decades of observed history. Each scenario is then imposed exogenously rather than predicted, and the model reports the full distribution of outcomes conditional on that scenario occurring. Three sources of uncertainty are propagated jointly: parameter uncertainty, meaning the coefficients are redrawn from their estimated sampling distributions rather than fixed at their point estimates; innovation uncertainty, meaning the period-to-period shocks are bootstrapped from measured historical residuals so that simulated periods retain the true fat tails rather than an imposed normal distribution; and event timing uncertainty, meaning the demonstration event occurs at a randomly drawn year within a specified window.</p>
+<p>This is the stronger epistemic position, and the wording is explicit rather than deceiving in the language of prediction. The terminology matters and is used consistently throughout: these are conditional forecasts, not predictions.</p>
+<h2 id="34-the-three-pathways"><strong>3.4 The three pathways</strong></h2>
+<p>All three pathways arrive at the same 2035 endpoint. They differ entirely in how they get there, and each is anchored to a measured historical rate rather than an assumed one.</p>
+<ul>
+<li><p>Pathway A, Accretion. China continues to grow its military expenditure while the United States grows more slowly. This is anchored on measured real growth from 2015 to 2025: China at 5.5 percent per year and the United States at 1.0 percent per year. The expected consequence is gradual hedging and marginal diversification of arms markets.</p></li>
+<li><p>Pathway B, Retrenchment. The United States contracts its real defense expenditure, and alliance commitments erode. This is anchored on the peace dividend, the only measured decade of sustained American real contraction, at negative 3.8 percent per year between 1988 and 1998, a total real contraction of 31.8 percent. The expected consequence is a surge in allied self-help and gains for European and Korean primes.</p></li>
+<li><p>Pathway C, Demonstration. A Taiwan contingency resolves in Beijing's favor. This is anchored on the one modern observation of its class, the 2022 freezing of Russian foreign exchange reserves, replayed at a random quarter between 2028 and 2031. The expected consequence is discontinuous rearmament, semiconductor repricing, and war risk insurance becoming difficult to write in the first island chain.</p></li>
+</ul>
+<p>Pathway B is the focal scenario. It was selected deliberately for two reasons. It is under-covered in the existing literature relative to the attention given to Taiwan contingency scenarios, and, more usefully, it is partially observable in live spending data, which means the model can be checked against events as they occur rather than only against history.</p>
+<h2 id="35-the-six-actor-tiers"><strong>3.5 The six actor tiers</strong></h2>
+<p>Expenditure is aggregated into six analytic tiers rather than reported country by country: China, the United States, Indo-Pacific allies, NATO Europe, hedging middle powers, and Russia. The tiering is what makes alliance behavior measurable, because the hypotheses concern how blocs respond rather than how individual states respond.</p>
+<p>One methodological decision inside the tiering must be stated because it affects every chart. When a country is absent from a given SIPRI year, it enters the tier as a gap rather than as a zero. A tier line therefore breaks rather than dipping when data coverage changes, which prevents coverage artifacts from being read as real contractions. Separately, aggregation rule follows the measure: expenditure levels are summed across a tier, while intensity ratios such as share of GDP are reported as the tier median, because summing a ratio across countries produces a number with no interpretation.</p>
+<h2 id="36-the-four-commercial-channels"><strong>3.6 The four commercial channels</strong></h2>
+<p>The transmission from military outcome to commercial market runs through four channels, all four of which are carried in the current build.</p>
+<ul>
+<li><p>Semiconductors. Carried as TSMC's own quarterly revenue from company financial statements, ten quarters from the first quarter of 2024 through the second quarter of 2026, with the latest figure at 40,201 million United States dollars.</p></li>
+<li><p>Shipping and war risk. Carried as structural exposure, meaning merchant fleet, shipbuilding, liner connectivity, and container throughput, combined with the pricing side from the 2026 Gulf war risk episode.</p></li>
+<li><p>Energy. Carried as chokepoint throughput from the Energy Information Administration, including the Strait of Hormuz at 20.7 million barrels per day and the Strait of Malacca at 22.5 million barrels per day, together with the Brent price path.</p></li>
+<li><p>Reserve currency composition. Carried end to end, from the COFER stock shares to the monthly settlement shares from Swift, including the settlement-reserve gap constructed for this project.</p></li>
+</ul>
+<h1 id="4-how-each-hypothesis-was-formed-and-tested"><strong>4. How Each Hypothesis Was Formed and Tested</strong></h1>
+<p>Three hypotheses discipline the project. Each was specified before the modeling layers that test it were built, each has a stated statistic, and each carries a verdict computed by the pipeline and written to a machine-readable file that feeds the results page directly. The page cannot state a verdict the pipeline did not compute.</p>
+<h2 id="41-hypothesis-1-pathway-dominates-endpoint"><strong>4.1 Hypothesis 1: pathway dominates endpoint</strong></h2>
+<p>Statement: Identical 2035 endpoints, reached by different pathways, produce statistically distinguishable outcomes in defense expenditure and arms transfer flows.</p>
+<p>How it was formed: H1 is the direct operationalization of the project's central thesis. If the pathway clause that turned the scenario into research is correct, then holding the endpoint fixed and varying only the road must still produce divergent outcomes. This is the hypothesis that justifies the entire three-pathway architecture, because if it fails the design collapses into a single-scenario exercise.</p>
+<p>How it was tested: The statistic is the maximum separation between pathway medians divided by the mean within-pathway endpoint standard deviation, computed at the 2035 endpoint and expressed in standard deviation units. Two definitional decisions were made explicitly and documented in the code rather than left implicit. First, the scored outcomes are responses rather than drivers: because the United States and China trajectories differ across pathways by construction, scoring them would be circular, so the scored set is the three allied tiers plus the allied share of world spending, with the principals reported as context only. Second, the primary criterion is the median scored outcome against twice the reserve channel separation, with the minimum outcome reported alongside as a stricter robustness reading, so that a single weakly coupled tier is neither hidden nor allowed to veto the gradient the other outcomes display.</p>
+<p>Result. H1 is supported. The median scored outcome separates at 0.85 standard deviations, which is 2.3 times the reserve channel separation of 0.36. NATO Europe separates most strongly at 1.45 standard deviations, followed by hedging middle powers at 1.09 and the allied share of world spending at 0.60. The exception is revealed: Indo-Pacific allies separate at only 0.36 standard deviations, equal to the reserve channel, which is itself informative because it indicates the weakest measured coupling between that tier's budgets and principal behavior. For context, the imposed drivers separate at 1.10 for the United States and 0.02 for China, and neither is scored.</p>
+<h2 id="42-hypothesis-2-the-hegemons-exit-is-the-stronger-signal"><strong>4.2 Hypothesis 2: the hegemon's exit is the stronger signal</strong></h2>
+<p>Statement: American retrenchment moves allied budgets and supplier market shares faster than Chinese growth alone. The hegemon's exit is the stronger signal.</p>
+<p>How it was formed: H2 addresses a question that matters more for policy than for theory: whether allies respond primarily to threat or primarily to protection. The historical intuition, drawn from alliance behavior across the post-war period, is that allied defense budgets track the patron's commitment more closely than the adversary's capability, because the adversary's capability is a distant abstraction while the patron's withdrawal is an immediate budget problem. Stating this as a hypothesis makes it testable rather than assumed, and it is the hypothesis most directly relevant to Pathway B, the focal scenario.</p>
+<p>How it was tested: Each allied tier's real expenditure growth is regressed on both principals' lagged real growth using ordinary least squares with Newey-West standard errors at three lags, over annual data from 1951 to 2025. The specification is that tier growth in a given year is a function of United States growth and Chinese growth in the prior year. H2 predicts that the absolute magnitude of the American coefficient exceeds the absolute magnitude of the Chinese coefficient. The comparison is tested by the delta method with a one-sided p value.</p>
+<p>Result: H2 is directionally supported but not resolved. The American coefficient exceeds the Chinese coefficient in absolute size in all three allied tiers, which is what the hypothesis predicts, but the one-sided p values range from 0.22 to 0.35, meaning the difference is not statistically resolvable at annual frequency. The coefficients themselves are: Indo-Pacific allies at 0.072 for the United States and negative 0.038 for China; NATO Europe at 0.266 and negative 0.162; hedging middle powers at 0.263 and 0.144. Several confidence intervals cross zero, and rather than assuming that uncertainty away, the simulation propagates it by redrawing coefficients from their sampling distributions.</p>
+<p>The honest reading is that the sign is consistent with the hypothesis in every tier and that the effect cannot be distinguished from zero with annual data over this period. That is an authentic limitation of frequency and sample rather than a refutation.</p>
+<h2 id="43-hypothesis-3-reserves-move-last-and-least"><strong>4.3 Hypothesis 3: reserves move last and least</strong></h2>
+<p>Statement: Reserve composition is the slowest and least pathway-sensitive commercial channel, and the dollar's share erodes toward diversification rather than toward the renminbi.</p>
+<p>How it was formed: H3 grew directly out of the COFER observation described in section 2.3. If the renminbi's reserve share peaked in 2021 and has declined since, while the dollar's share has fallen steadily, then the dollar's losses are going somewhere other than the renminbi. H3 formalizes that observation into a claim about channel speed: reserve composition is the commercial channel least responsive to military outcomes, because reserve holdings respond to convertibility, capital account openness, and institutional trust rather than to relative military power.</p>
+<p>How it was tested: Three separate tests. First, a Newey-West regression of quarterly dollar share changes on the year-on-year change in the logged China to United States expenditure ratio, with indicator terms for the 2022 sanctions quarters, across 105 quarters. Second, the pathway separation statistic applied to the reserve channel. Third, and most distinctively, a settlement-reserve gap constructed for this project by differencing two sources that are not normally combined.</p>
+<p>Result: H3 is supported on all three tests. The defense coefficient is a precisely estimated near-null: a one log point change in the China to United States expenditure ratio moves the quarterly dollar share by 1.04 percentage points, with a 95 percent confidence interval running from negative 0.80 to 2.88 across 105 quarters. The interval spans zero, so the model cannot resolve even the sign of the effect. This is exactly what H3 asserts, and it is a precisely estimated near-null rather than an absence of evidence.</p>
+<p>The pathway separation for the dollar share is 0.36 standard deviations, the lowest of any outcome measured in the project. Median 2035 dollar shares sit within 2.1 points of one another across the three pathways, at 50.7 percent under accretion, 52.8 under retrenchment, and 51.3 under demonstration, inside an 80 percent band running roughly 44 to 58 percent. The band is an order of magnitude wider than the separation between the medians.</p>
+<p>The settlement-reserve gap provides the clearest live evidence. As of June 2026 the renminbi settles 3.10 percent of global payments value and roughly 8 percent of trade finance, while holding only 1.99 percent of allocated reserves, a gap of 1.11 percentage points. The renminbi is used where invoicing convenience decides and held where institutional trust decides, and those two measures have diverged.</p>
+<p>One further result within the reserve channel deserves emphasis because it runs against intuition. The renminbi is where the pathways diverge most sharply, with a median 2035 share of 3.15 percent under accretion against 0.00 percent under a demonstration scenario. On the single measured precedent available, which is the 2022 reserve freeze, coercion is self-defeating for the challenger's own currency. This should be read as an upper bound on reversal rather than a point forecast, because it rests on one observation.</p>
+<h1 id="5-the-evidence-base-every-source-and-why-it-was-used"><strong>5. The Evidence Base: Every Source and Why It Was Used</strong></h1>
+<p>Fourteen published source families feed the pipeline. Each was selected for a specific analytical function rather than for general relevance, and each is cited in full in the repository's references file. Raw publisher files are deliberately not redistributed, in keeping with each provider's terms; the repository documents exactly what to obtain and where to place it so that the pipeline can be re-run.</p>
+<h2 id="51-core-quantitative-sources"><strong>5.1 Core quantitative sources</strong></h2>
+<p>International Monetary Fund, Currency Composition of Official Foreign Exchange Reserves, quarterly through the first quarter of 2026. This is the backbone of the reserve channel and therefore of H3. COFER is the authoritative source for what central banks truly hold, and it is the only series that can adjudicate the claim that the dollar's losses are or are not going to the renminbi. It supplies both the share series and the underlying nominal claims used to construct the flow attribution robustness series.</p>
+<p>SIPRI Military Expenditure Database, 1949 to 2025, version 1.2. This is the backbone of the defense side and therefore of H1 and H2. Its length is the reason the project can estimate alliance response parameters from seven decades rather than from a recent window, which matters because the retrenchment episodes that anchor Pathway B are historical. Chinese figures in this database are SIPRI estimates, which is disclosed wherever they are used.</p>
+<p>SIPRI Arms Transfers Database, including both the trend indicator value tables and the full trade register. The trade register, at nearly thirty thousand rows, supports supplier concentration analysis over five-year order windows. Order-year windows are used deliberately rather than delivery-year shares, which makes the resulting concentration measure more conservative than SIPRI's own headline export shares.</p>
+<p>Swift RMB Tracker and Global Currency Tracker, twenty-seven monthly issues covering data months from April 2024 through June 2026. This is the settlement side of the settlement-reserve gap, and it is the source that makes H3's central evidence possible. The publication was renamed from RMB Tracker to Global Currency Tracker in February 2026, and the parser handles both.</p>
+<p>NATO, Defence Expenditure of NATO Countries, 2026 edition, Table 3. This provides defense spending as a share of real GDP for thirty-one allies from 2014 through 2026, with 2026 as an estimate. It is used in preference to reconstructing the same quantity from other sources because it is the alliance measuring itself, which is the appropriate authority for a hypothesis about alliance behavior.</p>
+<p>UNCTADstat maritime transport tables, four separate exports covering merchant fleet by flag of registration, ships built by country of building, the Liner Shipping Connectivity Index, and container port throughput. Together these establish the structural exposure of the shipping channel, which is the question of who owns the ships, who builds them, who is connected, and who moves the containers.</p>
+<p>United States Energy Information Administration, World Oil Transit Chokepoints and the Short-Term Energy Outlook. The chokepoint report supplies transit volumes for the energy channel, and the Short-Term Energy Outlook supplies the Brent price path against which scenarios reprice.</p>
+<p>TSMC consolidated condensed financial statements, quarterly. Company-reported revenue is used as the semiconductor channel's quantitative exposure variable, because it is authoritative, regularly published, and not subject to the licensing restrictions that affect third-party market research.</p>
+<p>Federation of American Scientists Nuclear Notebook, published in the Bulletin of the Atomic Scientists, 2025 and 2026 issues covering China, the United States, and Russia. These supply the warhead counts that define the nuclear parity threshold, together with Department of Defense projections of the Chinese trajectory.</p>
+<h2 id="52-event-and-pricing-sources"><strong>5.2 Event and pricing sources</strong></h2>
+<p>Joint War Committee circular JWLA-033, dated 3 March 2026, and Argus Media reporting on war risk insurance. These supply the pricing evidence for the shipping channel. The 2026 Gulf episode, in which additional war risk premia moved from a range of 0.15 to 0.2 percent of hull value to approximately 1 percent, yields a measured multiple of 5.7 times. This episode was selected as structurally superior to the earlier Red Sea episode as a calibration case for a Taiwan contingency, because its geography and the institutional response more closely resemble the modeled scenario.</p>
+<p>United States Department of Defense, Military and Security Developments Involving the People's Republic of China, 2025 annual report to Congress. This anchors the curated exercise register and the projected Chinese warhead trajectory.</p>
+<h2 id="53-contextual-and-interpretive-sources"><strong>5.3 Contextual and interpretive sources</strong></h2>
+<p>Congressional Research Service reports on naval force structure, Chinese naval modernization, New START central limits, and the 2025 Hague summit; analyses from RUSI, the Council on Foreign Relations, the Federation of American Scientists, and the Vienna Center for Disarmament and Non-Proliferation on the expiration of New START; and official statements on that expiration from the United Nations Secretary-General and the French Foreign Ministry.</p>
+<p>These are contextual rather than parametric, meaning they inform design decisions rather than supplying numbers the model consumes. One such decision is worth naming. New START expired in February 2026 with no successor agreement. Because the nuclear baseline is no longer governed by a treaty with fixed central limits, the project's nuclear denominator was amended to be stochastic rather than fixed. That is a design change driven directly by a documented policy event.</p>
+<p>The Kiel Institute Ukraine Support Tracker provides context for the 2022 mobilization calibration case, which is the one modern observation of alliance-wide mobilization following a violent shock.</p>
+<h2 id="54-a-source-that-was-deliberately-not-used-quantitatively"><strong>5.4 A source that was deliberately not used quantitatively</strong></h2>
+<p>The TrendForce foundry revenue ranking for the first quarter of 2026 was acquired with the intention of computing a Herfindahl index of foundry concentration. On inspection the document in the evidence base is the report's public preview, and the market share table itself is withheld behind the paywall. This was confirmed both visually and by optical character recognition of the rendered page, which shows the table region replaced by an access prompt.</p>
+<p>A concentration index cannot be computed from a redacted table. Rather than estimate the missing values or quietly drop the channel, the project carries foundry concentration qualitatively, using the report's own public highlight that Taiwan foundries including TSMC, UMC, Vanguard, and PSMC are raising prices amid tight capacity with increases extending into 2027, while the quantitative exposure variable remains TSMC's own published revenue. The descope is documented in the parser's docstring, in the artifact register, and in the caveat text on the results page.</p>
+<h1 id="6-how-the-datasets-were-built"><strong>6. How the Datasets Were Built</strong></h1>
+<p>Seven parsers convert published sources into tidy, validated tables. A design principle runs through all of them: every extraction passes range validation gates, so that a source redesign causes a loud failure rather than a silently wrong number entering the model. This matters because several sources are living documents whose layout changes without notice.</p>
+<h2 id="61-reserve-composition"><strong>6.1 Reserve composition</strong></h2>
+<p>The COFER parser produces both a long-format quarterly table and a wide share matrix spanning the first quarter of 1999 to the first quarter of 2026. Its distinguishing feature is an independent share reconciliation: the parser recomputes currency shares from the underlying claims and compares them against the published shares, and the build fails if the discrepancy exceeds 0.05 percentage points. The current build reconciles to 0.0000 percentage points.</p>
+<h2 id="62-defense-expenditure"><strong>6.2 Defense expenditure</strong></h2>
+<p>The SIPRI expenditure parser locates worksheet headers by content rather than by fixed position, which allows it to survive SIPRI's annual re-layout of the workbook. It extracts five separate measures: constant 2024 United States dollars, current dollars, share of gross domestic product, per capita expenditure, and share of government spending. These feed both a country-level panel and the six-tier aggregation.</p>
+<h2 id="63-arms-transfers"><strong>6.3 Arms transfers</strong></h2>
+<p>Two files are parsed. The trend indicator value tables give world delivery volumes from 1950 to 2025 and recipient-level import volumes from 2011 to 2025. The trade register, at just under thirty thousand rows, is aggregated into supplier concentration over five-year order windows, producing both a Herfindahl index and leading supplier shares. A derived table computes each allied tier's dependence on United States supply: in the 2020 window, the United States accounts for 80 percent of Indo-Pacific allied imports and 54 percent of NATO Europe's.</p>
+<h2 id="64-settlement-shares"><strong>6.4 Settlement shares</strong></h2>
+<p>The Swift parser reads twenty-seven monthly PDF issues and extracts three figures from each: the renminbi's share of global payments, the dollar's share of global payments, and the renminbi's share of trade finance. Two parsing decisions were necessary. The trackers use a two-column layout in which a single text line can carry both the global panel and the ex-eurozone panel, so the parser takes the first ranked match on a line, which always belongs to the global panel. More importantly, each issue reports the previous month's data, so the data month is read from the document text itself rather than inferred from the filename, which would have introduced a systematic one-month offset across the entire series.</p>
+<h2 id="65-maritime-structure"><strong>6.5 Maritime structure</strong></h2>
+<p>Four UNCTAD exports are combined into a single tidy panel of 644 rows. The group-level exports in the evidence base carry aggregates rather than individual economies, so China's values are derived exactly as UNCTAD itself presents them, by subtracting developing economies excluding China from developing economies. The derivation is validated to be positive and below the world total in every year, and derived rows are labeled as derived. The headline structural finding is that China built 54 percent of world gross tonnage in 2025.</p>
+<h2 id="66-energy-and-semiconductors"><strong>6.6 Energy and semiconductors</strong></h2>
+<p>The chokepoint parser reads a layout-preserved text grid, locating the year header by pattern rather than position. The Short-Term Energy Outlook parser extracts 72 months of Brent prices spanning January 2022 through December 2027, combining observed and forecast values. The TSMC parser reads each quarterly statement for its period label and net revenue figure, then deduplicates by quarter, which is necessary because audited and unaudited issues overlap.</p>
+<h2 id="67-security-tables"><strong>6.7 Security tables</strong></h2>
+<p>The security parser produces five tables. NATO burden shares for thirty-one allies. A nuclear panel extracted by anchored regular expressions with validation, covering Chinese stockpiles at 600 warheads in 2025 and 620 in 2026, with Department of Defense projections of 1,000 by 2030 and 1,500 by 2035, against United States figures of 3,700 stockpiled and 1,770 deployed, and Russia at 4,400. Recipient-level arms imports. Allied import dependence by five-year window. And three curated tables: a Taiwan Strait event register of seven documented episodes, the war risk pricing table, and an alliance commitment matrix of twenty-eight entries encoding treaty structure, which is documented as a design input rather than an estimate.</p>
+<h2 id="68-the-unified-hypothesis-dataset"><strong>6.8 The unified hypothesis dataset</strong></h2>
+<p>The project's flagship dataset is a single tidy table holding every measurement behind all three hypotheses, at 977 rows with no null values in either the value or source columns. Its grammar is constant across the file: hypothesis, role, series, scope, frequency, period, value, unit, and source.</p>
+<p>The role column is what makes the table auditable. Test rows carry computed statistics such as separations, coefficients, and p values. Evidence rows carry the observed series each test reads. Input rows carry simulated endpoints. Robustness rows carry alternative measurements that guard a stated caveat. Context rows carry the structural exposures the channels reference, including warhead counts, chokepoint flows, fabrication revenue, shipbuilding tonnage, connectivity, the Brent path, and the war risk multiple.</p>
+<p>The purpose of consolidating everything into one file is auditability. A reader can filter on H2 and see that hypothesis's entire case, test statistics and supporting evidence together, without opening the pipeline or reading any code. The context rows mean the dataset stands alone in a business intelligence tool without the rest of the repository.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Hypothesis</strong></th>
+<th><strong>Role</strong></th>
+<th><strong>Rows</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>H1</td>
+<td>input</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>H1</td>
+<td>test</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>H2</td>
+<td>evidence</td>
+<td>105</td>
+</tr>
+<tr class="even">
+<td>H2</td>
+<td>test</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>H3</td>
+<td>evidence</td>
+<td>310</td>
+</tr>
+<tr class="even">
+<td>H3</td>
+<td>robustness</td>
+<td>377</td>
+</tr>
+<tr class="odd">
+<td>H3</td>
+<td>test</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td>context</td>
+<td>input</td>
+<td>118</td>
+</tr>
+</tbody>
+</table>
+<h1 id="7-calibration-and-simulation"><strong>7. Calibration and Simulation</strong></h1>
+<h2 id="71-calibration-layer-one"><strong>7.1 Calibration, layer one</strong></h2>
+<p>Every parameter the simulation consumes is estimated rather than assumed. The reserve channel response is estimated by Newey-West regression of quarterly dollar share changes on the year-on-year change in the logged China to United States expenditure ratio, with indicator terms for the 2022 sanctions quarters. Named historical calibration cases are computed and written with their confidence intervals to a single JSON artifact: the peace dividend contraction, the 2022 sanctions quarters, the accretion decade growth rates, the observed 2025 United States decline of 7.5 percent, and the pre and post 2022 drift regimes.</p>
+<h2 id="72-calibration-layer-two"><strong>7.2 Calibration, layer two</strong></h2>
+<p>The alliance feedback system makes allied budgets endogenous. Each allied tier's real growth is regressed on both principals' lagged growth using Newey-West standard errors at three lags over 1951 to 2025. Two further quantities are measured here because the simulation requires them. The rest-of-world block, computed as the world total minus the six tiers, receives its own drift and residual pool so that world totals close in simulation. And the demonstration mobilization case measures the step-up in allied growth after February 2022: NATO Europe at 6.55 percentage points and hedging middle powers at 6.91, against Indo-Pacific allies at only 0.07.</p>
+<p>Historical event windows are also computed so the regression can be read against plain episodes. Across post-Vietnam, the peace dividend, and the sequester era, the pattern is consistent: American real growth is negative while allied tiers grow. The live 2025 observation is the sharpest instance, with the United States at negative 7.84 percent against NATO Europe at positive 14.49 percent.</p>
+<h2 id="73-the-simulation-engines"><strong>7.3 The simulation engines</strong></h2>
+<p>Two seeded engines run ten thousand draws per pathway. The reserve channel engine runs quarterly to the fourth quarter of 2035. The system engine runs annually to 2035 across a five-block system comprising the United States, China, three allied tiers, and rest of world, with allied budgets responding through the estimated feedback equations.</p>
+<p>Both propagate the three uncertainty sources jointly. Innovations are bootstrapped from measured residuals rather than drawn from a fitted normal distribution, which preserves the true fat tails of historical defense budgeting. After a demonstration event, allied tiers additionally receive the measured 2022 mobilization differential, decayed linearly over four years, and that single-observation basis is carried explicitly into the output caveats.</p>
+<p>The system engine also produces two layer four quantities: world arms transfer demand projected through a measured delivery elasticity of 0.415, and the war risk multiplier of 5.7 attached to demonstration event years.</p>
+<h2 id="74-a-reproducibility-bug-worth-documenting"><strong>7.4 A reproducibility bug worth documenting</strong></h2>
+<p>During final verification, a genuine reproducibility defect was found and fixed. The system engine was sub-seeding each pathway using Python's built-in string hash function, which is salted per process and therefore varies between runs. The result was that the seeded reproducibility claim was false across processes even though it appeared to hold within a single session. The fix substitutes a fixed pathway index for the salted hash. Reproducibility is now verified by running the simulations twice in independent processes and confirming the resulting data payload is byte-identical.</p>
+<p>This is recorded here rather than quietly corrected because the project's central methodological claim is reproducibility, and a claim of that kind should carry the evidence of having been tested rather than merely asserted.</p>
+<h1 id="8-a-breakdown-of-each-graph"><strong>8. A Breakdown of Each Graph</strong></h1>
+<p>The results page carries eight interactive panels. Each is described here in terms of what it shows, how to read it, and why it is in the build.</p>
+<h2 id="81-expenditure-by-actor-tier"><strong>8.1 Expenditure by actor tier</strong></h2>
+<p>A multi-line time series of military expenditure by the six analytic tiers, with selectable measure and start year. Five measures are available: constant 2024 dollars, current dollars, share of gross domestic product, per capita, and share of government spending. This is the project's foundational chart, establishing the relative trajectories that everything else responds to. Reading note: tier lines break rather than dip where SIPRI coverage changes, and the aggregation rule shifts from sum to median when the selected measure is an intensity ratio.</p>
+<h2 id="82-real-change-year-on-year"><strong>8.2 Real change, year on year</strong></h2>
+<p>Annual real percentage change by tier, with a zero reference line. This is where Pathway B becomes visible in live data. In 2025 the United States line crosses below zero at negative 7.5 percent while allied tiers remain above it, NATO Europe most strongly at positive 15.6 percent. One year is not a trend, but it is the first year the incumbent's line crosses zero while the allied tiers stay above it, which is precisely the configuration the retrenchment pathway describes.</p>
+<h2 id="83-peace-dividend-1985-to-2000"><strong>8.3 Peace dividend, 1985 to 2000</strong></h2>
+<p>United States real expenditure across the post-Cold War contraction, with peak and trough years marked. This chart exists to show the reader exactly where a scenario parameter comes from. The 31.8 percent total contraction and negative 3.8 percent annual rate visible here are not assumptions; they are the measured anchor that Pathway B imposes on the United States.</p>
+<h2 id="84-allocated-reserve-shares"><strong>8.4 Allocated reserve shares</strong></h2>
+<p>Quarterly COFER shares by currency, with selectable currencies and a linear or logarithmic scale, and a marker at the first quarter of 2022 for the freezing of Russian reserves. This is the chart that displays H3's founding observation: the dollar declining from 71.19 to 57.13 percent while the renminbi peaks in 2021 and falls back, with the difference absorbed by nontraditional currencies.</p>
+<h2 id="85-conditional-forecast-to-2035"><strong>8.5 Conditional forecast to 2035</strong></h2>
+<p>Percentile fans for the dollar or renminbi share by pathway, with a selectable band width. This is the project's central output. The visual argument is immediate: for the dollar, the three pathway fans overlap almost entirely, which is H3 made visible. For the renminbi, they separate sharply, with the demonstration fan collapsing toward zero.</p>
+<h2 id="86-arms-transfers-and-supplier-concentration"><strong>8.6 Arms transfers and supplier concentration</strong></h2>
+<p>World delivery volumes in trend indicator values on the left axis, with supplier concentration and leading supplier share on a right axis, from a selectable start year. Concentration is measured over five-year order windows, which is deliberately more conservative than delivery-year export shares. Supplier diversification among United States treaty allies is one of the project's falsification tripwires, and this chart is where it would first become visible.</p>
+<h2 id="87-hypothesis-ledger"><strong>8.7 Hypothesis ledger</strong></h2>
+<p>A table of the three hypotheses with their claims and computed verdicts, followed by a combined readout. The verdict states are written from the pipeline's own output file rather than typed into the page, which means the ledger cannot assert a conclusion the model did not produce.</p>
+<h2 id="88-hypothesis-evidence"><strong>8.8 Hypothesis evidence</strong></h2>
+<p>A switchable panel with three views, drawing directly from the unified hypothesis dataset. The H3 view, which is the default, plots the COFER reserve share as a step line against the Swift settlement share with the area between them shaded, making the settlement-reserve gap directly visible, with trade finance as a dotted line above both. The H2 view plots the two feedback coefficients per tier as grouped bars with 95 percent confidence interval whiskers, several of which visibly cross zero. The H1 view plots the pathway separation for each scored outcome as horizontal bars against a dashed reference line at the reserve channel value of 0.36, so the reader can see which outcomes clear the bar and by how much.</p>
+<h2 id="89-the-input-register"><strong>8.9 The input register</strong></h2>
+<p>Not a chart, but the page's most unusual element. Every artifact the model produces or consumes is listed with its true row count, read off disk at build time rather than typed. The builder refuses to publish the page if any registered artifact is missing. The current build shows thirty of thirty artifacts and 9,225 total rows. The design intent is that a full meter must be earned by the pipeline rather than asserted by the author.</p>
+<h1 id="9-limitations-carried-openly"><strong>9. Limitations Carried Openly</strong></h1>
+<p>The project treats its limitations as part of the deliverable versus an appendix. Five are carried explicitly on the results page.</p>
+<ul>
+<li><p>Both replayed shocks rest on single observations. The renminbi reversal replays the 2022 reserve freeze, and the demonstration mobilization replays the 2022 allied step-up. Neither is a sample. Both are stated as n equals one wherever they are used, and the renminbi result should be read as an upper bound on reversal rather than a point forecast.</p></li>
+<li><p>Reserve valuation is bounded rather than removed. COFER shares are stock shares at market value, so exchange rate movements shift them without any asset being traded. The exact valuation adjustment requires currency-by-currency price indices that are not in the evidence base. The project substitutes a flow attribution series, computing each currency's share of the quarterly change in total allocated claims. This bounds the caveat rather than eliminating it, and the limitation is documented in the artifact register.</p></li>
+<li><p>The alliance feedback runs at annual frequency and its coefficient signs carry genuine uncertainty. This is the direct cause of H2 being directional rather than resolved. The simulation propagates that uncertainty rather than assuming it away.</p></li>
+<li><p>Foundry concentration is qualitative because the source table is paywalled, as described in section 5.4.</p></li>
+<li><p>Event studies price through insurance markets, specifically the 2026 Gulf premium multiple, rather than through equity microdata, which is not redistributed here.</p></li>
+</ul>
+<h1 id="10-falsification-tripwires"><strong>10. Falsification Tripwires</strong></h1>
+<p>A model someone can use is a model that names, in advance, the observables that would break it. Five are specified.</p>
+<ul>
+<li><p>Allied defense expenditure as a share of gross domestic product, measured against the Pathway B elasticities.</p></li>
+<li><p>Arms import supplier diversification among United States treaty allies, measured by the Herfindahl index. If allies diversify away from American supply faster than the model's elasticities predict, the retrenchment pathway is mis-specified.</p></li>
+<li><p>The renminbi's share of trade settlement against its COFER reserve share. The gap should widen under accretion and close only with convertibility, not with coercion. If it closes following a coercive episode, H3's mechanism is wrong.</p></li>
+<li><p>The nontraditional currency share of reserves, which should keep absorbing the dollar's decline under every pathway.</p></li>
+<li><p>War risk premia around Taiwan Strait exercise events, measured against the 2026 Gulf multiple of 5.7 times hull value that the demonstration pathway attaches to its event quarter.</p></li>
+</ul>
+<h1 id="11-why-this-matters"><strong>11. Why This Matters</strong></h1>
+<h2 id="111-the-planning-implication"><strong>11.1 The planning implication</strong></h2>
+<p>If H1 holds, and in this build it does, then defense planning organized around endpoints is planning against the wrong variable. A great deal of strategic analysis is structured as a question about arrival: when does China reach parity, when does the balance tip, what is the year of maximum danger. The finding here is that the road matters more than the date for the outcomes that planners actually control, which are budgets, procurement, alliance management, and industrial capacity.</p>
+<p>The practical consequence is that two futures with identical Chinese capability in 2035 can require substantially different American postures, depending on whether that capability arrived through steady accretion, through American withdrawal, or through a violent demonstration. A posture optimized for one may be poorly suited to another.</p>
+<h2 id="112-the-alliance-implication"><strong>11.2 The alliance implication</strong></h2>
+<p>H2's directional finding, that allied budgets respond more strongly to American behavior than to Chinese behavior, is the most policy-relevant result even though it is not statistically resolved. It suggests that alliance burden sharing is substantially a function of American signaling rather than of threat perception alone, which inverts a common framing in which allies are expected to respond primarily to the adversary.</p>
+<p>The live 2025 episode sharpens this. American real expenditure fell 7.5 percent while NATO Europe rose 15.6 percent. That is substitution rather than band-wagoning, and it runs ahead of the historical pattern estimated across the full period. If it persists, it indicates that the retrenchment pathway's elasticities may understate allied responsiveness in the current environment, which would be a significant finding for anyone modeling burden sharing.</p>
+<p>The dependence figures give this a concrete edge. The United States supplies 80 percent of Indo-Pacific allied arms imports and 54 percent of NATO Europe's. Allied self-help under retrenchment therefore runs directly into the question of whose industrial base captures the displaced procurement, and the answer determines whether American withdrawal strengthens or weakens the American defense industrial position over a decade.</p>
+<h2 id="113-the-financial-statecraft-implication"><strong>11.3 The financial statecraft implication</strong></h2>
+<p>H3 speaks directly to a policy debate that is frequently conducted on intuition. The concern that American financial sanctions accelerate de-dollarization and drive reserve holders toward the renminbi is widespread. The measured evidence in this project does not support the renminbi half of that concern. The dollar is indeed losing reserve share, substantially, but those losses are being absorbed by nontraditional currencies rather than by the renminbi, whose share peaked in 2021 and has fallen since.</p>
+<p>The settlement-reserve gap explains the mechanism. The renminbi is increasingly used for settlement, at 3.10 percent of global payments and roughly 8 percent of trade finance, because invoicing convenience responds to trade patterns. It is not accumulated as a reserve asset, at 1.99 percent, because reserve accumulation responds to convertibility and institutional trust. Those are different decisions with different determinants; conflating them produces bad forecasts.</p>
+<p>The simulation result that a coercive demonstration drives the renminbi's projected 2035 reserve share to zero, against 3.15 percent under peaceful accretion, is the most counterintuitive finding in the project. On the one available precedent, coercion is self-defeating for the coercing state's own currency ambitions. If that relationship holds, it has direct implications for how Beijing should be expected to weigh currency internationalization against coercive options, and for how Washington should assess the financial consequences of a contingency.</p>
+<h2 id="114-the-methodological-implication"><strong>11.4 The methodological implication</strong></h2>
+<p>There is a final contribution that is not about China at all. The project demonstrates that a policy question of this kind can be handled with full parameter estimation, propagated uncertainty, pre-committed hypotheses, published falsification criteria, and byte-level reproducibility. The near-null result in the reserve channel is a case in point: the model reports that it cannot resolve the sign of the effect, and that is published as a finding rather than buried.</p>
+<p>Defense analysis frequently produces confident point estimates from assumed parameters. This project's position is that a precisely estimated near-null, honestly reported, is more useful to a decision maker than a confident number with no interval around it.</p>
+<h1 id="12-technical-architecture-and-reproduction"><strong>12. Technical Architecture and Reproduction</strong></h1>
+<p>The pipeline comprises seventeen Python scripts organized in five stages: data engineering, historical calibration, conditional simulation, hypothesis assembly, and delivery. The stack is Python 3 with pandas, NumPy, SciPy, statsmodels, Matplotlib, and openpyxl, with versions pinned. The interactive page renders with Plotly loaded from a content delivery network. The simulation seed is 20260724.</p>
+<p>Reproduction is a documented sequence: seven parsers, two calibration scripts, two simulation engines, the hypothesis panel builder, the figure generator, and four delivery scripts. The full sequence has been executed from a wiped state, and all seventeen scripts complete successfully. The register reads thirty of thirty artifacts and 9,225 rows.</p>
+<p>Raw publisher files are excluded from the repository in keeping with provider terms. The repository documents each of the fourteen source families, what to obtain, and where to place it. Original content is licensed under Creative Commons Attribution-NonCommercial 4.0, with the underlying publisher data excluded from that license and cited under their own terms.</p>
+<h1 id="13-what-remains"><strong>13. What Remains</strong></h1>
+<p>Two areas of work are outstanding:</p>
+<p>The archival calibration cases carry the longest lead time. The Soviet attainment of strategic parity and the Anglo-German naval race are the two historical analogues most directly relevant to the primary hypothesis, and archival work on both is required for H1 to be fully falsifiable against historical precedent rather than against simulation alone. Until that work is complete, H1 rests on the simulated separation statistic and on the modern event windows.</p>
+<p>The second is frequency. H2's central limitation is that annual data cannot resolve the difference between the two coefficients. Higher-frequency budget data, where available, would sharpen the test considerably. The current result should be understood as the best available answer at annual frequency rather than as the final answer.</p>
+</main>
+</div>
+</body>
+</html>
