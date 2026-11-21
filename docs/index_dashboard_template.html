@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Primacy Premium</title>
-<meta name="description" content="A Python modeling pipeline, calibrated on seven decades of IMF and SIPRI data, that forecasts how global defense spending, arms transfers, and commercial risk pricing would reallocate under Chinese military primacy by 2035.">
+<meta name="description" content="Conditional forecasts of defense expenditure, arms transfers, and reserve currency composition under three pathways to Chinese military primacy by 2035, estimated from IMF and SIPRI data.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="shortcut icon" href="favicon.ico">
@@ -14,11 +14,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
 <style>
 :root{
-  /* pale blush stock: tinted paper, not candy */
   --ground:#FDF4F8; --panel:#FFFDFE; --panel-2:#F8EBF1;
   --rule:#E6CDD8; --rule-soft:#F1E1E8; --grid:#EEDDE5;
   --ink:#241A1E; --ink-2:#6A555B; --ink-3:#96818A;
-  /* plate colours: muted, legible on rose, well separated in hue */
   --wine:#7B2D3E; --indigo:#2F4A6D; --olive:#4A6141;
   --sienna:#A55A32; --plum:#5E4A72; --teal:#3C6B68;
   --built:#4A6141; --partial:#A55A32; --blocked:#7B2D3E;
@@ -173,75 +171,72 @@ footer code{font-family:var(--serif);font-style:italic;font-size:15px}
 footer a{color:var(--ink)}
 @media (max-width:860px){.duo{grid-template-columns:1fr;gap:42px}}
 @media (prefers-reduced-motion:reduce){.row{animation:none;opacity:1;transform:none}}
+code{font-family:var(--serif);font-style:italic}
+.tri .anchor b{font-weight:400;font-style:italic;color:var(--ink-2)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Conditional forecast &nbsp;·&nbsp; build {{GENERATED}} &nbsp;·&nbsp; all five layers built</div>
+  <div class="eyebrow">Conditional forecast &nbsp;·&nbsp; build {{GENERATED}}</div>
   <h1>The Primacy <i>Premium</i><span>.</span></h1>
   <p class="subtitle">Conditional forecasts of defense and commercial markets under Chinese
   military primacy, 2026 to 2035</p>
-  <p class="thesis">Markets do not price whether China overtakes the United States. They price
-  how. Three pathways run to one endpoint, and if the outputs converge, the thesis is false.</p>
+  <p class="thesis">Three pathways to Chinese military primacy by 2035 are simulated from
+  parameters estimated on historical data. The project tests whether allied defense expenditure
+  and reserve currency composition depend on the pathway.</p>
   <div class="stamp">
-    <span>Thesis <b>variance(pathway) &gt; variance(endpoint)</b></span>
-    <span>Horizon <b>2026 to 2035</b></span>
-    <span>Draws <b>10,000 per pathway</b></span>
-    <span>Channels <b>four of four carried</b></span>
-    <span>Hypotheses <b>three of three tested</b></span>
+    <span>Horizon <b><span data-k="meta.horizon.0"></span> to <span data-k="meta.horizon.1"></span></b></span>
+    <span>Draws <b><span data-k="meta.draws" data-f="int"></span> per pathway</b></span>
+    <span>Seed <b><span data-k="meta.seed"></span></b></span>
+    <span>Hypotheses <b>three tested</b></span>
   </div>
   <div class="byline">alyssa agard</div>
 </header>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">The question, and the argument</div>
+  <div class="sec-head"><div class="sec-title">Research question and design</div>
     <div class="sec-note">&sect;1</div></div>
   <div class="prose">
-    <p>If China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do
-    global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and
-    does the <i>pathway</i> to primacy condition those outcomes more strongly than the fact of
-    primacy itself?</p>
-    <p>The project refuses a single scenario. It builds three, runs each through parameters
-    measured from the historical record, and reports full distributions rather than point
-    estimates. It is deliberately not called prediction. There is no training data for an event
-    that has never occurred, so the model estimates responses from history and imposes each
-    scenario exogenously. Conditional forecasting with uncertainty propagation is the stronger
-    epistemic position, and the project states it plainly rather than burying it.</p>
-    <p>Four commercial channels carry the transmission: semiconductors, shipping and war risk
-    insurance, energy, and reserve currency composition. All four are carried in this build.
-    Semiconductors as TSMC's own quarterly revenue with the 2027 capacity-tightness note;
-    shipping as fleet, shipbuilding and connectivity structure plus the 2026 Gulf war-risk
-    repricing, a 5.7x premium multiple measured from broker quotes; energy as chokepoint
-    throughput and the Brent path; and reserves end to end, with the renminbi's settlement share
-    measured monthly against its reserve share. The register below reads every artifact off
-    disk with its row count, and the build refuses to publish this page if any is missing.</p>
+    <p>If China reaches nuclear parity with the United States and conventional military primacy
+    in the Indo-Pacific by 2035, how do defense expenditure, arms transfers, and reserve currency
+    composition change, and do the changes depend on the <i>pathway</i> by which primacy is
+    reached?</p>
+    <p>The project specifies three pathways and simulates each from parameters estimated on
+    historical data. Results are distributions conditional on the pathway. The pathways are
+    assumptions, not forecasts of what will occur. The historical record contains no instance of
+    the outcome, so no model can be fitted to it directly. Response parameters are therefore
+    estimated from observed episodes, and each pathway is imposed.</p>
+    <p>Two outcomes are simulated: military expenditure by block, and the US dollar and renminbi
+    shares of official foreign exchange reserves. Three further channels (semiconductors,
+    shipping and war risk insurance, and energy) are documented with measured exposure series
+    and are not simulated.</p>
   </div>
-  <div class="quote"><b>thesis.</b>&nbsp; The pathway to Chinese military primacy, gradual
-  accretion, American retrenchment, or violent demonstration, conditions defense and commercial
-  market outcomes more strongly than the endpoint itself. Identical 2035 force balances, reached
-  by different roads, produce different markets.</div>
+  <div class="quote"><b>thesis.</b>&nbsp; Allied defense expenditure and reserve composition in
+  2035 depend on how Chinese primacy is reached (gradual accretion, US retrenchment, or a
+  military demonstration), not only on whether it is reached.</div>
 </div>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">Three pathways to one endpoint</div>
+  <div class="sec-head"><div class="sec-title">Three pathways</div>
     <div class="sec-note">&sect;2</div></div>
-  <div class="prose"><p>Each road terminates at the same nominal 2035 balance, which is what
-  lets the model separate the effect of the route from the effect of the destination. If the
-  three produced the same outputs, the thesis would be false.</p></div>
+  <div class="prose"><p>Each pathway is defined by growth rates or an event taken from a
+  measured historical episode. The pathways share the premise of Chinese primacy by 2035. They
+  do not impose an identical 2035 force balance: US expenditure in 2035 is lower under
+  retrenchment than under the other two pathways.</p></div>
   <div class="tri">
     <div class="card"><div class="rn">I</div><h3>Accretion</h3>
-      <p>China grows, the United States grows more slowly. The balance closes without an event.
-      Hedging is gradual and markets reprice at the margin.</p>
+      <p>Chinese and US real expenditure continue at their compound growth rates of the last
+      ten years of data.</p>
       <p class="anchor" id="anchor1"></p></div>
     <div class="card"><div class="rn">II</div><h3>Retrenchment</h3>
-      <p>Primacy arrives because Washington withdraws. Allied budgets and supplier choices move
-      first, before any Chinese gain registers.</p>
+      <p>Chinese expenditure as in accretion. US real expenditure contracts at the rate observed
+      from 1988 to 1998.</p>
       <p class="anchor" id="anchor2"></p></div>
     <div class="card"><div class="rn">III</div><h3>Demonstration</h3>
-      <p>A contingency resolves in Beijing's favor. Repricing is discontinuous: the shock quarter
-      matters as much as the decade around it.</p>
+      <p>Accretion, plus one event in a year drawn from 2028 to 2031. Reserve shares and allied
+      expenditure growth repeat the changes observed in 2022.</p>
       <p class="anchor" id="anchor3"></p></div>
   </div>
 </div>
@@ -250,11 +245,10 @@ footer a{color:var(--ink)}
   <div class="reg-head">
     <div>
       <div class="reg-title">Input register</div>
-      <div class="p-sub">Every table the model consumes or produces, read off disk with its true
-      row count at build time. The builder raises rather than publish this page if any registered
-      artifact is missing, so a full meter is earned, not asserted.</div>
+      <div class="p-sub">All tables read or written by the pipeline, with row counts read from
+      disk at build time. The build stops if a registered table is missing.</div>
     </div>
-    <div class="reg-count"><b id="regDone">0</b> / <span id="regTotal">0</span> tables carrying data</div>
+    <div class="reg-count"><b id="regDone">0</b> / <span id="regTotal">0</span> tables built</div>
   </div>
   <div class="meter" id="meter"></div>
   <div class="reg-grid" id="regGrid"></div>
@@ -266,8 +260,9 @@ footer a{color:var(--ink)}
   <div class="p-head">
     <div>
       <div class="p-title">Expenditure by actor tier</div>
-      <div class="p-sub">The six-tier scope from the research design. Tier totals are sums; share
-      of GDP and per capita are tier medians, since summing intensity ratios would be meaningless.</div>
+      <div class="p-sub">Six analytic tiers. Dollar measures are tier totals, chain-linked over
+      members reported in consecutive years. Share of GDP, per capita, and share of government
+      spending are tier medians.</div>
     </div>
     <div class="p-src" id="tierSrc">milex_tier_panel</div>
   </div>
@@ -285,8 +280,7 @@ footer a{color:var(--ink)}
     <div class="p-head">
       <div>
         <div class="p-title">Real change, year on year</div>
-        <div class="p-sub">Pathway II evidence. Retrenchment is an incumbent choice, not a
-        challenger achievement, so it shows up here before it shows up anywhere else.</div>
+        <div class="p-sub">Annual real growth by tier over the last ten years of data.</div>
       </div>
     </div>
     <div id="yoyPlot" class="plot sm"></div>
@@ -296,9 +290,9 @@ footer a{color:var(--ink)}
   <section class="panel">
     <div class="p-head">
       <div>
-        <div class="p-title">Peace dividend, 1985 to 2000</div>
-        <div class="p-sub">The retrenchment calibration case. Supplies the contraction rate, and
-        the test for whether expansion and contraction are symmetric.</div>
+        <div class="p-title">US expenditure, 1985 to 2000</div>
+        <div class="p-sub">The 1988 to 1998 contraction sets the US growth rate in the
+        retrenchment pathway.</div>
       </div>
     </div>
     <div id="pdPlot" class="plot sm"></div>
@@ -309,10 +303,9 @@ footer a{color:var(--ink)}
 <section class="panel">
   <div class="p-head">
     <div>
-      <div class="p-title">Allocated reserve shares</div>
-      <div class="p-sub">Channel four, the one this build implements end to end. The renminbi
-      line is the finding: it peaked and reversed, while the dollar's losses went to other
-      currencies instead.</div>
+      <div class="p-title">Reserve shares by currency</div>
+      <div class="p-sub">Shares of official foreign exchange reserves, IMF COFER. The renminbi
+      is reported separately from 2016-Q4.</div>
     </div>
     <div class="p-src" id="cofSrc">cofer_shares_wide</div>
   </div>
@@ -328,10 +321,9 @@ footer a{color:var(--ink)}
 <section class="panel">
   <div class="p-head">
     <div>
-      <div class="p-title">Conditional forecast to 2035</div>
-      <div class="p-sub">The model's own output. Ten thousand seeded draws per pathway propagate
-      parameter, innovation and event-timing uncertainty jointly. Read the band, not the line:
-      the median is the least interesting number here.</div>
+      <div class="p-title">Simulated reserve shares to 2035</div>
+      <div class="p-sub">Percentiles of the simulated paths by pathway. Parameter, innovation,
+      and event-timing uncertainty are included.</div>
     </div>
     <div class="p-src" id="fcSrc">simulation_fan</div>
   </div>
@@ -339,9 +331,9 @@ footer a{color:var(--ink)}
     <div class="ctl"><label for="fcCur">Currency</label><select id="fcCur">
       <option value="USD">US dollar</option><option value="CNY">Renminbi</option></select></div>
     <div class="ctl"><label for="fcBand">Interval</label><select id="fcBand">
-      <option value="p10|p90">80 per cent</option>
-      <option value="p05|p95">90 per cent</option>
-      <option value="p25|p75">50 per cent</option>
+      <option value="p10|p90">80 percent</option>
+      <option value="p05|p95">90 percent</option>
+      <option value="p25|p75">50 percent</option>
       <option value="none">Median only</option></select></div>
     <div class="ctl"><label>Pathways</label><div class="chips" id="pathChips"></div></div>
   </div>
@@ -353,9 +345,9 @@ footer a{color:var(--ink)}
   <div class="p-head">
     <div>
       <div class="p-title">Arms transfers and supplier concentration</div>
-      <div class="p-sub">Deliveries in trend indicator values, a capability measure, deliberately
-      never mixed with the dollar series. Supplier diversification is a falsification tripwire for
-      pathway II.</div>
+      <div class="p-sub">World deliveries in SIPRI trend-indicator values, a volume measure and
+      not a financial value. Concentration is the Herfindahl index of delivered volume by
+      five-year order window.</div>
     </div>
     <div class="p-src" id="armsSrc">arms_transfers_global</div>
   </div>
@@ -371,25 +363,30 @@ footer a{color:var(--ink)}
   <div class="p-head">
     <div>
       <div class="p-title">Hypothesis ledger</div>
-      <div class="p-sub">What would have to be true, and what this build measures for each
-      claim. Verdicts are written by the pipeline, not by the page.</div>
+      <div class="p-sub">Hypotheses, test criteria, and verdicts. Verdicts are computed by the
+      pipeline and read from <code>hypothesis_tests.json</code>.</div>
     </div>
   </div>
   <table class="ledger">
-    <thead><tr><th>No.</th><th>Claim</th><th>State</th></tr></thead>
+    <thead><tr><th>No.</th><th>Hypothesis and criterion</th><th>Verdict</th></tr></thead>
     <tbody>
       <tr><td class="h">H1</td>
-        <td>Identical 2035 endpoints, reached by different pathways, produce statistically
-        distinguishable outcomes in defense expenditure and arms transfer flows.</td>
-        <td class="tag on" id="h1state"></td></tr>
+        <td>Allied defense expenditure in 2035 differs by pathway. Criterion: the median pathway
+        separation of the four scored outcomes exceeds twice the separation of the dollar reserve
+        share. The statistic describes the simulated distributions and is not a significance
+        test.</td>
+        <td class="tag" id="h1state"></td></tr>
       <tr><td class="h">H2</td>
-        <td>American retrenchment moves allied budgets and supplier market shares faster than
-        Chinese growth alone: the hegemon's exit is the stronger signal.</td>
-        <td class="tag dir" id="h2state"></td></tr>
+        <td>Allied expenditure responds more strongly to US expenditure than to Chinese
+        expenditure. Criterion: one-sided test that the US coefficient exceeds the Chinese
+        coefficient in magnitude in the pooled country panel, at the 5 percent level.</td>
+        <td class="tag" id="h2state"></td></tr>
       <tr><td class="h">H3</td>
-        <td>Reserve composition is the slowest and least pathway-sensitive commercial channel;
-        the dollar's share erodes toward diversification, not toward the renminbi.</td>
-        <td class="tag on" id="h3state">supported in this build</td></tr>
+        <td>Reserve composition is the least pathway-sensitive outcome, and the dollar's decline
+        accrues mainly to currencies other than the renminbi. Criteria: the expenditure
+        coefficient is not distinguishable from zero; dollar share separation is below the median
+        expenditure separation; the renminbi's payments share exceeds its reserve share.</td>
+        <td class="tag" id="h3state"></td></tr>
     </tbody>
   </table>
   <div class="readout" id="hypRead"></div>
@@ -399,9 +396,8 @@ footer a{color:var(--ink)}
   <div class="p-head">
     <div>
       <div class="p-title">Hypothesis evidence</div>
-      <div class="p-sub">The measured series behind each verdict, drawn from
-      <code>hypothesis_panel.csv</code>, one tidy table holding every test, evidence and
-      robustness row the three claims rest on.</div>
+      <div class="p-sub">Series and statistics behind each verdict, from
+      <code>hypothesis_panel.csv</code>.</div>
     </div>
     <div class="p-src">hypothesis_panel</div>
   </div>
@@ -413,7 +409,7 @@ footer a{color:var(--ink)}
 </section>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">What this build finds</div>
+  <div class="sec-head"><div class="sec-title">Results</div>
     <div class="sec-note">&sect;3</div></div>
   <div class="findings">
     <ul id="findings"></ul>
@@ -422,89 +418,101 @@ footer a{color:var(--ink)}
 </div>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">Method, in five stages</div>
+  <div class="sec-head"><div class="sec-title">Method</div>
     <div class="sec-note">&sect;4</div></div>
-  <div class="prose"><p>Each stage consumes only the artifacts of the stage before it, so every
-  figure on this page is reproducible from the raw sources in a single pass.</p></div>
+  <div class="prose"><p>The pipeline has five stages. Each stage reads only the outputs of
+  earlier stages.</p></div>
   <ol class="stages">
-    <li><b>Data engineering.</b> Seven parsers turn published sources into tidy, validated
-      tables: IMF COFER (<code>parse_cofer.py</code>, with an independent share reconciliation
-      that must pass to 0.05 pp or the build fails); the SIPRI expenditure workbook
-      (<code>parse_milex.py</code>, locating headers by content so the parser survives SIPRI's
-      annual re-layout); both SIPRI arms transfer files (<code>parse_arms_transfers.py</code>,
-      a thirty-thousand-row deal register aggregated into supplier concentration); twenty-seven
-      monthly Swift trackers (<code>parse_swift.py</code>, reading the data month from each
-      document, never the filename); four UNCTAD maritime tables
-      (<code>parse_maritime.py</code>); the EIA chokepoint report, the STEO workbook and nine
-      TSMC quarterly statements (<code>parse_energy_semis.py</code>); and the NATO burden table,
-      the FAS nuclear notebooks, recipient-level imports and the curated event, war-risk and
-      alliance tables (<code>parse_security.py</code>). Every extraction passes range gates so a
-      source redesign fails loudly instead of shipping a wrong number.</li>
-    <li><b>Historical calibration.</b> Every parameter the simulation consumes is estimated, none
-      assumed. The reserve channel response is a Newey-West regression of quarterly dollar-share
-      changes on the year-on-year change in the logged China to US expenditure ratio, with
-      indicator terms for the 2022 sanctions quarters (<code>calibrate.py</code>). The alliance
-      feedback system regresses each allied tier's real growth on both principals' lagged growth,
-      HAC(3) over 1951 to 2025, and measures the 2022 mobilization differential and the named
-      retrenchment windows (<code>calibrate_layer2.py</code>). All parameters ship with
-      confidence intervals in two JSON artifacts.</li>
-    <li><b>Conditional simulation.</b> Two engines propagate parameter, innovation and event
-      timing uncertainty jointly through ten thousand seeded draws per pathway: the reserve
-      channel quarterly to 2035-Q4 (<code>simulate.py</code>), and a five-block system with
-      endogenous allied budgets annually to 2035 (<code>simulate_layer2.py</code>), which scores
-      the H1 separation test, projects arms demand through the measured delivery elasticity, and
-      attaches the 2026 Gulf war-risk multiple to demonstration events. Innovations are
-      bootstrapped from measured residuals, so simulated periods keep the true fat tails instead
-      of an imposed Gaussian.</li>
-    <li><b>Visualization.</b> Four static plates (<code>make_figures.py</code>) and this page,
-      whose every number is injected from the pipeline's own artifacts by
-      <code>build_dashboard_data.py</code> and <code>build_index.py</code>.</li>
-    <li><b>Analytic handoff.</b> Tidy exports load directly into Power BI or Tableau, led by
-      <code>hypothesis_panel.csv</code>, a single table holding every measurement behind the
-      three hypotheses (<code>build_hypothesis_panel.py</code>), alongside the fans, the
-      processed tables and <code>payload.json</code>; the repository remains the model of
-      record.</li>
+    <li><b>Data.</b> Seven parsers convert published sources to long-format tables: IMF COFER
+      (<code>parse_cofer.py</code>); the SIPRI expenditure workbook, including tier and
+      country panels (<code>parse_milex.py</code>); the SIPRI arms transfer tables and trade
+      register (<code>parse_arms_transfers.py</code>); <span data-k="vintage.swift_issues"></span>
+      monthly Swift tracker issues (<code>parse_swift.py</code>); four UNCTAD maritime tables
+      (<code>parse_maritime.py</code>); the EIA chokepoint report, the Short-Term Energy Outlook,
+      and <span data-k="vintage.tsmc_quarters"></span> TSMC quarterly statements
+      (<code>parse_energy_semis.py</code>); and NATO, nuclear, arms import, event, and alliance
+      tables (<code>parse_security.py</code>). Extracted values are range-checked and the build
+      stops on a failed check. The COFER dollar share is recomputed from claims and must match
+      the published share within 0.05 percentage points.</li>
+    <li><b>Estimation.</b> The reserve channel is a regression of the quarterly change in the
+      dollar share on the year-on-year change in the log China/US expenditure ratio and an
+      indicator for 2022-Q1 and 2022-Q2, with Newey-West standard errors (four lags); the
+      renminbi share is modeled the same way in log-odds (<code>calibrate.py</code>). For each
+      allied tier, real growth is regressed on the previous year's US and Chinese growth,
+      <span data-k="vintage.feedback_sample.0"></span> to
+      <span data-k="vintage.feedback_sample.1"></span>, with Newey-West standard errors (three
+      lags). H2 is tested on a country panel with fixed effects and Driscoll-Kraay standard
+      errors (<code>calibrate_layer2.py</code>).</li>
+    <li><b>Simulation.</b> <span data-k="meta.draws" data-f="int"></span> draws per pathway.
+      Reserve shares are simulated quarterly to 2035-Q4 (<code>simulate.py</code>). Expenditure
+      is simulated annually to 2035 for six blocks: the United States, China, three allied tiers,
+      and the rest of the world (<code>simulate_layer2.py</code>). Coefficients are drawn jointly
+      from their estimated sampling distributions. Innovations are resampled from estimated
+      residuals; expenditure residuals are resampled in runs of consecutive years, jointly across
+      blocks. The event date in the demonstration pathway is random.</li>
+    <li><b>Hypothesis assembly.</b> Test statistics, evidence series, and context are written to
+      <code>hypothesis_panel.csv</code>, and verdicts to <code>hypothesis_tests.json</code>
+      (<code>build_hypothesis_panel.py</code>).</li>
+    <li><b>Output.</b> Four static figures (<code>make_figures.py</code>), this page
+      (<code>build_dashboard_data.py</code>, <code>build_index.py</code>), a static summary, a
+      report, and a data dictionary. The processed tables load directly into Power BI or
+      Tableau.</li>
   </ol>
 </div>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">Falsification tripwires</div>
+  <div class="sec-head"><div class="sec-title">Observable checks</div>
     <div class="sec-note">&sect;5</div></div>
-  <div class="prose"><p>A model someone can use is a model that names, in advance, the
-  observables that would break it.</p></div>
+  <div class="prose"><p>Observations that would contradict the model's assumptions or the
+  interpretation of its results.</p></div>
   <ul class="trip">
-    <li>Allied defense expenditure as a share of GDP, against the pathway II elasticities.</li>
-    <li>Arms import supplier diversification, measured by the Herfindahl index, among United
-      States treaty allies.</li>
-    <li>The renminbi's share of trade settlement against its COFER reserve share: the gap should
-      widen under accretion and close only with convertibility, not with coercion.</li>
-    <li>The nontraditional-currency share of reserves, which should keep absorbing the dollar's
-      decline under every pathway.</li>
-    <li>War risk premia around Taiwan Strait exercise events, against the measured 2026 Gulf
-      multiple of 5.7x hull value that the demonstration pathway attaches to its event
-      quarter.</li>
+    <li>Allied expenditure after a US contraction. The tier equations imply lower allied growth
+      after lower US growth. Sustained allied growth during a US contraction, as in
+      <span data-k="kpis.year"></span>, contradicts them.</li>
+    <li>Supplier concentration of allied arms imports. A falling US share of allied imports
+      during a US contraction would indicate substitution away from US supply, which the model
+      does not represent.</li>
+    <li>The renminbi's payments share relative to its reserve share. H3 requires the payments
+      share to remain above the reserve share. Convergence without capital account
+      liberalization would contradict the interpretation given here.</li>
+    <li>The reserve share of currencies other than the dollar, euro, yen, pound, and renminbi.
+      H3 requires these currencies, not the renminbi, to absorb most of any further decline in
+      the dollar share.</li>
+    <li>War risk premiums during Taiwan Strait exercises. The demonstration pathway attaches the
+      2026 Mideast Gulf premium multiple (<span data-k="hyp.war_multiple"></span>) to its event.
+      Premium changes during future exercises provide a direct comparison.</li>
   </ul>
 </div>
 
 <div class="sec">
-  <div class="sec-head"><div class="sec-title">Status of the work</div>
+  <div class="sec-head"><div class="sec-title">Limitations</div>
     <div class="sec-note">&sect;6</div></div>
   <div class="twocol">
-    <div><h4>All five layers built</h4>
+    <div><h4>Estimation</h4>
       <ul>
-        <li>Layer 1, data: seven parsers over fourteen source families, validation gates throughout</li>
-        <li>Layer 2, system dynamics: alliance feedback estimated 1951 to 2025, allied budgets endogenous</li>
-        <li>Layer 3, simulation: two seeded engines, 10,000 draws per pathway, three uncertainty sources</li>
-        <li>Layer 4, events: the exercise register, the 2026 Gulf repricing multiple, arms demand elasticity</li>
-        <li>Layer 5, delivery: this page, four plates, and the BI-ready hypothesis dataset</li>
+        <li>The regressors in H2 vary only over time, so the effective sample is
+          <span data-k="hyp.h2.primary.n_years"></span> years. The result depends on
+          expenditure weighting.</li>
+        <li>The tier equations are static. Their residuals are serially correlated, most
+          strongly for NATO Europe, and most coefficient intervals include zero.</li>
+        <li>The renminbi model is estimated on <span id="cnyN"></span> quarters. Its simulated
+          intervals are wide.</li>
+        <li>COFER shares are valued at current exchange rates and mix transactions with
+          valuation changes.</li>
+        <li>Chinese expenditure figures are SIPRI estimates. SIPRI does not report the United
+          Arab Emirates after 2014.</li>
       </ul></div>
-    <div><h4>Tested, with the caveats carried</h4>
+    <div><h4>Simulation</h4>
       <ul>
-        <li>H1 supported on the median criterion, 2.3x the reserve channel; Indo-Pacific allies the mapped exception</li>
-        <li>H2 directionally supported in all three tiers, unresolved at annual frequency, p 0.22 to 0.35</li>
-        <li>H3 supported: near-null defense coefficient, 0.36 sd separation, settlement-reserve gap live</li>
-        <li>Both replayed shocks rest on n = 1 precedents, stated wherever they are used</li>
-        <li>Thirty artifacts in the register, every one read off disk at build time</li>
+        <li>The reserve and expenditure responses to a demonstration event each repeat a single
+          episode (2022).</li>
+        <li>The H1 statistic is descriptive. US expenditure differs across pathways by
+          assumption, and the threshold of twice the reserve separation is a convention.</li>
+        <li>Rest-of-world growth is set to its mean over the last ten years of data, a period
+          that includes wartime expenditure growth in Russia and Ukraine.</li>
+        <li>Semiconductor, shipping, and energy exposure series are reported but not simulated.
+          Foundry concentration is not computed because market share data are not available to
+          the project.</li>
       </ul></div>
   </div>
 </div>
@@ -513,53 +521,39 @@ footer a{color:var(--ink)}
   <div class="sec-head"><div class="sec-title">Data, reproduction, and license</div>
     <div class="sec-note">&sect;7</div></div>
   <div class="prose">
-    <p>Sources: International Monetary Fund, Currency Composition of Official Foreign Exchange
-    Reserves (COFER), quarterly through 2026-Q1, retrieved 24 July 2026. Stockholm International
-    Peace Research Institute, Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and
-    Arms Transfers Database, retrieved 24 and 29 July 2026. Chinese expenditure figures are SIPRI
-    estimates. Swift, RMB Tracker and Global Currency Tracker, twenty-seven monthly issues, April
-    2024 data through June 2026 data. NATO, Defence Expenditure of NATO Countries, 2026 edition.
-    UNCTADstat maritime transport tables, retrieved 29 July 2026. US Energy Information
-    Administration, World Oil Transit Chokepoints and Short-Term Energy Outlook, July 2026.
-    Federation of American Scientists, Nuclear Notebook, 2025 and 2026 issues, with DOD China
-    Military Power Report projections. TSMC, consolidated condensed financial statements, nine
-    quarterly issues. TrendForce, 1Q26 foundry ranking, public highlight only. Joint War
-    Committee circular JWLA-033 and Argus Media war-risk reporting, 2026. Kiel Institute, Ukraine
-    Support Tracker, as context for the 2022 mobilization case.</p>
-    <p>Raw files are not redistributed in the repository, in keeping with the providers' terms;
-    the README explains where to obtain each of the fourteen source families and where to place
-    them. The simulation is seeded, so a re-run on the same data vintages reproduces every number
-    on this page exactly, in the order <code>parse_cofer</code>, <code>parse_milex</code>,
-    <code>parse_arms_transfers</code>, <code>parse_swift</code>, <code>parse_maritime</code>,
-    <code>parse_energy_semis</code>, <code>parse_security</code>, <code>calibrate</code>,
-    <code>calibrate_layer2</code>, <code>simulate</code>, <code>simulate_layer2</code>,
-    <code>build_hypothesis_panel</code>, <code>make_figures</code>,
-    <code>build_dashboard_data</code>, <code>build_index</code>.</p>
+    <p>Sources. International Monetary Fund, Currency Composition of Official Foreign Exchange
+    Reserves (COFER), <span data-k="vintage.cofer.0"></span> to
+    <span data-k="vintage.cofer.1"></span>. Stockholm International Peace Research Institute,
+    Military Expenditure Database <span data-k="vintage.milex.0"></span> to
+    <span data-k="vintage.milex.1"></span> (v1.2, April 2026) and Arms Transfers Database;
+    Chinese expenditure figures are SIPRI estimates. Swift, RMB Tracker and Global Currency
+    Tracker, data months <span data-k="vintage.swift.0"></span> to
+    <span data-k="vintage.swift.1"></span>. NATO, Defence Expenditure of NATO Countries, 2026
+    edition. UNCTADstat maritime transport tables. US Energy Information Administration, World
+    Oil Transit Chokepoints and Short-Term Energy Outlook
+    (<span data-k="vintage.steo"></span>). Federation of American Scientists, Nuclear Notebook,
+    2025 and 2026, with US Department of Defense projections. TSMC consolidated financial
+    statements, <span data-k="vintage.tsmc.0"></span> to <span data-k="vintage.tsmc.1"></span>.
+    Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums, 2026.
+    Full citations are in <code>REFERENCES.md</code>.</p>
+    <p>Raw source files are not redistributed. <code>data/raw/README.md</code> lists each file
+    and where to obtain it. The simulations are seeded; rerunning the pipeline on the same input
+    files reproduces the published figures. The run order is given in <code>README.md</code>.</p>
     <p><span class="cc">cc by-nc 4.0</span><br>
-    This page, its text, its figures and the code that produced them are &copy; 2026 Alyssa Agard
-    and licensed under the
+    Text, figures, and code are &copy; 2026 Alyssa Agard and licensed under the
     <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons
-    Attribution-NonCommercial 4.0 International License</a>. You may share and adapt the material
-    with attribution for noncommercial purposes. The underlying IMF and SIPRI data are excluded
-    from this license: they remain the property of their publishers and are used here with
-    citation under their own terms.</p>
+    Attribution-NonCommercial 4.0 International License</a>. The underlying source data are
+    excluded from this license, remain the property of their publishers, and are used with
+    citation under their terms.</p>
   </div>
 </div>
 
 <footer>
-  <p><b>Provenance.</b> SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and
-  SIPRI Arms Transfers Database, retrieved 24 July 2026. IMF COFER 7.0.1, quarterly through
-  2026-Q1, retrieved 24 July 2026. Chinese expenditure figures are SIPRI estimates. SIPRI's
-  <code>...</code> and <code>xxx</code> placeholders resolve to null, never to zero. Every
-  number on this page is written by <code>build_dashboard_data.py</code> from the pipeline's own
-  artifacts, so the page cannot state a figure the model did not produce.</p>
-  <p><b>To extend.</b> Add a series in <code>build_dashboard_data.py</code>, add it to the
-  payload, write one render function here. The register updates itself from the register list.
-  Nothing else changes.</p>
-  <p><b>Status.</b> A complete build: five layers, thirty registered artifacts, three hypotheses
-  tested, every verdict written by the pipeline. Estimates will move with data vintages, and the
-  register reads the artifacts off disk at build time so the page can never claim more than the
-  model holds. Licensed CC BY-NC 4.0; see the section above.</p>
+  <p><b>Provenance.</b> All figures on this page are read from <code>docs/payload.json</code>,
+  which <code>build_dashboard_data.py</code> writes from the pipeline outputs. Build
+  {{GENERATED}}; <span data-k="meta.n_artifacts"></span> registered artifacts;
+  <span data-k="meta.n_rows" data-f="int"></span> rows and keys.</p>
+  <p><b>License.</b> CC BY-NC 4.0. Source data excluded.</p>
 </footer>
 
 </div>
@@ -583,14 +577,8 @@ const PATH_COLOR = {accretion:c('--indigo'), retrenchment:c('--sienna'),
   demonstration:c('--wine')};
 const PATH_RGB = {accretion:'47,74,109', retrenchment:'165,90,50', demonstration:'123,45,62'};
 
-// A factory, not a shared constant: real Plotly.js writes its computed
-// range, type, and autorange back onto whatever axis object it is given.
-// A single shared LAYOUT object, reused across charts via {...LAYOUT},
-// only clones the top level; nested xaxis/yaxis objects stay the same
-// reference unless a call happens to override them, so one chart's
-// rendered range can silently leak into the next chart's axis. Calling
-// baseLayout() fresh for every draw guarantees every chart gets its own
-// unshared xaxis and yaxis objects, closing that off entirely.
+// Plotly writes computed ranges back onto the axis objects it is given,
+// so each chart gets a fresh layout object.
 function baseLayout(){
   return {
     paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
@@ -605,6 +593,11 @@ function baseLayout(){
 }
 const CFG = {displayModeBar:false, responsive:true};
 const fmt = n => n.toLocaleString('en-US',{maximumFractionDigits:0});
+const pick = (o, path) => path.split('.').reduce((a, k) => a == null ? a : a[k], o);
+document.querySelectorAll('[data-k]').forEach(el => {
+  const v = pick(D, el.dataset.k);
+  el.textContent = v == null ? '' : (el.dataset.f === 'int' ? fmt(v) : v);
+});
 
 /* ---- register ---- */
 (function(){
@@ -638,15 +631,15 @@ const fmt = n => n.toLocaleString('en-US',{maximumFractionDigits:0});
     {k:'World, '+k.year, v:'$'+fmt(k.world_bn)+'<small>bn</small>',
      n:'Constant 2024 US$. SIPRI world total.'},
     {k:'US real change, '+k.year, v:k.us_yoy_pct+'<small>%</small>',
-     n:'$'+fmt(k.us_bn)+'bn constant 2024. The pathway II signal.', neg:k.us_yoy_pct<0},
-    {k:'China to US ratio', v:k.cn_us_ratio+'<small>×</small>',
-     n:'China at $'+fmt(k.cn_bn)+'bn, growing '+k.cn_cagr+'% a year since 2015'},
+     n:'$'+fmt(k.us_bn)+'bn, constant 2024 US$.', neg:k.us_yoy_pct<0},
+    {k:'China/US expenditure ratio', v:String(k.cn_us_ratio),
+     n:'China $'+fmt(k.cn_bn)+'bn; '+k.cn_cagr+'% a year since '+k.cagr_start+'.'},
     {k:'Renminbi reserve share', v:cf.cny_latest_value+'<small>%</small>',
-     n:'Peaked '+cf.cny_peak_value+'% in '+cf.cny_peak_quarter+', down '+Math.abs(cf.cny_decline_pct)+'% since', neg:true},
-    {k:'Peace dividend', v:pd.contraction_pct+'<small>%</small>',
-     n:'US real, '+pd.peak_year+' to '+pd.trough_year+'. Retrenchment anchor.', neg:true},
-    {k:'Pathway separation', v:k.separation+'<small> sd</small>',
-     n:'Endpoint spread units across the three roads. Small, as H3 predicts.'}
+     n:cf.latest_quarter+'. Peak '+cf.cny_peak_value+'% in '+cf.cny_peak_quarter+'.'},
+    {k:'US contraction, '+pd.peak_year+' to '+pd.trough_year, v:pd.contraction_pct+'<small>%</small>',
+     n:'Real terms. Sets the retrenchment rate.', neg:true},
+    {k:'Dollar share separation', v:k.separation+'<small> sd</small>',
+     n:'Range of pathway medians over within-pathway sd, 2035-Q4.'}
   ];
   document.getElementById('strip').innerHTML = items.map(i=>
     `<div class="fig"><div class="k">${i.k}</div>
@@ -686,11 +679,10 @@ function drawTiers(){
   Plotly.react('tierPlot', traces, {...baseLayout(),
     yaxis:{...baseLayout().yaxis, title:{text:title, font:{size:13.5,family:SERIF}}}}, CFG);
   document.getElementById('tierRead').innerHTML = D.agg_rule[m]==='sum'
-    ? `Aggregation: <b>tier sum</b>. Members absent from a SIPRI year enter as gaps, never as
-       zeros, so a tier line breaks rather than dipping when coverage changes.`
-    : `Aggregation: <b>tier median</b>. Summing an intensity ratio across countries produces a
-       number with no interpretation, so this measure reports the tier's middle member instead
-       of its total.`;
+    ? `Aggregation: <b>chain-linked tier total</b>. Growth is computed over members reported in
+       both years and applied backward from the latest total, so changes in SIPRI coverage do
+       not appear as changes in spending.`
+    : `Aggregation: <b>tier median</b> over members reported in each year.`;
 }
 mSel.onchange = ySel.onchange = drawTiers; drawTiers();
 
@@ -707,9 +699,8 @@ mSel.onchange = ySel.onchange = drawTiers; drawTiers();
   const i = us.x.indexOf(D.kpis.year);
   const usv = us.y[i].toFixed(1), euv = eu.y[i].toFixed(1);
   document.getElementById('yoyRead').innerHTML =
-    `${D.kpis.year}: United States <b>${usv}%</b>, NATO Europe <b>${eu.y[i]>0?'+':''}${euv}%</b>.
-     One year is not a trend, but it is the first year the incumbent's line crosses zero while
-     the allied tiers stay above it.`;
+    `${D.kpis.year}: United States <b>${us.y[i]>0?'+':''}${usv}%</b>, NATO Europe
+     <b>${eu.y[i]>0?'+':''}${euv}%</b>, real change on the previous year.`;
 })();
 
 /* ---- peace dividend ---- */
@@ -730,9 +721,8 @@ mSel.onchange = ySel.onchange = drawTiers; drawTiers();
       {x:p.trough_year,yref:'paper',y:1.03,text:'trough '+p.trough_year,showarrow:false,
        font:{family:SERIF,size:13,color:c('--ink-3')},xanchor:'right'}]}, CFG);
   document.getElementById('pdRead').innerHTML =
-    `Peak ${p.peak_year} to trough ${p.trough_year}: <b>${p.contraction_pct}%</b> in real terms,
-     <b>${p.annual_rate_pct}%</b> a year. This rate, not an assumption, is what pathway II
-     imposes on the United States.`;
+    `${p.peak_year} to ${p.trough_year}: <b>${p.contraction_pct}%</b> in real terms,
+     <b>${p.annual_rate_pct}%</b> a year.`;
 })();
 
 /* ---- cofer ---- */
@@ -755,7 +745,7 @@ function drawCofer(){
     hovertemplate:'%{x} · %{y:.2f}%<extra>'+k+'</extra>'}));
   Plotly.react('cofPlot', traces, {...baseLayout(),
     yaxis:{...baseLayout().yaxis, type:document.getElementById('scaleSel').value || 'linear',
-      title:{text:'% of allocated reserves',font:{size:13.5,family:SERIF}}},
+      title:{text:'% of foreign exchange reserves',font:{size:13.5,family:SERIF}}},
     xaxis:{...baseLayout().xaxis, nticks:14},
     shapes:[{type:'line',x0:'2022-Q1',x1:'2022-Q1',yref:'paper',y0:0,y1:1,
       line:{color:c('--ink-3'),width:1,dash:'dot'}}],
@@ -764,11 +754,11 @@ function drawCofer(){
 }
 document.getElementById('scaleSel').onchange = drawCofer; drawCofer();
 document.getElementById('cofRead').innerHTML =
-  `The dollar falls from <b>${D.cofer.usd_first}%</b> at the euro's birth in ${D.cofer.first_quarter}
-   to <b>${D.cofer.usd_latest}%</b> in ${D.cofer.cny_latest_quarter}. The renminbi peaked at
-   <b>${D.cofer.cny_peak_value}%</b> in ${D.cofer.cny_peak_quarter} and has since fallen
-   ${Math.abs(D.cofer.cny_decline_pct)}%. That gap between settlement use and reserve
-   accumulation is what H3 formalizes.`;
+  `The dollar share was <b>${D.cofer.usd_first}%</b> in ${D.cofer.first_quarter} and
+   <b>${D.cofer.usd_latest}%</b> in ${D.cofer.latest_quarter}. The renminbi share peaked at
+   <b>${D.cofer.cny_peak_value}%</b> in ${D.cofer.cny_peak_quarter} and was
+   <b>${D.cofer.cny_latest_value}%</b> in ${D.cofer.latest_quarter}. From the 2025-Q3 release
+   the IMF imputes the previously unallocated portion, with revisions back to 2000-Q1.`;
 
 /* ---- conditional forecast ---- */
 const pathOn = new Set(['accretion','retrenchment','demonstration']);
@@ -788,7 +778,6 @@ function drawForecast(){
   const q = D.forecast.quarters, h = D.forecast.history;
   const traces = [];
 
-  // Observed record first, so the fan is read as a continuation of data.
   traces.push({x:h.quarters, y:h[cur], name:'observed', type:'scatter', mode:'lines',
     connectgaps:false, line:{color:c('--ink'),width:2.2},
     hovertemplate:'%{x} · %{y:.2f}%<extra>observed</extra>'});
@@ -810,40 +799,36 @@ function drawForecast(){
       hovertemplate:'%{x} · %{y:.2f}%<extra>'+p+'</extra>'});
   });
 
-  const shapes = [{type:'line',x0:'2026-Q1',x1:'2026-Q1',yref:'paper',y0:0,y1:1,
+  const shapes = [{type:'line',x0:D.forecast.last_observed,x1:D.forecast.last_observed,yref:'paper',y0:0,y1:1,
     line:{color:c('--ink-3'),width:1,dash:'dot'}}];
   if(cur==='USD') shapes.push({type:'line',xref:'paper',x0:0,x1:1,y0:50,y1:50,
     line:{color:c('--ink-3'),width:1,dash:'dot'}});
-  const anns = [{x:'2026-Q1',yref:'paper',y:1.04,text:'last observed',showarrow:false,
+  const anns = [{x:D.forecast.last_observed,yref:'paper',y:1.04,text:'last observed',showarrow:false,
     font:{family:SERIF,size:12.5,color:c('--ink-3')},xanchor:'right'}];
-  if(cur==='USD') anns.push({xref:'paper',x:0.015,y:50,text:'half of allocated reserves',
+  if(cur==='USD') anns.push({xref:'paper',x:0.015,y:50,text:'50%',
     showarrow:false,yanchor:'bottom',xanchor:'left',
     font:{family:SERIF,size:12.5,color:c('--ink-3')}});
 
   Plotly.react('fcPlot', traces, {...baseLayout(),
     xaxis:{...baseLayout().xaxis, nticks:14},
-    yaxis:{...baseLayout().yaxis, title:{text:'% of allocated reserves',font:{size:13.5,family:SERIF}}},
+    yaxis:{...baseLayout().yaxis, title:{text:'% of foreign exchange reserves',font:{size:13.5,family:SERIF}}},
     shapes:shapes, annotations:anns}, CFG);
 
   const ep = D.endpoints[cur.toLowerCase()];
   const on = [...pathOn];
   if(!on.length){
-    document.getElementById('fcRead').innerHTML =
-      'No pathway selected. Choose one or more to draw the conditional distributions.';
+    document.getElementById('fcRead').innerHTML = 'No pathway selected.';
     return;
   }
   const meds = on.map(p=>`${p} <b>${ep[p].median.toFixed(cur==='USD'?1:2)}%</b>`).join(', ');
   const extra = cur==='USD'
-    ? ` The probability the dollar holds less than half of allocated reserves by 2035 ranges from
+    ? ` Share of draws with the dollar below 50% in 2035-Q4:
         <b>${Math.min(...on.map(p=>ep[p].prob_below_50))}</b> to
-        <b>${Math.max(...on.map(p=>ep[p].prob_below_50))}</b> across the selected roads: material
-        under every one, decisive under none.`
-    : ` The renminbi is where the pathways separate. A demonstration replays the one modern
-        precedent for coercive reserve freezing, and on that precedent accumulation reverses
-        rather than accelerates, which makes this an upper bound on reversal rather than a
-        point forecast.`;
-  document.getElementById('fcRead').innerHTML =
-    `Median 2035-Q4 share: ${meds}.${extra}`;
+        <b>${Math.max(...on.map(p=>ep[p].prob_below_50))}</b> across the selected pathways.`
+    : ` The demonstration pathway repeats the renminbi share changes observed in and after
+        2022, a single episode. The renminbi share is simulated in log-odds and its intervals
+        are wide.`;
+  document.getElementById('fcRead').innerHTML = `Median share in 2035-Q4: ${meds}.${extra}`;
 }
 document.getElementById('fcCur').onchange = drawForecast;
 document.getElementById('fcBand').onchange = drawForecast;
@@ -895,25 +880,24 @@ function drawArms(){
     yaxis2:{overlaying:'y', side:'right', gridcolor:'rgba(0,0,0,0)',
       linecolor:c('--rule'), title:{text:'index / share',font:{size:13.5,family:SERIF}}}}, CFG);
   document.getElementById('armsRead').innerHTML =
-    `Deliveries in ${D.kpis.year} totalled <b>${fmt(a.tiv_2025)}m</b> TIV. In the last complete
-     five-year window (${a.last_complete_window} to ${a.last_complete_window+4}) the Herfindahl
-     index stands at <b>${a.lc_hhi}</b>, with <b>${a.lc_supplier}</b> the leading supplier at
-     <b>${a.lc_share}%</b> of delivered value, an order-year measure and so deliberately more
-     conservative than SIPRI's delivery-year export shares.`;
+    `Deliveries in ${a.latest_year}: <b>${fmt(a.tiv_latest)}m</b> TIV. Order window
+     ${a.last_complete_window} to ${a.last_complete_window+4}: Herfindahl index
+     <b>${a.lc_hhi}</b>; leading supplier <b>${a.lc_supplier}</b> with <b>${a.lc_share}%</b> of
+     delivered volume. Shares by order year differ from SIPRI's shares by delivery year, and
+     deliveries against recent orders are incomplete.`;
 }
 aFrom.onchange = drawArms; drawArms();
 
-/* ---- hypothesis ledger: verdicts and evidence, from the pipeline ---- */
+/* ---- hypothesis ledger ---- */
 const HY = D.hyp;
-document.getElementById('h1state').textContent = 'supported, exception mapped';
-document.getElementById('h2state').textContent = 'directionally supported';
-document.getElementById('h3state').textContent = 'supported in this build';
+['H1','H2','H3'].forEach(h=>{
+  const el = document.getElementById(h.toLowerCase()+'state');
+  el.textContent = HY.tests[h].verdict;
+  el.classList.add(HY.tests[h].verdict.startsWith('supported') ? 'on' : 'off');
+});
 document.getElementById('hypRead').innerHTML =
   `<b>H1.</b> ${HY.tests.H1.headline}. &nbsp;<b>H2.</b> ${HY.tests.H2.headline}.
-   &nbsp;<b>H3.</b> ${HY.tests.H3.headline}. The defense coefficient behind H3 is
-   ${D.kpis.beta>0?'+':''}${D.kpis.beta} pp per log point, 95 per cent interval
-   ${D.kpis.beta_lo} to ${D.kpis.beta_hi} across ${D.kpis.nobs} quarters: the interval spans
-   zero, a precisely estimated near-null rather than an absence of evidence.`;
+   &nbsp;<b>H3.</b> ${HY.tests.H3.headline}.`;
 
 /* ---- hypothesis evidence panel ---- */
 (function(){
@@ -946,11 +930,9 @@ document.getElementById('hypRead').innerHTML =
          hovertemplate:'%{x} · %{y:.2f}%<extra>trade finance</extra>'}
       ], {...baseLayout(), yaxis:{...baseLayout().yaxis,
           title:{text:'renminbi share, %',font:{size:13.5,family:SERIF}}}}, CFG);
-      read.innerHTML = `The shaded band is the settlement-reserve gap, currently
-        <b>${D.kpis.gap_pp} pp</b> (${h.months.at(-1)}). Reserve values for months past the
-        latest COFER quarter carry that quarter forward. Trade finance runs higher still,
-        <b>${h.trade_finance.at(-1)}%</b>: the renminbi is used where invoicing convenience
-        decides, and held where trust does.`;
+      read.innerHTML = `Shaded area: renminbi payments share minus reserve share,
+        <b>${D.kpis.gap_pp} pp</b> in ${h.months.at(-1)}. Months after the latest COFER quarter
+        use that quarter's reserve share. Trade finance share: <b>${h.trade_finance.at(-1)}%</b>.`;
     } else if(cur==='H2'){
       const h=HY.h2;
       const eu = h.ci_us.map((ci,i)=>ci[1]-h.b_us[i]);
@@ -968,12 +950,16 @@ document.getElementById('hypRead').innerHTML =
          hovertemplate:'%{x} · b_cn %{y:.3f}<extra></extra>'}
       ], {...baseLayout(), barmode:'group', yaxis:{...baseLayout().yaxis,
           title:{text:'pp of tier growth per pp, lag one year',font:{size:13.5,family:SERIF}}}}, CFG);
-      read.innerHTML = `Allied real growth regressed on both principals' lagged growth, HAC(3),
-        1951 to 2025. The US coefficient exceeds the China coefficient in absolute size in all
-        three tiers, one-sided p ${Math.min(...h.p)} to ${Math.max(...h.p)}: directionally what
-        H2 claims, unresolved at annual frequency. Whiskers are 95 per cent intervals; several
-        cross zero, and that sign uncertainty is propagated into the simulation rather than
-        assumed away.`;
+      const pr = h.primary, sv = h.sensitivity;
+      read.innerHTML = `Bars: tier equation coefficients on lagged US and Chinese growth,
+        ${h.sample[0]} to ${h.sample[1]}, with 95 percent intervals. These are simulation
+        inputs. Test: pooled panel of ${pr.n_countries} countries over ${pr.n_years} years,
+        b_us <b>${pr.b_us}</b> (se ${pr.se_us}), b_cn <b>${pr.b_cn}</b> (se ${pr.se_cn}),
+        difference in magnitudes ${pr.abs_gap}, one-sided p <b>${pr.p_one_sided.toFixed(2)}</b>.
+        Without expenditure weights: p ${sv.unweighted.p_one_sided.toFixed(2)}. US reductions
+        only: p ${sv.us_reductions_only.p_one_sided.toFixed(2)} in the full sample and
+        ${sv.us_reductions_only_from_1997.p_one_sided.toFixed(2)} from 1997, so that result is
+        not stable.`;
     } else {
       const h=HY.h1;
       Plotly.react('hypPlot', [
@@ -981,90 +967,97 @@ document.getElementById('hypRead').innerHTML =
          marker:{color:c('--olive')},
          hovertemplate:'%{y} · %{x:.2f} sd<extra></extra>'}
       ], {...baseLayout(), margin:{...baseLayout().margin, l:170},
-          xaxis:{...baseLayout().xaxis, title:{text:'pathway separation, sd of endpoint spread',
+          xaxis:{...baseLayout().xaxis, title:{text:'pathway separation, sd units',
             font:{size:13.5,family:SERIF}}},
           yaxis:{...baseLayout().yaxis, autorange:'reversed'},
           shapes:[{type:'line', x0:h.reserve, x1:h.reserve, y0:-.5, y1:h.outcomes.length-.5,
             line:{color:c('--wine'), width:1.6, dash:'dash'}}],
           annotations:[{x:h.reserve, y:h.outcomes.length-.5, yanchor:'bottom', xanchor:'left',
-            text:'reserve channel '+h.reserve+' sd', showarrow:false,
+            text:'dollar reserve share '+h.reserve+' sd', showarrow:false,
             font:{size:12.5, family:SERIF, color:c('--wine')}}]}, CFG);
-      read.innerHTML = `2035 endpoint separations for the scored outcomes, allied responses only;
-        the imposed drivers sit at ${HY.h1.drivers['United States']} sd (United States) and
-        ${HY.h1.drivers['China']} sd (China) and are not scored. The median scored outcome runs
-        <b>${h.median_ratio}x</b> the reserve channel, which is the ordering the thesis requires:
-        the pathway signal is loudest nearest the budgets and quietest in the reserve stock.
-        ${h.min.name}, at ${h.min.sd} sd, is the mapped exception: its measured coupling to
-        principal budgets is the weakest of the three tiers.`;
+      read.innerHTML = `Pathway separation of the scored outcomes in ${D.meta.horizon[1]}.
+        Dashed line: dollar reserve share. Median scored separation <b>${h.median_sd} sd</b>,
+        <b>${h.median_ratio}</b> times the reserve share (criterion: more than
+        ${h.criterion_ratio}). US and Chinese expenditure separate by
+        ${h.drivers['United States']} sd and ${h.drivers['China']} sd by assumption and are not
+        scored.`;
     }
   }
   draw();
 })();
-/* ---- pathway anchors and findings, written from the payload ---- */
+/* ---- pathway anchors and results ---- */
 (function(){
   const k = D.kpis, pd = D.peace_dividend, ep = D.endpoints, cf = D.cofer, hy = D.hyp;
-  const sgn = v => (v > 0 ? '+' : '') + v.toFixed(1);
+  const sgn = (v, d=1) => (v > 0 ? '+' : '') + v.toFixed(d);
 
   document.getElementById('anchor1').innerHTML =
-    `Anchored on measured 2015 to ${k.year} real growth: China <b>${sgn(k.cn_cagr)}%</b> and the
+    `Compound real growth, ${k.cagr_start} to ${k.year}: China <b>${sgn(k.cn_cagr)}%</b>,
      United States <b>${sgn(k.us_cagr)}%</b> per year.`;
   document.getElementById('anchor2').innerHTML =
-    `Anchored on the peace dividend, the only measured decade of sustained US real contraction:
-     <b>${pd.annual_rate_pct}%</b> per year, ${pd.peak_year} to ${pd.trough_year}.`;
+    `US real expenditure, ${pd.peak_year} to ${pd.trough_year}: <b>${pd.annual_rate_pct}%</b>
+     per year.`;
   document.getElementById('anchor3').innerHTML =
-    `Anchored on the one modern observation of its class: the 2022 freezing of Russian reserves,
-     replayed at a random quarter between 2028 and 2031.`;
+    `Reserve share changes of 2022-Q1 and 2022-Q2; change in mean allied expenditure growth
+     after February 2022. One episode.`;
+  document.getElementById('cnyN').textContent = k.cny_nobs;
 
   const paths = ['accretion','retrenchment','demonstration'];
   const probs = paths.map(p => ep.usd[p].prob_below_50);
   const meds  = paths.map(p => ep.usd[p].median.toFixed(1));
+  const h1 = hy.h1, pr = hy.h2.primary, sc = hy.h3.share_change, sim = hy.h2.sim;
+  const yUS = D.yoy.find(r=>r.tier==='United States'), yEU = D.yoy.find(r=>r.tier==='NATO Europe');
   const items = [
-    `The defense coefficient on the reserve channel is a precisely estimated near-null: a one log
-     point year-on-year change in the China to US expenditure ratio moves the quarterly dollar
-     share by <b>${sgn(k.beta)} pp</b>, 95 per cent interval <b>${k.beta_lo} to ${k.beta_hi}</b>
-     across ${k.nobs} quarters. The interval spans zero, so the model cannot resolve even the sign
-     of the pathway effect on reserves. That is a finding, not a failure: it is what H3 asserts.`,
-    `Median 2035-Q4 dollar shares are <b>${meds[0]}%</b> under accretion, <b>${meds[1]}%</b> under
-     retrenchment and <b>${meds[2]}%</b> under demonstration, inside an 80 per cent band running
-     roughly ${ep.usd.accretion.p10.toFixed(0)} to ${ep.usd.accretion.p90.toFixed(0)}%. The band is an order of magnitude
-     wider than the separation between the three medians.`,
-    `Pathway separation is <b>${k.separation}</b> standard deviations of endpoint spread, and the
-     probability the dollar holds less than half of allocated reserves by 2035 runs from
-     <b>${Math.min(...probs)}</b> to <b>${Math.max(...probs)}</b> across the three roads: material
-     under every one, decisive under none.`,
-    `The renminbi is where the roads diverge. A median 2035 share of
-     <b>${ep.cny.accretion.median.toFixed(2)}%</b> under accretion stands against
-     <b>${ep.cny.demonstration.median.toFixed(2)}%</b> under a 2022-style demonstration. On the one measured
-     precedent, coercion is self-defeating for the challenger's own currency.`,
-    `Observed context: the dollar has fallen from <b>${cf.usd_first}%</b> in ${cf.first_quarter} to
-     <b>${cf.usd_latest}%</b> in ${cf.cny_latest_quarter}, while the renminbi peaked at
-     ${cf.cny_peak_value}% in ${cf.cny_peak_quarter} and has since fallen
-     ${Math.abs(cf.cny_decline_pct)}%. The dollar's losses went to nontraditional currencies rather
-     than to the renminbi, which is the founding observation of the project.`,
-    `The settlement-reserve gap makes the same point from the payments side: the renminbi settles
-     <b>${hy.h3.swift_cny.at(-1)}%</b> of global payments value but holds
-     <b>${hy.h3.cofer_cny.at(-1)}%</b> of allocated reserves, a gap of
-     <b>${k.gap_pp} pp</b> as of ${hy.h3.months.at(-1)}, and <b>${hy.h3.trade_finance.at(-1)}%</b>
-     of trade finance, where invoicing convenience rather than store-of-value trust does the work.`,
-    `With allied budgets endogenous, H1 holds on the median criterion: scored defense outcomes
-     separate by a median <b>${hy.h1.median_ratio}x</b> the reserve channel's 0.36 sd, led by NATO
-     Europe at <b>${hy.h1.sd[hy.h1.outcomes.indexOf('NATO Europe')]}</b> sd, with
-     <b>${hy.h1.min.name}</b> the mapped exception at ${hy.h1.min.sd} sd. H2 is directional: the US
-     coefficient exceeds the China coefficient in every tier, one-sided p
-     ${Math.min(...hy.h2.p)} to ${Math.max(...hy.h2.p)}, unresolved at annual frequency, while the
-     live 2025 episode ran the other way, US <b>-7.5%</b> against NATO Europe <b>+15.6%</b>.`
+    `Reserve channel. A unit change in the year-on-year log China/US expenditure ratio is
+     associated with a change of <b>${sgn(k.beta,2)} pp</b> in the quarterly dollar share (95 per
+     cent interval <b>${k.beta_lo} to ${k.beta_hi}</b>, ${k.nobs} quarters, R&sup2; ${k.r2}). The
+     interval is wide and includes zero: no effect of relative military expenditure on the
+     dollar share is detected.`,
+    `Median dollar share in 2035-Q4: <b>${meds[0]}%</b> under accretion, <b>${meds[1]}%</b>
+     under retrenchment, <b>${meds[2]}%</b> under demonstration. The medians span
+     ${k.usd_median_range} pp; the 80 percent interval under accretion is
+     ${ep.usd.accretion.p10.toFixed(0)} to ${ep.usd.accretion.p90.toFixed(0)}%. Pathway
+     separation is <b>${k.separation} sd</b>. The share of draws with the dollar below 50%
+     ranges from <b>${Math.min(...probs)}</b> to <b>${Math.max(...probs)}</b>.`,
+    `Median renminbi share in 2035-Q4: <b>${ep.cny.accretion.median.toFixed(2)}%</b> under
+     accretion (80 percent interval ${ep.cny.accretion.p10.toFixed(1)} to
+     ${ep.cny.accretion.p90.toFixed(1)}%) and <b>${ep.cny.demonstration.median.toFixed(2)}%</b>
+     under demonstration (${ep.cny.demonstration.p10.toFixed(1)} to
+     ${ep.cny.demonstration.p90.toFixed(1)}%). The demonstration result repeats the change in
+     the renminbi share after 2022 and rests on that single episode.`,
+    `Observed reserves. The dollar share fell from <b>${cf.usd_first}%</b> in
+     ${cf.first_quarter} to <b>${cf.usd_latest}%</b> in ${cf.latest_quarter}. Between 2016-Q4
+     and ${cf.latest_quarter} the dollar share changed by ${sgn(sc['USD'],2)} pp, the renminbi
+     share by ${sgn(sc['CNY'],2)} pp, and the combined share of currencies other than the
+     dollar, euro, yen, pound, and renminbi by
+     ${sgn(sc['Other than USD, EUR, JPY, GBP, CNY'],2)} pp.`,
+    `Payments and reserves. In ${hy.h3.months.at(-1)} the renminbi accounted for
+     <b>${hy.h3.swift_cny.at(-1)}%</b> of global payments by value and
+     <b>${hy.h3.trade_finance.at(-1)}%</b> of trade finance (Swift), against
+     <b>${hy.h3.cofer_cny.at(-1)}%</b> of reserves (COFER): a difference of
+     <b>${k.gap_pp} pp</b> between payments and reserve shares.`,
+    `H1, ${hy.tests.H1.verdict}. Scored expenditure outcomes separate by a median
+     <b>${h1.median_sd} sd</b>, <b>${h1.median_ratio}</b> times the dollar reserve share
+     (${h1.reserve} sd). The largest separation is ${h1.max.name} (${h1.max.sd} sd) and the
+     smallest ${h1.min.name} (${h1.min.sd} sd). The statistic describes the simulation and is
+     not a significance test.`,
+    `H2, ${hy.tests.H2.verdict}. In the pooled panel of ${pr.n_countries} countries,
+     ${pr.sample[0]} to ${pr.sample[1]}, the coefficient on lagged US growth is
+     <b>${pr.b_us}</b> (se ${pr.se_us}) and on lagged Chinese growth <b>${pr.b_cn}</b>
+     (se ${pr.se_cn}). The difference in magnitudes is ${pr.abs_gap} with one-sided p
+     <b>${pr.p_one_sided.toFixed(2)}</b>. In ${k.year}, US real expenditure changed by
+     ${sgn(yUS.y.at(-1))}% and NATO Europe's by ${sgn(yEU.y.at(-1))}%, the opposite of the
+     co-movement the positive US coefficient implies.`,
+    `Retrenchment in simulation. Relative to accretion, median ${D.meta.horizon[1]} expenditure
+     is ${sgn(sim['NATO Europe'].pct_of_accretion_median)}% for NATO Europe,
+     ${sgn(sim['Hedging middle powers'].pct_of_accretion_median)}% for hedging middle powers,
+     and ${sgn(sim['Indo-Pacific allies'].pct_of_accretion_median)}% for Indo-Pacific allies.
+     These differences follow from the positive estimated US coefficients.`
   ];
   document.getElementById('findings').innerHTML = items.map(t => `<li>${t}</li>`).join('');
   document.getElementById('findCaveat').innerHTML =
-    `Read honestly. Both replayed shocks rest on single modern precedents, n = 1: the 2022 reserve
-     freeze for the renminbi reversal, the 2022 mobilization for the demonstration response of
-     allied budgets. The valuation robustness for reserves is flow attribution, each currency's
-     share of the quarterly change in allocated claims, because currency price indices are not in
-     the evidence base; it bounds, not removes, the valuation caveat. The alliance feedback runs
-     at annual frequency and its coefficient signs carry real uncertainty, which the simulation
-     propagates rather than fixes. Foundry concentration is qualitative because the ranking table
-     in the evidence base is paywalled, and event studies price through insurance markets, the
-     2026 Gulf premium multiple, rather than equity microdata, which is not redistributed here.`;
+    `Both event responses repeat one episode (2022). Reserve shares are valued at current
+     exchange rates. The tier equations are static with serially correlated residuals. The H1
+     statistic is descriptive. See Limitations.`;
 })();
 </script>
 </body>

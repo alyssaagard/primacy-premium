@@ -1,54 +1,37 @@
 """
 parse_arms_transfers.py
-Stage 1c of the pipeline: SIPRI Arms Transfers Database.
+Stage 1c. SIPRI Arms Transfers Database.
 
-TWO RAW FILES, TWO DIFFERENT JOBS
----------------------------------
-1. sipri_tiv_imports.csv
-   The recipient-by-year matrix of delivered major conventional arms in
-   SIPRI trend indicator values (TIV, millions). Ten preamble lines,
-   then 'Recipient,1950,...,2025', closing with a 'Total world import'
-   row. That closing row is the global transfer volume series, the
-   project's system-level activity indicator, 1950-2025.
+Input
+  data/raw/sipri_tiv_imports.csv     recipient-by-year matrix of
+                                     deliveries in trend-indicator values
+                                     (TIV, millions), ending in a
+                                     "Total world import" row
+  data/raw/sipri_traderegister.csv   deal-level trade register
 
-2. sipri_traderegister.csv
-   The deal-level register: roughly 30,000 transfer records with
-   supplier, recipient, order year, weapon, and delivered TIV. From it
-   this script builds supplier market shares and a Herfindahl-Hirschman
-   concentration index in five-year windows. Supplier concentration is
-   one of the project's falsification tripwires: a world hedging
-   against a US retrenchment pathway shows up first as supplier
-   diversification.
+Output
+  data/processed/arms_transfers_global.csv    world deliveries by year
+  data/processed/supplier_concentration.csv   top five supplier shares
+                                              and the Herfindahl index
+                                              by five-year order window
 
-WHY TIV AND NOT DOLLARS
------------------------
-TIV measures the volume of military capability transferred, using a
-common unit cost per weapon type, precisely so that it is comparable
-across suppliers and decades. It is not a financial value and is never
-mixed with the SIPRI expenditure series in one unit. The two enter the
-model as separate indicators.
+Notes
+* TIV measures the volume of transferred capability at a common unit
+  cost per weapon type. It is not a financial value and is not combined
+  with the expenditure series.
+* The register is cp1252-encoded. Totals carry thousands separators.
+* A recorded "0" (between 0 and 0.5 TIV) is kept as zero. Empty cells
+  are missing and excluded from sums.
+* Concentration is computed on delivered TIV grouped by year of order.
+  Recent windows are incomplete because orders placed in them are still
+  being delivered.
 
-PARSING HAZARDS HANDLED HERE
-----------------------------
-* cp1252 encoding in the register (SIPRI exports from Windows).
-* Thousands separators and stray spaces in the totals row.
-* '0' meaning 'between 0 and 0.5 TIV' is kept as numeric zero, while
-  empty cells (no identified delivery) become NaN and are dropped from
-  sums rather than counted as zeros.
-* Multi-year delivery strings in the register ('2010-2013') are not
-  needed for the shares built here, which aggregate delivered TIV by
-  supplier over order-year windows.
-
-Run:  python src/parse_arms_transfers.py
+Run: python src/parse_arms_transfers.py
 """
-
-from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw"
-OUT = ROOT / "data" / "processed"
+from config import PROC as OUT, RAW
 
 PREAMBLE_IMPORTS = 9   # metadata lines before the header row
 PREAMBLE_REGISTER = 11
@@ -69,7 +52,7 @@ def global_volume() -> pd.DataFrame:
         errors="coerce",
     )
     out = out.dropna().sort_values("year").reset_index(drop=True)
-    out["source"] = "SIPRI Arms Transfers Database (TIV, retrieved 2026-07-24)"
+    out["source"] = "SIPRI Arms Transfers Database, TIV of imports"
     return out
 
 
@@ -100,8 +83,6 @@ def supplier_concentration() -> pd.DataFrame:
     )
 
     # Herfindahl-Hirschman index per window, on shares in [0, 1].
-    # HHI near 1 means a near monopoly of supply; competitive markets
-    # sit well below 0.15 on this scale.
     hhi = (
         grp.assign(sq=lambda d: d["share"] ** 2)
         .groupby("window")["sq"].sum()
@@ -127,15 +108,11 @@ def main() -> None:
     conc.to_csv(OUT / "supplier_concentration.csv", index=False)
 
     latest = vol.iloc[-1]
-    w = conc["window"].max()
-    lead = conc[conc["window"] == w].iloc[0]
     print(f"arms_transfers_global.csv    {len(vol)} years "
-          f"({vol.year.min()}-{vol.year.max()})")
-    print(f"latest year {latest.year:.0f}: {latest.tiv_m:,.0f} TIV m")
+          f"({vol.year.min()} to {vol.year.max()}); "
+          f"{latest.year:.0f}: {latest.tiv_m:,.0f} TIV m")
     print(f"supplier_concentration.csv   windows "
-          f"{conc.window.min()}-{conc.window.max()}")
-    print(f"{w}s window: top supplier {lead.supplier} "
-          f"({100*lead.share:.1f} pct), HHI {lead.hhi:.3f}")
+          f"{conc.window.min()} to {conc.window.max()}")
 
 
 if __name__ == "__main__":

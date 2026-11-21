@@ -1,60 +1,51 @@
 """
 build_hypothesis_panel.py
-Stage 4: one dataset that measures every hypothesis.
+Stage 4. Hypothesis dataset and verdicts.
 
-WHAT THIS IS
-------------
-Every number the three hypotheses rest on, in a single tidy table:
-data/processed/hypothesis_panel.csv. One row is one measurement. The
-grammar is constant across the file:
+Output
+  data/processed/hypothesis_panel.csv        one row per measurement
+  data/processed/cofer_flow_attribution.csv  flow shares by currency
+  outputs/hypothesis_tests.json              verdicts and statistics
 
-    hypothesis  H1 | H2 | H3 | context
-    role        test | evidence | input | robustness
-    series      what is being measured
-    scope       which actor, tier, currency, pathway or window
-    freq        the native frequency of the row
-    period      year, quarter, month or window label
-    value       the number
-    unit        its unit
-    source      where it came from
+hypothesis_panel.csv columns
+  hypothesis  H1, H2, H3 or context
+  role        test, evidence, input, robustness or sensitivity
+  series      quantity measured
+  scope       actor, tier, currency, pathway or window
+  freq        native frequency of the row
+  period      year, quarter, month or window
+  value, unit, source
 
-Test rows carry the computed statistics (separations, coefficients,
-p values). Evidence rows carry the observed series each test reads
-(reserve shares, settlement shares, burden shares, dependence windows,
-event-window growth). Input rows carry simulated endpoints. Context
-rows carry the structural exposures the channels reference (warheads,
-chokepoint flows, fabrication revenue, shipbuilding shares). The point
-of one file is auditability: a reader can filter on H2 and see the
-whole case, test and evidence together, without opening the pipeline.
+Flow attribution
+  COFER shares are stock shares at current exchange rates, so they move
+  with valuation as well as transactions. An exact valuation adjustment
+  requires currency price indices that this project does not hold. As a
+  partial check, each currency's share of the quarterly change in total
+  claims is computed for quarters in which total claims rose. The series
+  still mixes flows and valuation.
 
-Also built here, because it belongs to the same audit trail:
+Verdict rules
+  H1  supported if the median scored separation exceeds twice the US
+      dollar reserve share separation (stage 3b). Descriptive.
+  H2  supported if the pooled panel test of |b_us| > |b_cn| has a
+      one-sided p value below 0.05 (stage 2b).
+  H3  supported on the available measures if (a) the 95 percent interval
+      of the expenditure coefficient in the dollar share regression
+      contains zero, (b) the dollar share separation is below the median
+      scored expenditure separation, and (c) the renminbi's payments
+      share exceeds its reserve share in every month observed. The
+      shipping, energy and semiconductor channels are not simulated, so
+      the comparison across commercial channels is not tested.
 
-cofer_flow_attribution.csv. The reserve shares in COFER are stock
-shares at market value, so exchange-rate swings move them without a
-single asset being traded. The exact valuation adjustment needs
-currency-by-currency price indices that are not in the evidence base,
-so the robustness series used instead is flow attribution: each
-currency's share of the change in total allocated claims per quarter.
-It is a bounded, honest proxy: flows and valuation are mixed in the
-quarterly delta, but a currency persistently absorbing a larger share
-of new claims than its stock share implies accumulation regardless of
-valuation. The limitation is documented here and in the register.
-
-hypothesis_tests.json. The three verdicts with their statistics, one
-place, machine readable, consumed by the dashboard ledger.
-
-Run:  python src/build_hypothesis_panel.py
+Run: python src/build_hypothesis_panel.py
 """
 
 import json
-from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-PROC = ROOT / "data" / "processed"
-OUT = ROOT / "outputs"
+from config import OUT, PROC
+from tiers import growth_table
 
 COLS = ["hypothesis", "role", "series", "scope", "freq", "period",
         "value", "unit", "source"]
@@ -71,20 +62,41 @@ def rows_from(df, hypothesis, role, series, scope_col, period_col,
     return out.dropna(subset=["value"])
 
 
+def row(hypothesis, role, series, scope, freq, period, value, unit, source):
+    return pd.DataFrame([dict(zip(COLS, [hypothesis, role, series, scope,
+                                         freq, str(period), value, unit,
+                                         source]))])
+
+
 def flow_attribution() -> pd.DataFrame:
     c = pd.read_csv(PROC / "cofer_quarterly_long.csv")
     claims = c[c.measure == "claims_usd_m"].pivot_table(
         "value", "quarter", "ccy").sort_index()
-    total = claims.sum(axis=1)
+    total = claims["TOTAL"]
     d_claims, d_total = claims.diff(), total.diff()
     flow = (d_claims.div(d_total, axis=0) * 100)[d_total > 0]
-    out = (flow[["USD", "EUR", "CNY", "JPY", "GBP"]]
-           .reset_index().melt("quarter", var_name="ccy",
-                               value_name="flow_share_pct").dropna())
-    out["source"] = ("Derived from IMF COFER allocated claims; each currency's "
-                     "share of the quarterly change in total allocated claims")
+    out = (flow[["USD", "EUR", "CNY", "JPY", "GBP"]].reset_index()
+           .melt("quarter", var_name="ccy", value_name="flow_share_pct")
+           .dropna())
+    out["source"] = ("Derived from IMF COFER claims: currency share of the "
+                     "quarterly change in total claims, quarters with "
+                     "rising totals")
     out.to_csv(PROC / "cofer_flow_attribution.csv", index=False)
     return out
+
+
+def settlement_gap() -> pd.DataFrame:
+    """Monthly Swift CNY payments share minus the COFER CNY share of the
+    same quarter. The latest COFER quarter is carried forward."""
+    c = pd.read_csv(PROC / "cofer_quarterly_long.csv")
+    cny_q = (c[(c.measure == "share_pct") & (c.ccy == "CNY")]
+             .set_index("quarter").value)
+    sw = pd.read_csv(PROC / "swift_settlement.csv")
+    sw["quarter"] = sw.month.str[:4] + "-Q" + (
+        (sw.month.str[5:7].astype(int) - 1) // 3 + 1).astype(str)
+    sw["cofer_cny"] = sw.quarter.map(cny_q).ffill()
+    sw["gap_pp"] = (sw.cny_payments_pct - sw.cofer_cny).round(2)
+    return sw
 
 
 def main() -> None:
@@ -92,149 +104,171 @@ def main() -> None:
     cal2 = json.loads((OUT / "calibration_layer2.json").read_text())
     sim1 = json.loads((OUT / "simulation_summary.json").read_text())
     sim2 = json.loads((OUT / "layer2_summary.json").read_text())
+    horizon = str(sim2["horizon"][1])
+    draws = f"{sim2['draws']} draws per pathway, seed {sim2['seed']}"
     parts: list[pd.DataFrame] = []
 
     # ------------------------------------------------------------- H1
     h1 = sim2["h1"]
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H1", "role": "test", "series": "pathway_separation",
-         "scope": k, "freq": "endpoint", "period": "2035", "value": v,
-         "unit": "sd units",
-         "source": "simulate_layer2.py, 10000 draws per pathway, seed 20260724"}
-        for k, v in h1["scored_outcome_separation_sd"].items()]))
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H1", "role": "test", "series": "pathway_separation_driver",
-         "scope": k, "freq": "endpoint", "period": "2035", "value": v,
-         "unit": "sd units", "source": "simulate_layer2.py (context, not scored)"}
-        for k, v in h1["driver_separation_sd_context"].items()]))
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H1", "role": "test", "series": "reserve_channel_separation",
-         "scope": "USD share", "freq": "endpoint", "period": "2035",
-         "value": h1["reserve_separation_sd"], "unit": "sd units",
-         "source": "simulate.py layer 1"},
-        {"hypothesis": "H1", "role": "test", "series": "median_over_reserve_ratio",
-         "scope": "scored outcomes", "freq": "endpoint", "period": "2035",
-         "value": h1["median_over_reserve_ratio"], "unit": "ratio",
-         "source": "simulate_layer2.py"}]))
-    for p, tiers in sim2["endpoints_2035_musd"].items():
-        parts.append(pd.DataFrame([
-            {"hypothesis": "H1", "role": "input", "series": "simulated_endpoint",
-             "scope": f"{t} | {p}", "freq": "endpoint", "period": "2035",
-             "value": d["median"], "unit": "USD m, constant 2024",
-             "source": "layer2_summary.json"} for t, d in tiers.items()]))
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H1", "role": "input", "series": "allied_share_2035",
-         "scope": p, "freq": "endpoint", "period": "2035", "value": d["median"],
-         "unit": "% of world", "source": "layer2_summary.json"}
-        for p, d in sim2["allied_share_2035"].items()]))
+    for k, v in h1["scored_outcome_separation_sd"].items():
+        parts.append(row("H1", "test", "pathway_separation", k, "endpoint",
+                         horizon, v, "sd units",
+                         f"simulate_layer2.py, {draws}"))
+    for k, v in h1["driver_separation_sd_context"].items():
+        parts.append(row("H1", "test", "pathway_separation_driver", k,
+                         "endpoint", horizon, v, "sd units",
+                         "simulate_layer2.py; imposed, not scored"))
+    parts.append(row("H1", "test", "reserve_channel_separation", "USD share",
+                     "endpoint", horizon, h1["reserve_separation_sd"],
+                     "sd units", "simulate.py"))
+    parts.append(row("H1", "test", "median_over_reserve_ratio",
+                     "scored outcomes", "endpoint", horizon,
+                     h1["median_over_reserve_ratio"], "ratio",
+                     "simulate_layer2.py"))
+    for p, tiers in sim2["endpoints_musd"].items():
+        for t, d in tiers.items():
+            parts.append(row("H1", "input", "simulated_endpoint", f"{t} | {p}",
+                             "endpoint", horizon, d["median"],
+                             "USD m, constant 2024", "layer2_summary.json"))
+    for p, d in sim2["allied_share"].items():
+        parts.append(row("H1", "input", "allied_share", p, "endpoint",
+                         horizon, d["median"], "% of world",
+                         "layer2_summary.json"))
 
     # ------------------------------------------------------------- H2
+    h2 = cal2["h2"]
+    pr = h2["primary"]
+    span = f"{pr['sample'][0]}-{pr['sample'][1]}"
+    panel_src = ("calibrate_layer2.py: country panel, fixed effects, "
+                 "expenditure-weighted, Driscoll-Kraay(3)")
+    for name, key, unit in [("panel_b_us", "b_us", "pp per pp, lag 1"),
+                            ("panel_b_cn", "b_cn", "pp per pp, lag 1"),
+                            ("panel_abs_gap", "abs_gap", "pp per pp"),
+                            ("panel_p_one_sided", "p_one_sided",
+                             "one-sided p")]:
+        parts.append(row("H2", "test", name, "All allied tiers", "annual",
+                         span, pr[key], unit, panel_src))
+        for tier, r in h2["by_tier"].items():
+            parts.append(row("H2", "sensitivity", name, tier, "annual", span,
+                             r[key], unit, panel_src))
+    for label, r in h2["sensitivity"].items():
+        s = f"{r['sample'][0]}-{r['sample'][1]}"
+        for name, key, unit in [("panel_b_us", "b_us", "pp per pp, lag 1"),
+                                ("panel_b_cn", "b_cn", "pp per pp, lag 1"),
+                                ("panel_p_one_sided", "p_one_sided",
+                                 "one-sided p")]:
+            parts.append(row("H2", "sensitivity", name,
+                             f"All allied tiers | {label}", "annual", s,
+                             r[key], unit, "calibrate_layer2.py"))
     for tier, f in cal2["feedback"].items():
-        parts.append(pd.DataFrame([
-            {"hypothesis": "H2", "role": "test", "series": "feedback_b_us",
-             "scope": tier, "freq": "annual", "period": "1951-2025",
-             "value": f["b_us"], "unit": "pp per pp, lag 1",
-             "source": "calibrate_layer2.py, HAC(3)"},
-            {"hypothesis": "H2", "role": "test", "series": "feedback_b_cn",
-             "scope": tier, "freq": "annual", "period": "1951-2025",
-             "value": f["b_cn"], "unit": "pp per pp, lag 1",
-             "source": "calibrate_layer2.py, HAC(3)"},
-            {"hypothesis": "H2", "role": "test", "series": "p_us_stronger",
-             "scope": tier, "freq": "annual", "period": "1951-2025",
-             "value": f["p_us_stronger_one_sided"], "unit": "one-sided p",
-             "source": "delta method on |b_us| - |b_cn|"}]))
+        s = f"{f['sample'][0]}-{f['sample'][1]}"
+        src = "calibrate_layer2.py: tier equation, OLS, HAC(3)"
+        parts.append(row("H2", "input", "feedback_b_us", tier, "annual", s,
+                         f["b_us"], "pp per pp, lag 1", src))
+        parts.append(row("H2", "input", "feedback_b_cn", tier, "annual", s,
+                         f["b_cn"], "pp per pp, lag 1", src))
+        parts.append(row("H2", "sensitivity", "static_tier_p_one_sided", tier,
+                         "annual", s, f["static_test"]["p_one_sided"],
+                         "one-sided p", src + "; first-release test"))
     actor = {"us_mean": "United States", "cn_mean": "China"}
     for w, d in cal2["event_windows"].items():
         yrs = [seg for seg in w.split("_") if seg.isdigit()]
-        period = "-".join(yrs)
         label = w.rsplit("_" + yrs[0], 1)[0].replace("_", " ")
         for scope, v in d.items():
-            parts.append(pd.DataFrame([{
-                "hypothesis": "H2", "role": "evidence",
-                "series": "event_window_growth",
-                "scope": f"{actor.get(scope, scope)} | {label}",
-                "freq": "annual mean", "period": period,
-                "value": v, "unit": "% real, mean over window",
-                "source": "SIPRI milex via calibrate_layer2.py"}]))
+            parts.append(row("H2", "evidence", "event_window_growth",
+                             f"{actor.get(scope, scope)} | {label}",
+                             "annual mean", "-".join(yrs), v,
+                             "% real, mean over window",
+                             "SIPRI via calibrate_layer2.py"))
     dep = pd.read_csv(PROC / "allied_import_dependence.csv")
     dep["us_share_pct"] = dep.us_share * 100
-    parts.append(rows_from(dep.assign(scope=dep.tier + " | " + dep.window.astype(str)),
-                           "H2", "evidence", "us_supplier_share", "scope", "window",
-                           "us_share_pct", "% of tier imports, 5-year order window",
+    dep["scope"] = dep.tier + " | " + dep.window.astype(str)
+    parts.append(rows_from(dep, "H2", "evidence", "us_supplier_share",
+                           "scope", "window", "us_share_pct",
+                           "% of tier imports, 5-year order window",
                            "SIPRI trade register", "window"))
-    parts.append(rows_from(dep.assign(scope=dep.tier + " | " + dep.window.astype(str)),
-                           "H2", "evidence", "supplier_hhi", "scope", "window",
-                           "supplier_hhi", "Herfindahl, 5-year order window",
+    parts.append(rows_from(dep, "H2", "evidence", "supplier_hhi", "scope",
+                           "window", "supplier_hhi",
+                           "Herfindahl, 5-year order window",
                            "SIPRI trade register", "window"))
     nato = pd.read_csv(PROC / "nato_burden.csv")
     med = nato.groupby("year", as_index=False).pct_gdp.median()
     parts.append(rows_from(med, "H2", "evidence", "nato_median_burden", None,
                            "year", "pct_gdp", "% of GDP, median ally",
-                           "NATO defence expenditure 2026, Table 3", "annual"))
+                           "NATO defence expenditure, Table 3", "annual"))
     for t, d in cal2["demonstration_mobilization_2022"].items():
-        parts.append(pd.DataFrame([{
-            "hypothesis": "H2", "role": "evidence", "series": "mobilization_2022_delta",
-            "scope": t, "freq": "annual mean", "period": "2022-2025 vs 2015-2021",
-            "value": d["delta_pp"], "unit": "pp step-up in real growth",
-            "source": "calibrate_layer2.py; n = 1 episode"}]))
+        parts.append(row("H2", "evidence", "mobilization_2022_delta", t,
+                         "annual mean", "2022 onward vs 2015-2021",
+                         d["delta_pp"], "pp change in mean real growth",
+                         "calibrate_layer2.py; one episode"))
 
     # ------------------------------------------------------------- H3
     c = pd.read_csv(PROC / "cofer_quarterly_long.csv")
     shares = c[c.measure == "share_pct"]
     for ccy in ["USD", "CNY", "EUR"]:
-        s = shares[shares.ccy == ccy]
-        parts.append(rows_from(s, "H3", "evidence", "cofer_share", "ccy",
-                               "quarter", "value", "% of allocated reserves",
-                               "IMF COFER", "quarterly"))
-    sw = pd.read_csv(PROC / "swift_settlement.csv")
-    parts.append(rows_from(sw.assign(ccy="CNY"), "H3", "evidence",
-                           "swift_payments_share", "ccy", "month",
-                           "cny_payments_pct", "% of global payments value",
-                           "Swift RMB / Global Currency Tracker", "monthly"))
-    parts.append(rows_from(sw.assign(ccy="CNY"), "H3", "evidence",
-                           "swift_trade_finance_share", "ccy", "month",
-                           "cny_trade_finance_pct", "% of trade finance value",
-                           "Swift RMB / Global Currency Tracker", "monthly"))
-    # The settlement-reserve gap: monthly Swift CNY minus the COFER CNY
-    # share of that month's quarter (latest available quarter carried
-    # forward for months COFER has not yet reported).
-    cny_q = (shares[shares.ccy == "CNY"].set_index("quarter").value)
-    sw["quarter"] = sw.month.str[:4] + "-Q" + (
-        (sw.month.str[5:7].astype(int) - 1) // 3 + 1).astype(str)
-    sw["cofer_cny"] = sw.quarter.map(cny_q).ffill()
-    sw["gap_pp"] = (sw.cny_payments_pct - sw.cofer_cny).round(2)
-    parts.append(rows_from(sw.assign(ccy="CNY"), "H3", "test",
-                           "settlement_reserve_gap", "ccy", "month", "gap_pp",
+        parts.append(rows_from(shares[shares.ccy == ccy], "H3", "evidence",
+                               "cofer_share", "ccy", "quarter", "value",
+                               "% of foreign exchange reserves", "IMF COFER",
+                               "quarterly"))
+    sw = settlement_gap().assign(ccy="CNY")
+    swift_src = "Swift RMB Tracker / Global Currency Tracker"
+    parts.append(rows_from(sw, "H3", "evidence", "swift_payments_share",
+                           "ccy", "month", "cny_payments_pct",
+                           "% of global payments value", swift_src, "monthly"))
+    parts.append(rows_from(sw, "H3", "evidence", "swift_trade_finance_share",
+                           "ccy", "month", "cny_trade_finance_pct",
+                           "% of trade finance value", swift_src, "monthly"))
+    parts.append(rows_from(sw, "H3", "test", "settlement_reserve_gap", "ccy",
+                           "month", "gap_pp",
                            "pp, Swift payments share minus COFER share",
                            "derived: Swift minus IMF COFER", "monthly"))
-    flow = flow_attribution()
-    parts.append(rows_from(flow, "H3", "robustness", "cofer_flow_share",
-                           "ccy", "quarter", "flow_share_pct",
-                           "% of quarterly change in allocated claims",
+    parts.append(rows_from(flow_attribution(), "H3", "robustness",
+                           "cofer_flow_share", "ccy", "quarter",
+                           "flow_share_pct",
+                           "% of quarterly change in total claims",
                            "derived from IMF COFER claims", "quarterly"))
     dr = cal1["cases"]["drift_regimes"]
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H3", "role": "test", "series": "drift_regime",
-         "scope": f"{ccy} | {reg}", "freq": "quarterly mean",
-         "period": "pre/post 2022-Q1", "value": dr[f"{ccy.lower()}_{reg}"],
-         "unit": "pp per quarter", "source": "calibrate.py"}
-        for ccy in ["USD", "CNY"] for reg in ["pre", "post"]]))
-    parts.append(pd.DataFrame([
-        {"hypothesis": "H3", "role": "test", "series": "reserve_pathway_separation",
-         "scope": "USD share", "freq": "endpoint", "period": "2035",
-         "value": sim1["usd"]["pathway_separation_sd_units"], "unit": "sd units",
-         "source": "simulate.py layer 1"}]))
+    for ccy in ["USD", "CNY"]:
+        for reg in ["pre", "post"]:
+            parts.append(row("H3", "evidence", "drift_regime",
+                             f"{ccy} | {reg}", "quarterly mean",
+                             "before / from 2022-Q1",
+                             dr[f"{ccy.lower()}_{reg}"], "pp per quarter",
+                             "calibrate.py"))
+    reg = cal1["usd_regression"]
+    lo, hi = reg["conf_int_95"]["x_ratio"]
+    for name, v in [("usd_coefficient", reg["params"]["x_ratio"]),
+                    ("usd_coefficient_ci_low", lo),
+                    ("usd_coefficient_ci_high", hi)]:
+        parts.append(row("H3", "test", name, "USD share", "quarterly",
+                         "-".join(cal1["meta"]["cofer_span"]), round(v, 3),
+                         "pp per unit change in log expenditure ratio",
+                         "calibrate.py, HAC(4)"))
+    usd_sep = sim1["usd"]["pathway_separation_sd_units"]
+    parts.append(row("H3", "test", "reserve_pathway_separation", "USD share",
+                     "endpoint", horizon, round(usd_sep, 3), "sd units",
+                     "simulate.py"))
+    wide = pd.read_csv(PROC / "cofer_shares_wide.csv").set_index("quarter")
+    since = wide.loc["2016-Q4":]
+    minor = [k for k in ["AUD", "CAD", "CHF", "OTHER"] if k in wide.columns]
+    change = {"USD": since.USD.iloc[-1] - since.USD.iloc[0],
+              "CNY": since.CNY.iloc[-1] - since.CNY.iloc[0],
+              "Other than USD, EUR, JPY, GBP, CNY":
+                  since[minor].sum(axis=1).iloc[-1]
+                  - since[minor].sum(axis=1).iloc[0]}
+    for k, v in change.items():
+        parts.append(row("H3", "evidence", "share_change_since_2016Q4", k,
+                         "window", f"2016-Q4 to {since.index[-1]}",
+                         round(float(v), 2), "pp", "IMF COFER"))
 
     # --------------------------------------------------------- context
     nuc = pd.read_csv(PROC / "nuclear_panel.csv")
     parts.append(rows_from(nuc, "context", "input", "nuclear_stockpile",
                            "country", "year", "stockpile", "warheads",
-                           "FAS Nuclear Notebook 2025/2026; DOD projections",
-                           "annual"))
+                           "FAS Nuclear Notebook; DOD projections", "annual"))
     ch = pd.read_csv(PROC / "energy_chokepoints.csv")
-    latest = ch[ch.year == ch.year.max()]
-    parts.append(rows_from(latest, "context", "input", "chokepoint_flow",
-                           "chokepoint", "year", "flow_mbd",
+    parts.append(rows_from(ch[ch.year == ch.year.max()], "context", "input",
+                           "chokepoint_flow", "chokepoint", "year", "flow_mbd",
                            "million barrels per day",
                            "EIA World Oil Transit Chokepoints", "annual"))
     semi = pd.read_csv(PROC / "semiconductor_channel.csv")
@@ -250,69 +284,91 @@ def main() -> None:
     lsci = mar[(mar.series == "lsci")
                & mar.economy.isin(["China", "United States", "Taiwan"])]
     parts.append(rows_from(lsci, "context", "input", "lsci", "economy",
-                           "year", "value", "index, annual mean", "UNCTADstat",
-                           "annual"))
+                           "year", "value", "index, annual mean",
+                           "UNCTADstat", "annual"))
     br = pd.read_csv(PROC / "steo_brent.csv")
     br["year"] = br.month.str[:4]
     bry = br.groupby("year", as_index=False).brent_usd_bbl.mean().round(1)
     parts.append(rows_from(bry, "context", "input", "brent_annual_mean", None,
                            "year", "brent_usd_bbl", "USD per barrel",
-                           "EIA STEO July 2026", "annual"))
+                           br.source.iloc[0], "annual"))
     war = pd.read_csv(PROC / "war_risk_events.csv")
     parts.append(rows_from(war, "context", "input", "war_risk_multiple",
                            "episode", "date", "multiple",
-                           "x, AWRP during over before",
-                           "Argus Media, June 2026", "event"))
+                           "ratio of premium during to before the episode",
+                           war.source.iloc[0], "event"))
 
     panel = pd.concat(parts, ignore_index=True)[COLS]
     panel.to_csv(PROC / "hypothesis_panel.csv", index=False)
 
     # ---------------------------------------------------- verdict file
-    latest_gap = sw.dropna(subset=["gap_pp"]).iloc[-1]
+    g = growth_table()
+    last = int(g.index.max())
+    gap_ok = bool((sw.gap_pp.dropna() > 0).all())
+    ci_spans_zero = bool(lo < 0 < hi)
+    sep_below = bool(usd_sep < h1["median_outcome_sd"])
+    h3_ok = gap_ok and ci_spans_zero and sep_below
+    latest = sw.dropna(subset=["gap_pp"]).iloc[-1]
     tests = {
         "H1": {
-            "claim": "The pathway to primacy conditions outcomes more than the "
-                     "endpoint itself",
-            "verdict": sim2["h1"]["verdict"],
-            "headline": f"median scored outcome separates by "
-                        f"{sim2['h1']['median_outcome_sd']} sd, "
-                        f"{sim2['h1']['median_over_reserve_ratio']}x the reserve "
-                        f"channel; exception: "
-                        f"{sim2['h1']['min_outcome']['name']} at "
-                        f"{sim2['h1']['min_outcome']['sd']} sd",
-            "statistics": sim2["h1"],
+            "claim": "Allied expenditure outcomes differ across pathways by "
+                     "more than the reserve channel does",
+            "verdict": h1["verdict"],
+            "headline": (
+                f"median scored separation {h1['median_outcome_sd']} sd, "
+                f"{h1['median_over_reserve_ratio']} times the reserve channel "
+                f"({h1['reserve_separation_sd']} sd); largest "
+                f"{h1['max_outcome']['name']} at {h1['max_outcome']['sd']} sd, "
+                f"smallest {h1['min_outcome']['name']} at "
+                f"{h1['min_outcome']['sd']} sd; descriptive, not a "
+                "significance test"),
+            "statistics": h1,
         },
         "H2": {
-            "claim": "American retrenchment moves allied budgets harder than "
-                     "Chinese growth alone",
-            "verdict": "directionally supported, not resolved",
-            "headline": "the US coefficient exceeds the China coefficient in "
-                        "absolute size in all three tiers (one-sided p 0.22 to "
-                        "0.35); the 2025 episode shows substitution, US -7.5 "
-                        "percent against NATO Europe +15.6 percent",
-            "statistics": cal2["h2_historical"],
+            "claim": "Allied expenditure responds more strongly to US "
+                     "expenditure than to Chinese expenditure",
+            "verdict": h2["verdict"],
+            "headline": (
+                f"pooled panel of {pr['n_countries']} countries, "
+                f"{pr['sample'][0]} to {pr['sample'][1]}: b_us {pr['b_us']} "
+                f"(se {pr['se_us']}), b_cn {pr['b_cn']} (se {pr['se_cn']}), "
+                f"difference in magnitudes {pr['abs_gap']}, one-sided p "
+                f"{pr['p_one_sided']:.2f}; {last}: United States "
+                f"{g.loc[last, 'United States']:+.1f} percent, NATO Europe "
+                f"{g.loc[last, 'NATO Europe']:+.1f} percent"),
+            "statistics": h2,
         },
         "H3": {
-            "claim": "Reserve composition moves late and least among the "
-                     "commercial channels",
-            "verdict": "supported",
-            "headline": f"renminbi settles {sw.cny_payments_pct.iloc[-1]}% of "
-                        f"payments but holds {round(float(sw.cofer_cny.iloc[-1]), 2)}% "
-                        f"of reserves (gap {latest_gap.gap_pp} pp, "
-                        f"{latest_gap.month}); USD pathway separation 0.36 sd",
+            "claim": "Reserve composition responds least to the pathway, and "
+                     "the dollar's decline does not accrue to the renminbi",
+            "verdict": ("supported on the available measures" if h3_ok
+                        else "not supported"),
+            "headline": (
+                f"expenditure coefficient {reg['params']['x_ratio']:+.2f} pp, "
+                f"95 percent interval {lo:.2f} to {hi:.2f}; dollar share "
+                f"separation {usd_sep:.2f} sd; renminbi {latest.cny_payments_pct} "
+                f"percent of payments against "
+                f"{float(latest.cofer_cny):.2f} percent of reserves "
+                f"({latest.month}, gap {latest.gap_pp} pp); other commercial "
+                "channels not simulated"),
             "statistics": {
-                "latest_gap_pp": float(latest_gap.gap_pp),
+                "criteria": {"interval_contains_zero": ci_spans_zero,
+                             "separation_below_expenditure_median": sep_below,
+                             "payments_share_exceeds_reserve_share": gap_ok},
+                "latest_gap_pp": float(latest.gap_pp),
+                "latest_gap_month": latest.month,
+                "share_change_since_2016Q4_pp":
+                    {k: round(float(v), 2) for k, v in change.items()},
                 "drift_regimes": dr,
-                "reserve_separation_sd":
-                    sim1["usd"]["pathway_separation_sd_units"]},
+                "reserve_separation_sd": usd_sep},
         },
     }
     (OUT / "hypothesis_tests.json").write_text(json.dumps(tests, indent=1))
 
-    print(f"hypothesis_panel.csv: {len(panel)} rows across "
-          f"{panel.hypothesis.nunique()} hypotheses + context")
-    print(panel.groupby(['hypothesis', 'role']).size().to_string())
-    print(f"settlement-reserve gap, latest: {latest_gap.gap_pp} pp ({latest_gap.month})")
+    print(f"hypothesis_panel.csv: {len(panel)} rows")
+    print(panel.groupby(["hypothesis", "role"]).size().to_string())
+    for k, v in tests.items():
+        print(f"{k}: {v['verdict']} | {v['headline']}")
 
 
 if __name__ == "__main__":

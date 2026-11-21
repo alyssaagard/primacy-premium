@@ -1,41 +1,34 @@
 """
 parse_security.py
-Stage 1g: the security-side tables that layers 2 and 4 consume.
+Stage 1g. Security-side tables.
 
-Five tables come out of this script.
+Output (data/processed/)
+  nato_burden.csv               defence expenditure as a share of real
+                                GDP by ally and year, from NATO Table 3
+                                (latest year is an estimate)
+  nuclear_panel.csv             warhead stockpile estimates (FAS Nuclear
+                                Notebook) and US Department of Defense
+                                projections for China
+  arms_recipient_imports.csv    recipient-level TIV imports, with tier
+  allied_import_dependence.csv  US share and supplier Herfindahl index
+                                of allied-tier imports by five-year
+                                order window
+  taiwan_strait_events.csv      dated exercise and war-risk events with
+                                documentary sources
+  war_risk_events.csv           additional war risk premium before and
+                                during the 2026 Mideast Gulf episode
+  alliance_matrix.csv           treaty commitment coding by member
 
-1. nato_burden.csv. NATO's own defence expenditure release, Table 3,
-   gives core defence spending as a share of real GDP per ally per year,
-   2014 to 2026 (2026 estimated). This is the H2 outcome variable on the
-   European side, measured by the alliance itself rather than
-   reconstructed.
+Notes
+* Requires the pdftotext utility (poppler).
+* Nuclear figures are extracted by anchored regular expressions and the
+  build stops if a pattern is not found.
+* The event, war-risk and alliance tables are coded by hand from the
+  cited documents. The alliance commitment values are a design input,
+  not an estimate. The pre-episode premium is the midpoint of the
+  quoted 0.15 to 0.2 percent range.
 
-2. nuclear_panel.csv. Warhead counts from the Federation of American
-   Scientists' Nuclear Notebook 2026 issues for China, the United
-   States, and Russia, plus the 2025 China issue and the DOD-projected
-   Chinese trajectory. This defines the parity threshold the scenarios
-   reference. Numbers are extracted by anchored regex with validation,
-   never typed in unverified.
-
-3. arms_recipient_imports.csv and allied_import_dependence.csv. The
-   recipient-level TIV matrix gives each ally's import volume 2011 to
-   2025; the full trade register gives the United States' share of each
-   allied tier's imports over five-year order windows. Supplier
-   diversification among allies is a falsification tripwire for
-   pathway II, so it needs a measured baseline.
-
-4. taiwan_strait_events.csv. The event register for the event-study
-   layer: major PLA exercise episodes and the 2026 Gulf war-risk
-   episode, each with a documentary source held in the repository's
-   evidence base.
-
-5. alliance_matrix.csv and war_risk_events.csv. The commitment matrix
-   encodes treaty structure (who is obligated to whom, and how hard);
-   it is a design input, documented and cited, not an estimate. The war
-   risk table records the one fully-quoted premium episode: Mideast Gulf
-   additional war risk premia moving from 0.15 to 0.2 percent of hull
-   value to around 1 percent in June 2026, with the March 2026 Joint War
-   Committee listing expansion as the institutional marker.
+Run: python src/parse_security.py
 """
 
 import re
@@ -45,9 +38,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw"
-OUT = ROOT / "data" / "processed"
+from config import PROC as OUT, RAW
 
 IP_ALLIES = ["Japan", "South Korea", "Korea, South", "Taiwan", "Australia",
              "Philippines", "New Zealand", "Thailand"]
@@ -152,7 +143,7 @@ def parse_recipients() -> None:
         [long.recipient.isin(IP_ALLIES), long.recipient.isin(NATO_EUROPE),
          long.recipient.eq("Total world import")],
         ["Indo-Pacific allies", "NATO Europe", "World"], default="Other")
-    long["source"] = "SIPRI Arms Transfers Database, TIV of imports, retrieved 29 July 2026"
+    long["source"] = "SIPRI Arms Transfers Database, TIV of imports"
     long.to_csv(OUT / "arms_recipient_imports.csv", index=False)
     print(f"arms_recipient_imports.csv: {len(long)} rows, "
           f"{long.recipient.nunique()} recipients")

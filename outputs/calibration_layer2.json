@@ -1,149 +1,429 @@
 {
- "description": "Layer 2 parameters: allied feedback on lagged US and China real growth, HAC(3), annual 1951 to 2025",
+ "description": "Allied response to lagged US and Chinese real expenditure growth; percent per year, chain-linked tier totals",
  "feedback": {
   "Indo-Pacific allies": {
-   "b0": 2.381,
-   "b_us": 0.072,
-   "b_cn": -0.038,
-   "se_us": 0.07,
-   "se_cn": 0.061,
+   "b0": 2.45,
+   "b_us": 0.076,
+   "b_cn": -0.041,
+   "se_us": 0.072,
+   "se_cn": 0.058,
    "ci95_us": [
-    -0.065,
-    0.21
+    -0.071,
+    0.223
    ],
    "ci95_cn": [
     -0.158,
-    0.082
+    0.077
    ],
-   "abs_gap": 0.034,
-   "p_us_stronger_one_sided": 0.2917,
+   "cov_names": [
+    "const",
+    "us_lag",
+    "cn_lag"
+   ],
+   "cov": [
+    [
+     0.39383409505613615,
+     0.018884734293505602,
+     -0.026376007909712687
+    ],
+    [
+     0.01888473429350561,
+     0.005221478347004865,
+     -0.0022663214955509275
+    ],
+    [
+     -0.026376007909712715,
+     -0.0022663214955509275,
+     0.0033166933865399683
+    ]
+   ],
    "nobs": 35,
-   "r2": 0.035
+   "sample": [
+    1991,
+    2025
+   ],
+   "r2": 0.039,
+   "breusch_godfrey_p": 0.0969,
+   "durbin_watson": 1.24,
+   "static_test": {
+    "abs_gap": 0.035,
+    "se": 0.063,
+    "stat": 0.55,
+    "p_one_sided": 0.2906
+   }
   },
   "NATO Europe": {
-   "b0": 2.551,
-   "b_us": 0.266,
-   "b_cn": -0.162,
-   "se_us": 0.146,
-   "se_cn": 0.135,
+   "b0": 2.788,
+   "b_us": 0.279,
+   "b_cn": -0.185,
+   "se_us": 0.16,
+   "se_cn": 0.13,
    "ci95_us": [
-    -0.02,
-    0.552
+    -0.047,
+    0.606
    ],
    "ci95_cn": [
-    -0.427,
-    0.103
+    -0.45,
+    0.08
    ],
-   "abs_gap": 0.104,
-   "p_us_stronger_one_sided": 0.2201,
+   "cov_names": [
+    "const",
+    "us_lag",
+    "cn_lag"
+   ],
+   "cov": [
+    [
+     3.689595137744077,
+     0.17811869255439958,
+     -0.22786623284865734
+    ],
+    [
+     0.17811869255439958,
+     0.025684500023173244,
+     -0.012705024373575038
+    ],
+    [
+     -0.22786623284865734,
+     -0.012705024373575038,
+     0.016955332874983277
+    ]
+   ],
    "nobs": 35,
-   "r2": 0.119
+   "sample": [
+    1991,
+    2025
+   ],
+   "r2": 0.124,
+   "breusch_godfrey_p": 0.0,
+   "durbin_watson": 0.37,
+   "static_test": {
+    "abs_gap": 0.094,
+    "se": 0.131,
+    "stat": 0.72,
+    "p_one_sided": 0.2363
+   }
   },
   "Hedging middle powers": {
-   "b0": 1.882,
-   "b_us": 0.263,
-   "b_cn": 0.144,
-   "se_us": 0.227,
-   "se_cn": 0.126,
+   "b0": 2.051,
+   "b_us": 0.194,
+   "b_cn": 0.154,
+   "se_us": 0.208,
+   "se_cn": 0.124,
    "ci95_us": [
-    -0.182,
-    0.707
+    -0.23,
+    0.618
    ],
    "ci95_cn": [
-    -0.103,
-    0.39
+    -0.098,
+    0.406
    ],
-   "abs_gap": 0.119,
-   "p_us_stronger_one_sided": 0.3514,
+   "cov_names": [
+    "const",
+    "us_lag",
+    "cn_lag"
+   ],
+   "cov": [
+    [
+     1.477754999561154,
+     -0.012634962440964955,
+     -0.09243341010134354
+    ],
+    [
+     -0.012634962440964955,
+     0.043302013801706306,
+     -0.012071215665823509
+    ],
+    [
+     -0.09243341010134355,
+     -0.012071215665823509,
+     0.015260127864507558
+    ]
+   ],
    "nobs": 35,
-   "r2": 0.089
+   "sample": [
+    1991,
+    2025
+   ],
+   "r2": 0.089,
+   "breusch_godfrey_p": 0.3791,
+   "durbin_watson": 1.65,
+   "static_test": {
+    "abs_gap": 0.04,
+    "se": 0.288,
+    "stat": 0.14,
+    "p_one_sided": 0.4446
+   }
   }
  },
  "principal_blocks": {
   "United States": {
-   "mean_full": 2.152,
-   "mean_2016_2025": 1.022,
-   "sd_full": 11.252,
-   "n": 76
+   "mean_sample": 0.897,
+   "mean_last10": 1.108,
+   "sd_sample": 5.606,
+   "last_year": 2025,
+   "last_year_growth": -7.537,
+   "n": 33
   },
   "China": {
-   "mean_full": 7.842,
-   "mean_2016_2025": 5.356,
-   "sd_full": 5.607,
-   "n": 36
+   "mean_sample": 7.97,
+   "mean_last10": 5.511,
+   "sd_sample": 5.889,
+   "last_year": 2025,
+   "last_year_growth": 7.412,
+   "n": 33
   },
   "Rest of world": {
-   "mean_full": 2.187,
-   "mean_2016_2025": 5.733,
-   "sd_full": 7.066,
-   "n": 35
+   "mean_sample": 3.439,
+   "mean_last10": 6.7,
+   "sd_sample": 6.825,
+   "last_year": 2025,
+   "last_year_growth": 5.528,
+   "n": 33
   }
  },
+ "residual_sample": [
+  1993,
+  2025
+ ],
  "demonstration_mobilization_2022": {
   "Indo-Pacific allies": {
-   "pre_2022_mean": 3.6,
-   "post_2022_mean": 3.67,
-   "delta_pp": 0.07
+   "pre_2022_mean": 3.68,
+   "post_2022_mean": 3.79,
+   "delta_pp": 0.11
   },
   "NATO Europe": {
-   "pre_2022_mean": 3.42,
-   "post_2022_mean": 9.97,
-   "delta_pp": 6.55
+   "pre_2022_mean": 3.49,
+   "post_2022_mean": 10.6,
+   "delta_pp": 7.11
   },
   "Hedging middle powers": {
-   "pre_2022_mean": -2.21,
-   "post_2022_mean": 4.71,
-   "delta_pp": 6.91
+   "pre_2022_mean": -0.3,
+   "post_2022_mean": 4.84,
+   "delta_pp": 5.14
   }
  },
  "event_windows": {
   "post_vietnam_1969_1975": {
-   "us_mean": -4.98,
-   "Indo-Pacific allies": 3.41,
-   "NATO Europe": 3.56,
-   "Hedging middle powers": 6.49
+   "us_mean": -4.81,
+   "Indo-Pacific allies": 4.54,
+   "NATO Europe": 3.0,
+   "Hedging middle powers": 10.1
   },
   "peace_dividend_1989_1998": {
-   "us_mean": -3.83,
-   "Indo-Pacific allies": 1.84,
-   "NATO Europe": -1.35,
-   "Hedging middle powers": 2.94
+   "us_mean": -3.66,
+   "Indo-Pacific allies": 1.88,
+   "NATO Europe": -1.76,
+   "Hedging middle powers": 2.51
   },
   "sequester_2011_2015": {
-   "us_mean": -4.71,
-   "Indo-Pacific allies": 1.68,
-   "NATO Europe": -1.55,
-   "Hedging middle powers": 2.86
+   "us_mean": -4.57,
+   "Indo-Pacific allies": 1.71,
+   "NATO Europe": -1.52,
+   "Hedging middle powers": 5.49
   },
   "observed_2025": {
-   "us_mean": -7.84,
-   "Indo-Pacific allies": 6.09,
-   "NATO Europe": 14.49,
-   "Hedging middle powers": 7.86
+   "us_mean": -7.54,
+   "Indo-Pacific allies": 6.28,
+   "NATO Europe": 15.59,
+   "Hedging middle powers": 8.17
   },
   "accretion_only_2015_2021": {
-   "us_mean": 1.2,
-   "cn_mean": 5.25,
-   "Indo-Pacific allies": 3.6,
-   "NATO Europe": 3.42,
-   "Hedging middle powers": -2.21
+   "us_mean": 1.25,
+   "cn_mean": 5.4,
+   "Indo-Pacific allies": 3.68,
+   "NATO Europe": 3.49,
+   "Hedging middle powers": -0.3
   }
  },
- "h2_historical": {
-  "Indo-Pacific allies": {
-   "verdict": "us_stronger",
-   "abs_gap": 0.034,
-   "p_one_sided": 0.2917
+ "h2": {
+  "statistic": "|b_us| - |b_cn|, one-sided, delta method, Driscoll-Kraay covariance, t(T - 1)",
+  "alpha": 0.05,
+  "verdict": "not supported at the 5 percent level",
+  "primary": {
+   "n_obs": 1498,
+   "n_countries": 45,
+   "n_years": 35,
+   "sample": [
+    1991,
+    2025
+   ],
+   "weighted": true,
+   "b_us": 0.16,
+   "se_us": 0.091,
+   "b_cn": -0.056,
+   "se_cn": 0.075,
+   "rho": 0.188,
+   "b_gdp": 0.128,
+   "p_us_two_sided": 0.0866,
+   "p_cn_two_sided": 0.4613,
+   "abs_gap": 0.105,
+   "se": 0.086,
+   "stat": 1.21,
+   "p_one_sided": 0.1166
   },
-  "NATO Europe": {
-   "verdict": "us_stronger",
-   "abs_gap": 0.104,
-   "p_one_sided": 0.2201
+  "by_tier": {
+   "Indo-Pacific allies": {
+    "n_obs": 245,
+    "n_countries": 7,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.063,
+    "se_us": 0.067,
+    "b_cn": -0.03,
+    "se_cn": 0.069,
+    "rho": 0.312,
+    "b_gdp": 0.199,
+    "p_us_two_sided": 0.3502,
+    "p_cn_two_sided": 0.6677,
+    "abs_gap": 0.033,
+    "se": 0.074,
+    "stat": 0.45,
+    "p_one_sided": 0.3286
+   },
+   "NATO Europe": {
+    "n_obs": 967,
+    "n_countries": 29,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.191,
+    "se_us": 0.118,
+    "b_cn": -0.145,
+    "se_cn": 0.102,
+    "rho": 0.246,
+    "b_gdp": 0.077,
+    "p_us_two_sided": 0.1141,
+    "p_cn_two_sided": 0.165,
+    "abs_gap": 0.047,
+    "se": 0.105,
+    "stat": 0.45,
+    "p_one_sided": 0.3296
+   },
+   "Hedging middle powers": {
+    "n_obs": 286,
+    "n_countries": 9,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.159,
+    "se_us": 0.192,
+    "b_cn": 0.149,
+    "se_cn": 0.128,
+    "rho": 0.106,
+    "b_gdp": 0.145,
+    "p_us_two_sided": 0.4153,
+    "p_cn_two_sided": 0.2507,
+    "abs_gap": 0.009,
+    "se": 0.265,
+    "stat": 0.04,
+    "p_one_sided": 0.4859
+   }
   },
-  "Hedging middle powers": {
-   "verdict": "us_stronger",
-   "abs_gap": 0.119,
-   "p_one_sided": 0.3514
+  "sensitivity": {
+   "unweighted": {
+    "n_obs": 1498,
+    "n_countries": 45,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": false,
+    "b_us": 0.172,
+    "se_us": 0.134,
+    "b_cn": -0.186,
+    "se_cn": 0.101,
+    "rho": 0.08,
+    "b_gdp": 0.33,
+    "p_us_two_sided": 0.2076,
+    "p_cn_two_sided": 0.0737,
+    "abs_gap": -0.014,
+    "se": 0.132,
+    "stat": -0.11,
+    "p_one_sided": 0.5429
+   },
+   "us_reductions_only": {
+    "n_obs": 1498,
+    "n_countries": 45,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.367,
+    "se_us": 0.188,
+    "b_cn": -0.066,
+    "se_cn": 0.074,
+    "rho": 0.184,
+    "b_gdp": 0.127,
+    "p_us_two_sided": 0.0588,
+    "p_cn_two_sided": 0.3803,
+    "abs_gap": 0.301,
+    "se": 0.156,
+    "stat": 1.93,
+    "p_one_sided": 0.0312,
+    "b_us_increase": 0.019,
+    "se_us_increase": 0.068
+   },
+   "us_reductions_only_from_1997": {
+    "n_obs": 1273,
+    "n_countries": 45,
+    "n_years": 29,
+    "sample": [
+     1997,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.095,
+    "se_us": 0.14,
+    "b_cn": -0.155,
+    "se_cn": 0.078,
+    "rho": 0.171,
+    "b_gdp": 0.125,
+    "p_us_two_sided": 0.5043,
+    "p_cn_two_sided": 0.058,
+    "abs_gap": -0.06,
+    "se": 0.098,
+    "stat": -0.62,
+    "p_one_sided": 0.7284,
+    "b_us_increase": 0.047,
+    "se_us_increase": 0.079
+   },
+   "us_reductions_only_tier_lag_control": {
+    "n_obs": 1498,
+    "n_countries": 45,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.24,
+    "se_us": 0.142,
+    "b_cn": -0.049,
+    "se_cn": 0.067,
+    "rho": 0.077,
+    "b_gdp": 0.142,
+    "p_us_two_sided": 0.1007,
+    "p_cn_two_sided": 0.4701,
+    "abs_gap": 0.191,
+    "se": 0.133,
+    "stat": 1.44,
+    "p_one_sided": 0.0794,
+    "b_us_increase": 0.006,
+    "se_us_increase": 0.055
+   }
   }
  }
 }

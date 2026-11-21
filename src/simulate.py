@@ -1,140 +1,123 @@
 """
 simulate.py
-Stage 3 of the pipeline: conditional forecasting with Monte Carlo
-uncertainty propagation, reserve currency channel.
+Stage 3a. Conditional simulation of the reserve channel.
 
-WHAT THIS IS, AND WHAT IT IS NOT
---------------------------------
-This is not prediction. There is no training data for a Chinese
-attainment of military primacy; n equals one and the one has not
-happened. The engine below therefore does conditional forecasting:
-response parameters are estimated from history (stage 2), a pathway is
-imposed exogenously, and uncertainty is propagated honestly through
-10,000 draws. Outputs are distributions, never point estimates.
+The simulation is conditional. Response parameters are estimated in
+stage 2a; each pathway is imposed as an assumption; the output is the
+distribution of the US dollar and renminbi reserve shares to 2035-Q4
+given that pathway.
 
-THE THREE PATHWAYS (the scenario axis of the whole project)
------------------------------------------------------------
-P1 ACCRETION      China's real military spending keeps its measured
-                  2015-2025 rate; US spending keeps its own measured
-                  decade rate. The ratio closes gradually.
-P2 RETRENCHMENT   China as in P1; US contracts at the measured
-                  1988-1998 peace dividend rate, the only clean decade
-                  of sustained US real contraction on record.
-P3 DEMONSTRATION  P1, plus a demonstration-class shock at a random
-                  quarter in 2028-2031. The shock is not invented: the
-                  event quarters replay the observed 2022-Q1/Q2 share
-                  changes (the freezing of Russian reserves being the
-                  only modern observation of this class), and the
-                  quarters after the event inherit the measured
-                  post-2022 shift in drift for each currency.
+Pathways
+--------
+accretion       China and the United States grow at their compound real
+                rates over the last ten years of data.
+retrenchment    China as above; US real expenditure contracts at the
+                1988 to 1998 rate.
+demonstration   Accretion, plus one event at a quarter drawn uniformly
+                from 2028 to 2031. In the two event quarters the share
+                change equals the change observed in 2022-Q1 and
+                2022-Q2. After the event, drift shifts by the difference
+                between mean quarterly change from 2022-Q1 and before
+                it. This rests on a single episode.
 
-THREE SOURCES OF UNCERTAINTY, PROPAGATED JOINTLY
-------------------------------------------------
-1. Parameter uncertainty. Each draw resamples the regression
-   coefficients from their estimated (HAC) sampling distribution.
-2. Innovation uncertainty. Quarterly disturbances are bootstrapped from
-   the stage 2 residual pools, preserving the true fat tails of
-   reserve share changes.
-3. Scenario timing uncertainty. In P3 the shock quarter is uniform over
-   2028-2031, so the fan integrates over when as well as whether.
+Uncertainty
+-----------
+1. Parameters: the intercept and expenditure coefficient are drawn
+   jointly from a normal distribution with the estimated Newey-West
+   covariance.
+2. Innovations: quarterly residuals are resampled with replacement from
+   the stage 2a residuals.
+3. Timing: the event quarter is random within its window.
 
-HYPOTHESIS UNDER TEST HERE
---------------------------
-H3 says reserve composition is the slowest and least pathway sensitive
-channel: the three fans should overlap heavily, and the standardized
-separation between pathway medians should be small relative to the
-spread of any single pathway. The engine computes that separation
-directly, so the preview reports a measured result, not an assertion.
+The dollar share is simulated in percentage points and the renminbi
+share in log-odds, as estimated. Pathway separation is the range of
+pathway medians at the horizon divided by the mean within-pathway
+standard deviation.
 
-Run:  python src/simulate.py   (after calibrate.py)
+Run: python src/simulate.py
+Writes: outputs/simulation_fan.csv, outputs/simulation_summary.json
 """
 
 import json
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs"
+from config import (DRAWS, EVENT_YEARS, HORIZON_YEAR, OUT, PATHWAYS, PCTS,
+                    SEED)
 
-N_DRAWS = 10_000
-SEED = 20260724
-HORIZON_END = "2035Q4"
-PCTS = [5, 10, 25, 50, 75, 90, 95]
+SPEC = {
+    # currency: (regression key, residual column, start key, scale)
+    "usd": ("usd_regression", "usd_resid", "usd_share", "level"),
+    "cny": ("cny_regression", "cny_resid_logit", "cny_share", "logit"),
+}
 
 
-def pathway_regressor(calib: dict, quarters: pd.PeriodIndex) -> dict:
-    """Year over year change in log(CN/US milex ratio), per pathway.
-
-    Constant within a pathway because the pathway growth rates are
-    constant; expressed exactly as the calibration regressor was built,
-    so the estimated coefficient applies without unit gymnastics."""
+def pathway_regressor(calib: dict) -> dict:
+    """Year-on-year change in log(China/US expenditure) by pathway."""
     g = calib["cases"]["accretion_decade"]
     cn = 1 + g["china"] / 100
-    us_accr = 1 + g["usa"] / 100
-    us_retr = 1 + calib["cases"]["peace_dividend"]["annual_rate_pct"] / 100
-    x = {
-        "accretion": float(np.log(cn / us_accr)),
-        "retrenchment": float(np.log(cn / us_retr)),
-    }
+    us_acc = 1 + g["usa"] / 100
+    us_ret = 1 + calib["cases"]["peace_dividend"]["annual_rate_pct"] / 100
+    x = {"accretion": float(np.log(cn / us_acc)),
+         "retrenchment": float(np.log(cn / us_ret))}
     x["demonstration"] = x["accretion"]
-    return {k: np.full(len(quarters), v) for k, v in x.items()}
+    return x
+
+
+def draw_coefficients(reg: dict, rng: np.random.Generator) -> tuple:
+    names = reg["cov_names"]
+    idx = [names.index("const"), names.index("x_ratio")]
+    mean = np.array([reg["params"]["const"], reg["params"]["x_ratio"]])
+    cov = np.array(reg["cov"])[np.ix_(idx, idx)]
+    b = rng.multivariate_normal(mean, cov, DRAWS)
+    return b[:, 0], b[:, 1]
 
 
 def simulate_currency(ccy: str, calib: dict, pools: pd.DataFrame,
                       quarters: pd.PeriodIndex, rng: np.random.Generator
                       ) -> tuple[pd.DataFrame, dict]:
-    reg = calib[f"{ccy}_regression"]
-    start = calib["latest_state"]["usd_share" if ccy == "usd"
-                                  else "cny_share"]
-    resid = pools[f"{ccy}_resid"].dropna().values
+    reg_key, resid_col, start_key, scale = SPEC[ccy]
+    reg = calib[reg_key]
+    start = calib["latest_state"][start_key]
+    resid = pools[resid_col].dropna().values
     H = len(quarters)
-
-    # Demonstration event material, straight from the 2022 observation:
-    # the event quarters replay the observed jumps, and quarters after
-    # the event inherit the measured post-2022 minus pre-2022 drift.
-    ev = calib["cases"]["sanctions_2022"][f"d_{ccy}"]
+    suffix = "_logit" if scale == "logit" else ""
+    jumps = calib["cases"]["sanctions_2022"][f"d_{ccy}{suffix}"]
     regimes = calib["cases"]["drift_regimes"]
-    post_shift = regimes[f"{ccy}_post"] - regimes[f"{ccy}_pre"]
-
-    x = pathway_regressor(calib, quarters)
-    event_window = [i for i, q in enumerate(quarters)
-                    if "2028" <= str(q)[:4] <= "2031"]
+    shift = regimes[f"{ccy}_post{suffix}"] - regimes[f"{ccy}_pre{suffix}"]
+    x = pathway_regressor(calib)
+    window = [i for i, q in enumerate(quarters)
+              if EVENT_YEARS[0] <= q.year <= EVENT_YEARS[1]]
+    z0 = np.log(start / (100 - start)) if scale == "logit" else start
 
     fans, endpoints = [], {}
-    for path in ["accretion", "retrenchment", "demonstration"]:
-        # 1. parameter uncertainty
-        b0 = rng.normal(reg["params"]["const"], reg["bse"]["const"], N_DRAWS)
-        b1 = rng.normal(reg["params"]["x_ratio"], reg["bse"]["x_ratio"],
-                        N_DRAWS)
-        # 2. innovation uncertainty (bootstrap)
-        eps = rng.choice(resid, size=(N_DRAWS, H), replace=True)
-
-        drift = b0[:, None] + b1[:, None] * x[path][None, :]
+    for path in PATHWAYS:
+        b0, b1 = draw_coefficients(reg, rng)
+        eps = rng.choice(resid, size=(DRAWS, H), replace=True)
+        step = np.repeat((b0 + b1 * x[path])[:, None], H, axis=1)
 
         if path == "demonstration":
-            # 3. timing uncertainty + measured event replay
-            t0 = rng.choice(event_window, N_DRAWS)
-            for k, jump in enumerate(ev):
-                idx = np.clip(t0 + k, 0, H - 1)
-                extra = np.zeros((N_DRAWS, H))
-                extra[np.arange(N_DRAWS), idx] = jump
-                drift = drift + extra
-            after = (np.arange(H)[None, :] > (t0[:, None] + len(ev) - 1))
-            drift = drift + post_shift * after
+            t0 = rng.choice(window, DRAWS)
+            cols = np.arange(H)[None, :]
+            for k, jump in enumerate(jumps):
+                step = np.where(cols == (t0[:, None] + k), jump, step)
+            step = step + shift * (cols > (t0[:, None] + len(jumps) - 1))
 
-        paths_arr = start + np.cumsum(drift + eps, axis=1)
-        paths_arr = np.clip(paths_arr, 0.0, 100.0)
+        z = z0 + np.cumsum(step + eps, axis=1)
+        if scale == "logit":
+            share = 100 / (1 + np.exp(-z))
+        else:
+            share = np.clip(z, 0.0, 100.0)
 
-        q = np.percentile(paths_arr, PCTS, axis=0)
+        q = np.percentile(share, PCTS, axis=0)
         fan = pd.DataFrame(q.T, columns=[f"p{p:02d}" for p in PCTS])
         fan.insert(0, "quarter", quarters.astype(str))
         fan.insert(0, "pathway", path)
         fan.insert(0, "currency", ccy.upper())
         fans.append(fan)
 
-        end = paths_arr[:, -1]
+        end = share[:, -1]
         endpoints[path] = {
             "median": float(np.median(end)),
             "p10": float(np.percentile(end, 10)),
@@ -144,12 +127,11 @@ def simulate_currency(ccy: str, calib: dict, pools: pd.DataFrame,
             "endpoint_sd": float(end.std()),
         }
 
-    # H3 metric: pathway separation in units of within-pathway spread.
-    med = [endpoints[p]["median"] for p in endpoints]
-    sd = np.mean([endpoints[p]["endpoint_sd"] for p in endpoints])
+    med = [endpoints[p]["median"] for p in PATHWAYS]
+    sd = np.mean([endpoints[p]["endpoint_sd"] for p in PATHWAYS])
+    endpoints["median_range_pp"] = float(max(med) - min(med))
     endpoints["pathway_separation_sd_units"] = float(
-        (max(med) - min(med)) / sd
-    )
+        (max(med) - min(med)) / sd)
     return pd.concat(fans, ignore_index=True), endpoints
 
 
@@ -158,38 +140,29 @@ def main() -> None:
     pools = pd.read_csv(OUT / "innovation_pools.csv")
     rng = np.random.default_rng(SEED)
 
-    last = calib["latest_state"]["quarter"].replace("-", "")
-    quarters = pd.period_range(
-        pd.Period(last, freq="Q") + 1, HORIZON_END, freq="Q"
-    )
+    last = pd.Period(calib["latest_state"]["quarter"].replace("-", ""),
+                     freq="Q")
+    quarters = pd.period_range(last + 1, f"{HORIZON_YEAR}Q4", freq="Q")
 
-    all_fans, summary = [], {"draws": N_DRAWS, "seed": SEED,
-                             "horizon": [str(quarters[0]), str(quarters[-1])]}
+    fans, summary = [], {"draws": DRAWS, "seed": SEED,
+                         "last_observed": str(last),
+                         "horizon": [str(quarters[0]), str(quarters[-1])]}
     for ccy in ["usd", "cny"]:
         fan, ends = simulate_currency(ccy, calib, pools, quarters, rng)
-        all_fans.append(fan)
+        fans.append(fan)
         summary[ccy] = ends
 
-    pd.concat(all_fans, ignore_index=True).to_csv(
-        OUT / "simulation_fan.csv", index=False
-    )
+    pd.concat(fans, ignore_index=True).to_csv(
+        OUT / "simulation_fan.csv", index=False)
     (OUT / "simulation_summary.json").write_text(json.dumps(summary, indent=2))
 
-    u = summary["usd"]
-    print(f"{N_DRAWS:,} draws per pathway per currency, seed {SEED}")
-    print(f"USD share, median at {quarters[-1]}:")
-    for p in ["accretion", "retrenchment", "demonstration"]:
-        e = u[p]
-        print(f"  {p:<14} {e['median']:5.1f}  "
-              f"[p10 {e['p10']:.1f}, p90 {e['p90']:.1f}]  "
-              f"P(<50 pct) = {e['prob_below_50']:.2f}")
-    print(f"  pathway separation: "
-          f"{u['pathway_separation_sd_units']:.2f} sd units  "
-          f"(H3 expects a small number)")
-    c = summary["cny"]
-    print(f"CNY share, median at {quarters[-1]}: "
-          f"accretion {c['accretion']['median']:.2f}, "
-          f"demonstration {c['demonstration']['median']:.2f}")
+    for ccy in ["usd", "cny"]:
+        s = summary[ccy]
+        line = ", ".join(f"{p} {s[p]['median']:.2f} "
+                         f"[{s[p]['p10']:.2f}, {s[p]['p90']:.2f}]"
+                         for p in PATHWAYS)
+        print(f"{ccy.upper()} share {quarters[-1]}, median [p10, p90]: {line}")
+        print(f"  separation {s['pathway_separation_sd_units']:.2f} sd")
 
 
 if __name__ == "__main__":

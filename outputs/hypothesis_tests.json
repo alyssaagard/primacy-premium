@@ -1,67 +1,259 @@
 {
  "H1": {
-  "claim": "The pathway to primacy conditions outcomes more than the endpoint itself",
+  "claim": "Allied expenditure outcomes differ across pathways by more than the reserve channel does",
   "verdict": "supported",
-  "headline": "median scored outcome separates by 0.85 sd, 2.3x the reserve channel; exception: Indo-Pacific allies at 0.36 sd",
+  "headline": "median scored separation 0.74 sd, 2.2 times the reserve channel (0.34 sd); largest NATO Europe at 1.18 sd, smallest Indo-Pacific allies at 0.32 sd; descriptive, not a significance test",
   "statistics": {
    "scored_outcome_separation_sd": {
-    "Indo-Pacific allies": 0.36,
-    "NATO Europe": 1.45,
-    "Hedging middle powers": 1.09,
-    "Allied share of world": 0.6
+    "Indo-Pacific allies": 0.32,
+    "NATO Europe": 1.18,
+    "Hedging middle powers": 1.03,
+    "Allied share of world": 0.46
    },
    "driver_separation_sd_context": {
-    "United States": 1.1,
-    "China": 0.02
+    "United States": 1.49,
+    "China": 0.05
    },
-   "reserve_separation_sd": 0.36,
-   "median_outcome_sd": 0.85,
-   "median_over_reserve_ratio": 2.3,
+   "reserve_separation_sd": 0.34,
+   "median_outcome_sd": 0.74,
+   "median_over_reserve_ratio": 2.2,
    "min_outcome": {
     "name": "Indo-Pacific allies",
-    "sd": 0.36,
-    "over_reserve_ratio": 1.0
+    "sd": 0.32,
+    "over_reserve_ratio": 0.9
    },
+   "max_outcome": {
+    "name": "NATO Europe",
+    "sd": 1.18
+   },
+   "criterion_ratio": 2.0,
    "verdict": "supported",
-   "definition": "max median gap over mean within-pathway sd, 2035 endpoints; scored outcomes are the three allied tiers and the allied share of world spending (responses, not drivers); primary criterion is the median scored outcome exceeding twice the reserve-channel separation, with the minimum outcome reported as the strict robustness reading"
+   "definition": "Range of pathway medians divided by mean within-pathway standard deviation, at the horizon. Scored outcomes: three allied tiers and the allied share of world expenditure. Criterion: median scored separation greater than twice the US dollar reserve share separation. Descriptive statistic of the simulation; not a significance test."
   }
  },
  "H2": {
-  "claim": "American retrenchment moves allied budgets harder than Chinese growth alone",
-  "verdict": "directionally supported, not resolved",
-  "headline": "the US coefficient exceeds the China coefficient in absolute size in all three tiers (one-sided p 0.22 to 0.35); the 2025 episode shows substitution, US -7.5 percent against NATO Europe +15.6 percent",
+  "claim": "Allied expenditure responds more strongly to US expenditure than to Chinese expenditure",
+  "verdict": "not supported at the 5 percent level",
+  "headline": "pooled panel of 45 countries, 1991 to 2025: b_us 0.16 (se 0.091), b_cn -0.056 (se 0.075), difference in magnitudes 0.105, one-sided p 0.12; 2025: United States -7.5 percent, NATO Europe +15.6 percent",
   "statistics": {
-   "Indo-Pacific allies": {
-    "verdict": "us_stronger",
-    "abs_gap": 0.034,
-    "p_one_sided": 0.2917
+   "statistic": "|b_us| - |b_cn|, one-sided, delta method, Driscoll-Kraay covariance, t(T - 1)",
+   "alpha": 0.05,
+   "verdict": "not supported at the 5 percent level",
+   "primary": {
+    "n_obs": 1498,
+    "n_countries": 45,
+    "n_years": 35,
+    "sample": [
+     1991,
+     2025
+    ],
+    "weighted": true,
+    "b_us": 0.16,
+    "se_us": 0.091,
+    "b_cn": -0.056,
+    "se_cn": 0.075,
+    "rho": 0.188,
+    "b_gdp": 0.128,
+    "p_us_two_sided": 0.0866,
+    "p_cn_two_sided": 0.4613,
+    "abs_gap": 0.105,
+    "se": 0.086,
+    "stat": 1.21,
+    "p_one_sided": 0.1166
    },
-   "NATO Europe": {
-    "verdict": "us_stronger",
-    "abs_gap": 0.104,
-    "p_one_sided": 0.2201
+   "by_tier": {
+    "Indo-Pacific allies": {
+     "n_obs": 245,
+     "n_countries": 7,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.063,
+     "se_us": 0.067,
+     "b_cn": -0.03,
+     "se_cn": 0.069,
+     "rho": 0.312,
+     "b_gdp": 0.199,
+     "p_us_two_sided": 0.3502,
+     "p_cn_two_sided": 0.6677,
+     "abs_gap": 0.033,
+     "se": 0.074,
+     "stat": 0.45,
+     "p_one_sided": 0.3286
+    },
+    "NATO Europe": {
+     "n_obs": 967,
+     "n_countries": 29,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.191,
+     "se_us": 0.118,
+     "b_cn": -0.145,
+     "se_cn": 0.102,
+     "rho": 0.246,
+     "b_gdp": 0.077,
+     "p_us_two_sided": 0.1141,
+     "p_cn_two_sided": 0.165,
+     "abs_gap": 0.047,
+     "se": 0.105,
+     "stat": 0.45,
+     "p_one_sided": 0.3296
+    },
+    "Hedging middle powers": {
+     "n_obs": 286,
+     "n_countries": 9,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.159,
+     "se_us": 0.192,
+     "b_cn": 0.149,
+     "se_cn": 0.128,
+     "rho": 0.106,
+     "b_gdp": 0.145,
+     "p_us_two_sided": 0.4153,
+     "p_cn_two_sided": 0.2507,
+     "abs_gap": 0.009,
+     "se": 0.265,
+     "stat": 0.04,
+     "p_one_sided": 0.4859
+    }
    },
-   "Hedging middle powers": {
-    "verdict": "us_stronger",
-    "abs_gap": 0.119,
-    "p_one_sided": 0.3514
+   "sensitivity": {
+    "unweighted": {
+     "n_obs": 1498,
+     "n_countries": 45,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": false,
+     "b_us": 0.172,
+     "se_us": 0.134,
+     "b_cn": -0.186,
+     "se_cn": 0.101,
+     "rho": 0.08,
+     "b_gdp": 0.33,
+     "p_us_two_sided": 0.2076,
+     "p_cn_two_sided": 0.0737,
+     "abs_gap": -0.014,
+     "se": 0.132,
+     "stat": -0.11,
+     "p_one_sided": 0.5429
+    },
+    "us_reductions_only": {
+     "n_obs": 1498,
+     "n_countries": 45,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.367,
+     "se_us": 0.188,
+     "b_cn": -0.066,
+     "se_cn": 0.074,
+     "rho": 0.184,
+     "b_gdp": 0.127,
+     "p_us_two_sided": 0.0588,
+     "p_cn_two_sided": 0.3803,
+     "abs_gap": 0.301,
+     "se": 0.156,
+     "stat": 1.93,
+     "p_one_sided": 0.0312,
+     "b_us_increase": 0.019,
+     "se_us_increase": 0.068
+    },
+    "us_reductions_only_from_1997": {
+     "n_obs": 1273,
+     "n_countries": 45,
+     "n_years": 29,
+     "sample": [
+      1997,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.095,
+     "se_us": 0.14,
+     "b_cn": -0.155,
+     "se_cn": 0.078,
+     "rho": 0.171,
+     "b_gdp": 0.125,
+     "p_us_two_sided": 0.5043,
+     "p_cn_two_sided": 0.058,
+     "abs_gap": -0.06,
+     "se": 0.098,
+     "stat": -0.62,
+     "p_one_sided": 0.7284,
+     "b_us_increase": 0.047,
+     "se_us_increase": 0.079
+    },
+    "us_reductions_only_tier_lag_control": {
+     "n_obs": 1498,
+     "n_countries": 45,
+     "n_years": 35,
+     "sample": [
+      1991,
+      2025
+     ],
+     "weighted": true,
+     "b_us": 0.24,
+     "se_us": 0.142,
+     "b_cn": -0.049,
+     "se_cn": 0.067,
+     "rho": 0.077,
+     "b_gdp": 0.142,
+     "p_us_two_sided": 0.1007,
+     "p_cn_two_sided": 0.4701,
+     "abs_gap": 0.191,
+     "se": 0.133,
+     "stat": 1.44,
+     "p_one_sided": 0.0794,
+     "b_us_increase": 0.006,
+     "se_us_increase": 0.055
+    }
    }
   }
  },
  "H3": {
-  "claim": "Reserve composition moves late and least among the commercial channels",
-  "verdict": "supported",
-  "headline": "renminbi settles 3.1% of payments but holds 1.99% of reserves (gap 1.11 pp, 2026-06); USD pathway separation 0.36 sd",
+  "claim": "Reserve composition responds least to the pathway, and the dollar's decline does not accrue to the renminbi",
+  "verdict": "supported on the available measures",
+  "headline": "expenditure coefficient +0.93 pp, 95 percent interval -0.94 to 2.80; dollar share separation 0.34 sd; renminbi 3.1 percent of payments against 2.11 percent of reserves (2026-06, gap 0.99 pp); other commercial channels not simulated",
   "statistics": {
-   "latest_gap_pp": 1.11,
-   "drift_regimes": {
-    "description": "Mean quarterly share change, pp, before and after 2022-Q1; the difference is the regime shift replayed after a demonstration event",
-    "usd_pre": -0.1295202038821528,
-    "usd_post": -0.13363197282783504,
-    "cny_pre": 0.09272037800129951,
-    "cny_post": -0.05097608845992412
+   "criteria": {
+    "interval_contains_zero": true,
+    "separation_below_expenditure_median": true,
+    "payments_share_exceeds_reserve_share": true
    },
-   "reserve_separation_sd": 0.3627481046853774
+   "latest_gap_pp": 0.99,
+   "latest_gap_month": "2026-06",
+   "share_change_since_2016Q4_pp": {
+    "USD": -7.98,
+    "CNY": 1.12,
+    "Other than USD, EUR, JPY, GBP, CNY": 4.29
+   },
+   "drift_regimes": {
+    "description": "Mean quarterly share change before and from 2022-Q1 (pp; CNY also in log-odds)",
+    "usd_pre": -0.12952984282754068,
+    "usd_post": -0.14982732137043875,
+    "cny_pre": 0.09272351798065201,
+    "cny_post": -0.0409920215606689,
+    "cny_pre_logit": 0.05347989234467974,
+    "cny_post_logit": -0.01705409462023313
+   },
+   "reserve_separation_sd": 0.33865295987323696
   }
  }
 }

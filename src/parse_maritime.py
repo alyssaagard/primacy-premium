@@ -1,41 +1,34 @@
 """
 parse_maritime.py
-Stage 1e: the shipping channel, from four UNCTAD maritime tables.
+Stage 1e. UNCTADstat maritime transport tables.
 
-WHY THIS TABLE EXISTS
----------------------
-Channel two of the design is shipping and war risk. The war risk side is
-an event table (parse_security.py); this parser builds the structural
-side: who owns the ships, who builds them, who is connected, and who
-moves the boxes. Four UNCTAD exports carry that story. Merchant fleet by
-flag of registration (dead weight tons, 1980 to 2026), ships built by
-economy (gross tonnage, 2014 to 2025), the Liner Shipping Connectivity
-Index (quarterly, 2006 to 2026), and container port throughput (TEU,
-2010 to 2024). China's position in each is the exposure the model
-carries: a demonstration pathway that disrupts East Asian shipping
-disrupts the system's own builder and busiest ports.
+Input (data/raw/unctad/)
+  merchant fleet by flag of registration, thousand dead-weight tons
+  ships built by economy of building, gross tons
+  container port throughput, TEU
+  Liner Shipping Connectivity Index (LSCI), quarterly
 
-PARSING NOTES
--------------
-UNCTAD ships wide files with one column triplet per period
-(Value, Footnote, MissingValue). Only the Value columns are read.
-The fleet, shipbuilding and throughput exports in the evidence base are
-group-level tables, so China's value is derived exactly the way UNCTAD
-itself presents it: developing economies minus developing economies
-excluding China. The LSCI export carries individual economies, so
-China, the United States, Taiwan and the East Asian builders are read
-directly. LSCI is quarterly and is annualized by mean over available
-quarters. Output is one tidy long table, with derived rows labelled as
-derived.
+Output
+  data/processed/maritime_panel.csv   series, economy, year, value, unit
+
+Notes
+* The exports are wide, with a Value, Footnote and MissingValue column
+  per period. Only Value columns are read.
+* The fleet, shipbuilding and throughput exports contain group
+  aggregates only. China is derived as developing economies minus
+  developing economies excluding China, checked to be positive and
+  below the world total, and labelled as derived.
+* The LSCI export contains individual economies. Quarterly values are
+  averaged to annual means.
+
+Run: python src/parse_maritime.py
 """
-
-from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw" / "unctad"
-OUT = ROOT / "data" / "processed"
+from config import PROC as OUT, RAW as RAW_ROOT
+
+RAW = RAW_ROOT / "unctad"
 
 # Group files carry aggregates only; LSCI carries individual economies.
 GROUPS = {
@@ -47,7 +40,6 @@ GROUPS = {
     "Developing excl China": ["Developing economies excluding China"],
 }
 LSCI_ECONOMIES = {
-    "World": ["World"],
     "China": ["China"],
     "United States": ["United States of America", "United States"],
     "Japan": ["Japan"],
@@ -87,8 +79,7 @@ def tidy_wide(fname: str, suffix: str, unit: str, series: str) -> pd.DataFrame:
                                  "year": year, "value": float(val), "unit": unit})
     out = pd.DataFrame(rows)
 
-    # China, derived as UNCTAD presents it: developing minus developing
-    # excluding China. Validated to be positive and below the world total.
+    # China = developing economies minus developing excluding China.
     dev = out[out.economy == "Developing economies"].set_index("year").value
     dxc = out[out.economy == "Developing excl China"].set_index("year").value
     wld = out[out.economy == "World"].set_index("year").value
@@ -133,7 +124,7 @@ def main() -> None:
     parts.append(tidy_lsci())
     out = pd.concat(parts, ignore_index=True).sort_values(
         ["series", "economy", "year"])
-    out["source"] = "UNCTADstat maritime transport tables, retrieved 29 July 2026"
+    out["source"] = "UNCTADstat maritime transport tables"
     out.to_csv(OUT / "maritime_panel.csv", index=False)
 
     cn = out[(out.series == "ships_built_gt") & (out.economy == "China (derived)")]

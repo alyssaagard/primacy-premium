@@ -1,44 +1,54 @@
 """
 build_data_dictionary.py
-Stage 5d: the codebook, generated from the build rather than typed.
+Stage 5d. Data dictionary.
 
-WHY GENERATED
--------------
-A data dictionary that is written by hand drifts from the data the first
-time the pipeline changes. This one is assembled from the same register
-specification the dashboard publishes (so every artifact, note, and row
-count is the build's own), plus the columns and dtypes read off each
-file at generation time. If the register's hard gate fails, so does the
-dictionary: an incomplete build cannot document itself as complete.
+Writes DATA_DICTIONARY.md from the artifact register in
+build_dashboard_data.py. Row counts, columns and data types are read
+from the files. The build stops if a registered artifact is missing.
 
-The one section written by hand is the grammar of hypothesis_panel.csv,
-because a codebook's job is to explain intent, and intent does not live
-in dtypes.
-
-Run:  python src/build_data_dictionary.py
-Writes: DATA_DICTIONARY.md at the repository root.
+Run: python src/build_data_dictionary.py
 """
 
 import json
-from pathlib import Path
 
 import pandas as pd
 
 from build_dashboard_data import register
+from config import ROOT
 
-ROOT = Path(__file__).resolve().parents[1]
-PROC = ROOT / "data" / "processed"
-OUT = ROOT / "outputs"
+PANEL_NOTES = """\
+## hypothesis_panel.csv
+
+`data/processed/hypothesis_panel.csv` holds one measurement per row.
+
+| column | content |
+|---|---|
+| `hypothesis` | `H1`, `H2`, `H3`, or `context` |
+| `role` | `test` (statistic entering a verdict), `evidence` (observed series), `input` (simulated or estimated quantity used by the model), `robustness` (alternative measurement), `sensitivity` (alternative specification, not entering the verdict) |
+| `series` | quantity measured, for example `settlement_reserve_gap`, `panel_b_us`, `pathway_separation` |
+| `scope` | actor, tier, currency, pathway, chokepoint, or window; two dimensions are separated by a pipe |
+| `freq` | `quarterly`, `monthly`, `annual`, `annual mean`, `quarterly mean`, `window`, `endpoint`, or `event` |
+| `period` | year, quarter (`2026-Q1`), month (`2026-06`), or range |
+| `value` | numeric value |
+| `unit` | unit of the value |
+| `source` | upstream source or pipeline script |
+
+Notes on derived series:
+
+* `settlement_reserve_gap` is the monthly Swift renminbi payments share
+  minus the COFER renminbi reserve share of the same quarter. Months
+  after the latest COFER quarter use that quarter's share.
+* `cofer_flow_share` is each currency's share of the quarterly change in
+  total claims, for quarters in which total claims rose. It mixes
+  transactions and valuation changes.
+* `pathway_separation` is the range of pathway medians at the horizon
+  divided by the mean within-pathway standard deviation.
+* Simulated values depend on the seed recorded in
+  `outputs/layer2_summary.json`.
+"""
 
 
-def resolve(name: str) -> Path:
-    for cand in (PROC / f"{name}.csv", OUT / f"{name}.csv", OUT / f"{name}.json"):
-        if cand.exists():
-            return cand
-    raise FileNotFoundError(name)
-
-
-def describe(path: Path) -> str:
+def describe(path) -> str:
     if path.suffix == ".json":
         keys = list(json.loads(path.read_text()).keys())
         return "Top-level keys: `" + "`, `".join(str(k) for k in keys) + "`."
@@ -47,81 +57,32 @@ def describe(path: Path) -> str:
     return "Columns: " + ", ".join(cols) + "."
 
 
-GRAMMAR = """\
-## The unified hypothesis dataset, in detail
-
-`data/processed/hypothesis_panel.csv` is the single table that measures
-every hypothesis. One row is one measurement, and the grammar is constant:
-
-| column | meaning |
-|---|---|
-| `hypothesis` | `H1`, `H2`, `H3`, or `context` |
-| `role` | `test` (a computed statistic), `evidence` (an observed series the test reads), `input` (a simulated quantity), or `robustness` (an alternative measurement guarding a caveat) |
-| `series` | what is measured, e.g. `settlement_reserve_gap`, `feedback_b_us`, `pathway_separation` |
-| `scope` | the actor, tier, currency, pathway, chokepoint, or window the row belongs to; pipe-separated when two dimensions apply |
-| `freq` | the row's native frequency: `quarterly`, `monthly`, `annual`, `annual mean`, `window`, `endpoint`, or `event` |
-| `period` | year, quarter (`2026-Q1`), month (`2026-06`), or a year range (`1969-1975`) |
-| `value` | the number |
-| `unit` | its unit, stated in full |
-| `source` | the upstream source or pipeline script that produced it |
-
-Filter on `hypothesis` to read one claim's complete case, test and
-evidence together. Filter `role == "test"` for the statistics behind the
-verdicts in `outputs/hypothesis_tests.json`. The `context` rows carry
-the structural exposures the channels reference (warheads, chokepoint
-flows, fabrication revenue, shipbuilding, connectivity, the Brent path,
-and the war-risk multiple) so the dataset stands alone in a BI tool
-without the rest of the repository.
-
-Worth knowing when reusing:
-
-The settlement-reserve gap is monthly Swift renminbi payments share
-minus the COFER renminbi share of that month's quarter, with the latest
-reported quarter carried forward for months COFER has not yet covered.
-The flow-attribution robustness series is each currency's share of the
-quarterly change in total allocated claims; it bounds, rather than
-removes, the valuation caveat on stock shares. H1 separations are in
-standard-deviation units of endpoint spread, scored on allied responses
-only, with the imposed drivers reported as context. All simulated rows
-descend from seed 20260724 and reproduce exactly.
-"""
-
-
 def main() -> None:
     reg = register()
-    by_group: dict[str, list] = {}
+    groups: dict[str, list] = {}
     for r in reg:
-        by_group.setdefault(r["group"], []).append(r)
+        groups.setdefault(r["group"], []).append(r)
+    total = sum(r["rows"] for r in reg)
 
     lines = [
-        "# Data dictionary",
-        "",
-        "Every artifact the model produces or consumes, grouped as in the",
-        "page's input register, with row counts and columns read from the",
-        "files at generation time. This file is written by",
-        "`src/build_data_dictionary.py` from the same register the dashboard",
-        "publishes, and generation fails if any artifact is missing, so the",
-        "codebook cannot describe a build that does not exist. Sources are",
-        "cited in full in `REFERENCES.md`; reuse terms are stated there and",
-        "in the license.",
-        "",
+        "# Data dictionary", "",
+        "Generated by `src/build_data_dictionary.py`. Lists every artifact",
+        "the pipeline reads or writes, with row counts (or top-level key",
+        "counts for JSON files), columns, and data types read from the",
+        "files. Source citations are in `REFERENCES.md`.", "",
+        f"Artifacts: {len(reg)}. Rows and keys: {total:,}.", "",
     ]
-    total = 0
-    for group, items in by_group.items():
+    for group, items in groups.items():
         lines += [f"## {group}", ""]
         for r in items:
-            path = resolve(r["table"])
-            rel = path.relative_to(ROOT)
-            total += r["rows"]
-            lines += [f"### `{rel}`", "",
-                      f"{r['note']} Rows or keys: {r['rows']:,}.", "",
+            path = ROOT / r["path"]
+            unit = "Keys" if path.suffix == ".json" else "Rows"
+            lines += [f"### `{r['path']}`", "",
+                      f"{r['note']} {unit}: {r['rows']:,}.", "",
                       describe(path), ""]
-    lines += [GRAMMAR, "",
-              f"Thirty artifacts, {total:,} rows and keys in all, every one",
-              "read off disk at build time.", ""]
+    lines += [PANEL_NOTES]
     (ROOT / "DATA_DICTIONARY.md").write_text("\n".join(lines))
-    print(f"DATA_DICTIONARY.md: {len(reg)} artifacts documented, "
-          f"{total:,} rows and keys")
+    print(f"DATA_DICTIONARY.md: {len(reg)} artifacts, {total:,} rows and keys")
 
 
 if __name__ == "__main__":

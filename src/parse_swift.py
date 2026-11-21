@@ -1,28 +1,29 @@
 """
 parse_swift.py
-Stage 1d: extract the renminbi settlement series from the SWIFT trackers.
+Stage 1d. Swift RMB Tracker and Global Currency Tracker.
 
-WHY THIS TABLE EXISTS
----------------------
-H3 turns on a gap: the renminbi is used to settle trade but not held as
-a reserve asset. COFER gives the reserve side. The settlement side lives
-in Swift's monthly RMB Tracker (renamed Global Currency Tracker in
-February 2026), published only as PDF. This parser reads every monthly
-issue in data/raw/swift/ and extracts three numbers per month: the
-renminbi's share of global payments, the dollar's share of global
-payments, and the renminbi's share of trade finance.
+Input
+  data/raw/swift/*.pdf   monthly issues (the RMB Tracker was renamed the
+                         Global Currency Tracker in February 2026)
 
-PARSING NOTES
--------------
-The trackers are two-column layouts, so a single text line can carry
-both the global panel (left) and the ex-Eurozone panel (right). The
-first ranked match on a line always belongs to the left panel, which is
-the global payments series we want. Trade finance sits on its own page,
-found by heading. Each issue reports the previous month's data, so the
-data month is read from the document text itself, never inferred from
-the filename. Older issues label the currency RMB, newer ones CNY; both
-are accepted. Values are validated against sane ranges so a layout
-change fails loudly instead of shipping a wrong series.
+Output
+  data/processed/swift_settlement.csv   one row per data month:
+      cny_payments_pct        renminbi share of global payments value
+      usd_payments_pct        US dollar share of global payments value
+      cny_trade_finance_pct   renminbi share of trade finance value
+
+Notes
+* Requires the pdftotext utility (poppler).
+* Each issue reports the previous month. The data month is read from
+  the payments page of the document, not from the filename.
+* The payments page has two panels on one text line: global payments
+  (left) and payments excluding the eurozone (right). The first ranked
+  match on a line is the global panel.
+* Issues label the currency RMB or CNY; both are accepted.
+* Extracted values are range-checked. A value outside the expected
+  range stops the build.
+
+Run: python src/parse_swift.py
 """
 
 import re
@@ -31,9 +32,9 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw" / "swift"
-OUT = ROOT / "data" / "processed"
+from config import PROC as OUT, RAW as RAW_ROOT
+
+RAW = RAW_ROOT / "swift"
 
 MONTHS = {m: i + 1 for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July",
@@ -54,8 +55,8 @@ def parse_issue(pdf: Path) -> dict | None:
     txt = text_of(pdf)
     pages = txt.split("\f")
 
-    # The global payments page carries the ranked table and, just above
-    # it, the data month. Find the first page with a ranked USD line.
+    # The global payments page carries the ranked table and the data
+    # month. It is the first page with a ranked USD line.
     gp = next((p for p in pages if USD_RE.search(p) and RANK_RE.search(p)), None)
     if gp is None:
         print(f"  skip {pdf.name}: no ranked payments table found")
@@ -74,7 +75,7 @@ def parse_issue(pdf: Path) -> dict | None:
                     and RANK_RE.search(p)), None)
     tf = float(RANK_RE.search(tf_page).group(2)) if tf_page else None
 
-    # Validation gates: a redesigned layout should fail, not mislead.
+    # Range checks.
     if not (0.5 <= cny <= 8.0):
         raise ValueError(f"{pdf.name}: CNY payments share {cny} out of range")
     if not (35.0 <= usd <= 70.0):
@@ -95,7 +96,7 @@ def main() -> None:
             .sort_values("month")
             .drop_duplicates("month", keep="last")
             .reset_index(drop=True))
-    df["source"] = "Swift RMB Tracker / Global Currency Tracker (monthly PDFs)"
+    df["source"] = "Swift RMB Tracker / Global Currency Tracker, monthly issues"
     df.to_csv(OUT / "swift_settlement.csv", index=False)
     print(f"swift_settlement.csv: {len(df)} months, "
           f"{df['month'].iloc[0]} to {df['month'].iloc[-1]}; "

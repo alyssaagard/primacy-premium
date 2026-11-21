@@ -1,147 +1,169 @@
 {
  "draws": 10000,
  "seed": 20260724,
+ "base_year": 2025,
  "horizon": [
   2026,
   2035
  ],
- "endpoints_2035_musd": {
+ "mean_block_length_years": 5,
+ "endpoints_musd": {
   "accretion": {
-   "Indo-Pacific allies": {
-    "median": 218558.0,
-    "p10": 198230.0,
-    "p90": 241184.0
-   },
-   "NATO Europe": {
-    "median": 658634.0,
-    "p10": 538957.0,
-    "p90": 825623.0
-   },
-   "Hedging middle powers": {
-    "median": 323255.0,
-    "p10": 244059.0,
-    "p90": 433739.0
-   },
    "United States": {
-    "median": 939960.0,
-    "p10": 703402.0,
-    "p90": 1485492.0
+    "median": 989392.0,
+    "p10": 731232.0,
+    "p90": 1464822.0
    },
    "China": {
-    "median": 567784.0,
-    "p10": 458986.0,
-    "p90": 698439.0
+    "median": 564319.0,
+    "p10": 392405.0,
+    "p90": 784433.0
+   },
+   "Indo-Pacific allies": {
+    "median": 218998.0,
+    "p10": 191773.0,
+    "p90": 248832.0
+   },
+   "NATO Europe": {
+    "median": 642906.0,
+    "p10": 495307.0,
+    "p90": 894714.0
+   },
+   "Hedging middle powers": {
+    "median": 331556.0,
+    "p10": 254574.0,
+    "p90": 414799.0
+   },
+   "Rest of world": {
+    "median": 995993.0,
+    "p10": 720318.0,
+    "p90": 1338282.0
    }
   },
   "retrenchment": {
-   "Indo-Pacific allies": {
-    "median": 212839.0,
-    "p10": 191175.0,
-    "p90": 235842.0
-   },
-   "NATO Europe": {
-    "median": 593000.0,
-    "p10": 473897.0,
-    "p90": 745364.0
-   },
-   "Hedging middle powers": {
-    "median": 291269.0,
-    "p10": 212260.0,
-    "p90": 396764.0
-   },
    "United States": {
-    "median": 572304.0,
-    "p10": 422537.0,
-    "p90": 926945.0
+    "median": 609635.0,
+    "p10": 442130.0,
+    "p90": 918193.0
    },
    "China": {
-    "median": 566236.0,
-    "p10": 455989.0,
-    "p90": 697152.0
+    "median": 572125.0,
+    "p10": 391379.0,
+    "p90": 786200.0
+   },
+   "Indo-Pacific allies": {
+    "median": 212493.0,
+    "p10": 184910.0,
+    "p90": 241336.0
+   },
+   "NATO Europe": {
+    "median": 568676.0,
+    "p10": 446593.0,
+    "p90": 784514.0
+   },
+   "Hedging middle powers": {
+    "median": 305451.0,
+    "p10": 224302.0,
+    "p90": 401366.0
+   },
+   "Rest of world": {
+    "median": 996979.0,
+    "p10": 715304.0,
+    "p90": 1330800.0
    }
   },
   "demonstration": {
-   "Indo-Pacific allies": {
-    "median": 219114.0,
-    "p10": 198582.0,
-    "p90": 242004.0
-   },
-   "NATO Europe": {
-    "median": 772133.0,
-    "p10": 632470.0,
-    "p90": 964001.0
-   },
-   "Hedging middle powers": {
-    "median": 381152.0,
-    "p10": 290171.0,
-    "p90": 515293.0
-   },
    "United States": {
-    "median": 941391.0,
-    "p10": 703648.0,
-    "p90": 1505041.0
+    "median": 989870.0,
+    "p10": 730885.0,
+    "p90": 1473160.0
    },
    "China": {
-    "median": 567817.0,
-    "p10": 455535.0,
-    "p90": 696765.0
+    "median": 570085.0,
+    "p10": 393883.0,
+    "p90": 794357.0
+   },
+   "Indo-Pacific allies": {
+    "median": 219344.0,
+    "p10": 192424.0,
+    "p90": 248521.0
+   },
+   "NATO Europe": {
+    "median": 761695.0,
+    "p10": 591430.0,
+    "p90": 1051524.0
+   },
+   "Hedging middle powers": {
+    "median": 374256.0,
+    "p10": 288675.0,
+    "p90": 468272.0
+   },
+   "Rest of world": {
+    "median": 1001515.0,
+    "p10": 722123.0,
+    "p90": 1330800.0
    }
   }
  },
- "allied_share_2035": {
+ "allied_share": {
   "accretion": {
-   "median": 25.81,
-   "p10": 22.07,
-   "p90": 29.71
+   "median": 22.93,
+   "p10": 17.79,
+   "p90": 29.1
   },
   "retrenchment": {
-   "median": 27.52,
-   "p10": 23.68,
-   "p90": 31.69
+   "median": 23.85,
+   "p10": 18.84,
+   "p90": 30.06
   },
   "demonstration": {
-   "median": 27.72,
-   "p10": 23.78,
-   "p90": 31.86
+   "median": 24.94,
+   "p10": 19.6,
+   "p90": 31.47
   }
  },
  "h1": {
   "scored_outcome_separation_sd": {
-   "Indo-Pacific allies": 0.36,
-   "NATO Europe": 1.45,
-   "Hedging middle powers": 1.09,
-   "Allied share of world": 0.6
+   "Indo-Pacific allies": 0.32,
+   "NATO Europe": 1.18,
+   "Hedging middle powers": 1.03,
+   "Allied share of world": 0.46
   },
   "driver_separation_sd_context": {
-   "United States": 1.1,
-   "China": 0.02
+   "United States": 1.49,
+   "China": 0.05
   },
-  "reserve_separation_sd": 0.36,
-  "median_outcome_sd": 0.85,
-  "median_over_reserve_ratio": 2.3,
+  "reserve_separation_sd": 0.34,
+  "median_outcome_sd": 0.74,
+  "median_over_reserve_ratio": 2.2,
   "min_outcome": {
    "name": "Indo-Pacific allies",
-   "sd": 0.36,
-   "over_reserve_ratio": 1.0
+   "sd": 0.32,
+   "over_reserve_ratio": 0.9
   },
+  "max_outcome": {
+   "name": "NATO Europe",
+   "sd": 1.18
+  },
+  "criterion_ratio": 2.0,
   "verdict": "supported",
-  "definition": "max median gap over mean within-pathway sd, 2035 endpoints; scored outcomes are the three allied tiers and the allied share of world spending (responses, not drivers); primary criterion is the median scored outcome exceeding twice the reserve-channel separation, with the minimum outcome reported as the strict robustness reading"
+  "definition": "Range of pathway medians divided by mean within-pathway standard deviation, at the horizon. Scored outcomes: three allied tiers and the allied share of world expenditure. Criterion: median scored separation greater than twice the US dollar reserve share separation. Descriptive statistic of the simulation; not a significance test."
  },
  "h2_simulation": {
   "Indo-Pacific allies": {
-   "retrench_minus_accretion_2035_musd": -5719.0,
-   "pct_of_accretion_median": -2.6
+   "retrench_minus_accretion_musd": -6505.0,
+   "pct_of_accretion_median": -3.0
   },
   "NATO Europe": {
-   "retrench_minus_accretion_2035_musd": -65634.0,
-   "pct_of_accretion_median": -10.0
+   "retrench_minus_accretion_musd": -74230.0,
+   "pct_of_accretion_median": -11.5
   },
   "Hedging middle powers": {
-   "retrench_minus_accretion_2035_musd": -31986.0,
-   "pct_of_accretion_median": -9.9
+   "retrench_minus_accretion_musd": -26106.0,
+   "pct_of_accretion_median": -7.9
   }
  },
- "arms_demand_2035": {
+ "arms_demand": {
   "elasticity": {
    "beta": 0.415,
    "se": 0.278,
@@ -149,25 +171,25 @@
    "nobs": 36
   },
   "accretion": {
-   "median_tiv_m": 34368.0,
-   "p10": 32589.0,
-   "p90": 37260.0
+   "median_tiv_m": 36287.0,
+   "p10": 33477.0,
+   "p90": 39157.0
   },
   "retrenchment": {
-   "median_tiv_m": 32318.0,
-   "p10": 30656.0,
-   "p90": 34568.0
+   "median_tiv_m": 34268.0,
+   "p10": 31644.0,
+   "p90": 36794.0
   },
   "demonstration": {
-   "median_tiv_m": 35116.0,
-   "p10": 33289.0,
-   "p90": 38050.0
+   "median_tiv_m": 36976.0,
+   "p10": 34154.0,
+   "p90": 39813.0
   }
  },
  "war_risk_event_multiplier": 5.7,
  "caveats": [
-  "Demonstration mobilization replays the 2022 differential, n = 1.",
-  "Feedback coefficients carry sign uncertainty; parameter draws keep it.",
-  "Annual frequency; quarterly event dynamics live in the reserve layer."
+  "The post-event allied response repeats one episode (2022).",
+  "The tier feedback equations are static and their residuals are serially correlated; the bootstrap carries persistence only within runs averaging 5 years.",
+  "Coefficient signs are uncertain; parameter draws retain this."
  ]
 }

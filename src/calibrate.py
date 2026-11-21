@@ -1,98 +1,84 @@
 """
 calibrate.py
-Stage 2 of the pipeline: historical parameter estimation.
+Stage 2a. Reserve-channel parameters.
 
-DESIGN PRINCIPLE
-----------------
-Nothing in the simulation is assumed. Every parameter the Monte Carlo
-engine consumes is estimated here from the real series built in stage 1
-and written to outputs/calibration.json with its uncertainty. The
-scenario pathways are imposed exogenously later; the response of the
-system to those pathways is measured, not invented.
+Estimates
+---------
+1. US dollar share. The quarterly change in the dollar share of reserves
+   (percentage points) is regressed on the year-on-year change in the
+   log China/US military expenditure ratio and an indicator for 2022-Q1
+   and 2022-Q2, the quarters of the freeze of Russian central bank
+   assets. The annual ratio is interpolated linearly in logs between
+   year-end values. Standard errors are Newey-West with four lags.
 
-WHAT IS ESTIMATED
------------------
-1. Reserve channel response (the channel implemented in this preview).
-   Quarterly change in the US dollar share of allocated reserves is
-   regressed on the year over year change in the log China/US military
-   expenditure ratio (annual SIPRI data linearly interpolated to
-   quarters), with indicator terms for 2022-Q1 and 2022-Q2, the
-   quarters in which the freezing of Russian central bank assets
-   repriced reserve demand. Standard errors are Newey-West (HAC, four
-   lags) because quarterly share changes are autocorrelated. The same
-   specification is run for the renminbi share from 2017-Q1.
+2. Renminbi share. The same specification from 2017-Q1, with the
+   dependent variable in log-odds, log(s / (100 - s)). The renminbi
+   share is close to zero, and a model in percentage points can produce
+   negative simulated shares.
 
-   The expectation from theory (hypothesis H3) is a coefficient near
-   zero: reserve composition should be the slowest channel, so the
-   confidence interval matters more than the point estimate. Estimating
-   a null precisely is the point, not a failure.
+3. Residuals of both regressions, kept for resampling in stage 3a.
 
-2. Empirical innovation pools. Regression residuals are saved for
-   bootstrap resampling in the simulation, so simulated quarters
-   inherit the true fat tails of reserve share changes instead of a
-   convenient Gaussian.
+4. Reference episodes:
+   peace_dividend     US real expenditure, 1988 to 1998
+   sanctions_2022     observed share changes in 2022-Q1 and 2022-Q2
+   accretion_decade   compound real growth of China and the United
+                      States over the last ten years of data
+   us_last_year       latest observed annual change in US real
+                      expenditure
+   drift_regimes      mean quarterly change before and from 2022-Q1
 
-3. Calibration cases, each a named historical episode:
-   * peace_dividend    US real expenditure contraction 1988-1998, the
-                       reverse experiment for the retrenchment pathway.
-   * sanctions_2022    observed share changes in 2022-Q1/Q2, the only
-                       modern observation of a demonstration-class
-                       reserve shock. Reused as the shock draw.
-   * accretion_decade  real growth rates 2015-2025 for China and the
-                       USA, anchoring the accretion pathway.
-   * us_2025_decline   the observed 2025 fall in US real spending,
-                       anchoring the retrenchment pathway.
+The expenditure regressor explains almost none of the variance in
+reserve share changes. The coefficient is reported with its interval;
+the interval is wide and includes zero.
 
-Run:  python src/calibrate.py   (after the three stage 1 parsers)
+Run: python src/calibrate.py
+Writes: outputs/calibration.json, outputs/innovation_pools.csv
 """
 
 import json
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-ROOT = Path(__file__).resolve().parents[1]
-PROC = ROOT / "data" / "processed"
-OUT = ROOT / "outputs"
+from config import BUILD_DATE, HAC_LAGS_QUARTERLY, OUT, PROC
+
+EVENT_QUARTERS = ["2022-Q1", "2022-Q2"]
+REGIME_START = "2022-Q1"
+CNY_START = "2017-Q1"
+
+
+def logit(share_pct: pd.Series) -> pd.Series:
+    return np.log(share_pct / (100 - share_pct))
 
 
 def quarterly_ratio_regressor(feats: pd.DataFrame,
                               quarters: pd.Series) -> pd.Series:
-    """Interpolate the annual CN/US expenditure ratio to quarter ends and
-    return the year over year change in its log.
-
-    Interpolation is linear in log space between year-end anchors. The
-    resulting regressor is smooth by construction, which biases against
-    finding spurious quarterly correlation, a conservative choice."""
-    annual = feats.set_index("year")["cn_us_ratio"]
+    """Year-on-year change in log(China/US expenditure) at quarter ends."""
+    annual = feats.set_index("year")["cn_us_ratio"].dropna()
     anchors = pd.Series(
         np.log(annual.values),
         index=pd.PeriodIndex([f"{y}Q4" for y in annual.index], freq="Q")
-        .to_timestamp(how="end")
-        .normalize(),
-    )
+        .to_timestamp(how="end").normalize())
     grid = pd.to_datetime(quarters)
-    filled = (
-        anchors.reindex(anchors.index.union(grid))
-        .interpolate(method="time")
-        .reindex(grid)
-    )
-    return filled.diff(4)  # year over year, at quarterly frequency
+    filled = (anchors.reindex(anchors.index.union(grid))
+              .interpolate(method="time").reindex(grid))
+    # No extrapolation beyond the last annual observation.
+    filled[filled.index > anchors.index.max()] = np.nan
+    return filled.diff(4)
 
 
 def hac_ols(y: pd.Series, X: pd.DataFrame) -> dict:
-    """OLS with Newey-West standard errors; returns a JSON-safe summary."""
-    model = sm.OLS(y, sm.add_constant(X), missing="drop")
-    fit = model.fit(cov_type="HAC", cov_kwds={"maxlags": 4})
+    fit = sm.OLS(y, sm.add_constant(X), missing="drop").fit(
+        cov_type="HAC", cov_kwds={"maxlags": HAC_LAGS_QUARTERLY})
+    names = list(fit.params.index)
     return {
         "params": {k: float(v) for k, v in fit.params.items()},
         "bse": {k: float(v) for k, v in fit.bse.items()},
-        "conf_int_95": {
-            k: [float(a), float(b)]
-            for k, (a, b) in fit.conf_int().iterrows()
-        },
+        "conf_int_95": {k: [float(a), float(b)]
+                        for k, (a, b) in fit.conf_int().iterrows()},
+        "cov_names": names,
+        "cov": [[float(v) for v in row] for row in fit.cov_params().values],
         "r2": float(fit.rsquared),
         "nobs": int(fit.nobs),
         "resid": [float(r) for r in fit.resid],
@@ -107,29 +93,33 @@ def main() -> None:
     wide = panel.pivot_table(index="year", columns="iso3",
                              values="milex_constusd_m")
 
-    # ---- 1. Reserve channel regressions --------------------------------
     shares = shares.sort_values("date").reset_index(drop=True)
     shares["d_usd"] = shares["USD"].diff()
     shares["d_cny"] = shares["CNY"].diff()
+    shares["d_cny_logit"] = logit(shares["CNY"]).diff()
     shares["d_other"] = shares["OTHER"].diff()
     shares["x_ratio"] = quarterly_ratio_regressor(feats, shares["date"]).values
-    shares["dum_2022"] = shares["quarter"].isin(["2022-Q1", "2022-Q2"]) * 1.0
+    shares["dum_2022"] = shares["quarter"].isin(EVENT_QUARTERS) * 1.0
+    pre = shares["quarter"] < REGIME_START
+    post = ~pre
+    cny_span = shares["quarter"] >= CNY_START
+    event = shares["dum_2022"] == 1
 
-    usd_reg = hac_ols(shares["d_usd"],
-                      shares[["x_ratio", "dum_2022"]])
-    cny = shares[shares["quarter"] >= "2017-Q1"]
-    cny_reg = hac_ols(cny["d_cny"], cny[["x_ratio", "dum_2022"]])
+    usd_reg = hac_ols(shares["d_usd"], shares[["x_ratio", "dum_2022"]])
+    cny = shares[cny_span]
+    cny_reg = hac_ols(cny["d_cny_logit"], cny[["x_ratio", "dum_2022"]])
+    cny_reg["dependent"] = "quarterly change in log-odds of the CNY share"
+    usd_reg["dependent"] = "quarterly change in the USD share, pp"
 
-    # ---- 2. Innovation pools -------------------------------------------
     pools = pd.DataFrame({
         "usd_resid": pd.Series(usd_reg.pop("resid")),
-        "cny_resid": pd.Series(cny_reg.pop("resid")),
+        "cny_resid_logit": pd.Series(cny_reg.pop("resid")),
     })
     pools.to_csv(OUT / "innovation_pools.csv", index=False)
 
-    # ---- 3. Named calibration cases ------------------------------------
-    us = wide["USA"]
-    cn = wide["CHN"]
+    us, cn = wide["USA"], wide["CHN"]
+    y1 = int(wide["USA"].dropna().index.max())
+    y0 = y1 - 10
     cases = {
         "peace_dividend": {
             "description": "US real military expenditure, 1988 to 1998",
@@ -137,56 +127,51 @@ def main() -> None:
             "annual_rate_pct": float(100 * ((us[1998] / us[1988]) ** 0.1 - 1)),
         },
         "sanctions_2022": {
-            "description": ("Observed quarterly share changes around the "
-                            "2022 freezing of Russian reserves, pp"),
-            "d_usd": shares.loc[shares["dum_2022"] == 1, "d_usd"]
-                     .round(3).tolist(),
-            "d_cny": shares.loc[shares["dum_2022"] == 1, "d_cny"]
-                     .round(3).tolist(),
-            "d_other": shares.loc[shares["dum_2022"] == 1, "d_other"]
-                       .round(3).tolist(),
+            "description": "Observed quarterly share changes in 2022-Q1 and "
+                           "2022-Q2 (pp; CNY also in log-odds)",
+            "d_usd": shares.loc[event, "d_usd"].round(4).tolist(),
+            "d_cny": shares.loc[event, "d_cny"].round(4).tolist(),
+            "d_cny_logit": shares.loc[event, "d_cny_logit"].round(5).tolist(),
+            "d_other": shares.loc[event, "d_other"].round(4).tolist(),
         },
         "accretion_decade": {
-            "description": "Real growth anchors, 2015 to 2025, pct per year",
-            "china": float(100 * ((cn[2025] / cn[2015]) ** 0.1 - 1)),
-            "usa": float(100 * ((us[2025] / us[2015]) ** 0.1 - 1)),
+            "description": f"Compound real growth, {y0} to {y1}, "
+                           "percent per year",
+            "start_year": y0, "end_year": y1,
+            "china": float(100 * ((cn[y1] / cn[y0]) ** 0.1 - 1)),
+            "usa": float(100 * ((us[y1] / us[y0]) ** 0.1 - 1)),
         },
-        "us_2025_decline": {
-            "description": "Observed 2025 change in US real expenditure, pct",
-            "value": float(100 * (us[2025] / us[2024] - 1)),
+        "us_last_year": {
+            "description": f"Change in US real expenditure, {y1}, percent",
+            "year": y1,
+            "value": float(100 * (us[y1] / us[y1 - 1] - 1)),
         },
         "drift_regimes": {
-            "description": ("Mean quarterly share change, pp, before and "
-                            "after 2022-Q1; the difference is the regime "
-                            "shift replayed after a demonstration event"),
-            "usd_pre": float(shares.loc[shares["quarter"] < "2022-Q1",
-                                        "d_usd"].mean()),
-            "usd_post": float(shares.loc[shares["quarter"] >= "2022-Q1",
-                                         "d_usd"].mean()),
-            "cny_pre": float(shares.loc[(shares["quarter"] >= "2017-Q1")
-                                        & (shares["quarter"] < "2022-Q1"),
-                                        "d_cny"].mean()),
-            "cny_post": float(shares.loc[shares["quarter"] >= "2022-Q1",
-                                         "d_cny"].mean()),
+            "description": "Mean quarterly share change before and from "
+                           f"{REGIME_START} (pp; CNY also in log-odds)",
+            "usd_pre": float(shares.loc[pre, "d_usd"].mean()),
+            "usd_post": float(shares.loc[post, "d_usd"].mean()),
+            "cny_pre": float(shares.loc[cny_span & pre, "d_cny"].mean()),
+            "cny_post": float(shares.loc[post, "d_cny"].mean()),
+            "cny_pre_logit":
+                float(shares.loc[cny_span & pre, "d_cny_logit"].mean()),
+            "cny_post_logit": float(shares.loc[post, "d_cny_logit"].mean()),
         },
         "diversification_drift": {
-            "description": ("Mean quarterly change in the 'other currencies' "
-                            "share, pp, before and after 2022-Q1"),
-            "pre_2022": float(shares.loc[shares["quarter"] < "2022-Q1",
-                                         "d_other"].mean()),
-            "post_2022": float(shares.loc[shares["quarter"] >= "2022-Q1",
-                                          "d_other"].mean()),
+            "description": "Mean quarterly change in the share of other "
+                           f"currencies, pp, before and from {REGIME_START}",
+            "pre_2022": float(shares.loc[pre, "d_other"].mean()),
+            "post_2022": float(shares.loc[post, "d_other"].mean()),
         },
     }
 
     calib = {
         "meta": {
-            "built": "2026-07-24",
+            "built": BUILD_DATE,
             "cofer_span": [shares["quarter"].iloc[0],
                            shares["quarter"].iloc[-1]],
             "milex_span": [int(wide.index.min()), int(wide.index.max())],
-            "note": ("All parameters estimated from IMF COFER and SIPRI "
-                     "data prepared by the stage 1 parsers."),
+            "hac_lags": HAC_LAGS_QUARTERLY,
         },
         "latest_state": {
             "quarter": shares["quarter"].iloc[-1],
@@ -194,8 +179,9 @@ def main() -> None:
             "cny_share": float(shares["CNY"].iloc[-1]),
             "eur_share": float(shares["EUR"].iloc[-1]),
             "other_share": float(shares["OTHER"].iloc[-1]),
-            "cn_us_ratio_2025": float(feats.set_index("year")
-                                      .loc[2025, "cn_us_ratio"]),
+            "cn_us_ratio": float(feats.set_index("year")
+                                 .loc[y1, "cn_us_ratio"]),
+            "cn_us_ratio_year": y1,
         },
         "usd_regression": usd_reg,
         "cny_regression": cny_reg,
@@ -205,19 +191,20 @@ def main() -> None:
 
     b = usd_reg["params"]["x_ratio"]
     lo, hi = usd_reg["conf_int_95"]["x_ratio"]
-    print(f"USD share response to YoY d(log CN/US milex ratio):")
-    print(f"  beta = {b:+.2f} pp  [95 pct CI {lo:+.2f}, {hi:+.2f}]  "
-          f"n = {usd_reg['nobs']}, R2 = {usd_reg['r2']:.3f}")
-    print(f"2022 sanctions quarters, observed dUSD: "
-          f"{cases['sanctions_2022']['d_usd']}")
-    print(f"Peace dividend 1988-98: "
-          f"{cases['peace_dividend']['total_real_change_pct']:.1f} pct total, "
-          f"{cases['peace_dividend']['annual_rate_pct']:.1f} pct per year")
-    print(f"Accretion anchors 2015-25: China "
-          f"{cases['accretion_decade']['china']:+.1f}, USA "
-          f"{cases['accretion_decade']['usa']:+.1f} pct per year")
-    print(f"US 2025 real change: {cases['us_2025_decline']['value']:+.1f} pct")
-    print("calibration.json and innovation_pools.csv written")
+    print(f"USD share on d log(CN/US): {b:+.2f} pp "
+          f"[95% CI {lo:+.2f}, {hi:+.2f}], n = {usd_reg['nobs']}, "
+          f"R2 = {usd_reg['r2']:.3f}")
+    bc = cny_reg["params"]["x_ratio"]
+    lc, hc = cny_reg["conf_int_95"]["x_ratio"]
+    print(f"CNY log-odds on d log(CN/US): {bc:+.2f} "
+          f"[95% CI {lc:+.2f}, {hc:+.2f}], n = {cny_reg['nobs']}")
+    print(f"peace dividend 1988-1998: "
+          f"{cases['peace_dividend']['total_real_change_pct']:.1f}% total, "
+          f"{cases['peace_dividend']['annual_rate_pct']:.2f}% per year")
+    print(f"growth {y0}-{y1}: China "
+          f"{cases['accretion_decade']['china']:+.2f}%, United States "
+          f"{cases['accretion_decade']['usa']:+.2f}% per year; "
+          f"US {y1}: {cases['us_last_year']['value']:+.1f}%")
 
 
 if __name__ == "__main__":

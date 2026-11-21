@@ -1,36 +1,34 @@
 """
 parse_energy_semis.py
-Stage 1f: the energy and semiconductor channels.
+Stage 1f. Energy and semiconductor exposure series.
 
-WHY THIS TABLE EXISTS
----------------------
-Channels one and three of the design. Energy exposure is carried as
-chokepoint throughput: the EIA's World Oil Transit Chokepoints report
-gives crude and products flow through each strait in million barrels per
-day, and the STEO workbook gives the Brent path the scenarios reprice
-against. Semiconductor exposure is carried as concentration: TSMC's own
-quarterly statements give the revenue level, and TrendForce's foundry
-ranking gives the market shares from which a foundry Herfindahl index is
-computed where sources allow. The demonstration pathway's commercial
-bite runs through exactly these numbers: the share of world oil passing
-Hormuz and Malacca, and the fabrication revenue sitting on Taiwan.
+Input
+  data/raw/eia/EIA_world_oil_transit_chokepoints.pdf
+  data/raw/eia/STEO_m.xlsx      Short-Term Energy Outlook workbook
+  data/raw/tsmc/FS*.pdf         TSMC quarterly financial statements
 
-One descope is recorded here rather than papered over: the TrendForce
-foundry ranking in the evidence base is the report's public preview, and
-its market share table is withheld behind the paywall. A Herfindahl
-index cannot be computed from a redacted table, so foundry
-concentration is carried qualitatively (the report's own public
-highlight that Taiwan foundries are raising prices amid tight capacity
-into 2027) while the quantitative exposure variable is TSMC's audited
-and unaudited quarterly revenue, which the company itself publishes.
+Output
+  data/processed/energy_chokepoints.csv      oil transit by chokepoint,
+                                             million barrels per day
+  data/processed/steo_brent.csv              Brent spot, monthly,
+                                             observed and EIA forecast
+  data/processed/semiconductor_channel.csv   TSMC net revenue, USD m,
+                                             by quarter
 
-PARSING NOTES
--------------
-The EIA table is a layout-preserved text grid; the year header is
-located by pattern, not position. TSMC statements are parsed per file
-for the quarter label and the USD net revenue figure, then deduplicated
-by quarter since audited and unaudited issues overlap. All extracted
-values pass range gates so a source redesign fails loudly.
+Notes
+* Requires the pdftotext utility (poppler).
+* The chokepoint table is read from layout-preserved text. The year
+  header is located by pattern.
+* The STEO edition is read from the workbook.
+* TSMC statements are deduplicated by quarter because audited and
+  unaudited issues overlap.
+* Foundry market shares are not used. The TrendForce ranking available
+  to this project is the public summary, which omits the share table,
+  so no concentration index is computed. The public summary's note on
+  capacity is recorded as text.
+* Extracted values are range-checked.
+
+Run: python src/parse_energy_semis.py
 """
 
 import re
@@ -39,9 +37,7 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw"
-OUT = ROOT / "data" / "processed"
+from config import PROC as OUT, RAW
 
 CHOKEPOINTS = ["Strait of Hormuz", "Strait of Malacca", "Suez Canal and SUMED Pipeline",
                "Bab el-Mandeb", "Danish Straits", "Turkish Straits", "Panama Canal",
@@ -95,15 +91,19 @@ def parse_brent() -> pd.DataFrame:
     df = pd.DataFrame(rows)
     if not (30 < df.brent_usd_bbl.median() < 150):
         raise ValueError("Brent parse failed validation")
-    df["source"] = "EIA Short-Term Energy Outlook, July 2026, series BREPUUS"
+    title = " ".join(str(v) for v in raw.iloc[1].dropna())
+    ed = re.search(r"Short-Term Energy Outlook\s*-\s*([A-Z][a-z]+ \d{4})", title)
+    edition = ed.group(1) if ed else "edition not stated"
+    df["source"] = f"EIA Short-Term Energy Outlook, {edition}, series BREPUUS"
     df.to_csv(OUT / "steo_brent.csv", index=False)
-    print(f"steo_brent.csv: {len(df)} months, {df.month.iloc[0]} to {df.month.iloc[-1]}")
+    print(f"steo_brent.csv: {len(df)} months, {df.month.iloc[0]} to "
+          f"{df.month.iloc[-1]} ({edition} edition)")
     return df
 
 
 def parse_tsmc() -> pd.DataFrame:
     rows = []
-    for pdf in sorted((RAW / "tsmc").glob("*.pdf")):
+    for pdf in sorted((RAW / "tsmc").glob("FS*.pdf")):
         txt = text_of(pdf)
         q = re.search(r"For the Three Months Ended\s+([A-Z][a-z]+ \d{1,2}, \d{4})", txt)
         rev = re.search(r"Net Revenue\s+\$\s*([\d,]+)", txt)
@@ -129,9 +129,9 @@ def main() -> None:
         100 * (tsmc.tsmc_revenue_usd_m / tsmc.tsmc_revenue_usd_m.shift(4) - 1), 1)
     tsmc["capacity_note"] = ("Taiwan foundries including TSMC, UMC, Vanguard and "
                              "PSMC raising prices amid tight capacity into 2027 "
-                             "(TrendForce public highlight, June 2026)")
+                             "(TrendForce public summary, June 2026)")
     tsmc["source"] = ("TSMC consolidated condensed statements of comprehensive "
-                      "income, quarterly; TrendForce 1Q26 report public highlight")
+                      "income, quarterly; TrendForce 1Q26 public summary")
     tsmc.to_csv(OUT / "semiconductor_channel.csv", index=False)
     print(f"semiconductor_channel.csv: {len(tsmc)} quarters "
           f"({tsmc.quarter.iloc[0]} to {tsmc.quarter.iloc[-1]}); latest revenue "

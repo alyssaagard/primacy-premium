@@ -1,36 +1,29 @@
 """
 make_figures.py
-Stage 4 of the pipeline: the four plates embedded in the HTML preview.
+Stage 5. Four static figures.
 
-Every mark on these figures is drawn from the processed data or the
-simulation output; nothing is illustrative. The palette is fixed to the
-preview's design tokens (blush ffebfe, petal facde9, thistle ebe1e7,
-ink 141414, ivory fffdf6) and the type is serif to match the page,
-which is set in Times New Roman. Liberation Serif is metrically
-compatible with Times New Roman and is used when rendering on systems
-where Times itself is not installed.
+  Figure 1   reserve shares by currency (IMF COFER)
+  Figure 2   military expenditure of the United States, China and
+             Russia from 1988 (SIPRI, constant 2024 USD)
+  Figure 3   world arms deliveries (SIPRI TIV) and supplier
+             concentration (Herfindahl index, five-year order windows)
+  Figure 4   simulated reserve shares to 2035 by pathway
 
-  Plate I    the reserve ledger, 1999 to 2026 (IMF COFER)
-  Plate II   the defense ledger, 1988 to 2025 (SIPRI, constant 2024 USD)
-  Plate III  the arms trade, 1950 to 2025 (SIPRI TIV) with supplier
-             concentration (HHI on order-year windows)
-  Plate IV   the conditional forecast fan to 2035, three pathways
+All values are read from the processed tables and simulation outputs.
+Fonts fall back to Liberation Serif where Times New Roman is absent.
 
-Run:  python src/make_figures.py   (after simulate.py)
+Run: python src/make_figures.py
+Writes: outputs/figures/plate1_reserves.png ... plate4_forecast.png
 """
 
 import json
-from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-PROC = ROOT / "data" / "processed"
-OUT = ROOT / "outputs"
-FIG = OUT / "figures"
+from config import FIG, OUT, PROC
 
 INK = "#141414"
 BLUSH = "#ffebfe"
@@ -83,16 +76,16 @@ def plate_1():
     a.plot(s["date"], s["USD"], color=INK, lw=1.8, label="US dollar")
     a.plot(s["date"], s["EUR"], color=INK, lw=1.0, ls="--", label="Euro")
     a.set_ylim(15, 74)
-    tidy(a, "share of allocated reserves, %")
+    tidy(a, "share of foreign exchange reserves, %")
     vline(a, pd.Timestamp("2022-02-28"), "Russian reserves frozen")
     a.legend(frameon=False, loc="center right", fontsize=9)
 
     b.fill_between(s["date"], s["OTHER"], 0, color=PETAL, lw=0,
-                   label="Nontraditional currencies")
+                   label="Other currencies")
     b.plot(s["date"], s["OTHER"], color=INK, lw=1.0)
     b.plot(s["date"], s["CNY"], color=INK, lw=1.4, ls=":",
            label="Renminbi")
-    b.set_ylim(0, 7.2)
+    b.set_ylim(0, max(7.2, 1.08 * s["OTHER"].max()))
     tidy(b, "%")
     vline(b, pd.Timestamp("2016-11-30"), "RMB identified in COFER", 0.90)
     b.legend(frameon=False, loc="upper left", fontsize=9)
@@ -105,9 +98,12 @@ def plate_2():
     w = p.pivot_table(index="year", columns="iso3",
                       values="milex_constusd_m") / 1e3
     w = w.loc[1988:]
+    cases = json.loads((OUT / "calibration.json").read_text())["cases"]
+    drop = cases["peace_dividend"]["total_real_change_pct"]
+    last = cases["us_last_year"]
     fig, ax = plt.subplots(figsize=(8.6, 4.4))
     ax.axvspan(1988, 1998, color=BLUSH, zorder=0)
-    ax.text(1993, 1020, "the peace dividend\n1988 to 1998, US -32%",
+    ax.text(1993, 1020, f"1988 to 1998\nUnited States {drop:.0f}%",
             ha="center", fontsize=8.5, style="italic")
     ax.fill_between(w.index, w["CHN"], 0, color=PETAL, lw=0)
     ax.plot(w.index, w["USA"], color=INK, lw=1.8,
@@ -117,9 +113,11 @@ def plate_2():
     ax.plot(w.index, w["RUS"], color=INK, lw=1.0, ls=":", label="Russia")
     ax.set_ylim(0, 1150)
     tidy(ax, "US$ billion, constant 2024")
-    ax.legend(frameon=False, loc="upper left", fontsize=9)
-    ax.annotate("2025: US -7.5% real", xy=(2025, w.loc[2025, "USA"]),
-                xytext=(2015.2, 780), fontsize=8.5, style="italic",
+    ax.legend(frameon=False, loc="center left", bbox_to_anchor=(0.02, 0.42),
+              fontsize=9)
+    ax.annotate(f"{last['year']}: United States {last['value']:+.1f}% real",
+                xy=(last["year"], w.loc[last["year"], "USA"]),
+                xytext=(2012.5, 780), fontsize=8.5, style="italic",
                 arrowprops=dict(arrowstyle="-", lw=0.7, color=INK))
     fig.savefig(FIG / "plate2_milex.png")
     plt.close(fig)
@@ -166,16 +164,15 @@ def plate_4():
         2, 1, figsize=(8.6, 6.0), sharex=True,
         gridspec_kw={"height_ratios": [2.2, 1.1], "hspace": 0.13},
     )
-    styles = {"accretion": ("-", 1.8, "P1 accretion"),
-              "retrenchment": ("--", 1.3, "P2 retrenchment"),
-              "demonstration": ((0, (3, 1, 1, 1)), 1.3,
-                                "P3 demonstration")}
+    styles = {"accretion": ("-", 1.8, "accretion"),
+              "retrenchment": ("--", 1.3, "retrenchment"),
+              "demonstration": ((0, (3, 1, 1, 1)), 1.3, "demonstration")}
 
     u = fan[fan["currency"] == "USD"]
     acc = u[u["pathway"] == "accretion"]
     a.fill_between(acc["date"], acc["p10"], acc["p90"], color=PETAL,
                    alpha=0.8, lw=0,
-                   label="10th to 90th percentile, P1")
+                   label="10th to 90th percentile, accretion")
     a.plot(hist["date"], hist["USD"], color=INK, lw=1.8)
     for p, (ls, lw, lab) in styles.items():
         d = u[u["pathway"] == p]
@@ -185,7 +182,8 @@ def plate_4():
            style="italic")
     a.set_ylim(38, 62)
     tidy(a, "USD share of reserves, %")
-    vline(a, pd.Timestamp("2026-03-31"), "last observed, 2026-Q1", 0.16)
+    vline(a, s["date"].iloc[-1], f"last observed, {s['quarter'].iloc[-1]}",
+          0.16)
     a.legend(frameon=False, loc="lower left", fontsize=8.5, ncols=2)
 
     c = fan[fan["currency"] == "CNY"]
@@ -196,8 +194,8 @@ def plate_4():
     for p, (ls, lw, lab) in styles.items():
         d = c[c["pathway"] == p]
         b.plot(d["date"], d["p50"], color=INK, lw=lw, ls=ls)
-    b.set_ylim(0, 6.5)
-    tidy(b, "CNY share, %")
+    b.set_ylim(0, 1.05 * accc["p90"].max())
+    tidy(b, "CNY share of reserves, %")
     fig.savefig(FIG / "plate4_forecast.png")
     plt.close(fig)
 
@@ -208,7 +206,7 @@ def main() -> None:
     plate_2()
     plate_3()
     plate_4()
-    print("four plates written to outputs/figures/")
+    print("four figures written to outputs/figures/")
 
 
 if __name__ == "__main__":

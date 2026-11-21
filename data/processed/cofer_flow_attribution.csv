@@ -1,378 +1,383 @@
 quarter,ccy,flow_share_pct,source
-1999-Q2,USD,52.98852128333712,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q3,USD,17.17499162086623,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q4,USD,39.436871025752524,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q1,USD,35.04307695393173,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q2,USD,32.8464990366483,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q3,USD,34.03971718582551,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q4,USD,21.602312424005422,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q1,USD,522.0172321629574,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q2,USD,111.90774928427302,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q3,USD,28.983374722594434,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q4,USD,36.42127714025472,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q1,USD,26.85326643791035,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q2,USD,15.722784975645537,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q3,USD,16.201990614401083,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q4,USD,11.924875732993328,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q1,USD,28.280446970922686,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q2,USD,32.596943231598296,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q3,USD,34.55595704852282,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q4,USD,21.577349296939573,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q1,USD,38.563831812000906,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q2,USD,39.26885510903425,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q3,USD,25.42820857660103,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q4,USD,25.387625561081613,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q1,USD,40.84450922653321,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q2,USD,41.24687818164009,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q3,USD,37.787773828673004,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q4,USD,30.85374515010374,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q1,USD,32.39546637420319,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q2,USD,24.564081111483564,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q3,USD,38.295776168192276,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q4,USD,24.176812379350302,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q1,USD,31.741527629485034,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q2,USD,29.507649430977057,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q3,USD,25.342701786937695,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q4,USD,30.437842353534684,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q1,USD,34.363481352862145,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q2,USD,25.376487405346502,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q3,USD,153.05494187254462,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q2,USD,18.172863769642326,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q3,USD,18.21814676303363,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q4,USD,42.945734131058245,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q1,USD,18.515883960164572,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q2,USD,55.6472440532644,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q3,USD,25.38673694226795,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q4,USD,32.8477876516711,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q1,USD,29.602610051588535,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q2,USD,27.459875483698177,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q3,USD,67.8341730855378,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q4,USD,70.47071536180715,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q1,USD,16.475021776331012,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q2,USD,46.461749520865496,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q3,USD,23.865730454695566,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q4,USD,32.271119556823,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q1,USD,40.29756427672585,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q2,USD,26.076689721692066,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q3,USD,25.54447140215491,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q4,USD,30.24956845578896,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q1,USD,15.167003022205353,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q2,USD,31.77051684344584,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2015-Q2,USD,10.596744585118255,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q1,USD,-4005.477094395043,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q2,USD,42.55571372132092,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q3,USD,-11.064305306991958,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q1,USD,18.577547796401415,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q2,USD,14.081358918735443,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q3,USD,25.180774101309307,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q4,USD,8.73340046233496,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q1,USD,38.20847334054674,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q4,USD,-36.02229981082433,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q1,USD,35.60019253127544,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q2,USD,9.31451421397865,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q4,USD,5.808688643595657,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q2,USD,23.037853915020538,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q3,USD,7.45110931896048,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q4,USD,9.652029969398376,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q2,USD,23.925210744328588,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q3,USD,36.20216849581796,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q4,USD,-3.243932311814763,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2022-Q4,USD,6.449133443369242,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q1,USD,89.8161554228855,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q2,USD,-36.81669250963345,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q4,USD,21.013088862976208,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q1,USD,124.28262906616634,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q3,USD,13.681186472167692,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q1,USD,28.311326533019265,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q2,USD,8.029735358618048,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q3,USD,4.594651934716975,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q4,USD,17.508205322735293,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q2,EUR,-1.1000631770715423,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q3,EUR,18.65441786174322,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q4,EUR,3.8298849950309686,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q1,EUR,6.0387347004187975,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q2,EUR,13.295763779839568,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q3,EUR,-5.640200840634348,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q4,EUR,25.155376062992417,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q1,EUR,-157.93919923929695,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q2,EUR,1.2268355492571337,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q3,EUR,17.15124027042853,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q4,EUR,31.44038418381838,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q1,EUR,29.422869518005562,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q2,EUR,17.038696585021583,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q3,EUR,27.01331646900741,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q4,EUR,32.20080475760009,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q1,EUR,7.998723039431678,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q2,EUR,15.122766929231126,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q3,EUR,7.744275094433367,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q4,EUR,14.87125538166317,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q1,EUR,3.4907864057581164,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q2,EUR,10.246266179333599,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q3,EUR,18.052033841535255,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q4,EUR,16.91040659733709,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q1,EUR,11.08670071505193,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q2,EUR,3.9212875808195697,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q3,EUR,5.345719531953262,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q4,EUR,5.174916172206826,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q1,EUR,13.62548695932616,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q2,EUR,14.394067144882241,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q3,EUR,6.404019246168473,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q4,EUR,15.750448997136745,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q1,EUR,16.871542316770917,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q2,EUR,8.290930588684287,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q3,EUR,19.381045531632687,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q4,EUR,8.193372561398887,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q1,EUR,11.279811873808908,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q2,EUR,12.374132121935876,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q3,EUR,-95.26585963654303,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q2,EUR,19.442403361500425,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q3,EUR,13.366797171279387,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q4,EUR,10.152695008634904,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q1,EUR,4.5432891000955555,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q2,EUR,-14.760843070468619,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q3,EUR,14.353259754865514,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q4,EUR,4.559670660184077,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q1,EUR,9.624311106492915,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q2,EUR,13.164657774374422,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q3,EUR,-24.642232716263308,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q4,EUR,-60.19853298093453,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q1,EUR,11.385670918375006,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q2,EUR,16.60126161117586,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q3,EUR,0.4288166298856988,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q4,EUR,14.225256795072639,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q1,EUR,-6.373371071479098,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q2,EUR,24.598072155478405,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q3,EUR,13.780626167628299,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q4,EUR,14.549661030859781,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q1,EUR,22.586633604620207,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q2,EUR,3.606141824807121,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2015-Q2,EUR,17.314155418284535,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q1,EUR,6785.009430901738,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q2,EUR,-32.65669047894389,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q3,EUR,23.955499264818787,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q1,EUR,11.919854564529405,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q2,EUR,26.830174491691583,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q3,EUR,12.563215100714006,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q4,EUR,10.868740515710233,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q1,EUR,14.0266333940034,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q4,EUR,83.04883458109482,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q1,EUR,-5.685321156101426,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q2,EUR,22.89492564524578,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q4,EUR,19.740575426583668,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q2,EUR,12.399065524311533,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q3,EUR,20.287035323406712,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q4,EUR,19.65313961566836,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q2,EUR,12.077405087685696,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q3,EUR,-5.739237758404489,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q4,EUR,12.727509499975783,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2022-Q4,EUR,23.534016888212225,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q1,EUR,-40.60902157709832,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q2,EUR,46.60851112920291,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q4,EUR,13.288847058912886,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q1,EUR,-50.448298232317136,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q3,EUR,14.472011974629426,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q1,EUR,16.751832735429325,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q2,EUR,26.524093912790935,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q3,EUR,25.7186728364341,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q4,EUR,4.075284821147198,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q1,CNY,1.5104004685899186,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q2,CNY,0.7457969594936303,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q3,CNY,2.3713954731241755,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q4,CNY,5.574116678747888,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q1,CNY,8.913963252773005,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q4,CNY,21.627023447229373,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q1,CNY,1.7321045882274098,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q2,CNY,0.7916861049028625,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q4,CNY,1.7809163713314262,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q2,CNY,2.0822924743608464,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q3,CNY,3.624860208095013,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q4,CNY,2.902149584800859,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q2,CNY,4.802298136514086,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q3,CNY,17.039355821527927,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q4,CNY,11.13444229597736,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2022-Q4,CNY,0.2979244497479851,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q1,CNY,4.1907521912689525,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q2,CNY,-27.702969308438718,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q4,CNY,0.0160486585600547,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q1,CNY,-34.720843572580165,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q3,CNY,1.662644983386723,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q1,CNY,-2.677108674380434,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q2,CNY,1.1759927651624726,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q3,CNY,-1.16702302889485,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q4,CNY,1.4506802779040375,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q2,JPY,-4.517360150840883,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q3,JPY,10.938364811325517,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q4,JPY,4.699444471540068,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q1,JPY,2.3955293563212585,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q2,JPY,20.28736100762138,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q3,JPY,12.660808020211073,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q4,JPY,-3.9422175657892327,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q1,JPY,-328.86027370488506,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q2,JPY,-11.804046433074635,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q3,JPY,2.123985896438607,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q4,JPY,-13.93714901629961,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q1,JPY,-19.587006475169712,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q2,JPY,13.318712786140226,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q3,JPY,-3.788639142406066,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q4,JPY,0.7459150052768564,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q1,JPY,9.100302124979512,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q2,JPY,-1.635146273621178,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q3,JPY,3.9841174572303357,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q4,JPY,6.620000543957774,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q1,JPY,4.481397366210953,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q2,JPY,-7.317958676236165,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q3,JPY,-1.7219445342809114,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q4,JPY,1.993088990193433,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q1,JPY,-5.668440625386725,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q2,JPY,0.2933341973785657,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q3,JPY,0.21530052609865977,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q4,JPY,5.022255844545362,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q1,JPY,-2.4677577982594934,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q2,JPY,2.954135948452383,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q3,JPY,1.054359153686731,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q4,JPY,3.534334812148634,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q1,JPY,-3.0241542553996315,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q2,JPY,3.1146012758754615,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q3,JPY,0.49108062327817387,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q4,JPY,4.676412836753229,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q1,JPY,2.845730811335458,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q2,JPY,4.230510965222876,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q3,JPY,-1.2748012842459673,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q2,JPY,0.3574215099959049,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q3,JPY,2.0864287782316087,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q4,JPY,-0.47274453368759156,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q1,JPY,9.954175051488711,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q2,JPY,8.058566638865226,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q3,JPY,3.3810234093142273,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q4,JPY,3.579340324762243,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q1,JPY,1.9906654221190816,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q2,JPY,2.3907439081903723,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q3,JPY,2.5579428032020166,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q4,JPY,-1.609292074448812,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q1,JPY,5.765760870089169,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q2,JPY,-1.3318217776307963,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q3,JPY,8.094485013002503,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q4,JPY,-3.620003350459234,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q1,JPY,-1.2555064752067875,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q2,JPY,9.41892480720012,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q3,JPY,1.8447583348284249,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q4,JPY,-2.2902621781773504,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q1,JPY,5.526252166406711,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q2,JPY,3.337367512105717,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2015-Q2,JPY,-79.27908347457367,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q1,JPY,-1285.732714628649,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q2,JPY,58.94073823835056,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q3,JPY,17.724323460579743,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q1,JPY,16.207149138432722,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q2,JPY,4.293510843736898,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q3,JPY,-0.9611935569347686,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q4,JPY,15.11823441871773,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q1,JPY,-5.754381970724267,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q4,JPY,11.0417889430521,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q1,JPY,13.1202466561814,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q2,JPY,12.801225346929995,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q4,JPY,6.44915539004667,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q2,JPY,-3.1343482379116763,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q3,JPY,5.322498523196413,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q4,JPY,5.926102914609284,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q2,JPY,-4.962296081484906,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q3,JPY,24.091051758955423,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q4,JPY,-6.884005577889394,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2022-Q4,JPY,7.667740958897682,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q1,JPY,-0.6380815991236963,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q2,JPY,25.30215702299649,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q4,JPY,5.407836351537636,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q1,JPY,6.627626557629715,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q3,JPY,4.828646544401156,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q1,JPY,7.257565270629436,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q2,JPY,1.5314436239814808,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q3,JPY,12.838431821920505,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q4,JPY,4.750608364918187,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q2,GBP,2.2720352367380072,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q3,GBP,1.4405680820540592,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-1999-Q4,GBP,2.5225706945453186,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q1,GBP,3.4044861692619373,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q2,GBP,-9.21354624667328,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q3,GBP,2.875174557187574,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2000-Q4,GBP,3.2191333659418064,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q1,GBP,-11.77073066099496,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q2,GBP,-24.981109418617457,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q3,GBP,0.9603858654969047,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2001-Q4,GBP,3.4785934859876515,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q1,GBP,7.391163005905767,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q2,GBP,1.3824511504435564,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q3,GBP,6.915422566301046,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2002-Q4,GBP,2.835969808930693,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q1,GBP,-0.5233725279846936,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q2,GBP,1.8528506312643638,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q3,GBP,1.6134474666588807,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2003-Q4,GBP,4.769470508193275,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q1,GBP,2.749780330936231,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q2,GBP,4.383334551454704,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q3,GBP,6.447717509725158,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2004-Q4,GBP,3.7212548093990363,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q1,GBP,3.2825845432410494,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q2,GBP,1.7941243038581083,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q3,GBP,2.2938789383513174,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2005-Q4,GBP,3.612043071657367,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q1,GBP,5.59018141358088,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q2,GBP,4.240757470821433,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q3,GBP,2.883086991615812,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2006-Q4,GBP,3.2872138792878514,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q1,GBP,1.0117612493166148,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q2,GBP,5.8650139846731415,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q3,GBP,1.4707430305432663,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2007-Q4,GBP,5.349732076130451,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q1,GBP,-0.09744679811890675,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q2,GBP,4.351635899546626,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2008-Q3,GBP,-7.0996903447158175,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q2,GBP,5.769960045006509,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q3,GBP,3.1072109492198052,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2009-Q4,GBP,0.41573523348842056,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q1,GBP,4.704600644585631,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q2,GBP,-2.9674319930351856,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q3,GBP,1.8094130454698227,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2010-Q4,GBP,1.7808458198291497,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q1,GBP,2.3869072115486625,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q2,GBP,2.1612913480141094,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q3,GBP,-3.0617843097747497,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2011-Q4,GBP,-3.2949429571643623,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q1,GBP,4.837969472189514,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q2,GBP,-3.5225548965109708,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q3,GBP,5.988522936159408,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2012-Q4,GBP,-0.27400681298811935,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q1,GBP,-1.1067332979706181,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q2,GBP,-0.9952086856778197,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q3,GBP,3.9558085901126105,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2013-Q4,GBP,4.308353448746878,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q1,GBP,0.00910705155734633,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2014-Q2,GBP,2.321193886676774,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2015-Q2,GBP,101.72295059732825,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q1,GBP,-2871.904440660673,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q2,GBP,-16.936545822732025,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2016-Q3,GBP,-35.1215797903554,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q1,GBP,-0.5470127736343199,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q2,GBP,5.287728463143216,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q3,GBP,3.8926512559202417,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2017-Q4,GBP,2.515470706435403,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q1,GBP,3.2400525647117764,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2018-Q4,GBP,-2.857843241681599,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q1,GBP,4.7461389469146065,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q2,GBP,-0.3272328033818331,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2019-Q4,GBP,7.602941004491827,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q2,GBP,3.68833356776197,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q3,GBP,4.254302186618748,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2020-Q4,GBP,4.584480728175112,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q2,GBP,2.704399765053963,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q3,GBP,-1.8521090387077217,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2021-Q4,GBP,12.227064078710201,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2022-Q4,GBP,7.072211836852434,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q1,GBP,-18.5375182018265,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q2,GBP,15.94323258096393,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2023-Q4,GBP,1.8708228111995209,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q1,GBP,8.63841871836102,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2024-Q3,GBP,3.6013721720352656,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q1,GBP,2.7755790643902953,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q2,GBP,3.8458143930493676,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q3,GBP,-12.091199969750598,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
-2025-Q4,GBP,-3.6094125744793093,Derived from IMF COFER allocated claims; each currency's share of the quarterly change in total allocated claims
+1999-Q2,USD,105.97704256667065,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q3,USD,34.34998324173246,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q4,USD,78.87374205150637,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q1,USD,70.08615390786395,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q2,USD,65.6929980732943,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q3,USD,68.0794343716483,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q4,USD,43.20462484800715,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q1,USD,1044.0344643259277,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q2,USD,223.81549856858985,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q3,USD,57.96674944519068,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q4,USD,72.8425542805027,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q1,USD,53.70653287582411,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q2,USD,31.445569951290707,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q3,USD,32.40398122880371,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q4,USD,23.849751465985314,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q1,USD,56.56089394184537,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q2,USD,65.19388646319861,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q3,USD,69.11191409704367,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q4,USD,43.15469859388013,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q1,USD,77.12766362400103,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q2,USD,78.53771021807873,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q3,USD,50.85641715319883,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q4,USD,50.77525112216315,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q1,USD,81.68901845306762,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q2,USD,82.49375636328162,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q3,USD,75.57554765734324,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q4,USD,61.707490300207546,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q1,USD,64.7909327484077,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q2,USD,49.12816222296654,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q3,USD,76.59155233638455,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q4,USD,48.353624758700754,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q1,USD,63.48305525897021,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q2,USD,59.015298861954136,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q3,USD,50.68540357387567,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q4,USD,60.87568470706909,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q1,USD,68.7269627057247,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q2,USD,50.752974810691285,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q3,USD,306.1098837450743,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q2,USD,36.3457275392845,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q3,USD,36.43629352606672,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q4,USD,85.89146826211815,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q1,USD,37.03176792032888,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q2,USD,111.29448810653184,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q3,USD,50.77347388453558,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q4,USD,65.69557530334264,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q1,USD,59.20522010317604,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q2,USD,54.91975096740032,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q3,USD,135.66834617106932,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q4,USD,140.94143072351955,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q1,USD,32.95004355266404,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q2,USD,92.92349904172832,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q3,USD,47.73146090938668,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q4,USD,64.54223911365611,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q1,USD,80.59512855343768,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q2,USD,52.15337944342959,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q3,USD,51.08894280430582,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q4,USD,60.49913691157196,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q1,USD,30.334006044412448,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q2,USD,63.54103368690338,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2015-Q2,USD,21.193489170227082,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q1,USD,-8010.954188790086,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q2,USD,85.11142744264184,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q3,USD,-22.128610613983916,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q1,USD,37.15509559280245,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q2,USD,28.162717837471124,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q3,USD,50.361548202618614,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q4,USD,17.46680092466992,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q1,USD,76.41694668109348,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q4,USD,-72.04459962167647,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q1,USD,71.20038506255015,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q2,USD,18.629028427960748,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q4,USD,11.617377287191692,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q2,USD,46.075707830037175,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q3,USD,14.902218637921742,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q4,USD,19.304059938796335,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q2,USD,47.850421488655606,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q3,USD,72.40433699166029,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q4,USD,-6.813199875773086,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2022-Q4,USD,12.881633152700356,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q1,USD,179.4168702705504,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q2,USD,-73.63338292764224,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q4,USD,42.026177674580474,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q1,USD,248.56536217892224,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q3,USD,27.360506105204664,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q1,USD,56.923777924276465,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q2,USD,15.965121100783625,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q3,USD,9.908194152333532,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q4,USD,46.57400371581325,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2026-Q2,USD,4.670061528965053,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q2,EUR,-2.20012635414301,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q3,EUR,37.30883572348644,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q4,EUR,7.659769990062067,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q1,EUR,12.077469400837666,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q2,EUR,26.591527559678426,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q3,EUR,-11.280401681268746,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q4,EUR,50.31075212598115,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q1,EUR,-315.8783984785939,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q2,EUR,2.453671098514136,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q3,EUR,34.30248054085819,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q4,EUR,62.88076836763095,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q1,EUR,58.845739036014855,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q2,EUR,34.077393170042605,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q3,EUR,54.026632938017926,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q4,EUR,64.40160951519654,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q1,EUR,15.997446078863357,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q2,EUR,30.245533858463187,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q3,EUR,15.488550188866364,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q4,EUR,29.742510763326784,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q1,EUR,6.981572811516163,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q2,EUR,20.492532358670132,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q3,EUR,36.10406768306822,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q4,EUR,33.82081319467413,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q1,EUR,22.173401430104185,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q2,EUR,7.842575161639277,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q3,EUR,10.691439063906131,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q4,EUR,10.349832344413713,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q1,EUR,27.250973918652686,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q2,EUR,28.788134289764255,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q3,EUR,12.808038492336946,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q4,EUR,31.500897994273664,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q1,EUR,33.74308463354177,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q2,EUR,16.58186117736862,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q3,EUR,38.76209106326559,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q4,EUR,16.3867451227977,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q1,EUR,22.559623747617895,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q2,EUR,24.74826424387112,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q3,EUR,-190.53171927307676,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q2,EUR,38.88480672300094,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q3,EUR,26.73359434255838,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q4,EUR,20.305390017270202,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q1,EUR,9.086578200191047,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q2,EUR,-29.52168614093786,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q3,EUR,28.70651950973093,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q4,EUR,9.119341320368218,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q1,EUR,19.248622212985495,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q2,EUR,26.329315548750863,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q3,EUR,-49.28446543252519,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q4,EUR,-120.39706596178581,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q1,EUR,22.771341836751695,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q2,EUR,33.20252322235041,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q3,EUR,0.8576332597713112,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q4,EUR,28.45051359014999,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q1,EUR,-12.74674214295598,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q2,EUR,49.19614431099969,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q3,EUR,27.561252335254437,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q4,EUR,29.099322061716883,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q1,EUR,45.1732672092424,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q2,EUR,7.212283649615263,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2015-Q2,EUR,34.628310836553666,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q1,EUR,13570.018861803475,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q2,EUR,-65.31338095788777,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q3,EUR,47.910998529637574,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q1,EUR,23.839709129058566,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q2,EUR,53.660348983383635,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q3,EUR,25.12643020142801,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q4,EUR,21.737481031420465,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q1,EUR,28.0532667880068,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q4,EUR,166.09766916225374,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q1,EUR,-11.370642312202737,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q2,EUR,45.789851290498234,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q4,EUR,39.48115085316863,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q2,EUR,24.798131048620963,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q3,EUR,40.57407064681443,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q4,EUR,39.30627923133672,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q2,EUR,24.154810175370393,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q3,EUR,-11.47847551681227,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q4,EUR,25.53292277574813,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2022-Q4,EUR,47.077010331576275,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q1,EUR,-80.99767909443905,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q2,EUR,93.21702113019855,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q4,EUR,26.577694133065123,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q1,EUR,-100.89666347631179,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q3,EUR,28.944772970392158,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q1,EUR,33.185895123604915,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q2,EUR,53.11410937213621,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q3,EUR,50.98873630634508,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q4,EUR,4.616187518334377,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2026-Q2,EUR,81.72304536442957,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q1,CNY,3.020800937179806,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q2,CNY,1.4915939189872736,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q3,CNY,4.742790946248351,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q4,CNY,11.148233357495776,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q1,CNY,17.82792650554601,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q4,CNY,43.25404689447544,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q1,CNY,3.4642091764547835,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q2,CNY,1.583372209805956,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q4,CNY,3.561832742663002,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q2,CNY,4.164584948721341,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q3,CNY,7.249720416190206,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q4,CNY,5.804299169601718,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q2,CNY,9.604596273027857,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q3,CNY,34.07871164306563,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q4,CNY,22.33692279400736,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2022-Q4,CNY,0.5959759967612984,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q1,CNY,8.358523699673936,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q2,CNY,-55.40593771328408,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q4,CNY,0.03209733217954211,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q1,CNY,-69.44173354616456,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q3,CNY,3.325365020316149,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q1,CNY,-5.252823042267433,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q2,CNY,2.350986025342403,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q3,CNY,-2.2734565302700456,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q4,CNY,3.953022600371124,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2026-Q2,CNY,16.36532877815518,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q2,JPY,-9.034720301681459,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q3,JPY,21.876729622651034,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q4,JPY,9.398888943080292,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q1,JPY,4.7910587126425455,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q2,JPY,40.57472201524169,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q3,JPY,25.321616040421134,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q4,JPY,-7.884435131577859,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q1,JPY,-657.7205474097701,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q2,JPY,-23.60809286615389,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q3,JPY,4.247971792877347,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q4,JPY,-27.874298032596638,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q1,JPY,-39.174012950341904,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q2,JPY,26.637425572280016,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q3,JPY,-7.577278284812568,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q4,JPY,1.4918300105536288,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q1,JPY,18.200604249959024,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q2,JPY,-3.2702925472424744,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q3,JPY,7.968234914460481,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q4,JPY,13.240001087915756,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q1,JPY,8.962794732421814,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q2,JPY,-14.635917352474426,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q3,JPY,-3.4438890685616044,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q4,JPY,3.9861779803868598,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q1,JPY,-11.336881250773587,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q2,JPY,0.5866683947570869,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q3,JPY,0.43060105219730377,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q4,JPY,10.044511689090745,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q1,JPY,-4.935515596519025,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q2,JPY,5.9082718969047185,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q3,JPY,2.108718307373462,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q4,JPY,7.06866962429729,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q1,JPY,-6.048308510799263,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q2,JPY,6.229202551750941,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q3,JPY,0.9821612465563531,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q4,JPY,9.352825673506416,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q1,JPY,5.691461622670914,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q2,JPY,8.46102193044559,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q3,JPY,-2.54960256849181,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q2,JPY,0.7148430199918115,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q3,JPY,4.172857556463155,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q4,JPY,-0.9454890673752013,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q1,JPY,19.90835010297728,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q2,JPY,16.117133277730794,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q3,JPY,6.762046818628432,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q4,JPY,7.158680649524536,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q1,JPY,3.9813308442380935,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q2,JPY,4.781487816381089,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q3,JPY,5.115885606403833,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q4,JPY,-3.2185841488953995,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q1,JPY,11.531521740179189,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q2,JPY,-2.663643555261488,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q3,JPY,16.18897002600338,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q4,JPY,-7.240006700919668,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q1,JPY,-2.511012950413138,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q2,JPY,18.83784961441666,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q3,JPY,3.68951666965656,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q4,JPY,-4.580524356354278,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q1,JPY,11.05250433281383,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q2,JPY,6.674735024212662,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2015-Q2,JPY,-158.5581669490768,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q1,JPY,-2571.465429257298,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q2,JPY,117.88147647670112,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q3,JPY,35.44864692115949,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q1,JPY,32.41429827686512,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q2,JPY,8.587021687473868,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q3,JPY,-1.9223871138695372,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q4,JPY,30.23646883743546,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q1,JPY,-11.508763941448533,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q4,JPY,22.08357788611272,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q1,JPY,26.240493312362528,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q2,JPY,25.60245069386363,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q4,JPY,12.898310780093691,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q2,JPY,-6.268696475822823,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q3,JPY,10.644997046393087,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q4,JPY,11.852205829218567,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q2,JPY,-9.924592162969487,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q3,JPY,48.18210351792512,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q4,JPY,-13.809829899457496,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2022-Q4,JPY,15.338396960276146,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q1,JPY,-1.2727627196657478,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q2,JPY,50.60431308456326,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q4,JPY,10.815672716967217,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q1,JPY,13.255260509200243,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q3,JPY,9.6575444045587,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q1,JPY,14.36447156290625,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q2,JPY,3.065933364871749,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q3,JPY,25.43842005393856,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q4,JPY,5.360628218358174,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2026-Q2,JPY,-46.56800920519101,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q2,GBP,4.544070473475861,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q3,GBP,2.8811361641081183,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+1999-Q4,GBP,5.0451413890907215,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q1,GBP,6.808972338523914,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q2,GBP,-18.427092493346038,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q3,GBP,5.75034911437492,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2000-Q4,GBP,6.438266731883117,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q1,GBP,-23.54146132198992,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q2,GBP,-49.96221883724469,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q3,GBP,1.9207717309938694,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2001-Q4,GBP,6.957186971974659,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q1,GBP,14.782326011812472,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q2,GBP,2.7649023008870675,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q3,GBP,13.830845132602906,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2002-Q4,GBP,5.671939617861052,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q1,GBP,-1.0467450559694023,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q2,GBP,3.705701262528851,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q3,GBP,3.226894933317669,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2003-Q4,GBP,9.538941016386712,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q1,GBP,5.499560661872417,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q2,GBP,8.7666691029106,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q3,GBP,12.895435019449467,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2004-Q4,GBP,7.44250961879808,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q1,GBP,6.56516908648218,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q2,GBP,3.5882486077162796,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q3,GBP,4.587757876702466,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2005-Q4,GBP,7.224086143314776,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q1,GBP,11.180362827161941,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q2,GBP,8.481514941642775,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q3,GBP,5.766173983231624,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2006-Q4,GBP,6.574427758575724,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q1,GBP,2.023522498633247,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q2,GBP,11.730027969346299,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q3,GBP,2.9414860610865485,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2007-Q4,GBP,10.699464152260852,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q1,GBP,-0.19489359623781416,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q2,GBP,8.703271799093029,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2008-Q3,GBP,-14.199380689430944,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q2,GBP,11.539920090013045,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q3,GBP,6.214421898439519,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2009-Q4,GBP,0.8314704669768573,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q1,GBP,9.409201289171197,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q2,GBP,-5.934863986070496,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q3,GBP,3.6188260909396335,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2010-Q4,GBP,3.561691639658324,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q1,GBP,4.7738144230972415,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q2,GBP,4.3225826960285305,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q3,GBP,-6.1235686195492605,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2011-Q4,GBP,-6.589885914324169,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q1,GBP,9.675938944379743,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q2,GBP,-7.045109793021663,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q3,GBP,11.97704587231761,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2012-Q4,GBP,-0.5480136259763295,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q1,GBP,-2.2134665959408517,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q2,GBP,-1.9904173713573743,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q3,GBP,7.911617180224602,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2013-Q4,GBP,8.61670689749296,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q1,GBP,0.018214103114693337,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2014-Q2,GBP,4.642387773354402,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2015-Q2,GBP,203.445901194566,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q1,GBP,-5743.808881321346,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q2,GBP,-33.87309164546405,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2016-Q3,GBP,-70.2431595807108,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q1,GBP,-1.0940255472686284,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q2,GBP,10.57545692628652,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q3,GBP,7.7853025118404835,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2017-Q4,GBP,5.030941412870806,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q1,GBP,6.480105129423553,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2018-Q4,GBP,-5.7156864833654035,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q1,GBP,9.492277893829113,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q2,GBP,-0.6544656067637614,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2019-Q4,GBP,15.205882008984084,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q2,GBP,7.3766671355233155,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q3,GBP,8.508604373237654,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2020-Q4,GBP,9.168961456350251,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q2,GBP,5.408799530107748,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q3,GBP,-3.7042180774160576,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2021-Q4,GBP,24.52876704496943,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2022-Q4,GBP,14.147127714937389,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q1,GBP,-36.97445767567301,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q2,GBP,31.886464856156753,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2023-Q4,GBP,3.741645611582088,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q1,GBP,17.27684666458613,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2024-Q3,GBP,7.202924915800912,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q1,GBP,5.519234961271907,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q2,GBP,7.699133775267665,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q3,GBP,-23.920856942107623,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2025-Q4,GBP,-5.92568343546626,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"
+2026-Q2,GBP,22.340453668104466,"Derived from IMF COFER claims: currency share of the quarterly change in total claims, quarters with rising totals"

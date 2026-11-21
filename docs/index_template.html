@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Primacy Premium</title>
-<meta name="description" content="A conditional forecasting model, calibrated on seven decades of defense and financial data, of how markets would reallocate if China became the world's leading military power by 2035.">
+<meta name="description" content="Static summary of The Primacy Premium: conditional forecasts of defense expenditure and reserve currency composition under three pathways to Chinese military primacy by 2035.">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="shortcut icon" href="../favicon.ico">
@@ -147,142 +147,140 @@
 <body>
 <main class="sheet">
 
-  <p class="eyebrow">preview</p>
+  <p class="eyebrow">static summary &nbsp;·&nbsp; build {{generated}}</p>
   <h1>The Primacy Premium</h1>
   <p class="subtitle">Conditional forecasts of defense and commercial markets under Chinese military primacy, 2026 to 2035</p>
   <p class="byline">alyssa agard</p>
   <p class="fleuron" aria-hidden="true">❦</p>
 
-  <div class="band">A conditional forecasting model, calibrated on seven decades of real defense and financial data, of how global military spending, arms transfers, and commercial risk pricing would reallocate if China became the world's leading military power by 2035.</div>
+  <div class="band">Three pathways to Chinese military primacy by 2035 are simulated from parameters estimated on IMF and SIPRI data. This page summarizes the design, the four static figures, and the results. The interactive page and the report give the full account.</div>
 
-  <h2><span class="no">§1</span> the question, and the argument</h2>
-  <p>If China attains nuclear parity and Indo-Pacific conventional primacy by 2035, how do global defense expenditure, arms transfer flows, and commercial risk pricing reallocate, and does the <em>pathway</em> to primacy condition those outcomes more strongly than the fact of primacy itself?</p>
-  <p>The argument in one line: <em>markets do not price whether China overtakes the United States; they price how.</em> The project therefore refuses a single scenario. It builds three, runs each through parameters measured from history, and reports full distributions. It is deliberately not called prediction. There is no training data for an event that has never occurred, so the model estimates responses from the historical record and imposes the scenario exogenously. That framing, conditional forecasting with Monte Carlo uncertainty propagation, is the stronger epistemic position and the project states it plainly.</p>
-  <div class="thesis"><b>thesis.</b>&nbsp; The pathway to Chinese military primacy, gradual accretion, American retrenchment, or violent demonstration, conditions defense and commercial market outcomes more strongly than the endpoint itself. Identical 2035 force balances, reached by different roads, produce different markets.</div>
+  <h2><span class="no">§1</span> research question and design</h2>
+  <p>If China reaches nuclear parity with the United States and conventional military primacy in the Indo-Pacific by 2035, how do defense expenditure, arms transfers, and reserve currency composition change, and do the changes depend on the <em>pathway</em> by which primacy is reached?</p>
+  <p>The project specifies three pathways and simulates each from parameters estimated on historical data. Results are distributions conditional on the pathway. The pathways are assumptions, not forecasts of what will occur: the historical record contains no instance of the outcome, so response parameters are estimated from observed episodes and each pathway is imposed.</p>
+  <div class="thesis"><b>thesis.</b>&nbsp; Allied defense expenditure and reserve composition in 2035 depend on how Chinese primacy is reached (gradual accretion, US retrenchment, or a military demonstration), not only on whether it is reached.</div>
 
-  <h2><span class="no">§2</span> three pathways to one endpoint</h2>
+  <h2><span class="no">§2</span> three pathways</h2>
   <div class="triptych">
     <div class="card">
       <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 22 C 16 20, 30 12, 44 4" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
       <div class="rn">I</div>
       <h3>Accretion</h3>
-      <p>China grows, the United States grows more slowly. The balance closes without an event. Hedging is gradual and markets reprice at the margin.</p>
-      <p class="anchor">Anchored on measured 2015 to 2025 real growth: China {{CN_CAGR}}% and the USA {{US_CAGR}}% per year.</p>
+      <p>Chinese and US real expenditure continue at their compound growth rates of the last ten years of data.</p>
+      <p class="anchor">{{kpis.cagr_start}} to {{kpis.year}}: China {{kpis.cn_cagr|+f1}}% and the United States {{kpis.us_cagr|+f1}}% per year.</p>
     </div>
     <div class="card">
       <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 6 C 12 6, 16 6, 22 10 C 30 16, 38 21, 44 22" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
       <div class="rn">II</div>
       <h3>Retrenchment</h3>
-      <p>Primacy arrives because Washington withdraws. Allied budgets and supplier choices move first, before any Chinese gain.</p>
-      <p class="anchor">Anchored on the peace dividend, the only measured decade of sustained US real contraction: {{PEACE_RATE}}% per year, 1988 to 1998.</p>
+      <p>Chinese expenditure as in accretion. US real expenditure contracts at the rate observed from 1988 to 1998.</p>
+      <p class="anchor">{{peace_dividend.peak_year}} to {{peace_dividend.trough_year}}: {{peace_dividend.annual_rate_pct|f1}}% per year.</p>
     </div>
     <div class="card">
       <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true"><path d="M2 20 H 18 L 23 4 L 28 22 L 33 14 H 44" fill="none" stroke="#141414" stroke-width="1.6"/></svg>
       <div class="rn">III</div>
       <h3>Demonstration</h3>
-      <p>A contingency resolves in Beijing's favor. Repricing is discontinuous: the shock quarter matters as much as the decade.</p>
-      <p class="anchor">Anchored on the one modern observation of this class: the 2022 freezing of Russian reserves, replayed at a random quarter, 2028 to 2031.</p>
+      <p>Accretion, plus one event in a year drawn from 2028 to 2031. Reserve shares and allied expenditure growth repeat the changes observed in 2022.</p>
+      <p class="anchor">One episode: the reserve share changes of 2022-Q1 and 2022-Q2, and the change in allied growth after February 2022.</p>
     </div>
   </div>
-  <p>If the model produced similar outputs across those three roads, the model would be wrong. Pathway divergence is the test, not the assumption.</p>
+  <p>The pathways share the premise of Chinese primacy by 2035. They do not impose an identical 2035 force balance: US expenditure in 2035 is lower under retrenchment.</p>
 
-  <h2><span class="no">§3</span> the hypothesis ledger</h2>
+  <h2><span class="no">§3</span> hypotheses</h2>
   <table class="ledger">
-    <tr><th style="width:3.4em">no.</th><th>claim</th><th style="width:11.5em">status in this build</th></tr>
-    <tr><td>H1</td><td>Identical 2035 endpoints, reached by different pathways, produce statistically distinguishable outcomes in defense expenditure and arms transfer flows.</td><td><span class="chip">supported, exception mapped</span></td></tr>
-    <tr><td>H2</td><td>American retrenchment moves allied budgets and supplier market shares faster than Chinese growth alone: the hegemon's exit is the stronger signal.</td><td><span class="chip">directionally supported</span></td></tr>
-    <tr><td>H3</td><td>Reserve currency composition is the slowest and least pathway-sensitive of the four commercial channels; the dollar's share erodes toward diversification, not toward the renminbi.</td><td><span class="chip live">supported in current build</span></td></tr>
+    <tr><th style="width:3.4em">no.</th><th>hypothesis</th><th style="width:13em">verdict</th></tr>
+    <tr><td>H1</td><td>Allied defense expenditure in 2035 differs by pathway. Median pathway separation of the scored outcomes: {{hyp.h1.median_sd}} sd, {{hyp.h1.median_ratio}} times the dollar reserve share ({{hyp.h1.reserve}} sd). Descriptive statistic, not a significance test.</td><td><span class="chip">{{hyp.tests.H1.verdict}}</span></td></tr>
+    <tr><td>H2</td><td>Allied expenditure responds more strongly to US expenditure than to Chinese expenditure. Pooled panel of {{hyp.h2.primary.n_countries}} countries, {{hyp.h2.primary.sample.0}} to {{hyp.h2.primary.sample.1}}: b_us {{hyp.h2.primary.b_us}}, b_cn {{hyp.h2.primary.b_cn}}, one-sided p {{hyp.h2.primary.p_one_sided|f2}}.</td><td><span class="chip">{{hyp.tests.H2.verdict}}</span></td></tr>
+    <tr><td>H3</td><td>Reserve composition is the least pathway-sensitive outcome, and the dollar's decline accrues mainly to currencies other than the renminbi. Dollar share separation {{kpis.separation}} sd; expenditure coefficient interval {{kpis.beta_lo}} to {{kpis.beta_hi}}.</td><td><span class="chip">{{hyp.tests.H3.verdict}}</span></td></tr>
   </table>
 
-  <h2><span class="no">§4</span> method, in five stages</h2>
+  <h2><span class="no">§4</span> method</h2>
   <ol class="stages">
-    <li><b>Data engineering.</b> Three parsers turn published sources into tidy, validated tables: IMF COFER quarterly reserve composition, 1999 to 2026 (<span class="script">parse_cofer.py</span>, with an independent share reconciliation that must pass to 0.05 pp); the SIPRI Military Expenditure Database, 1949 to 2025, in constant 2024 dollars (<span class="script">parse_milex.py</span>); and the SIPRI Arms Transfers Database, both the global delivery series from 1950 and a thirty-thousand-row deal register aggregated into supplier concentration (<span class="script">parse_arms_transfers.py</span>).</li>
-    <li><b>Historical calibration.</b> Every parameter the simulation consumes is estimated, none assumed (<span class="script">calibrate.py</span>). The reserve channel response is a Newey-West regression of quarterly dollar-share changes on the year-over-year change in the log China to US expenditure ratio; named calibration cases (the peace dividend, the 2022 sanctions shock, the accretion decade) are computed from the panel and written to a single JSON artifact with confidence intervals attached.</li>
-    <li><b>Conditional simulation.</b> A Monte Carlo engine (<span class="script">simulate.py</span>) propagates three uncertainties jointly, parameter, innovation, and scenario timing, through 10,000 draws per pathway per currency to 2035-Q4. Innovations are bootstrapped from measured residuals, so simulated quarters keep the true fat tails. Everything is seeded and reproducible.</li>
-    <li><b>Visualization.</b> Four plates (<span class="script">make_figures.py</span>) and this page (<span class="script">build_preview.py</span>), which injects the computed numbers so that no figure in the text can drift from the model that produced it.</li>
-    <li><b>Analytic handoff.</b> Tidy exports (<span class="script">simulation_fan.csv</span> and the processed tables) load directly into Power BI or Tableau for interactive exploration; the repository is the model of record.</li>
+    <li><b>Data.</b> Seven parsers convert published sources to long-format tables with range checks. The COFER dollar share is recomputed from claims and must match the published share within 0.05 percentage points (<span class="script">parse_cofer.py</span>). SIPRI expenditure is aggregated to six tiers, with dollar totals chain-linked over matched members (<span class="script">parse_milex.py</span>).</li>
+    <li><b>Estimation.</b> The quarterly change in the dollar share is regressed on the year-on-year change in the log China/US expenditure ratio with Newey-West standard errors; the renminbi share is modeled in log-odds (<span class="script">calibrate.py</span>). Allied tier growth is regressed on lagged US and Chinese growth, and H2 is tested on a country panel with fixed effects and Driscoll-Kraay standard errors (<span class="script">calibrate_layer2.py</span>).</li>
+    <li><b>Simulation.</b> {{meta.draws|int}} seeded draws per pathway (<span class="script">simulate.py</span>, <span class="script">simulate_layer2.py</span>). Coefficients are drawn jointly from their estimated sampling distributions, innovations are resampled from estimated residuals, and the event date is random.</li>
+    <li><b>Hypothesis assembly.</b> Statistics and evidence series are written to <span class="script">hypothesis_panel.csv</span> and verdicts to <span class="script">hypothesis_tests.json</span>.</li>
+    <li><b>Output.</b> Four figures (<span class="script">make_figures.py</span>), the interactive page, this summary (<span class="script">build_preview.py</span>), and the report. The processed tables load directly into Power BI or Tableau.</li>
   </ol>
 
-  <h2><span class="no">§5</span> the plates</h2>
+  <h2><span class="no">§5</span> figures</h2>
 
   <figure>
-    <div class="mat"><img src="data:image/png;base64,{{FIG1}}" alt="Two-panel chart of the currency composition of allocated global reserves, 1999 to 2026. The US dollar share falls from about 71 percent to about 57 percent; after 2022 the nontraditional currency share rises steeply while the renminbi share peaks and then declines."></div>
-    <figcaption><b>plate i · the reserve ledger, 1999 to 2026.</b> The dollar's share of allocated reserves falls from 71.2% at the euro's birth to {{USD}}% in {{Q_LATEST}}. The lower panel is the project's founding observation: after the 2022 freezing of Russian assets, diversification accelerated thirteenfold into nontraditional currencies (mean drift {{OTHER_PRE}} to {{OTHER_POST}} pp per quarter), while renminbi accumulation reversed. The renminbi is used for settlement and shunned as a store of value; that settlement-reserve gap is what H3 formalizes. Source: IMF COFER, retrieved 24 July 2026.</figcaption>
+    <div class="mat"><img src="data:image/png;base64,{{FIG1}}" alt="Two-panel chart of the currency composition of official foreign exchange reserves from 1999. The upper panel shows the US dollar and euro shares; the lower panel shows the renminbi share and the share of other currencies."></div>
+    <figcaption><b>figure 1 · reserve shares, {{cofer.first_quarter}} to {{cofer.latest_quarter}}.</b> The dollar share was {{cofer.usd_first|f1}}% in {{cofer.first_quarter}} and {{cofer.usd_latest|f1}}% in {{cofer.latest_quarter}}. The mean quarterly change in the share of other currencies was {{cofer.other_drift_pre|f3}} pp before 2022-Q1 and {{cofer.other_drift_post|f2}} pp from 2022-Q1. The renminbi share peaked at {{cofer.cny_peak_value}}% in {{cofer.cny_peak_quarter}}. Source: IMF COFER.</figcaption>
   </figure>
 
   <table class="ledger">
-    <tr><th>the ledger at {{Q_LATEST}}</th><th class="num">usd</th><th class="num">eur</th><th class="num">jpy</th><th class="num">gbp</th><th class="num">cny</th><th class="num">other</th></tr>
-    <tr><td>share of allocated reserves, %</td><td class="num">{{USD}}</td><td class="num">{{EUR}}</td><td class="num">{{JPY}}</td><td class="num">{{GBP}}</td><td class="num">{{CNY}}</td><td class="num">{{OTHER}}</td></tr>
+    <tr><th>{{cofer.latest_quarter}}</th><th class="num">usd</th><th class="num">eur</th><th class="num">jpy</th><th class="num">gbp</th><th class="num">cny</th><th class="num">other</th></tr>
+    <tr><td>share of foreign exchange reserves, %</td><td class="num">{{cofer.USD.-1|f1}}</td><td class="num">{{cofer.EUR.-1|f1}}</td><td class="num">{{cofer.JPY.-1|f1}}</td><td class="num">{{cofer.GBP.-1|f1}}</td><td class="num">{{cofer.CNY.-1|f1}}</td><td class="num">{{cofer.OTHER.-1|f1}}</td></tr>
   </table>
 
   <figure>
-    <div class="mat"><img src="data:image/png;base64,{{FIG2}}" alt="Military expenditure of the United States, China, and Russia from 1988 to 2025 in constant 2024 dollars. A shaded span marks the 1988 to 1998 peace dividend; a pink area under the China line rises steadily; an annotation marks the 7.5 percent US real decline in 2025."></div>
-    <figcaption><b>plate ii · the defense ledger, 1988 to 2025.</b> The two calibration cases that anchor pathways II and I are visible to the naked eye: the peace dividend ({{PEACE_TOTAL}}% total US real contraction over the decade) and the accretion decade (China at {{CN_CAGR}}% per year since 2015, a China to US ratio of {{RATIO}} in 2025). The 2025 US real decline of {{US2025}}% is the first live retrenchment signal in the data. Source: SIPRI Military Expenditure Database, constant 2024 USD; Chinese figures are SIPRI estimates.</figcaption>
+    <div class="mat"><img src="data:image/png;base64,{{FIG2}}" alt="Military expenditure of the United States, China, and Russia from 1988 in constant 2024 dollars, with the 1988 to 1998 period shaded."></div>
+    <figcaption><b>figure 2 · military expenditure, 1988 to {{kpis.year}}.</b> US real expenditure fell {{peace_dividend.contraction_pct|f0}}% from 1988 to 1998. Chinese real expenditure grew {{kpis.cn_cagr|f1}}% per year from {{kpis.cagr_start}} to {{kpis.year}}; the China/US ratio was {{kpis.cn_us_ratio|f2}} in {{kpis.year}}. US real expenditure changed by {{kpis.us_yoy_pct|+f1}}% in {{kpis.year}}. Source: SIPRI Military Expenditure Database, constant 2024 USD; Chinese figures are SIPRI estimates.</figcaption>
   </figure>
 
   <figure>
-    <div class="mat"><img src="data:image/png;base64,{{FIG3}}" alt="Global deliveries of major conventional arms from 1950 to 2025 as a filled area, with a dashed overlay of supplier concentration measured by a Herfindahl index in five-year windows, which declines from Cold War levels to the 2020s."></div>
-    <figcaption><b>plate iii · the arms trade, 1950 to 2025.</b> Volume in SIPRI trend indicator values, a capability measure, deliberately never mixed with dollar series. The dashed line is supplier concentration (Herfindahl, order-year windows) computed from the full deal register: in the {{HHI_WINDOW}} window the index stands at {{HHI_2020}}, with {{TOPSUP_2020}} the leading supplier at {{TOPSHARE_2020}}% of delivered value (an order-year measure, deliberately more conservative than SIPRI’s delivery-year export shares). Supplier diversification is one of the project's falsification tripwires for pathway II. Source: SIPRI Arms Transfers Database.</figcaption>
+    <div class="mat"><img src="data:image/png;base64,{{FIG3}}" alt="World deliveries of major conventional arms from 1950 as a filled area, with a dashed line of supplier concentration measured by a Herfindahl index in five-year order windows."></div>
+    <figcaption><b>figure 3 · arms deliveries and supplier concentration, 1950 to {{arms.latest_year}}.</b> Deliveries are in SIPRI trend-indicator values, a volume measure. The dashed line is the Herfindahl index of delivered volume by five-year order window. In the {{arms.last_complete_window}} window the index is {{arms.lc_hhi|f2}} and the leading supplier, {{arms.lc_supplier}}, accounts for {{arms.lc_share|f0}}% of delivered volume. Deliveries against recent orders are incomplete. Source: SIPRI Arms Transfers Database.</figcaption>
   </figure>
 
   <figure>
-    <div class="mat"><img src="data:image/png;base64,{{FIG4}}" alt="Conditional forecast fan of the dollar share of reserves to 2035 under three pathways, with medians nearly overlapping inside a wide pink 10th to 90th percentile band, and a lower panel showing renminbi share paths, including a demonstration pathway that collapses toward zero."></div>
-    <figcaption><b>plate iv · the conditional forecast, 2026 to 2035.</b> Ten thousand draws per pathway. The three medians sit almost on top of one another inside a band that is an order of magnitude wider than their separation: the reserve channel barely notices which road is taken, exactly as H3 requires. The lower panel is the sharper finding: under a demonstration replayed from 2022, the renminbi's reserve share collapses rather than rises. Coercion is, on the one measured precedent, self-defeating for the challenger's currency.</figcaption>
+    <div class="mat"><img src="data:image/png;base64,{{FIG4}}" alt="Simulated dollar share of reserves to 2035 under three pathways with the 10th to 90th percentile band for accretion, and a lower panel with simulated renminbi shares."></div>
+    <figcaption><b>figure 4 · simulated reserve shares to 2035.</b> {{meta.draws|int}} draws per pathway. Median dollar shares in 2035-Q4 differ by {{kpis.usd_median_range}} pp across pathways; the 80% interval under accretion is {{endpoints.usd.accretion.p10|f0}} to {{endpoints.usd.accretion.p90|f0}}%. The median renminbi share is {{endpoints.cny.accretion.median|f1}}% under accretion and {{endpoints.cny.demonstration.median|f1}}% under demonstration.</figcaption>
   </figure>
 
-  <h2><span class="no">§6</span> what the current build finds</h2>
+  <h2><span class="no">§6</span> results</h2>
   <div class="results">
     <ul>
-      <li>The defense coefficient is a precisely estimated near-null: a one-log-point year-over-year change in the China to US expenditure ratio moves the quarterly dollar share by {{BETA}} pp, 95% CI [{{BETA_LO}}, {{BETA_HI}}], n = {{NOBS}} quarters. The interval spans zero; the model cannot even resolve the <em>sign</em> of the pathway effect on reserves.</li>
-      <li>Median 2035-Q4 dollar share: {{ACC_MED}}% under accretion, {{RET_MED}}% under retrenchment, {{DEM_MED}}% under demonstration, against an 80% band of roughly {{ACC_P10}} to {{ACC_P90}}%. Pathway separation is {{SEP}} standard deviations of endpoint spread: small, as H3 predicts.</li>
-      <li>The probability the dollar falls below half of allocated reserves by 2035 ranges from {{RET_PLT50}} to {{ACC_PLT50}} across pathways: material under every road, decisive under none.</li>
-      <li>The renminbi diverges where the dollar does not: a median 2035 share of {{CNY_ACC_MED}}% under accretion against {{CNY_DEM_MED}}% under a 2022-style demonstration. The reserve channel punishes the challenger for coercion.</li>
+      <li>A unit change in the year-on-year log China/US expenditure ratio is associated with a change of {{kpis.beta|+f2}} pp in the quarterly dollar share (95% interval {{kpis.beta_lo}} to {{kpis.beta_hi}}, n = {{kpis.nobs}} quarters). The interval is wide and includes zero.</li>
+      <li>Median dollar share in 2035-Q4: {{endpoints.usd.accretion.median|f1}}% under accretion, {{endpoints.usd.retrenchment.median|f1}}% under retrenchment, {{endpoints.usd.demonstration.median|f1}}% under demonstration. Pathway separation is {{kpis.separation}} sd.</li>
+      <li>Median renminbi share in 2035-Q4: {{endpoints.cny.accretion.median|f1}}% under accretion (80% interval {{endpoints.cny.accretion.p10|f1}} to {{endpoints.cny.accretion.p90|f1}}%) and {{endpoints.cny.demonstration.median|f1}}% under demonstration.</li>
+      <li>In {{hyp.h3.months.-1}} the renminbi accounted for {{hyp.h3.swift_cny.-1}}% of global payments by value (Swift) and {{hyp.h3.cofer_cny.-1}}% of reserves (COFER), a difference of {{kpis.gap_pp}} pp.</li>
+      <li>Scored allied expenditure outcomes separate by a median {{hyp.h1.median_sd}} sd across pathways, {{hyp.h1.median_ratio}} times the dollar reserve share; the largest is {{hyp.h1.max.name}} ({{hyp.h1.max.sd}} sd).</li>
+      <li>In the pooled country panel the coefficient on lagged US growth is {{hyp.h2.primary.b_us}} (se {{hyp.h2.primary.se_us}}) and on lagged Chinese growth {{hyp.h2.primary.b_cn}} (se {{hyp.h2.primary.se_cn}}); the one-sided p value for the difference in magnitudes is {{hyp.h2.primary.p_one_sided|f2}}.</li>
     </ul>
-    <p class="caveat">Read honestly: the demonstration replay rests on a single modern precedent (n = 1, the 2022 sanctions episode) sustained for the remaining horizon, which makes the renminbi collapse an upper bound on reversal, not a point forecast. The valuation robustness for reserves is flow attribution, each currency's share of the quarterly change in allocated claims, which bounds rather than removes the valuation caveat. H1 is supported on the median criterion, 2.3 times the reserve channel's separation with the Indo-Pacific tier the mapped exception; H2 is directionally supported in all three allied tiers and unresolved at annual frequency.</p>
+    <p class="caveat">Both event responses repeat one episode (2022). Reserve shares are valued at current exchange rates and mix transactions with valuation changes. The tier equations behind the expenditure simulation are static, with serially correlated residuals. The H1 statistic is descriptive.</p>
   </div>
 
-  <h2><span class="no">§7</span> falsification tripwires</h2>
-  <p>A model someone can use is a model that names, in advance, the observables that would break it:</p>
+  <h2><span class="no">§7</span> observable checks</h2>
+  <p>Observations that would contradict the model's assumptions or the interpretation of its results:</p>
   <ul class="trip">
-    <li>Allied defense expenditure as a share of GDP, against the pathway II elasticities.</li>
-    <li>Arms import supplier diversification (the Herfindahl of Plate III) among US treaty allies.</li>
-    <li>Renminbi share in trade settlement versus its COFER reserve share: the settlement-reserve gap should widen under accretion and snap shut only with convertibility, not coercion.</li>
-    <li>The nontraditional-currency share of reserves, which should keep absorbing the dollar's decline under every pathway.</li>
-    <li>War-risk premia around Taiwan Strait exercise events, against the measured 2026 Gulf multiple of 5.7x hull value attached to demonstration events in the full build.</li>
+    <li>Sustained allied expenditure growth during a US contraction.</li>
+    <li>A falling US share of allied arms imports during a US contraction.</li>
+    <li>Convergence of the renminbi's payments and reserve shares without capital account liberalization.</li>
+    <li>A further decline in the dollar share absorbed mainly by the renminbi.</li>
+    <li>War risk premium changes during Taiwan Strait exercises that differ materially from the 2026 Mideast Gulf multiple ({{hyp.war_multiple}}).</li>
   </ul>
 
-  <h2><span class="no">§8</span> status of the work</h2>
+  <h2><span class="no">§8</span> scope</h2>
   <div class="twocol">
     <div class="status">
-      <h4>Complete in this preview</h4>
+      <h4>Simulated</h4>
       <ul>
-        <li>Full data pipeline over three primary sources, with validation gates</li>
-        <li>Calibration of the reserve channel and three named historical cases</li>
-        <li>Monte Carlo engine: 10,000 seeded draws, three uncertainty sources</li>
-        <li>H3 tested end to end; four plates; BI-ready exports</li>
+        <li>US dollar and renminbi reserve shares, quarterly to 2035-Q4</li>
+        <li>Expenditure of six blocks, annually to 2035</li>
+        <li>World arms deliveries, projected from simulated world expenditure</li>
       </ul>
     </div>
     <div class="status">
-      <h4>Also standing in the full build</h4>
+      <h4>Measured, not simulated</h4>
       <ul>
-        <li>Layer 2 system dynamics: alliance feedback estimated 1951 to 2025</li>
-        <li>Layer 4 events: the exercise register and the 2026 Gulf repricing multiple</li>
-        <li>The settlement-reserve gap, measured monthly from 27 Swift trackers</li>
-        <li>H1 and H2 tested, with verdicts and caveats in the interactive page</li>
+        <li>Renminbi payments and trade finance shares, {{vintage.swift_issues}} Swift issues</li>
+        <li>TSMC revenue, shipping structure, oil chokepoint flows, Brent price</li>
+        <li>War risk premium in the 2026 Mideast Gulf episode</li>
       </ul>
     </div>
   </div>
 
   <h2><span class="no">§9</span> data and reproduction</h2>
-  <p>Sources: IMF, Currency Composition of Official Foreign Exchange Reserves (COFER), quarterly through 2026-Q1, retrieved 24 July 2026; SIPRI Military Expenditure Database, 1949 to 2025 (v1.2, April 2026); SIPRI Arms Transfers Database, trend indicator values and trade register, retrieved 24 July 2026. Raw files are not redistributed here; the README explains where to obtain them and where to place them. The pipeline then reproduces every number on this page in order: <span class="script">parse_cofer.py</span>, <span class="script">parse_milex.py</span>, <span class="script">parse_arms_transfers.py</span>, <span class="script">parse_swift.py</span>, <span class="script">parse_maritime.py</span>, <span class="script">parse_energy_semis.py</span>, <span class="script">parse_security.py</span>, <span class="script">calibrate.py</span>, <span class="script">calibrate_layer2.py</span>, <span class="script">simulate.py</span>, <span class="script">simulate_layer2.py</span>, <span class="script">build_hypothesis_panel.py</span>, <span class="script">make_figures.py</span>, <span class="script">build_preview.py</span>. The simulation fan and processed tables import directly into Power BI or Tableau.</p>
+  <p>Sources: IMF, Currency Composition of Official Foreign Exchange Reserves (COFER), {{vintage.cofer.0}} to {{vintage.cofer.1}}; SIPRI Military Expenditure Database, {{vintage.milex.0}} to {{vintage.milex.1}} (v1.2, April 2026); SIPRI Arms Transfers Database; Swift RMB Tracker and Global Currency Tracker, {{vintage.swift.0}} to {{vintage.swift.1}}. Full citations are in <span class="script">REFERENCES.md</span>. Raw source files are not redistributed; <span class="script">data/raw/README.md</span> lists each file and where to obtain it. The simulations are seeded ({{meta.seed}}); the run order is given in <span class="script">README.md</span>.</p>
 
   <footer>
     <span class="cc">cc by-nc 4.0</span><br>
-    © 2026 Alyssa Agard. This preview, its text, and its figures are licensed under a
+    © 2026 Alyssa Agard. Text and figures are licensed under a
     <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-    You may share and adapt with attribution, for noncommercial purposes.
-    Underlying data remain © the IMF and © SIPRI respectively, are quoted here under their own terms with citation, and are not covered by this license.
-    A typeset preview of the full interactive build; figures and estimates move with data vintages.
+    The underlying source data are excluded from this license, remain the property of their publishers, and are used with citation under their terms.
   </footer>
 </main>
 </body>

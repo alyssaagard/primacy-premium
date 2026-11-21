@@ -1,79 +1,126 @@
 {
   "meta": {
-    "built": "2026-07-24",
+    "built": "2026-11-21",
     "cofer_span": [
       "1999-Q1",
-      "2026-Q1"
+      "2026-Q2"
     ],
     "milex_span": [
       1949,
       2025
     ],
-    "note": "All parameters estimated from IMF COFER and SIPRI data prepared by the stage 1 parsers."
+    "hac_lags": 4
   },
   "latest_state": {
-    "quarter": "2026-Q1",
-    "usd_share": 57.130786895752,
-    "cny_share": 1.98504495620728,
-    "eur_share": 20.030689239502,
-    "other_share": 6.17981958389282,
-    "cn_us_ratio_2025": 0.3605585404398616
+    "quarter": "2026-Q2",
+    "usd_share": 56.704761505127,
+    "cny_share": 2.113844871521,
+    "eur_share": 20.6017665863037,
+    "other_share": 6.05756902694702,
+    "cn_us_ratio": 0.3605585404398616,
+    "cn_us_ratio_year": 2025
   },
   "usd_regression": {
     "params": {
-      "const": -0.20858305736336033,
-      "x_ratio": 1.043542726577119,
-      "dum_2022": 0.4597149390847714
+      "const": -0.20824822448868668,
+      "x_ratio": 0.9323603500582354,
+      "dum_2022": 0.46419448304401095
     },
     "bse": {
-      "const": 0.08122605167534311,
-      "x_ratio": 0.9384591742478007,
-      "dum_2022": 0.11001531805216172
+      "const": 0.08130044827259952,
+      "x_ratio": 0.9540173130215668,
+      "dum_2022": 0.1103459165860914
     },
     "conf_int_95": {
       "const": [
-        -0.3677831932534221,
-        -0.04938292147329851
+        -0.3675941750299434,
+        -0.048902273947429964
       ],
       "x_ratio": [
-        -0.7958034559097691,
-        2.8828889090640075
+        -0.9374792240917107,
+        2.8021999242081814
       ],
       "dum_2022": [
-        0.24408887795481518,
-        0.6753410002147276
+        0.2479204606942108,
+        0.6804685053938111
       ]
     },
-    "r2": 0.013133277663012644,
-    "nobs": 105
+    "cov_names": [
+      "const",
+      "x_ratio",
+      "dum_2022"
+    ],
+    "cov": [
+      [
+        0.006609762889325631,
+        -0.04790892037847809,
+        -0.004766693001582495
+      ],
+      [
+        -0.047908920378478104,
+        0.9101490335448902,
+        0.011413431013864262
+      ],
+      [
+        -0.004766693001582498,
+        0.011413431013864269,
+        0.01217622130722464
+      ]
+    ],
+    "r2": 0.012336306494223015,
+    "nobs": 104,
+    "dependent": "quarterly change in the USD share, pp"
   },
   "cny_regression": {
     "params": {
-      "const": 0.03847197851761553,
-      "x_ratio": -0.2074718107119241,
-      "dum_2022": -0.06502699533016448
+      "const": 0.018973174346725602,
+      "x_ratio": 0.05376151237156049,
+      "dum_2022": -0.034287350494647414
     },
     "bse": {
-      "const": 0.03340206880837946,
-      "x_ratio": 0.3913688287785682,
-      "dum_2022": 0.030040867815314357
+      "const": 0.015140819863476398,
+      "x_ratio": 0.2964870570267818,
+      "dum_2022": 0.018759023264382394
     },
     "conf_int_95": {
       "const": [
-        -0.02699487335593693,
-        0.103938830391168
+        -0.010702287282096795,
+        0.048648635975548
       ],
       "x_ratio": [
-        -0.9745406197895409,
-        0.5595969983656927
+        -0.5273424412832051,
+        0.634865466026326
       ],
       "dum_2022": [
-        -0.12390601431250908,
-        -0.00614797634781989
+        -0.07105436047798591,
+        0.002479659488691076
       ]
     },
-    "r2": 0.0201709843211475,
-    "nobs": 37
+    "cov_names": [
+      "const",
+      "x_ratio",
+      "dum_2022"
+    ],
+    "cov": [
+      [
+        0.00022924442613824142,
+        -0.0003796829281594051,
+        -0.0002008729065762104
+      ],
+      [
+        -0.000379682928159405,
+        0.08790457498440216,
+        -0.003420558909575129
+      ],
+      [
+        -0.00020087290657621053,
+        -0.0034205589095751255,
+        0.0003519009538336399
+      ]
+    ],
+    "r2": 0.014697437659718982,
+    "nobs": 36,
+    "dependent": "quarterly change in log-odds of the CNY share"
   },
   "cases": {
     "peace_dividend": {
@@ -82,40 +129,49 @@
       "annual_rate_pct": -3.758539394108218
     },
     "sanctions_2022": {
-      "description": "Observed quarterly share changes around the 2022 freezing of Russian reserves, pp",
+      "description": "Observed quarterly share changes in 2022-Q1 and 2022-Q2 (pp; CNY also in log-odds)",
       "d_usd": [
-        0.015,
-        0.578
+        0.0149,
+        0.5777
       ],
       "d_cny": [
-        -0.002,
-        -0.069
+        -0.0023,
+        -0.0688
+      ],
+      "d_cny_logit": [
+        -0.00082,
+        -0.02516
       ],
       "d_other": [
-        0.237,
-        -0.113
+        0.2367,
+        -0.1134
       ]
     },
     "accretion_decade": {
-      "description": "Real growth anchors, 2015 to 2025, pct per year",
+      "description": "Compound real growth, 2015 to 2025, percent per year",
+      "start_year": 2015,
+      "end_year": 2025,
       "china": 5.502259609375426,
       "usa": 1.0275858575068186
     },
-    "us_2025_decline": {
-      "description": "Observed 2025 change in US real expenditure, pct",
+    "us_last_year": {
+      "description": "Change in US real expenditure, 2025, percent",
+      "year": 2025,
       "value": -7.536872265295102
     },
     "drift_regimes": {
-      "description": "Mean quarterly share change, pp, before and after 2022-Q1; the difference is the regime shift replayed after a demonstration event",
-      "usd_pre": -0.1295202038821528,
-      "usd_post": -0.13363197282783504,
-      "cny_pre": 0.09272037800129951,
-      "cny_post": -0.05097608845992412
+      "description": "Mean quarterly share change before and from 2022-Q1 (pp; CNY also in log-odds)",
+      "usd_pre": -0.12952984282754068,
+      "usd_post": -0.14982732137043875,
+      "cny_pre": 0.09272351798065201,
+      "cny_post": -0.0409920215606689,
+      "cny_pre_logit": 0.05347989234467974,
+      "cny_post_logit": -0.01705409462023313
     },
     "diversification_drift": {
-      "description": "Mean quarterly change in the 'other currencies' share, pp, before and after 2022-Q1",
-      "pre_2022": 0.014528530022685383,
-      "post_2022": 0.19025108907372998
+      "description": "Mean quarterly change in the share of other currencies, pp, before and from 2022-Q1",
+      "pre_2022": 0.014529227898512966,
+      "post_2022": 0.17288635836707222
     }
   }
 }
