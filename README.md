@@ -4,9 +4,9 @@ Conditional forecasts of defense and commercial markets under Chinese military p
 
 This repository contains a Python pipeline that estimates response parameters from historical data and simulates three pathways to Chinese military primacy by 2035. It tests whether allied defense expenditure and reserve currency composition depend on the pathway.
 
-* Interactive results: `index.html`
-* Report: `report.html`
-* Static summary: `docs/static_preview.html`
+* Interactive results: https://primacy.alyssaagard.dev/ (`index.html`)
+* Report: https://primacy.alyssaagard.dev/report.html (`report.html`)
+* Static summary: https://primacy.alyssaagard.dev/docs/static_preview.html (`docs/static_preview.html`)
 
 ## Research question
 
