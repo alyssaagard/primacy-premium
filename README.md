@@ -7,6 +7,7 @@ This repository contains a Python pipeline that estimates response parameters fr
 * Interactive results: https://primacy.alyssaagard.dev/ (`index.html`)
 * Report: https://primacy.alyssaagard.dev/report.html (`report.html`)
 * Static summary: https://primacy.alyssaagard.dev/docs/static_preview.html (`docs/static_preview.html`)
+* Committee Exercise: https://primacy.alyssaagard.dev/committee-exercise/ (`committee-exercise/`, built from the [primacy-committee-exercise](https://github.com/alyssaagard/primacy-committee-exercise) repository)
 
 ## Research question
 
