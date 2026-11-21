@@ -6,7 +6,7 @@ Sources read by the pipeline, documentary sources, methods, and software. Retrie
 
 International Monetary Fund. *Currency Composition of Official Foreign Exchange Reserves (COFER)*, dataset IMF.STA:COFER 7.0.1, quarterly, 1999-Q1 to 2026-Q2. Retrieved 21 November 2026 from the IMF SDMX API. From the 2025-Q3 release the unallocated portion is imputed, with revisions back to 2000-Q1.
 
-International Monetary Fund. "Improving the Analytical Usefulness of the IMF's COFER Data." Technical Notes and Manuals 2025/014. Washington, DC: IMF, November 2025.
+Kwende, Glen, and Erin Nephew. "Improving the Analytical Usefulness of the IMF's COFER Data." IMF Technical Notes and Manuals 2025/14. Washington, DC: International Monetary Fund, November 2025. https://doi.org/10.5089/9798229004855.005
 
 Stockholm International Peace Research Institute. *SIPRI Military Expenditure Database, 1949 to 2025*, version 1.2, April 2026. Retrieved 24 July 2026. Chinese expenditure figures are SIPRI estimates.
 
@@ -52,11 +52,11 @@ Congressional Research Service reports on naval force structure (RL32665), Chine
 
 ## Methods
 
-Driscoll, John C., and Aart C. Kraay. "Consistent Covariance Matrix Estimation with Spatially Dependent Panel Data." *Review of Economics and Statistics* 80, no. 4 (1998): 549-560.
+Driscoll, John C., and Aart C. Kraay. "Consistent Covariance Matrix Estimation with Spatially Dependent Panel Data." *Review of Economics and Statistics* 80, no. 4 (1998): 549-560. https://doi.org/10.1162/003465398557825
 
-Newey, Whitney K., and Kenneth D. West. "A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix." *Econometrica* 55, no. 3 (1987): 703-708.
+Newey, Whitney K., and Kenneth D. West. "A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix." *Econometrica* 55, no. 3 (1987): 703-708. https://www.jstor.org/stable/1913610
 
-Politis, Dimitris N., and Joseph P. Romano. "The Stationary Bootstrap." *Journal of the American Statistical Association* 89, no. 428 (1994): 1303-1313.
+Politis, Dimitris N., and Joseph P. Romano. "The Stationary Bootstrap." *Journal of the American Statistical Association* 89, no. 428 (1994): 1303-1313. https://doi.org/10.1080/01621459.1994.10476870
 
 ## Software
 
