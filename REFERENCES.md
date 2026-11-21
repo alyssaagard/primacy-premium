@@ -12,7 +12,7 @@ Stockholm International Peace Research Institute. *SIPRI Military Expenditure Da
 
 Stockholm International Peace Research Institute. *SIPRI Arms Transfers Database*: trend-indicator value tables of imports and the trade register of transfers of major conventional arms. Retrieved 24 and 29 July 2026.
 
-Swift. *RMB Tracker* (issues to January 2026) and *Global Currency Tracker* (issues from February 2026). Monthly; twenty-seven issues covering data months April 2024 to June 2026.
+Swift. *RMB Tracker* (issues to January 2026) and *Global Currency Tracker* (issues from February 2026). Monthly; thirty issues covering data months April 2024 to September 2026.
 
 NATO. *Defence Expenditure of NATO Countries (2014 to 2026)*, 2026 edition, Table 3 (defence expenditure as a share of real GDP; 2026 figures are estimates). Brussels: NATO Public Diplomacy Division, 2026.
 
@@ -31,6 +31,8 @@ Kristensen, Hans M., Matt Korda, Eliana Johns, and Mackenzie Knight-Boyle. "Unit
 Kristensen, Hans M., Matt Korda, Eliana Johns, and Mackenzie Knight-Boyle. "Russian Nuclear Weapons, 2026." *Bulletin of the Atomic Scientists* 82 (2026).
 
 Taiwan Semiconductor Manufacturing Company. *Consolidated Condensed Financial Statements*, quarterly, first quarter 2024 to second quarter 2026. Hsinchu: TSMC.
+
+Taiwan Semiconductor Manufacturing Company. "TSMC Reports Third Quarter EPS of NT$29.43." Earnings release, 15 October 2026. Hsinchu: TSMC. Source of third-quarter 2026 revenue pending the financial statements.
 
 TrendForce. *1Q26 Revenue Ranking among Top 10 Global Foundries*, 8 June 2026. Public summary only. The market share table is not available to this project and is not used.
 

@@ -127,7 +127,16 @@ def report_values(payload: dict) -> tuple[dict, dict]:
     mob = cal2["demonstration_mobilization_2022"]
     w = cal2["event_windows"]
     hp = pd.read_csv(PROC / "hypothesis_panel.csv")
+    semi = pd.read_csv(PROC / "semiconductor_channel.csv")
+    released = semi[semi.basis == "earnings release"].quarter.tolist()
+    tsmc_pending = (
+        f"TSMC revenue for {', '.join(released)} is taken from the earnings "
+        "release and should be replaced when the financial statements are "
+        "added." if released else
+        f"TSMC statements after {semi.quarter.iloc[-1]}.")
     rep = {
+        "tsmc_pending": tsmc_pending,
+        "tsmc_latest_basis": semi.basis.iloc[-1],
         "peace_total": cal1["cases"]["peace_dividend"]["total_real_change_pct"],
         "other_change":
             hyp["h3"]["share_change"]["Other than USD, EUR, JPY, GBP, CNY"],

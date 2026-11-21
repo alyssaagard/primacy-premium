@@ -5,7 +5,7 @@ the pipeline reads or writes, with row counts (or top-level key
 counts for JSON files), columns, and data types read from the
 files. Source citations are in `REFERENCES.md`.
 
-Artifacts: 31. Rows and keys: 10,737.
+Artifacts: 31. Rows and keys: 10,751.
 
 ## Reserve composition
 
@@ -29,7 +29,7 @@ Columns: `quarter` (str), `ccy` (str), `flow_share_pct` (float64), `source` (str
 
 ### `data/processed/swift_settlement.csv`
 
-Monthly renminbi and dollar payments shares and renminbi trade finance share from Swift tracker issues. Rows: 27.
+Monthly renminbi and dollar payments shares and renminbi trade finance share from Swift tracker issues. Rows: 30.
 
 Columns: `month` (str), `cny_payments_pct` (float64), `usd_payments_pct` (float64), `cny_trade_finance_pct` (float64), `source_file` (str), `source` (str).
 
@@ -95,9 +95,9 @@ Columns: `tier` (str), `window` (int64), `us_share` (float64), `supplier_hhi` (f
 
 ### `data/processed/semiconductor_channel.csv`
 
-TSMC quarterly net revenue. Foundry market shares are not available to this project and no concentration index is computed. Rows: 10.
+TSMC quarterly net revenue. Foundry market shares are not available to this project and no concentration index is computed. Rows: 11.
 
-Columns: `quarter` (str), `tsmc_revenue_usd_m` (float64), `source_file` (str), `rev_yoy_pct` (float64), `capacity_note` (str), `source` (str).
+Columns: `quarter` (str), `tsmc_revenue_usd_m` (float64), `basis` (str), `source_file` (str), `rev_yoy_pct` (float64), `capacity_note` (str), `source` (str).
 
 ### `data/processed/maritime_panel.csv`
 
@@ -201,7 +201,7 @@ Top-level keys: `draws`, `seed`, `last_observed`, `horizon`, `usd`, `cny`.
 
 ### `data/processed/hypothesis_panel.csv`
 
-All test statistics, evidence series and context rows for H1, H2 and H3 in one long table. Rows: 1,022.
+All test statistics, evidence series and context rows for H1, H2 and H3 in one long table. Rows: 1,032.
 
 Columns: `hypothesis` (str), `role` (str), `series` (str), `scope` (str), `freq` (str), `period` (str), `value` (float64), `unit` (str), `source` (str).
 

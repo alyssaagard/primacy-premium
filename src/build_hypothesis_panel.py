@@ -349,8 +349,9 @@ def main() -> None:
                 f"separation {usd_sep:.2f} sd; renminbi {latest.cny_payments_pct} "
                 f"percent of payments against "
                 f"{float(latest.cofer_cny):.2f} percent of reserves "
-                f"({latest.month}, gap {latest.gap_pp} pp); other commercial "
-                "channels not simulated"),
+                f"(payments {latest.month}, reserves "
+                f"{cal1['latest_state']['quarter']}, gap {latest.gap_pp} pp); "
+                "other commercial channels not simulated"),
             "statistics": {
                 "criteria": {"interval_contains_zero": ci_spans_zero,
                              "separation_below_expenditure_median": sep_below,

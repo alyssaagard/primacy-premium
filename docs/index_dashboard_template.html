@@ -429,7 +429,7 @@ code{font-family:var(--serif);font-style:italic}
       register (<code>parse_arms_transfers.py</code>); <span data-k="vintage.swift_issues"></span>
       monthly Swift tracker issues (<code>parse_swift.py</code>); four UNCTAD maritime tables
       (<code>parse_maritime.py</code>); the EIA chokepoint report, the Short-Term Energy Outlook,
-      and <span data-k="vintage.tsmc_quarters"></span> TSMC quarterly statements
+      and <span data-k="vintage.tsmc_quarters"></span> quarters of TSMC results
       (<code>parse_energy_semis.py</code>); and NATO, nuclear, arms import, event, and alliance
       tables (<code>parse_security.py</code>). Extracted values are range-checked and the build
       stops on a failed check. The COFER dollar share is recomputed from claims and must match
@@ -533,7 +533,7 @@ code{font-family:var(--serif);font-style:italic}
     Oil Transit Chokepoints and Short-Term Energy Outlook
     (<span data-k="vintage.steo"></span>). Federation of American Scientists, Nuclear Notebook,
     2025 and 2026, with US Department of Defense projections. TSMC consolidated financial
-    statements, <span data-k="vintage.tsmc.0"></span> to <span data-k="vintage.tsmc.1"></span>.
+    statements and earnings release, <span data-k="vintage.tsmc.0"></span> to <span data-k="vintage.tsmc.1"></span>.
     Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums, 2026.
     Full citations are in <code>REFERENCES.md</code>.</p>
     <p>Raw source files are not redistributed. <code>data/raw/README.md</code> lists each file
@@ -1033,7 +1033,7 @@ document.getElementById('hypRead').innerHTML =
     `Payments and reserves. In ${hy.h3.months.at(-1)} the renminbi accounted for
      <b>${hy.h3.swift_cny.at(-1)}%</b> of global payments by value and
      <b>${hy.h3.trade_finance.at(-1)}%</b> of trade finance (Swift), against
-     <b>${hy.h3.cofer_cny.at(-1)}%</b> of reserves (COFER): a difference of
+     <b>${hy.h3.cofer_cny.at(-1)}%</b> of reserves (COFER, ${cf.latest_quarter}): a difference of
      <b>${k.gap_pp} pp</b> between payments and reserve shares.`,
     `H1, ${hy.tests.H1.verdict}. Scored expenditure outcomes separate by a median
      <b>${h1.median_sd} sd</b>, <b>${h1.median_ratio}</b> times the dollar reserve share

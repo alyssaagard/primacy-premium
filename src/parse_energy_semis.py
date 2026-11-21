@@ -6,6 +6,8 @@ Input
   data/raw/eia/EIA_world_oil_transit_chokepoints.pdf
   data/raw/eia/STEO_m.xlsx      Short-Term Energy Outlook workbook
   data/raw/tsmc/FS*.pdf         TSMC quarterly financial statements
+  data/raw/tsmc/*.pdf           TSMC quarterly earnings releases (used
+                                only for quarters without statements)
 
 Output
   data/processed/energy_chokepoints.csv      oil transit by chokepoint,
@@ -21,7 +23,8 @@ Notes
   header is located by pattern.
 * The STEO edition is read from the workbook.
 * TSMC statements are deduplicated by quarter because audited and
-  unaudited issues overlap.
+  unaudited issues overlap. A statement replaces an earnings release
+  for the same quarter; the basis column records which was used.
 * Foundry market shares are not used. The TrendForce ranking available
   to this project is the public summary, which omits the share table,
   so no concentration index is computed. The public summary's note on
@@ -101,21 +104,49 @@ def parse_brent() -> pd.DataFrame:
     return df
 
 
+RELEASE_QUARTER = re.compile(
+    r"quarter\s+ended\s+([A-Z][a-z]+\s+\d{1,2},\s+\d{4})")
+RELEASE_REVENUE = re.compile(
+    r"In US dollars,\s+\w+\s+quarter\s+revenue\s+was\s+\$([\d.]+)\s+billion")
+
+
 def parse_tsmc() -> pd.DataFrame:
+    """Quarterly net revenue in USD millions.
+
+    Financial statements (FS*.pdf) are the primary source. A quarterly
+    earnings release is used for a quarter whose statements are absent;
+    it states revenue in USD billions to two decimals. A statement
+    replaces a release for the same quarter.
+    """
     rows = []
-    for pdf in sorted((RAW / "tsmc").glob("FS*.pdf")):
+    for pdf in sorted((RAW / "tsmc").glob("*.pdf")):
         txt = text_of(pdf)
-        q = re.search(r"For the Three Months Ended\s+([A-Z][a-z]+ \d{1,2}, \d{4})", txt)
-        rev = re.search(r"Net Revenue\s+\$\s*([\d,]+)", txt)
-        if not (q and rev):
-            print(f"  skip {pdf.name}: no quarterly revenue line")
+        flat = " ".join(txt.split())
+        if pdf.name.startswith("FS"):
+            q = re.search(r"For the Three Months Ended\s+"
+                          r"([A-Z][a-z]+ \d{1,2}, \d{4})", txt)
+            rev = re.search(r"Net Revenue\s+\$\s*([\d,]+)", txt)
+            if not (q and rev):
+                print(f"  skip {pdf.name}: no quarterly revenue line")
+                continue
+            value = float(rev.group(1).replace(",", ""))
+            basis, rank = "financial statements", 1
+        elif "TSMC Reports" in flat:
+            q, rev = RELEASE_QUARTER.search(flat), RELEASE_REVENUE.search(flat)
+            if not (q and rev):
+                print(f"  skip {pdf.name}: no quarterly revenue sentence")
+                continue
+            value = float(rev.group(1)) * 1000
+            basis, rank = "earnings release", 0
+        else:
             continue
-        end = pd.to_datetime(q.group(1))
+        end = pd.to_datetime(" ".join(q.group(1).split()))
         rows.append({"quarter": f"{end.year}-Q{(end.month - 1) // 3 + 1}",
-                     "tsmc_revenue_usd_m": float(rev.group(1).replace(",", "")),
-                     "source_file": pdf.name})
-    df = (pd.DataFrame(rows).sort_values(["quarter", "source_file"])
-          .drop_duplicates("quarter", keep="last").reset_index(drop=True))
+                     "tsmc_revenue_usd_m": value, "basis": basis,
+                     "rank": rank, "source_file": pdf.name})
+    df = (pd.DataFrame(rows).sort_values(["quarter", "rank", "source_file"])
+          .drop_duplicates("quarter", keep="last").drop(columns="rank")
+          .reset_index(drop=True))
     if df.empty or not (5_000 < df.tsmc_revenue_usd_m.median() < 60_000):
         raise ValueError("TSMC revenue parse failed validation")
     return df
@@ -131,7 +162,8 @@ def main() -> None:
                              "PSMC raising prices amid tight capacity into 2027 "
                              "(TrendForce public summary, June 2026)")
     tsmc["source"] = ("TSMC consolidated condensed statements of comprehensive "
-                      "income, quarterly; TrendForce 1Q26 public summary")
+                      "income and quarterly earnings releases; TrendForce 1Q26 "
+                      "public summary")
     tsmc.to_csv(OUT / "semiconductor_channel.csv", index=False)
     print(f"semiconductor_channel.csv: {len(tsmc)} quarters "
           f"({tsmc.quarter.iloc[0]} to {tsmc.quarter.iloc[-1]}); latest revenue "

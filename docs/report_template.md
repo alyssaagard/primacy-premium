@@ -50,7 +50,7 @@ Dollar measures are tier totals. SIPRI coverage of members changes over time; fo
 
 Reserve currency composition is simulated. Three further channels are documented with measured exposure series and are not simulated.
 
-- Semiconductors: TSMC quarterly net revenue, {{vintage.tsmc.0}} to {{vintage.tsmc.1}}; latest {{vintage.tsmc_latest_usd_m|int}} million US dollars.
+- Semiconductors: TSMC quarterly net revenue, {{vintage.tsmc.0}} to {{vintage.tsmc.1}}; latest {{vintage.tsmc_latest_usd_m|int}} million US dollars ({{rep.tsmc_latest_basis}}).
 - Shipping and war risk: merchant fleet, shipbuilding, liner connectivity, and container throughput from UNCTAD, and the change in the additional war risk premium during the 2026 Mideast Gulf episode.
 - Energy: oil transit by chokepoint from the US Energy Information Administration (Strait of Hormuz {{rep.hormuz}} million barrels per day, Strait of Malacca {{rep.malacca}}, {{rep.chokepoint_year}}) and the Brent price path.
 
@@ -90,7 +90,7 @@ Result. A unit change in the year-on-year log China/US expenditure ratio is asso
 
 Median dollar shares in 2035-Q4 are {{endpoints.usd.accretion.median|f1}} percent under accretion, {{endpoints.usd.retrenchment.median|f1}} under retrenchment, and {{endpoints.usd.demonstration.median|f1}} under demonstration, a range of {{kpis.usd_median_range}} percentage points. The 80 percent interval under accretion is {{endpoints.usd.accretion.p10|f0}} to {{endpoints.usd.accretion.p90|f0}} percent. Pathway separation is {{kpis.separation}} standard deviations, below the median for expenditure outcomes ({{hyp.h1.median_sd}}).
 
-In {{rep.gap_month}} the renminbi accounted for {{rep.swift_cny}} percent of global payments by value and {{rep.trade_finance}} percent of trade finance in Swift data, against {{rep.cofer_cny}} percent of reserves, a difference of {{kpis.gap_pp}} percentage points between payments and reserve shares. The payments share exceeded the reserve share in all {{vintage.swift_issues}} months observed. H3 is {{hyp.tests.H3.verdict}}.
+In {{rep.gap_month}} the renminbi accounted for {{rep.swift_cny}} percent of global payments by value and {{rep.trade_finance}} percent of trade finance in Swift data, against {{rep.cofer_cny}} percent of reserves in {{cofer.latest_quarter}}, the latest COFER quarter, a difference of {{kpis.gap_pp}} percentage points between payments and reserve shares. The payments share exceeded the reserve share in all {{vintage.swift_issues}} months observed. H3 is {{hyp.tests.H3.verdict}}.
 
 The renminbi share is simulated in log-odds. Its median in 2035-Q4 is {{endpoints.cny.accretion.median|f1}} percent under accretion (80 percent interval {{endpoints.cny.accretion.p10|f1}} to {{endpoints.cny.accretion.p90|f1}}) and {{endpoints.cny.demonstration.median|f1}} percent under demonstration ({{endpoints.cny.demonstration.p10|f1}} to {{endpoints.cny.demonstration.p90|f1}}). The demonstration result repeats the change in the renminbi share after 2022. It rests on one episode and should be read as an illustration of that precedent.
 
@@ -107,7 +107,7 @@ Raw source files are not redistributed. `data/raw/README.md` lists each file and
 - NATO, Defence Expenditure of NATO Countries, 2026 edition, Table 3: expenditure as a share of real GDP for {{rep.nato_allies}} allies, {{vintage.nato.0}} to {{vintage.nato.1}} (latest year estimated).
 - UNCTADstat maritime transport tables: merchant fleet, ships built, Liner Shipping Connectivity Index, container port throughput.
 - US Energy Information Administration: World Oil Transit Chokepoints and the Short-Term Energy Outlook ({{vintage.steo}}).
-- TSMC consolidated condensed financial statements, quarterly.
+- TSMC consolidated condensed financial statements, quarterly. A quarter without statements is taken from the earnings release, which states revenue in US dollar billions to two decimals.
 - Federation of American Scientists, Nuclear Notebook, 2025 and 2026 issues for China, the United States, and Russia, with US Department of Defense projections for China.
 
 ## 4.2 Event and pricing sources
@@ -148,7 +148,7 @@ Four UNCTAD exports are combined into one panel of {{rep.maritime_rows}} rows. T
 
 ## 5.6 Energy and semiconductors
 
-The chokepoint table is read from layout-preserved text. The Short-Term Energy Outlook parser extracts monthly Brent prices, observed and forecast. The TSMC parser reads the quarter and net revenue from each statement and removes duplicate quarters.
+The chokepoint table is read from layout-preserved text. The Short-Term Energy Outlook parser extracts monthly Brent prices, observed and forecast. The TSMC parser reads the quarter and net revenue from each statement and removes duplicate quarters; a statement replaces an earnings release for the same quarter.
 
 ## 5.7 Security tables
 
@@ -258,7 +258,7 @@ The pipeline requires Python 3.10 or later with pandas, NumPy, SciPy, statsmodel
 
 # 13. Further Work
 
-- Data pending: Swift tracker issues after {{vintage.swift.1}} and TSMC statements after {{vintage.tsmc.1}}.
+- Data pending: Swift tracker issues after {{vintage.swift.1}}. {{rep.tsmc_pending}}
 - Historical cases. The Soviet attainment of strategic parity and the Anglo-German naval race are the closest precedents for H1. Until they are examined, H1 rests on the simulation.
 - H2. Annual data give few effective observations. Budget data at higher frequency, or a design that uses cross-country variation in exposure to US commitments with year effects, would give a sharper test.
 - A dynamic specification for the tier equations, to address the serial correlation in their residuals.

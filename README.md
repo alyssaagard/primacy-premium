@@ -34,7 +34,7 @@ Verdicts are computed by the pipeline and written to `outputs/hypothesis_tests.j
 |---|---|---|---|
 | H1 | Allied defense expenditure in 2035 differs by pathway. | Median pathway separation of four scored outcomes, 0.74 sd, 2.2 times the dollar reserve share (0.34 sd). Descriptive; not a significance test. | Supported |
 | H2 | Allied expenditure responds more strongly to US than to Chinese expenditure. | Pooled panel of 45 countries, 1991 to 2025: b_us 0.160 (se 0.091), b_cn -0.056 (se 0.075); one-sided p 0.12 for the difference in magnitudes. | Not supported at the 5 percent level |
-| H3 | Reserve composition is the least pathway-sensitive outcome, and the dollar's decline accrues mainly to currencies other than the renminbi. | Expenditure coefficient +0.93 pp, 95 percent interval -0.94 to 2.80; dollar share separation 0.34 sd; renminbi 3.1 percent of payments against 2.11 percent of reserves (June 2026). | Supported on the available measures |
+| H3 | Reserve composition is the least pathway-sensitive outcome, and the dollar's decline accrues mainly to currencies other than the renminbi. | Expenditure coefficient +0.93 pp, 95 percent interval -0.94 to 2.80; dollar share separation 0.34 sd; renminbi 3.33 percent of payments (September 2026) against 2.11 percent of reserves (2026-Q2). | Supported on the available measures |
 
 Notes on interpretation:
 
@@ -136,7 +136,7 @@ The report lists the corrections made since the first release (July 2026).
 
 ## Data
 
-IMF COFER, 1999-Q1 to 2026-Q2. SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and Arms Transfers Database. Swift RMB Tracker and Global Currency Tracker, data months April 2024 to June 2026. NATO, Defence Expenditure of NATO Countries, 2026 edition. UNCTADstat maritime transport tables. US EIA, World Oil Transit Chokepoints and Short-Term Energy Outlook (November 2026). FAS Nuclear Notebook, 2025 and 2026. TSMC financial statements, 2024-Q1 to 2026-Q2. Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums.
+IMF COFER, 1999-Q1 to 2026-Q2. SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and Arms Transfers Database. Swift RMB Tracker and Global Currency Tracker, data months April 2024 to September 2026. NATO, Defence Expenditure of NATO Countries, 2026 edition. UNCTADstat maritime transport tables. US EIA, World Oil Transit Chokepoints and Short-Term Energy Outlook (November 2026). FAS Nuclear Notebook, 2025 and 2026. TSMC financial statements, 2024-Q1 to 2026-Q2, and the 2026-Q3 earnings release. Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums.
 
 Full citations are in `REFERENCES.md`. Columns and units of every artifact are in `DATA_DICTIONARY.md`. Raw source files are not redistributed.
 

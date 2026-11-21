@@ -207,7 +207,7 @@ td,th{vertical-align:top}
 <h2 id="2-7-commercial-channels">2.7 Commercial channels</h2>
 <p>Reserve currency composition is simulated. Three further channels are documented with measured exposure series and are not simulated.</p>
 <ul>
-<li>Semiconductors: TSMC quarterly net revenue, 2024-Q1 to 2026-Q2; latest 40,201 million US dollars.</li>
+<li>Semiconductors: TSMC quarterly net revenue, 2024-Q1 to 2026-Q3; latest 46,720 million US dollars (earnings release).</li>
 <li>Shipping and war risk: merchant fleet, shipbuilding, liner connectivity, and container throughput from UNCTAD, and the change in the additional war risk premium during the 2026 Mideast Gulf episode.</li>
 <li>Energy: oil transit by chokepoint from the US Energy Information Administration (Strait of Hormuz 20.7 million barrels per day, Strait of Malacca 22.5, 2024) and the Brent price path.</li>
 </ul>
@@ -252,7 +252,7 @@ td,th{vertical-align:top}
 <p>Rule. H3 is recorded as supported on the available measures if three conditions hold: the 95 percent interval of the expenditure coefficient in the dollar share regression contains zero; the pathway separation of the dollar share is below the median scored expenditure separation; and the renminbi's share of payments exceeds its share of reserves in every month observed. The shipping, energy, and semiconductor channels are not simulated, so the comparison across commercial channels is not tested.</p>
 <p>Result. A unit change in the year-on-year log China/US expenditure ratio is associated with a change of +0.93 percentage points in the quarterly dollar share (95 percent interval -0.94 to 2.8; 104 quarters; R-squared 0.012). The interval is wide and contains zero. The regression does not detect an effect of relative military expenditure on the dollar share; it also cannot exclude effects of either sign within the interval.</p>
 <p>Median dollar shares in 2035-Q4 are 50.4 percent under accretion, 52.0 under retrenchment, and 50.9 under demonstration, a range of 1.7 percentage points. The 80 percent interval under accretion is 44 to 56 percent. Pathway separation is 0.34 standard deviations, below the median for expenditure outcomes (0.74).</p>
-<p>In 2026-06 the renminbi accounted for 3.1 percent of global payments by value and 8.0 percent of trade finance in Swift data, against 2.11 percent of reserves, a difference of 0.99 percentage points between payments and reserve shares. The payments share exceeded the reserve share in all 27 months observed. H3 is supported on the available measures.</p>
+<p>In 2026-09 the renminbi accounted for 3.33 percent of global payments by value and 8.26 percent of trade finance in Swift data, against 2.11 percent of reserves in 2026-Q2, the latest COFER quarter, a difference of 1.22 percentage points between payments and reserve shares. The payments share exceeded the reserve share in all 30 months observed. H3 is supported on the available measures.</p>
 <p>The renminbi share is simulated in log-odds. Its median in 2035-Q4 is 4.6 percent under accretion (80 percent interval 1.6 to 12.3) and 0.9 percent under demonstration (0.3 to 2.7). The demonstration result repeats the change in the renminbi share after 2022. It rests on one episode and should be read as an illustration of that precedent.</p>
 <h1 id="4-data-sources">4. Data Sources</h1>
 <p>Raw source files are not redistributed. <code>data/raw/README.md</code> lists each file and where to obtain it; <code>REFERENCES.md</code> gives full citations.</p>
@@ -261,11 +261,11 @@ td,th{vertical-align:top}
 <li>IMF, Currency Composition of Official Foreign Exchange Reserves (COFER), 1999-Q1 to 2026-Q2. Shares and claims by currency. From the 2025-Q3 release the IMF imputes the previously unallocated portion, with revisions back to 2000-Q1, so shares refer to total foreign exchange reserves.</li>
 <li>SIPRI Military Expenditure Database, 1949 to 2025, version 1.2. Chinese figures are SIPRI estimates.</li>
 <li>SIPRI Arms Transfers Database: trend-indicator value tables and the trade register. Supplier concentration is computed over five-year windows by year of order.</li>
-<li>Swift RMB Tracker and Global Currency Tracker, 27 monthly issues covering 2024-04 to 2026-06.</li>
+<li>Swift RMB Tracker and Global Currency Tracker, 30 monthly issues covering 2024-04 to 2026-09.</li>
 <li>NATO, Defence Expenditure of NATO Countries, 2026 edition, Table 3: expenditure as a share of real GDP for 31 allies, 2014 to 2026 (latest year estimated).</li>
 <li>UNCTADstat maritime transport tables: merchant fleet, ships built, Liner Shipping Connectivity Index, container port throughput.</li>
 <li>US Energy Information Administration: World Oil Transit Chokepoints and the Short-Term Energy Outlook (November 2026).</li>
-<li>TSMC consolidated condensed financial statements, quarterly.</li>
+<li>TSMC consolidated condensed financial statements, quarterly. A quarter without statements is taken from the earnings release, which states revenue in US dollar billions to two decimals.</li>
 <li>Federation of American Scientists, Nuclear Notebook, 2025 and 2026 issues for China, the United States, and Russia, with US Department of Defense projections for China.</li>
 </ul>
 <h2 id="4-2-event-and-pricing-sources">4.2 Event and pricing sources</h2>
@@ -287,11 +287,11 @@ td,th{vertical-align:top}
 <h2 id="5-5-maritime-structure">5.5 Maritime structure</h2>
 <p>Four UNCTAD exports are combined into one panel of 644 rows. The fleet, shipbuilding, and throughput exports contain group aggregates only, so China is derived as developing economies minus developing economies excluding China and is labelled as derived. On this measure China built 54 percent of world gross tonnage in 2025.</p>
 <h2 id="5-6-energy-and-semiconductors">5.6 Energy and semiconductors</h2>
-<p>The chokepoint table is read from layout-preserved text. The Short-Term Energy Outlook parser extracts monthly Brent prices, observed and forecast. The TSMC parser reads the quarter and net revenue from each statement and removes duplicate quarters.</p>
+<p>The chokepoint table is read from layout-preserved text. The Short-Term Energy Outlook parser extracts monthly Brent prices, observed and forecast. The TSMC parser reads the quarter and net revenue from each statement and removes duplicate quarters; a statement replaces an earnings release for the same quarter.</p>
 <h2 id="5-7-security-tables">5.7 Security tables</h2>
 <p>NATO expenditure shares; warhead stockpile estimates (China 600 in 2025 and 620 in 2026, with Department of Defense projections of 1,000 by 2030 and 1,500 by 2035; United States 3,700; Russia 4,400); recipient-level arms imports; allied import dependence by order window; and three tables coded by hand from the cited documents: an event register of 7 episodes, the war risk premium table, and an alliance commitment table of 28 entries. The commitment values are a design input and are not estimated.</p>
 <h2 id="5-8-hypothesis-dataset">5.8 Hypothesis dataset</h2>
-<p><code>data/processed/hypothesis_panel.csv</code> holds every test statistic, evidence series, and context value in one long table of 1,022 rows with the columns hypothesis, role, series, scope, freq, period, value, unit, and source. Roles are test, evidence, input, robustness, and sensitivity.</p>
+<p><code>data/processed/hypothesis_panel.csv</code> holds every test statistic, evidence series, and context value in one long table of 1,032 rows with the columns hypothesis, role, series, scope, freq, period, value, unit, and source. Roles are test, evidence, input, robustness, and sensitivity.</p>
 <table>
 <thead><tr><th>Hypothesis</th><th>Role</th><th>Rows</th></tr></thead>
 <tbody>
@@ -301,10 +301,10 @@ td,th{vertical-align:top}
 <tr><td>H2</td><td>input</td><td>6</td></tr>
 <tr><td>H2</td><td>sensitivity</td><td>27</td></tr>
 <tr><td>H2</td><td>test</td><td>4</td></tr>
-<tr><td>H3</td><td>evidence</td><td>320</td></tr>
+<tr><td>H3</td><td>evidence</td><td>326</td></tr>
 <tr><td>H3</td><td>robustness</td><td>382</td></tr>
-<tr><td>H3</td><td>test</td><td>31</td></tr>
-<tr><td>context</td><td>input</td><td>118</td></tr>
+<tr><td>H3</td><td>test</td><td>34</td></tr>
+<tr><td>context</td><td>input</td><td>119</td></tr>
 </tbody>
 </table>
 <h1 id="6-estimation-and-simulation">6. Estimation and Simulation</h1>
@@ -389,10 +389,10 @@ td,th{vertical-align:top}
 <h2 id="11-4-method">11.4 Method</h2>
 <p>The study reports interval estimates, states its decision rules, and reports results that do not support its hypotheses. The reserve channel regression is an example: it does not detect an effect, and the interval is wide enough that moderate effects of either sign cannot be excluded.</p>
 <h1 id="12-reproduction">12. Reproduction</h1>
-<p>The pipeline requires Python 3.10 or later with pandas, NumPy, SciPy, statsmodels, Matplotlib, and openpyxl, and the pdftotext utility. The run order is given in <code>README.md</code>: seven parsers, two estimation scripts, two simulation scripts, the hypothesis panel builder, the figure script, and the output scripts. The register lists 31 artifacts with 10,737 rows and keys. Text, figures, and code are licensed CC BY-NC 4.0. The underlying source data are excluded from the license and are used with citation under their publishers' terms.</p>
+<p>The pipeline requires Python 3.10 or later with pandas, NumPy, SciPy, statsmodels, Matplotlib, and openpyxl, and the pdftotext utility. The run order is given in <code>README.md</code>: seven parsers, two estimation scripts, two simulation scripts, the hypothesis panel builder, the figure script, and the output scripts. The register lists 31 artifacts with 10,751 rows and keys. Text, figures, and code are licensed CC BY-NC 4.0. The underlying source data are excluded from the license and are used with citation under their publishers' terms.</p>
 <h1 id="13-further-work">13. Further Work</h1>
 <ul>
-<li>Data pending: Swift tracker issues after 2026-06 and TSMC statements after 2026-Q2.</li>
+<li>Data pending: Swift tracker issues after 2026-09. TSMC revenue for 2026-Q3 is taken from the earnings release and should be replaced when the financial statements are added.</li>
 <li>Historical cases. The Soviet attainment of strategic parity and the Anglo-German naval race are the closest precedents for H1. Until they are examined, H1 rests on the simulation.</li>
 <li>H2. Annual data give few effective observations. Budget data at higher frequency, or a design that uses cross-country variation in exposure to US commitments with year effects, would give a sharper test.</li>
 <li>A dynamic specification for the tier equations, to address the serial correlation in their residuals.</li>

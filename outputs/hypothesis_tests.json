@@ -230,15 +230,15 @@
  "H3": {
   "claim": "Reserve composition responds least to the pathway, and the dollar's decline does not accrue to the renminbi",
   "verdict": "supported on the available measures",
-  "headline": "expenditure coefficient +0.93 pp, 95 percent interval -0.94 to 2.80; dollar share separation 0.34 sd; renminbi 3.1 percent of payments against 2.11 percent of reserves (2026-06, gap 0.99 pp); other commercial channels not simulated",
+  "headline": "expenditure coefficient +0.93 pp, 95 percent interval -0.94 to 2.80; dollar share separation 0.34 sd; renminbi 3.33 percent of payments against 2.11 percent of reserves (payments 2026-09, reserves 2026-Q2, gap 1.22 pp); other commercial channels not simulated",
   "statistics": {
    "criteria": {
     "interval_contains_zero": true,
     "separation_below_expenditure_median": true,
     "payments_share_exceeds_reserve_share": true
    },
-   "latest_gap_pp": 0.99,
-   "latest_gap_month": "2026-06",
+   "latest_gap_pp": 1.22,
+   "latest_gap_month": "2026-09",
    "share_change_since_2016Q4_pp": {
     "USD": -7.98,
     "CNY": 1.12,

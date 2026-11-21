@@ -456,6 +456,9 @@ H3,evidence,swift_payments_share,CNY,monthly,2026-03,3.1,% of global payments va
 H3,evidence,swift_payments_share,CNY,monthly,2026-04,2.85,% of global payments value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_payments_share,CNY,monthly,2026-05,2.75,% of global payments value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_payments_share,CNY,monthly,2026-06,3.1,% of global payments value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-07,3.1,% of global payments value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-08,3.26,% of global payments value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_payments_share,CNY,monthly,2026-09,3.33,% of global payments value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_trade_finance_share,CNY,monthly,2024-04,4.71,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_trade_finance_share,CNY,monthly,2024-05,5.08,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_trade_finance_share,CNY,monthly,2024-06,5.99,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
@@ -483,6 +486,9 @@ H3,evidence,swift_trade_finance_share,CNY,monthly,2026-03,8.04,% of trade financ
 H3,evidence,swift_trade_finance_share,CNY,monthly,2026-04,5.99,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_trade_finance_share,CNY,monthly,2026-05,7.0,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
 H3,evidence,swift_trade_finance_share,CNY,monthly,2026-06,8.0,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-07,8.43,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-08,9.14,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
+H3,evidence,swift_trade_finance_share,CNY,monthly,2026-09,8.26,% of trade finance value,Swift RMB Tracker / Global Currency Tracker
 H3,test,settlement_reserve_gap,CNY,monthly,2024-04,2.44,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
 H3,test,settlement_reserve_gap,CNY,monthly,2024-05,2.39,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
 H3,test,settlement_reserve_gap,CNY,monthly,2024-06,2.53,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
@@ -510,6 +516,9 @@ H3,test,settlement_reserve_gap,CNY,monthly,2026-03,1.12,"pp, Swift payments shar
 H3,test,settlement_reserve_gap,CNY,monthly,2026-04,0.74,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
 H3,test,settlement_reserve_gap,CNY,monthly,2026-05,0.64,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
 H3,test,settlement_reserve_gap,CNY,monthly,2026-06,0.99,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-07,0.99,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-08,1.15,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
+H3,test,settlement_reserve_gap,CNY,monthly,2026-09,1.22,"pp, Swift payments share minus COFER share",derived: Swift minus IMF COFER
 H3,robustness,cofer_flow_share,USD,quarterly,1999-Q2,105.97704256667065,% of quarterly change in total claims,derived from IMF COFER claims
 H3,robustness,cofer_flow_share,USD,quarterly,1999-Q3,34.34998324173246,% of quarterly change in total claims,derived from IMF COFER claims
 H3,robustness,cofer_flow_share,USD,quarterly,1999-Q4,78.87374205150637,% of quarterly change in total claims,derived from IMF COFER claims
@@ -927,6 +936,7 @@ context,input,tsmc_revenue,,quarterly,2025-Q3,33097.0,USD m,TSMC consolidated st
 context,input,tsmc_revenue,,quarterly,2025-Q4,33731.0,USD m,TSMC consolidated statements
 context,input,tsmc_revenue,,quarterly,2026-Q1,35898.0,USD m,TSMC consolidated statements
 context,input,tsmc_revenue,,quarterly,2026-Q2,40201.0,USD m,TSMC consolidated statements
+context,input,tsmc_revenue,,quarterly,2026-Q3,46720.0,USD m,TSMC consolidated statements
 context,input,ships_built_gt,China (derived),annual,2014,22851302.0,gross tons,UNCTADstat
 context,input,ships_built_gt,China (derived),annual,2015,25275424.0,gross tons,UNCTADstat
 context,input,ships_built_gt,China (derived),annual,2016,22365449.0,gross tons,UNCTADstat

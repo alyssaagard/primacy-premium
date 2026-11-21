@@ -15,6 +15,7 @@ Raw source files are not redistributed. Obtain the files below and place them at
 | `data/raw/eia/EIA_world_oil_transit_chokepoints.pdf` | World Oil Transit Chokepoints | US EIA |
 | `data/raw/eia/STEO_m.xlsx` | Short-Term Energy Outlook monthly workbook | US EIA |
 | `data/raw/tsmc/FS*.pdf` | Consolidated condensed financial statements, quarterly | TSMC investor relations |
+| `data/raw/tsmc/*.pdf` (other) | Quarterly earnings release, used only for a quarter whose financial statements are absent | TSMC investor relations |
 | `data/raw/nuclear/*.pdf` | FAS Nuclear Notebook: China 2025; China, United States, and Russia 2026. File names are set in `src/parse_security.py`. | Bulletin of the Atomic Scientists |
 | `data/raw/nato/defexp2026en.xlsx` | Defence Expenditure of NATO Countries, 2026 edition | NATO |
 
