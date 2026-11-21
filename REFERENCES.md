@@ -30,9 +30,7 @@ Kristensen, Hans M., Matt Korda, Eliana Johns, and Mackenzie Knight-Boyle. "Unit
 
 Kristensen, Hans M., Matt Korda, Eliana Johns, and Mackenzie Knight-Boyle. "Russian Nuclear Weapons, 2026." *Bulletin of the Atomic Scientists* 82 (2026).
 
-Taiwan Semiconductor Manufacturing Company. *Consolidated Condensed Financial Statements*, quarterly, first quarter 2024 to second quarter 2026. Hsinchu: TSMC.
-
-Taiwan Semiconductor Manufacturing Company. "TSMC Reports Third Quarter EPS of NT$29.43." Earnings release, 15 October 2026. Hsinchu: TSMC. Source of third-quarter 2026 revenue pending the financial statements.
+Taiwan Semiconductor Manufacturing Company. *Consolidated Condensed Financial Statements*, quarterly, first quarter 2024 to third quarter 2026. Hsinchu: TSMC.
 
 TrendForce. *1Q26 Revenue Ranking among Top 10 Global Foundries*, 8 June 2026. Public summary only. The market share table is not available to this project and is not used.
 

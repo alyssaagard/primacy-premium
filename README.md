@@ -136,7 +136,7 @@ The report lists the corrections made since the first release (July 2026).
 
 ## Data
 
-IMF COFER, 1999-Q1 to 2026-Q2. SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and Arms Transfers Database. Swift RMB Tracker and Global Currency Tracker, data months April 2024 to September 2026. NATO, Defence Expenditure of NATO Countries, 2026 edition. UNCTADstat maritime transport tables. US EIA, World Oil Transit Chokepoints and Short-Term Energy Outlook (November 2026). FAS Nuclear Notebook, 2025 and 2026. TSMC financial statements, 2024-Q1 to 2026-Q2, and the 2026-Q3 earnings release. Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums.
+IMF COFER, 1999-Q1 to 2026-Q2. SIPRI Military Expenditure Database 1949 to 2025 (v1.2, April 2026) and Arms Transfers Database. Swift RMB Tracker and Global Currency Tracker, data months April 2024 to September 2026. NATO, Defence Expenditure of NATO Countries, 2026 edition. UNCTADstat maritime transport tables. US EIA, World Oil Transit Chokepoints and Short-Term Energy Outlook (November 2026). FAS Nuclear Notebook, 2025 and 2026. TSMC financial statements, 2024-Q1 to 2026-Q3. Joint War Committee circular JWLA-033 and Argus Media reporting on war risk premiums.
 
 Full citations are in `REFERENCES.md`. Columns and units of every artifact are in `DATA_DICTIONARY.md`. Raw source files are not redistributed.
 
