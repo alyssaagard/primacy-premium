@@ -70,11 +70,11 @@ The tables in `data/processed/` are derived from the sources above and are publi
 
 GitHub renders a citation from `CITATION.cff`. In text:
 
-Agard, Alyssa. *The Primacy Premium: Conditional Forecasts of Defense and Commercial Markets under Chinese Military Primacy, 2026 to 2035*, version 1.1.0. 2026. Code and derived data, CC BY-NC 4.0.
+Agard, Alyssa I. *The Primacy Premium: Conditional Forecasts of Defense and Commercial Markets under Chinese Military Primacy, 2026 to 2035*, version 1.1.0. 2026. Code and derived data, CC BY-NC 4.0.
 
 ```bibtex
 @misc{agard2026primacypremium,
-  author  = {Agard, Alyssa},
+  author  = {Agard, Alyssa I.},
   title   = {The Primacy Premium: Conditional Forecasts of Defense and
              Commercial Markets under Chinese Military Primacy, 2026 to 2035},
   year    = {2026},

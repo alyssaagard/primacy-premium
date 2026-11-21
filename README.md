@@ -142,4 +142,4 @@ Full citations are in `REFERENCES.md`. Columns and units of every artifact are i
 
 ## License
 
-Text, figures, and code are © 2026 Alyssa Agard and licensed CC BY-NC 4.0. The underlying source data are excluded from the license and are used with citation under their publishers' terms. See `LICENSE.md`.
+Text, figures, and code are © 2026 Alyssa I. Agard and licensed CC BY-NC 4.0. The underlying source data are excluded from the license and are used with citation under their publishers' terms. See `LICENSE.md`.
